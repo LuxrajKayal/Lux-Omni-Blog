@@ -1,6 +1,6 @@
 # Lux Omni Blog — Color System
 
-**Status:** Draft for design approval  
+**Status:** Approved implementation baseline — 2026-10-25 (palette values remain subject to in-context contrast validation)  
 **Scope:** Lux Omni Blog website and its interface tokens  
 **Design direction:** Editorial layout; balanced crimson/amber branding; light and dark themes  
 **Icon policy:** Preserve supplied SVG artwork and its existing colors unchanged
@@ -13,12 +13,13 @@ This document defines the color vocabulary for Lux Omni Blog so that pages, arti
 
 The website takes its layout direction from the chosen CNET-style editorial reference. Lux Omni Blog retains its own crimson, burgundy, orange, and amber identity.
 
-### Decisions approved for this draft
+### Approved baseline decisions
 
 - **Theme strategy:** Support both light and dark themes.
 - **Accent intensity:** Balanced. Brand color should be recognizable without making every surface red or orange.
 - **SVG artwork:** Preserve the supplied icons as they are. Do not recolor, flatten, or replace their gradients as part of routine theme changes.
-- **Default theme:** Light theme is the proposed initial default; a future theme control may let readers switch to dark mode.
+- **Default theme:** Light theme is the initial implementation baseline; a future theme control may let readers switch to dark mode.
+- **Typography:** Use Source Sans 3 for headlines, navigation, cards, metadata, and interface controls; use Source Serif 4 for long-form article body text. Use a system monospace stack for code, avoiding a third external font dependency.
 
 ## 2. Color-system principles
 
@@ -254,3 +255,35 @@ The selector assumes theme switching will eventually set `data-theme="dark"` on 
 - [ ] Test logo visibility against header and page surfaces.
 - [ ] Confirm the micro icon inherits its theme color correctly.
 - [ ] Implement CSS tokens only after the specification is approved.
+
+
+## 12. Typography foundation — approved baseline
+
+### Font roles
+
+| Token | Font stack | Intended use |
+|---|---|---|
+| `--font-ui` | `"Source Sans 3", Arial, sans-serif` | Headlines, navigation, controls, buttons, cards, excerpts, metadata, labels, and the developer interface |
+| `--font-editorial` | `"Source Serif 4", Georgia, serif` | Long-form article body copy, quotations, and reading-focused prose where the serif treatment improves editorial character |
+| `--font-code` | `ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace` | Code samples, technical identifiers, and preformatted output |
+
+Source Sans 3 and Source Serif 4 form the approved starting pairing. This combination gives short interface elements and headlines a clear sans-serif voice while distinguishing long-form article reading with a serif face. The role tokens keep this choice consistent without forcing every area of the site to use the same family.
+
+### Initial weight guidance
+
+- UI and navigation: 400 for ordinary text, 500 for emphasis, 600 for navigation and card headings, and 700 for major headlines.
+- Article body: 400 for normal paragraphs; 600 or 700 for bold emphasis and headings inside the article.
+- Use italics only where they convey meaning, such as book titles, cited work, or a deliberate editorial quotation.
+- Detailed font sizes, line heights, fluid type scales, and content measure will be defined in the spacing/typography token plan before implementation. Do not invent per-component sizes in this document.
+
+### Font loading and fallback
+
+- Load the selected web fonts using `<link rel="preconnect">` hints and a Google Fonts stylesheet link in the HTML document `<head>`; avoid CSS `@import` for the primary font load.
+- Request only the weights and styles that the design actually uses. Start with Source Sans 3 weights 400, 500, 600, and 700; start with Source Serif 4 weights 400, 600, and 700, plus italic 400 and 600 for meaningful editorial italics.
+- Keep the fallback stacks shown in the table so the page remains readable if the font service is unavailable.
+- Do not introduce font-loading code in this substep. The correct HTML documents and shared article starter will receive the needed links when their implementation step is approved.
+- Confirm the web fonts load without blocking the page and check representative headline and long-form text when actual page content exists.
+
+### Scope and validation
+
+This typography decision is a baseline, not a claim that the finished site has already been visually tested. The names and roles are approved; sizes, responsive scale, line lengths, precise weights per component, and live-page validation remain for the relevant design-token and component steps.
