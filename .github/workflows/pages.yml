@@ -1,0 +1,58 @@
+name: Deploy Lux Omni Blog and Dev Site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "site/**"
+      - "control-panel/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Assemble public site and dev site
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          test -f site/index.html
+          test -f control-panel/index.html
+
+          mkdir -p _site/dev
+          cp -a site/. _site/
+          cp -a control-panel/. _site/dev/
+          touch _site/.nojekyll
+
+          echo "Prepared public site:"
+          find _site -maxdepth 2 -type f | sort | head -80
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
