@@ -181,6 +181,13 @@
   --topbar-edge-highlight: rgb(255 243 224 / 0.34);
   --topbar-edge-shadow: rgb(73 34 17 / 0.16);
 
+  /* Warm light spilling from the lower edge into the copper plate. */
+  --topbar-bottom-glow: rgb(255 196 126 / 0.46);
+  --topbar-bottom-spill: rgb(237 160 100 / 0.27);
+  --topbar-corner-glow: rgb(255 214 164 / 0.34);
+  --topbar-side-glow: rgb(255 221 181 / 0.12);
+  --topbar-bottom-edge: rgb(255 224 184 / 0.72);
+
   --topbar-text: #211006;
   --topbar-link: #211006;
   --topbar-link-hover: #211006;
@@ -204,6 +211,12 @@
   --topbar-background: var(--topbar-copper-mid);
   --topbar-edge-highlight: rgb(255 229 198 / 0.16);
   --topbar-edge-shadow: rgb(0 0 0 / 0.24);
+
+  --topbar-bottom-glow: rgb(255 174 99 / 0.34);
+  --topbar-bottom-spill: rgb(227 137 72 / 0.22);
+  --topbar-corner-glow: rgb(255 192 123 / 0.24);
+  --topbar-side-glow: rgb(255 205 154 / 0.09);
+  --topbar-bottom-edge: rgb(255 197 139 / 0.56);
 
   --topbar-text: #FFF0E0;
   --topbar-link: #FFF0E0;
