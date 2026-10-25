@@ -287,3 +287,134 @@ Source Sans 3 and Source Serif 4 form the approved starting pairing. This combin
 ### Scope and validation
 
 This typography decision is a baseline, not a claim that the finished site has already been visually tested. The names and roles are approved; sizes, responsive scale, line lengths, precise weights per component, and live-page validation remain for the relevant design-token and component steps.
+
+
+## 13. Shared design-token structure — approved baseline
+
+This section defines the common token names and starting scales for the first CSS token implementation. These values are a consistent starting point, not proof of visual or accessibility validation on finished components. Component styles should consume semantic tokens rather than creating unrelated values for each page.
+
+### 13.1 Naming layers
+
+Use three clear groups:
+
+- **Brand primitives:** `--brand-*` values documenting Lux Omni's artwork palette.
+- **Semantic interface tokens:** `--color-*` values describing backgrounds, text, borders, links, actions, focus, and functional states. The light and dark themes override these values while components keep the same token names.
+- **Non-color design tokens:** `--font-*`, `--font-size-*`, `--font-weight-*`, `--line-height-*`, `--letter-spacing-*`, `--space-*`, `--content-*`, `--radius-*`, `--border-width-*`, `--shadow-*`, and `--layer-*`.
+
+Do not introduce component-prefixed tokens such as `--header-red` when a shared semantic token already expresses the same role. Add a component-specific token only when a genuinely unique, documented need exists.
+
+### 13.2 Typography scale
+
+The approved families and roles remain those in Section 12. Use the following rem-based size scale as the initial implementation baseline:
+
+| Token | Starting value | Typical use |
+|---|---:|---|
+| `--font-size-xs` | `0.75rem` (12px at the default root size) | Fine-print metadata; use only where readability is retained |
+| `--font-size-sm` | `0.875rem` (14px) | Labels and secondary metadata |
+| `--font-size-base` | `1rem` (16px) | Standard interface/body text |
+| `--font-size-lg` | `1.125rem` (18px) | Intro copy and article body baseline candidate |
+| `--font-size-xl` | `1.25rem` (20px) | Larger excerpts and small headings |
+| `--font-size-2xl` | `1.5rem` (24px) | Card titles and section subheadings |
+| `--font-size-3xl` | `1.875rem` (30px) | Major section headings |
+| `--font-size-4xl` | `2.25rem` (36px) | Page headings |
+| `--font-size-5xl` | `3rem` (48px) | Large feature headlines |
+| `--font-size-6xl` | `3.75rem` (60px) | Oversized editorial display text, only where the layout warrants it |
+
+Define shared weights as `--font-weight-regular: 400`, `--font-weight-medium: 500`, `--font-weight-semibold: 600`, and `--font-weight-bold: 700`.
+
+Define line-height roles as `--line-height-tight: 1.15`, `--line-height-heading: 1.25`, `--line-height-ui: 1.4`, `--line-height-body: 1.65`, and `--line-height-relaxed: 1.8`. Define letter-spacing roles as `--letter-spacing-tight: -0.025em`, `--letter-spacing-normal: 0`, and `--letter-spacing-wide: 0.04em`.
+
+Create role-level tokens such as `--text-body-size`, `--text-body-line-height`, `--heading-display-size`, and `--heading-page-size` only when they improve consistency. Feature headlines may use fluid `clamp()` values so they scale between mobile and desktop without abrupt jumps. The exact fluid formulas should be checked against real headlines when the homepage and article components exist.
+
+### 13.3 Spacing scale
+
+Use a small spacing scale based on multiples of 4px. The rem values adapt if the root font size changes.
+
+| Token | Value | Base equivalent |
+|---|---:|---:|
+| `--space-0` | `0` | 0px |
+| `--space-1` | `0.25rem` | 4px |
+| `--space-2` | `0.5rem` | 8px |
+| `--space-3` | `0.75rem` | 12px |
+| `--space-4` | `1rem` | 16px |
+| `--space-5` | `1.25rem` | 20px |
+| `--space-6` | `1.5rem` | 24px |
+| `--space-8` | `2rem` | 32px |
+| `--space-10` | `2.5rem` | 40px |
+| `--space-12` | `3rem` | 48px |
+| `--space-16` | `4rem` | 64px |
+| `--space-20` | `5rem` | 80px |
+| `--space-24` | `6rem` | 96px |
+
+Use the closest existing spacing token rather than adding one-off values. A special value is allowed only when a real layout requirement justifies it.
+
+### 13.4 Content widths and page gutters
+
+| Token | Starting value | Intended use |
+|---|---:|---|
+| `--content-width-reading` | `72ch` | Comfortable long-form reading measure |
+| `--content-width-article` | `52rem` | Maximum article-column container before the text measure is applied |
+| `--content-width-main` | `75rem` | Standard page container and primary editorial grids |
+| `--content-width-wide` | `90rem` | Wide homepage/editorial layouts where the content benefits from more room |
+| `--page-gutter` | `clamp(1rem, 3vw, 2rem)` | Responsive horizontal page padding |
+
+Use a centered container with a consistent page gutter. A reading-measure limit can be narrower than its containing article layout because images, tables, code blocks, and related-story modules may need a wider area than paragraph text. Avoid forcing every article into identical internal layouts.
+
+### 13.5 Border widths and radii
+
+Use `--border-width-default: 1px` and `--border-width-strong: 2px`.
+
+| Token | Starting value | Intended use |
+|---|---:|---|
+| `--radius-none` | `0` | Intentional square edges |
+| `--radius-sm` | `0.25rem` | Small controls and compact labels |
+| `--radius-md` | `0.5rem` | Standard cards and buttons |
+| `--radius-lg` | `0.75rem` | Larger cards and panels |
+| `--radius-xl` | `1rem` | Featured modules and overlays where appropriate |
+| `--radius-2xl` | `1.5rem` | Limited use for large contained panels |
+| `--radius-pill` | `9999px` | Pill-shaped badges or compact controls |
+
+The editorial site should prefer restrained corners. Do not round every container by default; use radius tokens intentionally according to hierarchy and component function.
+
+### 13.6 Shadows and focus outlines
+
+Keep a restrained shadow scale for separation where a border alone is insufficient:
+
+- `--shadow-xs`: `0 1px 2px rgb(15 23 42 / 0.06)`
+- `--shadow-sm`: `0 2px 6px rgb(15 23 42 / 0.08)`
+- `--shadow-md`: `0 6px 18px rgb(15 23 42 / 0.10)`
+- `--shadow-lg`: `0 12px 36px rgb(15 23 42 / 0.14)`
+
+Use shadows for selected elevated surfaces, such as dropdowns or dialogs, rather than every article card. The color system may refine shadow strength for dark mode; never use a shadow as the only visible boundary for an essential control.
+
+Define keyboard focus geometry separately from semantic focus color: `--focus-ring-width: 3px` and `--focus-ring-offset: 2px`. Focus styles must remain clearly visible in both themes and must not be removed without an equally clear replacement.
+
+### 13.7 Layer order
+
+Use named layer values rather than arbitrary competing `z-index` numbers:
+
+| Token | Starting value | Intended use |
+|---|---:|---|
+| `--layer-base` | `0` | Normal document content |
+| `--layer-content-raised` | `1` | Small local overlap within a component |
+| `--layer-sticky` | `10` | Sticky in-page controls |
+| `--layer-header` | `20` | Site header or primary shell |
+| `--layer-dropdown` | `30` | Navigation dropdowns and popovers |
+| `--layer-backdrop` | `40` | Modal/backdrop overlay |
+| `--layer-modal` | `50` | Dialogs and modal panels |
+| `--layer-toast` | `60` | Temporary status messages |
+| `--layer-tooltip` | `70` | Tooltips above other interface layers |
+
+These layers are a shared ordering contract, not a requirement that every component create a stacking context. Browser stacking contexts can affect the result, so validate actual overlaps when those components are built.
+
+### 13.8 Responsive reference widths
+
+Use consistent viewport reference widths in media queries: 480px for compact mobile, 768px for tablet, 1024px for standard desktop, and 1280px for wide desktop. These are documented responsive reference points, not CSS custom properties: standard CSS media queries do not accept arbitrary custom-property values as their breakpoints. A component may need an earlier or later breakpoint when its own content requires it, but such exceptions should be deliberate.
+
+### 13.9 Implementation and change-control rules
+
+- Implement the documented token groups in `site/assets/css/tokens.css` during the next substep; this section itself does not add CSS.
+- Keep light and dark semantic color values under the agreed `:root` and `:root[data-theme="dark"]` convention unless implementation uncovers a specific reason to revise it.
+- Keep all original SVG assets unchanged.
+- Do not introduce JavaScript theme switching, global base styles, component styles, or font links as part of the token file implementation unless that work is separately scoped and approved.
+- Validate CSS syntax and token completeness first. Contrast, font-loading, overflow, and visual hierarchy checks require real pages/components and must be performed when available.
