@@ -176,15 +176,10 @@
   --topbar-copper-highlight: #D0A06F;
   --topbar-copper-glint: #DEB88E;
 
-  --topbar-background: linear-gradient(
-    180deg,
-    var(--topbar-copper-deep) 0%,
-    var(--topbar-copper-highlight) 18%,
-    var(--topbar-copper-mid) 36%,
-    var(--topbar-copper-shadow) 54%,
-    var(--topbar-copper-glint) 70%,
-    var(--topbar-copper-deep) 100%
-  );
+  /* Keep the copper body calm; reserve shine for the component edges. */
+  --topbar-background: var(--topbar-copper-mid);
+  --topbar-edge-highlight: rgb(255 243 224 / 0.24);
+  --topbar-edge-shadow: rgb(73 34 17 / 0.18);
 
   --topbar-text: #211006;
   --topbar-link: #211006;
@@ -206,15 +201,9 @@
   --topbar-copper-highlight: #795038;
   --topbar-copper-glint: #68432D;
 
-  --topbar-background: linear-gradient(
-    180deg,
-    var(--topbar-copper-shadow) 0%,
-    var(--topbar-copper-highlight) 18%,
-    var(--topbar-copper-mid) 36%,
-    var(--topbar-copper-shadow) 54%,
-    var(--topbar-copper-glint) 70%,
-    var(--topbar-copper-deep) 100%
-  );
+  --topbar-background: var(--topbar-copper-mid);
+  --topbar-edge-highlight: rgb(255 229 198 / 0.10);
+  --topbar-edge-shadow: rgb(0 0 0 / 0.28);
 
   --topbar-text: #FFF0E0;
   --topbar-link: #FFF0E0;
