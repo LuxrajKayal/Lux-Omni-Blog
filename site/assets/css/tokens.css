@@ -171,9 +171,9 @@
      9. Top information bar — brushed copper metal
      These tokens define the copper surface and its readable content.
      -------------------------------------------------------------- */
-  --topbar-copper-shadow: #8A4B2B;
-  --topbar-copper-deep: #A9653A;
-  --topbar-copper-mid: #C1844A;
+  --topbar-copper-shadow: #B57548;
+  --topbar-copper-deep: #B57548;
+  --topbar-copper-mid: #C98A4D;
   --topbar-copper-highlight: #E3B47B;
   --topbar-copper-glint: #F4D7A7;
 
@@ -191,7 +191,7 @@
 
   --topbar-text: #211006;
   --topbar-link: #211006;
-  --topbar-link-hover: #4A2412;
+  --topbar-link-hover: #211006;
   --topbar-icon: #211006;
   --topbar-border: #8A4B2B;
   --topbar-focus: #211006;
@@ -206,7 +206,7 @@
   --topbar-copper-deep: #4B2618;
   --topbar-copper-mid: #713B24;
   --topbar-copper-highlight: #9A6038;
-  --topbar-copper-glint: #C58B59;
+  --topbar-copper-glint: #8C522F;
 
   --topbar-background: linear-gradient(
     180deg,
