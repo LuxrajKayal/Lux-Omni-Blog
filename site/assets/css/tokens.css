@@ -170,22 +170,20 @@
      9. Top information bar — brushed copper metal
      These tokens define the copper surface and its readable content.
      -------------------------------------------------------------- */
-  --topbar-copper-shadow: #B57548;
-  --topbar-copper-deep: #B57548;
-  --topbar-copper-mid: #C98A4D;
-  --topbar-copper-highlight: #E3B47B;
-  --topbar-copper-glint: #F4D7A7;
+  --topbar-copper-shadow: #B6754A;
+  --topbar-copper-deep: #B6754A;
+  --topbar-copper-mid: #C18552;
+  --topbar-copper-highlight: #D0A06F;
+  --topbar-copper-glint: #DEB88E;
 
   --topbar-background: linear-gradient(
     180deg,
     var(--topbar-copper-deep) 0%,
-    var(--topbar-copper-highlight) 12%,
-    var(--topbar-copper-mid) 27%,
-    var(--topbar-copper-shadow) 43%,
-    var(--topbar-copper-mid) 58%,
-    var(--topbar-copper-glint) 72%,
-    var(--topbar-copper-deep) 86%,
-    var(--topbar-copper-highlight) 100%
+    var(--topbar-copper-highlight) 18%,
+    var(--topbar-copper-mid) 36%,
+    var(--topbar-copper-shadow) 54%,
+    var(--topbar-copper-glint) 70%,
+    var(--topbar-copper-deep) 100%
   );
 
   --topbar-text: #211006;
@@ -203,10 +201,10 @@
 :root[data-theme="dark"] {
   /* Dark-theme copper remains metallic, with deeper bronze and warm highlights. */
   --topbar-copper-shadow: #32190F;
-  --topbar-copper-deep: #4B2618;
-  --topbar-copper-mid: #713B24;
-  --topbar-copper-highlight: #9A6038;
-  --topbar-copper-glint: #8C522F;
+  --topbar-copper-deep: #422418;
+  --topbar-copper-mid: #633923;
+  --topbar-copper-highlight: #795038;
+  --topbar-copper-glint: #68432D;
 
   --topbar-background: linear-gradient(
     180deg,
