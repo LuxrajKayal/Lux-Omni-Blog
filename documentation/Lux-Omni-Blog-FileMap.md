@@ -108,8 +108,13 @@ site/
 │   │   └── analytics.js           # Optional analytics integration, if adopted
 │   │
 │   ├── images/
-│   │   ├── brand/                # Logo and small brand graphics
-│   │   └── ui/                   # Small interface icons/graphics
+│   │   ├── brand/                # Supplied Lux Omni identity SVGs; preserve original artwork
+│   │   │   ├── Lux-Omni-Blog-App-Icon.svg
+│   │   │   ├── lux-Omni-Blog-micro-icon.svg
+│   │   │   └── lux-Omni-Blog-Transparent-Symbol.svg
+│   │   └── ui/                   # Supplied loading and article-animation SVGs
+│   │       ├── lux-Omni-Blog-Loader.svg
+│   │       └── lux-Omni-Blog-Subtle-Animation-For-Article.svg
 │   │
 │   └── fonts/                    # Only if self-hosted fonts are needed
 │
@@ -126,7 +131,10 @@ site/
 - `templates/article-template.html` is the canonical starter/reference structure for consistent article scaffolding and future publishing software. It is not itself one of the six sample articles for a group; make a real sample article file when testing an article page.
 - Keep individual article HTML pages flexible: the canonical template protects stable metadata, shared hooks, navigation and link conventions, but does not prohibit deliberate article-specific layouts or CSS/JS.
 - Use stable, human-readable article filenames, for example `articles/reviews/sample-review-01.html`. Once an article URL is intentionally retained as a public URL, avoid changing it unless a redirect is provided.
-- Large article photographs, video, banners and other media belong in **Cloudflare R2** if that storage direction is approved, not in this source tree. Small essential interface assets, such as the logo and icons, can remain in `assets/`.
+- Large article photographs, video, banners and other media belong in **Cloudflare R2** if that storage direction is approved, not in this source tree. Small essential interface assets, including the supplied SVG icon set, belong under `site/assets/images/`.
+- The supplied SVG assets are retained at the exact paths listed in the tree: brand identity artwork under `assets/images/brand/`, and the loader/article animation artwork under `assets/images/ui/`.
+- Preserve the supplied SVG artwork as provided, including original colours, gradients, opacity and animation. Do not recolour, flatten, replace, or globally override these SVGs during theme changes. The micro icon uses `currentColor`, so theme-controlled recolouring should use that asset's intended current-colour behaviour rather than altering the file.
+- The supplied icon archive does not include a `.ico` favicon. `site/favicon.ico` remains a placeholder until a proper favicon file is supplied or a conversion is explicitly approved; do not treat the empty placeholder as a finished favicon.
 - `sitemap.xml` should match the URLs intentionally included in the current development or release build. During development, sample articles may be included so the sitemap/link checks can be tested. Before launch, the owner will decide which samples to delete; update the sitemap and internal links after that cleanup.
 - The file names above are a proposed starting point. Files should be created when needed; this is not a requirement to create every listed file immediately.
 
