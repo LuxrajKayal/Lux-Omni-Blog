@@ -209,13 +209,11 @@
   --topbar-background: linear-gradient(
     180deg,
     var(--topbar-copper-shadow) 0%,
-    var(--topbar-copper-highlight) 12%,
-    var(--topbar-copper-mid) 27%,
-    var(--topbar-copper-shadow) 43%,
-    var(--topbar-copper-mid) 58%,
-    var(--topbar-copper-glint) 72%,
-    var(--topbar-copper-deep) 86%,
-    var(--topbar-copper-highlight) 100%
+    var(--topbar-copper-highlight) 18%,
+    var(--topbar-copper-mid) 36%,
+    var(--topbar-copper-shadow) 54%,
+    var(--topbar-copper-glint) 70%,
+    var(--topbar-copper-deep) 100%
   );
 
   --topbar-text: #FFF0E0;
