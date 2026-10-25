@@ -83,27 +83,28 @@ site/
 │   │   ├── base.css              # Resets, body defaults and shared typography
 │   │   ├── layout.css            # Shared page/container layout
 │   │   ├── topbar.css            # Top information bar
-│   │   ├── header.css            # Main navigation header
+│   │   ├── header.css            # Main navigation header and theme/search controls
 │   │   ├── dropdowns.css         # Navigation dropdowns
 │   │   ├── trending.css          # Trending topics strip
 │   │   ├── featured-story.css    # Homepage featured-story layout
 │   │   ├── ads.css               # Reserved ad-slot layout
 │   │   ├── reviews.css           # Homepage Reviews & Recommendations section
 │   │   ├── latest-articles.css   # Homepage Latest Tech News & Guides section
-│   │   ├── section-page.css      # Shared layout for dedicated article-group landing pages
+│   │   ├── section-page.css      # Shared layout for parent and subcategory landing pages
 │   │   ├── article-page.css      # Shared defaults used by the canonical article template
 │   │   ├── newsletter.css        # Newsletter section
 │   │   ├── footer.css            # Footer
-│   │   ├── search.css            # Search/archive interface
+│   │   ├── search.css            # Search popup and filter controls
 │   │   └── responsive.css        # Shared responsive adjustments
 │   │
 │   ├── js/
 │   │   ├── main.js               # Public-site entry point
-│   │   ├── theme.js              # Theme toggle and persistence
-│   │   ├── navigation.js         # Mobile navigation/dropdown behavior
+│   │   ├── theme.js              # Working theme toggle and localStorage persistence
+│   │   ├── navigation.js         # Click-operated dropdown and mobile navigation behavior
 │   │   ├── featured-story.js     # Homepage featured-story rotation and interactions
 │   │   ├── homepage-data.js      # Homepage article selections/settings where required
-│   │   ├── search.js             # Search and tag filtering
+│   │   ├── search.js             # Search, category filter, reading-time slider and sorting
+│   │   ├── article-index.js      # Shared static article metadata for search and landing pages
 │   │   ├── newsletter.js         # Newsletter form integration
 │   │   └── analytics.js           # Optional analytics integration, if adopted
 │   │
