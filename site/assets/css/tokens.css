@@ -165,7 +165,6 @@
   --layer-modal: 50;
   --layer-toast: 60;
   --layer-tooltip: 70;
-}
 
   /* --------------------------------------------------------------
      9. Top information bar — brushed copper metal
@@ -195,6 +194,7 @@
   --topbar-icon: #211006;
   --topbar-border: #8A4B2B;
   --topbar-focus: #211006;
+}
 
 /* --------------------------------------------------------------
    Dark theme — semantic overrides only.
