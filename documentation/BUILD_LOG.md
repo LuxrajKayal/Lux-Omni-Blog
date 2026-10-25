@@ -1,0 +1,26 @@
+# Lux Omni Blog — Build and Planning Log
+
+**Implementation status:** Not started.
+
+Append-only after implementation begins. Record real milestones only; do not pre-fill future work as completed.
+
+## Planning milestone — 2026-10-25
+- Discussed excluding a separate backend/local Article Studio from the initial scope.
+- Updated draft workflow to author individual HTML articles in VS Code, use proposed Git/GitHub checkpoints, and include SEO fundamentals from the beginning.
+- Hosting/deployment, backend, and control-panel choices remain unresolved.
+- No code, repository, or deployment changes were made.
+
+
+## 2026-10-25 — Article-group page planning update
+
+- Documented the homepage → group landing page → individual article hierarchy.
+- Recorded six linkable sample articles per final group for development testing and a canonical article-template contract.
+- Updated planning documents only; no repository or deployment changes occurred.
+
+## 2026-10-25 — Initial repository skeleton
+
+- Added a blank public-site skeleton under `site/`.
+- Added root-level `documentation/` with the planning reference files.
+- Added a separate blank `control-panel/` skeleton for the future application.
+- Added six blank sample article files in each of the five currently listed article groups (30 sample files total).
+- No website implementation code or article content was added. The existing root `README.md` was left unchanged.
