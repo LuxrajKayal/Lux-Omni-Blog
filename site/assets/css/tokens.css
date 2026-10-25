@@ -167,11 +167,67 @@
   --layer-tooltip: 70;
 }
 
+  /* --------------------------------------------------------------
+     9. Top information bar — brushed copper metal
+     These tokens define the copper surface and its readable content.
+     -------------------------------------------------------------- */
+  --topbar-copper-shadow: #8A4B2B;
+  --topbar-copper-deep: #A9653A;
+  --topbar-copper-mid: #C1844A;
+  --topbar-copper-highlight: #E3B47B;
+  --topbar-copper-glint: #F4D7A7;
+
+  --topbar-background: linear-gradient(
+    180deg,
+    var(--topbar-copper-deep) 0%,
+    var(--topbar-copper-highlight) 12%,
+    var(--topbar-copper-mid) 27%,
+    var(--topbar-copper-shadow) 43%,
+    var(--topbar-copper-mid) 58%,
+    var(--topbar-copper-glint) 72%,
+    var(--topbar-copper-deep) 86%,
+    var(--topbar-copper-highlight) 100%
+  );
+
+  --topbar-text: #211006;
+  --topbar-link: #211006;
+  --topbar-link-hover: #4A2412;
+  --topbar-icon: #211006;
+  --topbar-border: #8A4B2B;
+  --topbar-focus: #211006;
+
 /* --------------------------------------------------------------
    Dark theme — semantic overrides only.
    Brand primitives and non-color scales remain shared.
    -------------------------------------------------------------- */
 :root[data-theme="dark"] {
+  /* Dark-theme copper remains metallic, with deeper bronze and warm highlights. */
+  --topbar-copper-shadow: #32190F;
+  --topbar-copper-deep: #4B2618;
+  --topbar-copper-mid: #713B24;
+  --topbar-copper-highlight: #9A6038;
+  --topbar-copper-glint: #C58B59;
+
+  --topbar-background: linear-gradient(
+    180deg,
+    var(--topbar-copper-shadow) 0%,
+    var(--topbar-copper-highlight) 12%,
+    var(--topbar-copper-mid) 27%,
+    var(--topbar-copper-shadow) 43%,
+    var(--topbar-copper-mid) 58%,
+    var(--topbar-copper-glint) 72%,
+    var(--topbar-copper-deep) 86%,
+    var(--topbar-copper-highlight) 100%
+  );
+
+  --topbar-text: #FFF0E0;
+  --topbar-link: #FFF0E0;
+  --topbar-link-hover: #FFFFFF;
+  --topbar-icon: #FFF0E0;
+  --topbar-border: #32190F;
+  --topbar-focus: #FFFFFF;
+
+
   color-scheme: dark;
 
   --color-page: #171717;
