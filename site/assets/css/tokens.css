@@ -178,8 +178,8 @@
 
   /* Keep the copper body calm; reserve shine for the component edges. */
   --topbar-background: var(--topbar-copper-mid);
-  --topbar-edge-highlight: rgb(255 243 224 / 0.24);
-  --topbar-edge-shadow: rgb(73 34 17 / 0.18);
+  --topbar-edge-highlight: rgb(255 243 224 / 0.34);
+  --topbar-edge-shadow: rgb(73 34 17 / 0.16);
 
   --topbar-text: #211006;
   --topbar-link: #211006;
@@ -202,8 +202,8 @@
   --topbar-copper-glint: #68432D;
 
   --topbar-background: var(--topbar-copper-mid);
-  --topbar-edge-highlight: rgb(255 229 198 / 0.10);
-  --topbar-edge-shadow: rgb(0 0 0 / 0.28);
+  --topbar-edge-highlight: rgb(255 229 198 / 0.16);
+  --topbar-edge-shadow: rgb(0 0 0 / 0.24);
 
   --topbar-text: #FFF0E0;
   --topbar-link: #FFF0E0;
