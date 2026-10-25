@@ -1,10 +1,66 @@
 # Lux Omni Blog — Step-by-Step Building Plan
 
-**Status:** Draft proposal — not approved for implementation  
+**Status:** The owner approved the staged build workflow on 2026-10-25. Approval authorizes work one step at a time; undecided technical choices remain open, and deployment is not authorized.  
 **Purpose:** Build Lux Omni Blog in small, testable fragments rather than generating the whole website at once.  
 **Project principle:** Plan first, change only the approved scope, test each fragment, and keep a known-good checkpoint before continuing.
 
 > This is a build plan, not website source code. Hosting, frameworks, file structure, database design, deployment method, and other technical choices remain unapproved unless separately approved by the project owner.
+
+---
+
+## 0. Approved build contract — 2026-10-25
+
+This contract records the workflow and requirements confirmed before implementation. It does not silently finalize the choices listed later as open.
+
+### Owner-controlled development
+
+1. Work proceeds through the approved numbered plan, one step at a time.
+2. Before a new step, its goal, dependencies, scope, files, and acceptance checks must be clear.
+3. Make only the changes belonging to the current step. Prefer one file per change where practical; identify necessary multi-file scope before editing.
+4. After each step, report what was done, every file changed, how to test it, the observed result, and any limitation. Then stop until the owner says to continue (for example, “next”).
+5. Do not deploy, switch domains, alter hosting, create service accounts, or add an unapproved service or dependency without explicit authorization.
+6. Preserve known-good checkpoints. Do not rewrite unrelated files or silently treat unresolved design choices as approved.
+
+### Confirmed product and repository boundaries
+
+- The public website source belongs under `site/`; project planning documents stay under `documentation/`; the developer control panel stays separate under `control-panel/`.
+- The public website is intended to be a hand-coded, static-first technical blog with a CNET-inspired editorial interface. Individual articles may have their own HTML, CSS, and JavaScript rather than being forced into an identical layout.
+- The homepage is a preview/discovery surface. Each final article-group destination must have its own landing page, linked to its individual article pages.
+- Stable human-readable article URLs are important. Group names, folders, links, metadata, listings, and sitemap entries must remain consistent.
+- The existing SVG icons must be preserved as supplied; theme work must not alter their artwork.
+- The previously proposed Cloudflare Pages/R2 and Supabase service layout is still a proposed direction until the relevant implementation decisions are finalized. This approval alone does not configure or deploy those services.
+
+### Article creation, submission, and publication
+
+- The site owner is responsible for writing and managing their own articles and must retain owner-level control.
+- Two article-upload paths are required: (1) upload through the developer site/control panel and (2) upload directly from the owner's PC without needing to use that panel's interface. Both paths must follow a defined validation and publication workflow. The exact PC upload mechanism is not yet selected.
+- Each outside author the owner chooses to invite receives an individual Supabase Auth user account. Do not give authors Supabase project credentials, a service-role key, shared administrator login, or GitHub repository write access merely to let them submit an article.
+- Author permissions are submission-only. They must not grant access to site settings, control-panel administration, private data, another author's private submission, credentials, or the ability to deploy or publish site code.
+- Enforce access in trusted backend/database policies, not just by hiding controls in the interface. Supabase Row Level Security and any upload/publishing endpoints must be designed and tested before author accounts are enabled.
+- Treat an author's uploaded HTML/CSS/JavaScript as untrusted input until the owner has reviewed it. A submission must not become publicly executable site content merely because the upload succeeded. The default workflow is **submit → owner review/approval → controlled publication**; any different auto-publication rule must be explicitly approved and secured.
+- Supabase authentication and metadata storage do not, by themselves, create a new static HTML file on a static host. The publishing design must explain how an approved article becomes available at its stable public URL, how the article listing and sitemap are updated, and how failed publication can be recovered. That implementation remains undecided.
+
+### Security and release boundaries
+
+- Public browser code must never contain privileged Supabase credentials.
+- Author access and owner/admin access must be distinct, with least-privilege rules and explicit tests for both permitted and denied actions.
+- Do not expose drafts or private submissions to public listing/search/sitemap output.
+- Do not make production or hosting changes as a side effect of local testing. Launch and deployment require separate explicit approval.
+
+### Decisions that remain open
+
+The following must be settled in their relevant steps, rather than guessed now:
+
+- Final article-group taxonomy and the mapping from navigation items to group pages.
+- Public article URL pattern and any redirect strategy.
+- Exact author submission format, size limits, draft/review fields, and permissions.
+- The PC upload mechanism and how it authenticates securely.
+- How the control panel authenticates and how owner/admin privileges are separated from author submission privileges.
+- The database schema, storage boundaries, RLS rules, and public-read model.
+- The static publishing mechanism that deploys approved article files and updates listings/sitemap.
+- Media storage configuration, control-panel hosting, optional integrations, and the deployment procedure.
+
+**Current-step boundary:** Step 1 establishes this contract in documentation only. It does not implement the website, connect Supabase, create author accounts, or deploy anything.
 
 ---
 
