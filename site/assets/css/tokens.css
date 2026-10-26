@@ -167,33 +167,16 @@
   --layer-tooltip: 70;
 
   /* --------------------------------------------------------------
-     9. Top information bar — brushed copper metal
-     These tokens define the copper surface and its readable content.
+     9. Top information bar — theme-aware surface and separators
      -------------------------------------------------------------- */
-  --topbar-copper-shadow: #B57548;
-  --topbar-copper-deep: #B57548;
-  --topbar-copper-mid: #C98A4D;
-  --topbar-copper-highlight: #E3B47B;
-  --topbar-copper-glint: #F4D7A7;
-
-  --topbar-background: linear-gradient(
-    180deg,
-    var(--topbar-copper-deep) 0%,
-    var(--topbar-copper-highlight) 12%,
-    var(--topbar-copper-mid) 27%,
-    var(--topbar-copper-shadow) 43%,
-    var(--topbar-copper-mid) 58%,
-    var(--topbar-copper-glint) 72%,
-    var(--topbar-copper-deep) 86%,
-    var(--topbar-copper-highlight) 100%
-  );
-
-  --topbar-text: #211006;
-  --topbar-link: #211006;
-  --topbar-link-hover: #211006;
-  --topbar-icon: #211006;
-  --topbar-border: #8A4B2B;
-  --topbar-focus: #211006;
+  --topbar-background: #FFFFFF;
+  --topbar-text: #171717;
+  --topbar-link: #171717;
+  --topbar-link-hover: #B91C1C;
+  --topbar-icon: #171717;
+  --topbar-border: #E5E5E5;
+  --topbar-section-border: #E5E5E5;
+  --topbar-focus: #B91C1C;
 }
 
 /* --------------------------------------------------------------
@@ -201,32 +184,15 @@
    Brand primitives and non-color scales remain shared.
    -------------------------------------------------------------- */
 :root[data-theme="dark"] {
-  /* Dark-theme copper remains metallic, with deeper bronze and warm highlights. */
-  --topbar-copper-shadow: #32190F;
-  --topbar-copper-deep: #4B2618;
-  --topbar-copper-mid: #713B24;
-  --topbar-copper-highlight: #9A6038;
-  --topbar-copper-glint: #8C522F;
-
-  --topbar-background: linear-gradient(
-    180deg,
-    var(--topbar-copper-shadow) 0%,
-    var(--topbar-copper-highlight) 12%,
-    var(--topbar-copper-mid) 27%,
-    var(--topbar-copper-shadow) 43%,
-    var(--topbar-copper-mid) 58%,
-    var(--topbar-copper-glint) 72%,
-    var(--topbar-copper-deep) 86%,
-    var(--topbar-copper-highlight) 100%
-  );
-
-  --topbar-text: #FFF0E0;
-  --topbar-link: #FFF0E0;
+  /* Lux Omni crimson surface with high-contrast white content. */
+  --topbar-background: var(--brand-crimson);
+  --topbar-text: #FFFFFF;
+  --topbar-link: #FFFFFF;
   --topbar-link-hover: #FFFFFF;
-  --topbar-icon: #FFF0E0;
-  --topbar-border: #32190F;
+  --topbar-icon: #FFFFFF;
+  --topbar-border: #B91C1C;
+  --topbar-section-border: rgb(255 255 255 / 0.28);
   --topbar-focus: #FFFFFF;
-
 
   color-scheme: dark;
 
