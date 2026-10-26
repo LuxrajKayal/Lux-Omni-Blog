@@ -1,0 +1,17 @@
+/* Homepage hero component: extracted without redesigning existing values. */
+.homepage-hero{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(250px,.9fr);align-items:center;gap:clamp(1.25rem,4vw,4rem);min-height:300px;overflow:hidden;padding:clamp(1.4rem,4vw,3.2rem);border:1px solid var(--color-border);border-radius:var(--radius-lg);background:var(--color-surface)}
+.homepage-hero__copy{position:relative;z-index:1;max-width:660px}
+.homepage-hero h1{max-width:14ch;margin:0 0 1rem;font-size:clamp(2.4rem,5.4vw,4.65rem);font-weight:900;letter-spacing:-.065em;line-height:.99}
+.homepage-hero h1 span{color:var(--brand-crimson)}
+.homepage-hero__copy>p:not(.eyebrow){max-width:57ch;margin:0;color:var(--color-text-secondary);font-size:clamp(1rem,1.25vw,1.15rem)}
+.homepage-hero__actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.45rem}
+.homepage-hero__visual{position:relative;display:grid;place-items:center;min-height:230px;overflow:hidden;border-radius:var(--radius-md);background:radial-gradient(circle at 50% 48%,rgb(220 38 38 / .13),transparent 60%),var(--color-surface-raised)}
+.homepage-hero__ring{position:absolute;width:min(75%,255px);aspect-ratio:1;border:1px solid rgb(220 38 38 / .28);border-radius:50%}
+.homepage-hero__ring--outer{transform:scale(1.28)}.homepage-hero__ring--inner{transform:scale(.82);border-style:dashed}
+.homepage-hero__visual-mark{color:var(--brand-crimson);font-size:clamp(3rem,5vw,5rem);font-weight:900;letter-spacing:-.09em}
+.homepage-hero__visual-label{position:absolute;bottom:1.1rem;padding-inline:.6rem;color:var(--color-text-muted);font-size:.63rem;font-weight:var(--font-weight-bold);letter-spacing:.1em;text-align:center}
+
+/* Responsive rules for the homepage hero only. */
+@media(max-width:1000px){.homepage-hero{grid-template-columns:minmax(0,1.1fr) minmax(220px,.9fr)}}
+@media(max-width:760px){.homepage-hero{grid-template-columns:1fr}.homepage-hero__visual{min-height:165px}}
+@media(max-width:560px){.homepage-hero{padding:1.2rem}.homepage-hero h1{font-size:clamp(2.35rem,12vw,3.5rem)}}
