@@ -1,7 +1,60 @@
 function closeOne(item,focus){const button=item.querySelector("[data-dropdown-toggle]");const menu=item.querySelector(".nav-dropdown");if(!button||!menu)return;button.setAttribute("aria-expanded","false");menu.hidden=true;item.classList.remove("is-open");if(focus)button.focus();}
 function closeMenus(except){document.querySelectorAll(".nav-item.is-open").forEach(item=>{if(item!==except)closeOne(item,false);});}
 function markCurrent(){const path=location.pathname.replace(/\/+$/,"");document.querySelectorAll("[data-nav-parent],[data-nav-category]").forEach(link=>{const target=new URL(link.href,location.href).pathname.replace(/\/+$/,"");if(target===path){link.setAttribute("aria-current","page");const item=link.closest(".nav-item");if(item)item.classList.add("is-active");if(link.hasAttribute("data-nav-category"))item?.classList.add("has-current-child");}});const parent=document.body.dataset.parentSection;if(parent)document.querySelector('[data-nav-group="'+parent+'"]')?.classList.add("is-active");}
+function syncPrimaryNavigation(){
+ const techItem=document.querySelector('.nav-item[data-nav-group="tech"]');
+ if(!techItem)return;
+ const techLink=techItem.querySelector('[data-nav-parent="tech"]');
+ const techToggle=techItem.querySelector("[data-dropdown-toggle]");
+ if(techLink){
+  techLink.textContent="Tech News";
+  techLink.setAttribute("aria-label","Tech News");
+ }
+ if(techToggle){
+  techToggle.setAttribute("aria-label","Open Tech News categories");
+  techToggle.setAttribute("title","Open Tech News categories");
+ }
+ const techMenu=techItem.querySelector(".nav-dropdown");
+ if(techMenu)techMenu.setAttribute("aria-label","Tech News categories");
+ if(document.querySelector('.nav-item[data-nav-group="engineering"]'))return;
+ if(!techLink||!techToggle||!techMenu)return;
+ const sectionBase=new URL(".",techLink.href);
+ const engineeringItem=document.createElement("div");
+ engineeringItem.className="nav-item";
+ engineeringItem.dataset.navGroup="engineering";
+ const engineeringLink=document.createElement("a");
+ engineeringLink.className="nav-link";
+ engineeringLink.href=new URL("engineering.html",sectionBase).href;
+ engineeringLink.dataset.navParent="engineering";
+ engineeringLink.textContent="Engineering";
+ const toggle=techToggle.cloneNode(true);
+ toggle.setAttribute("aria-expanded","false");
+ toggle.setAttribute("aria-controls","dropdown-engineering");
+ toggle.setAttribute("aria-label","Open Engineering categories");
+ toggle.setAttribute("title","Open Engineering categories");
+ const menu=techMenu.cloneNode(false);
+ menu.id="dropdown-engineering";
+ menu.setAttribute("aria-label","Engineering categories");
+ menu.hidden=true;
+ const categories=[
+  ["Electrical Engineering","engineering-electrical.html","engineering-electrical"],
+  ["Mechanical Engineering","engineering-mechanical.html","engineering-mechanical"],
+  ["Labs","engineering-labs.html","engineering-labs"]
+ ];
+ categories.forEach(([label,file,key])=>{
+  const li=document.createElement("li");
+  const link=document.createElement("a");
+  link.href=new URL(file,sectionBase).href;
+  link.dataset.navCategory=key;
+  link.textContent=label;
+  li.append(link);
+  menu.append(li);
+ });
+ engineeringItem.append(engineeringLink,toggle,menu);
+ techItem.after(engineeringItem);
+}
 export function initNavigation(){
+ syncPrimaryNavigation();
  const nav=document.querySelector("[data-main-nav]");const mobile=document.querySelector("[data-mobile-nav-toggle]");
  document.querySelectorAll("[data-dropdown-toggle]").forEach(button=>{const item=button.closest(".nav-item");const menu=item?.querySelector(".nav-dropdown");if(!item||!menu)return;
  button.addEventListener("click",()=>{const open=button.getAttribute("aria-expanded")!=="true";closeMenus(item);button.setAttribute("aria-expanded",String(open));menu.hidden=!open;item.classList.toggle("is-open",open);});
