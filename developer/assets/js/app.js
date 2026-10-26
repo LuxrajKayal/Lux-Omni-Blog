@@ -355,7 +355,9 @@
   saveDraftButton.addEventListener("click", saveDraft);
   pushButton.addEventListener("click", pushSettings);
 
-  if (!hasSomeConfig()) {
+  const localPreviewRequested = ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname) ||
+    new URLSearchParams(window.location.search).get("preview") === "1";
+  if (!hasSomeConfig() && localPreviewRequested) {
     showPreviewWorkspace();
   } else if (!isFullyConfigured()) {
     showSetupRequired();

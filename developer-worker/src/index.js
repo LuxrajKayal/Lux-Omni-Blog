@@ -1,3 +1,10 @@
+/*
+ * Secure publishing API for Lux Omni Developer Studio.
+ * Required Worker bindings: SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY,
+ * AUTHORIZED_EMAILS (comma-separated allowlist) and GITHUB_TOKEN.
+ * Keep AUTHORIZED_EMAILS and GITHUB_TOKEN in Cloudflare Worker secrets.
+ * Public-site writes remain disabled until its settings reader is connected.
+ */
 const DEFAULT_SETTINGS = {
   schemaVersion: 1,
   topbar: {
