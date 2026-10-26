@@ -8,7 +8,38 @@
   z-index: var(--layer-header);
   width: 100%;
   color: var(--topbar-text);
-  background: var(--topbar-background);
+  background-color: var(--topbar-background);
+  background-image:
+    /* Circuit nodes */
+    radial-gradient(circle, var(--topbar-circuit-color) 0 1.5px, transparent 2px),
+    radial-gradient(circle, var(--topbar-circuit-color) 0 1.5px, transparent 2px),
+    radial-gradient(circle, var(--topbar-circuit-color) 0 1.5px, transparent 2px),
+    radial-gradient(circle, var(--topbar-circuit-color) 0 1.5px, transparent 2px),
+    radial-gradient(circle, var(--topbar-circuit-color) 0 1.5px, transparent 2px),
+    radial-gradient(circle, var(--topbar-circuit-color) 0 1.5px, transparent 2px),
+    /* Fine angular circuit traces */
+    linear-gradient(var(--topbar-circuit-color), var(--topbar-circuit-color)),
+    linear-gradient(var(--topbar-circuit-color), var(--topbar-circuit-color)),
+    linear-gradient(var(--topbar-circuit-color), var(--topbar-circuit-color)),
+    linear-gradient(var(--topbar-circuit-color), var(--topbar-circuit-color)),
+    linear-gradient(var(--topbar-circuit-color), var(--topbar-circuit-color)),
+    linear-gradient(var(--topbar-circuit-color), var(--topbar-circuit-color)),
+    linear-gradient(var(--topbar-circuit-color), var(--topbar-circuit-color)),
+    linear-gradient(var(--topbar-circuit-color), var(--topbar-circuit-color)),
+    linear-gradient(var(--topbar-circuit-color), var(--topbar-circuit-color)),
+    linear-gradient(var(--topbar-circuit-color), var(--topbar-circuit-color));
+  background-position:
+    5% 12px, calc(5% + 46px) 26px, calc(5% + 98px) 26px,
+    52% 13px, calc(52% + 58px) 30px, 88% 14px,
+    5% 0, 5% 12px, calc(5% + 46px) 12px, calc(5% + 46px) 26px,
+    52% 0, 52% 13px, calc(52% + 58px) 13px, calc(52% + 58px) 30px,
+    88% 0, 88% 14px;
+  background-size:
+    4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 4px,
+    1px 12px, 46px 1px, 1px 14px, 52px 1px,
+    1px 13px, 58px 1px, 1px 17px, 65px 1px,
+    1px 14px, 44px 1px;
+  background-repeat: no-repeat;
   border-bottom: 1px solid var(--topbar-border);
 }
 

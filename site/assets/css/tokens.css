@@ -176,6 +176,7 @@
   --topbar-icon: #171717;
   --topbar-border: #E5E5E5;
   --topbar-section-border: #E5E5E5;
+  --topbar-circuit-color: rgb(220 38 38 / 0.16);
   --topbar-focus: #B91C1C;
 }
 
@@ -192,6 +193,7 @@
   --topbar-icon: #FFFFFF;
   --topbar-border: #B91C1C;
   --topbar-section-border: rgb(255 255 255 / 0.28);
+  --topbar-circuit-color: rgb(255 255 255 / 0.18);
   --topbar-focus: #FFFFFF;
 
   color-scheme: dark;
