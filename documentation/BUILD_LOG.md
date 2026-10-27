@@ -60,3 +60,11 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Intentionally deleted the empty `site/templates/article-template.html` placeholder. No shared article-template file currently exists.
 - Kept the canonical sitemap unchanged at 112 URLs and preserved the existing CSS files.
 - Updated `documentation/Lux-Omni-Blog-FileMap.md` to describe the actual repository structure.
+
+## 2026-10-27 — Shared shell components and homepage-only build
+
+- Added source-only partials for the topbar, main navigation header (including the search dialog), and footer under site/partials/.
+- Added scripts/build-site.mjs to expand explicit shared-component markers into full HTML at build time, resolve local component links for the current page depth, exclude source partials from public output, and verify the built homepage shell.
+- Migrated only site/index.html to shared markers. Category, subcategory, article, and other pages retain their existing markup until the owner approves each subsequent migration step.
+- Kept the footer content blank and retained the existing dedicated CSS files.
+- Updated the GitHub Pages workflow to run the build before deployment and updated the file map to describe the implemented source/build/output structure.

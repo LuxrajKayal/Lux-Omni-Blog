@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "site/**"
+      - "scripts/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -28,19 +29,19 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v6
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Assemble public site
+      - name: Build public site
         shell: bash
         run: |
           set -euo pipefail
-
-          test -f site/index.html
-
-          mkdir -p _site
-          cp -a site/. _site/
-          touch _site/.nojekyll
+          node scripts/build-site.mjs
 
           echo "Prepared public site:"
           find _site -maxdepth 2 -type f | sort | head -80

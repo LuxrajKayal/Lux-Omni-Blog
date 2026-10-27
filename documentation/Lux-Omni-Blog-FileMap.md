@@ -4,17 +4,19 @@
 **Status:** Updated to reflect the current repository structure. Any future structural change should be recorded here after it is implemented.  
 **Hosting direction:** The current GitHub Pages workflow publishes the static site from `site/`. External database and media services are not required or configured for the current scope.
 
-This map separates the **public website** (stored in `site/`) from planning materials (`documentation/`). The control panel/dashboard has been removed from the project. The initial authoring workflow is to edit individual HTML article files directly in Visual Studio Code, preview and test locally, use Git/GitHub for version history, then publish the `site/` directory.
+This map separates public-site source (`site/`), build tooling (`scripts/`), and planning materials (`documentation/`). The control panel/dashboard has been removed from the project. The Node.js build script expands explicit shared-component markers into complete HTML pages in `_site/`; GitHub Pages deploys `_site/`, not source partials. The homepage is the first page migrated to shared topbar, main-header/search-dialog, and footer partials; category and article pages remain unchanged until the owner authorizes each migration step.
 
 ---
 
 ## Repository Layout in GitHub
 
-The repository separates two areas. **Only `site/` is intended to be the public website's document root.** Publish `site/` rather than the repository root so planning documents are not website components. The existing root `README.md` remains untouched.
+The repository separates public-site source, build tooling, and planning materials. `site/` contains authored HTML/CSS/JS and source-only partials; `scripts/build-site.mjs` produces `_site/`, which is the directory deployed to GitHub Pages. Source partials and planning documents are not published. The existing root `README.md` remains untouched.
 
 ```text
 Lux-Omni-Blog/
 ├── README.md                    # Existing file; unchanged
+├── scripts/                      # Node.js static-site build tooling
+│   └── build-site.mjs             # Expands shared component markers into _site/
 ├── documentation/               # Planning references for development only
 │   ├── PLAN_INDEX.md
 │   ├── Lux-Omni-Blog-FileMap.md
@@ -24,6 +26,10 @@ Lux-Omni-Blog/
 │   └── ... other planning documents
 ├── site/                        # Public website source and publish root
 │   ├── index.html                # The only file named index.html
+│   ├── partials/                 # Source-only shared HTML components
+│   │   ├── topbar.html            # Shared top information bar
+│   │   ├── main-header.html       # Shared navigation header and search dialog
+│   │   └── footer.html            # Shared footer shell (currently blank)
 │   ├── categories/               # Category/subcategory pages and their articles
 │   ├── pages/                    # Standalone utility/legal pages, when present
 │   ├── assets/                   # Shared CSS, JavaScript and images
@@ -33,7 +39,7 @@ Lux-Omni-Blog/
 
 ## 1. Public Website — GitHub Pages
 
-The active workflow publishes only `site/`. The homepage is the **only file named `index.html`** in the public website. Category and subcategory landing pages use descriptive, unique names ending in `-index.html`; articles use descriptive filenames in each subcategory's `articles/` directory. Do not add nested `index.html` files.
+The active workflow builds `site/` into `_site/` and deploys only `_site/`. The homepage is the **only file named `index.html`** in the public website. Category and subcategory landing pages use descriptive, unique names ending in `-index.html`; articles use descriptive filenames in each subcategory's `articles/` directory. Do not add nested `index.html` files.
 
 ```text
 site/
@@ -92,7 +98,7 @@ Git repository
 
 **Proposed working cycle (not yet approved as a final deployment procedure):**
 1. Create or edit one scoped fragment in VS Code.
-2. Preview it locally in a browser.
+2. Run `node scripts/build-site.mjs` and preview the generated `_site/` output locally in a browser.
 3. Check responsive behaviour, links, browser-console errors and basic accessibility.
 4. Check SEO basics for each article: unique title and description, meaningful headings, descriptive URL/slug, canonical URL when appropriate, image alt text, and social-preview metadata.
 5. Run relevant Lighthouse/PageSpeed checks at suitable milestones rather than after every tiny text edit.
@@ -137,7 +143,7 @@ Manual source edits in VS Code ─► Git/GitHub ─► approved site deployment
 Large media ─────────────────► Cloudflare R2
 ```
 
-The exact automation mechanism—manual Wrangler deployment, a script, or another approved workflow—remains open. This map does not configure or deploy anything.
+The GitHub Pages workflow now runs `node scripts/build-site.mjs` before deployment. The build expands only explicitly marked shared components; pages without markers are copied unchanged. Only the homepage currently uses shared shell markers. Migration of category and article pages remains a separate, owner-controlled rollout.
 
 ---
 
@@ -161,7 +167,8 @@ The exact automation mechanism—manual Wrangler deployment, a script, or anothe
 
 - Whether to retain descriptive `.html` filenames for article URLs or adopt clean directory URLs in a future, explicitly planned change.
 - How homepage selections, metadata and settings should be represented in static source files.
-- Deployment automation for new article files and sitemap updates.
+- Whether to migrate each category/article page to shared shell markers; only the homepage is migrated in the initial rollout.
+- Further automation for article listings and sitemap updates.
 - Whether search is generated at build time, uses a client-side index, or uses another method.
 - Final CSS/JavaScript module boundaries after the first working skeleton.
 - Whether the optional `manifest.webmanifest`, contact page, analytics and self-hosted fonts are needed.
