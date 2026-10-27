@@ -1,7 +1,7 @@
 # Lux Omni Blog — Step-by-Step Building Plan
 
 **Status:** The owner approved the staged build workflow on 2026-10-25. Approval authorizes work one step at a time; undecided technical choices remain open, and deployment is not authorized.  
-**Purpose:** Build Lux Omni Blog in small, testable fragments rather than generating the whole website at once.  
+**Purpose:** Build Lux Omni Blog in small, testable fragments rather than generating the whole website at once.\n\n**Scope update — 2026-10-27:** The control panel/dashboard has been removed from the repository and is no longer part of this project. Use direct HTML/CSS/JavaScript editing in VS Code and Git/GitHub for content and site changes; older dashboard requirements below are superseded.  
 **Project principle:** Plan first, change only the approved scope, test each fragment, and keep a known-good checkpoint before continuing.
 
 > This is a build plan, not website source code. Hosting, frameworks, file structure, database design, deployment method, and other technical choices remain unapproved unless separately approved by the project owner.
@@ -23,7 +23,7 @@ This contract records the workflow and requirements confirmed before implementat
 
 ### Confirmed product and repository boundaries
 
-- The public website source belongs under `site/`; project planning documents stay under `documentation/`; the developer control panel stays separate under `control-panel/`.
+- The public website source belongs under `site/`; project planning documents stay under `documentation/`. No control panel or dashboard is part of the current project.
 - The public website is intended to be a hand-coded, static-first technical blog with a CNET-inspired editorial interface. Individual articles may have their own HTML, CSS, and JavaScript rather than being forced into an identical layout.
 - The homepage is a preview/discovery surface. Each final article-group destination must have its own landing page, linked to its individual article pages.
 - Stable human-readable article URLs are important. Group names, folders, links, metadata, listings, and sitemap entries must remain consistent.
@@ -33,9 +33,9 @@ This contract records the workflow and requirements confirmed before implementat
 ### Article creation, submission, and publication
 
 - The site owner is responsible for writing and managing their own articles and must retain owner-level control.
-- Two article-upload paths are required: (1) upload through the developer site/control panel and (2) upload directly from the owner's PC without needing to use that panel's interface. Both paths must follow a defined validation and publication workflow. The exact PC upload mechanism is not yet selected.
+- Articles are created and edited as individual HTML files in VS Code. Preview and validate them locally, then track and publish source changes through Git/GitHub and the configured site deployment.
 - Each outside author the owner chooses to invite receives an individual Supabase Auth user account. Do not give authors Supabase project credentials, a service-role key, shared administrator login, or GitHub repository write access merely to let them submit an article.
-- Author permissions are submission-only. They must not grant access to site settings, control-panel administration, private data, another author's private submission, credentials, or the ability to deploy or publish site code.
+- Multi-user author submissions, role management and a browser-based publishing dashboard are outside the current scope.
 - Enforce access in trusted backend/database policies, not just by hiding controls in the interface. Supabase Row Level Security and any upload/publishing endpoints must be designed and tested before author accounts are enabled.
 - Treat an author's uploaded HTML/CSS/JavaScript as untrusted input until the owner has reviewed it. A submission must not become publicly executable site content merely because the upload succeeded. The default workflow is **submit → owner review/approval → controlled publication**; any different auto-publication rule must be explicitly approved and secured.
 - Supabase authentication and metadata storage do not, by themselves, create a new static HTML file on a static host. The publishing design must explain how an approved article becomes available at its stable public URL, how the article listing and sitemap are updated, and how failed publication can be recovered. That implementation remains undecided.
@@ -58,7 +58,7 @@ The following must be settled in their relevant steps, rather than guessed now:
 - How the control panel authenticates and how owner/admin privileges are separated from author submission privileges.
 - The database schema, storage boundaries, RLS rules, and public-read model.
 - The static publishing mechanism that deploys approved article files and updates listings/sitemap.
-- Media storage configuration, control-panel hosting, optional integrations, and the deployment procedure.
+- Optional media storage, optional integrations, and the deployment procedure.
 
 **Current-step boundary:** Step 1 establishes this contract in documentation only. It does not implement the website, connect Supabase, create author accounts, or deploy anything.
 
@@ -66,7 +66,7 @@ The following must be settled in their relevant steps, rather than guessed now:
 
 ## 1. Current working direction and toolset
 
-The initial plan excludes a separate backend/local Article Studio to reduce workload. The public website files belong under `site/`; the planning package belongs under the sibling `documentation/` folder; the future control panel belongs under sibling `control-panel/`. The eventual public deployment root must be `site/` so project notes do not become website content. Articles will be written directly as individual HTML files in **Visual Studio Code**. Git and GitHub are proposed for version control from the beginning. The owner will preview and test locally before committing and publishing. The deployment method is still undecided.
+The initial plan excludes a separate backend, Article Studio and control panel to reduce workload. The public website files belong under `site/`; the planning package belongs under the sibling `documentation/` folder. The public deployment root is `site/` so project notes do not become website content. Articles will be written directly as individual HTML files in **Visual Studio Code**. Git and GitHub are proposed for version control from the beginning. The owner will preview and test locally before committing and publishing. The deployment method is still undecided.
 
 **Proposed tools:** VS Code; Git; GitHub; browser Developer Tools; Lighthouse/PageSpeed Insights; Google Search Console after the domain is ready; Bing Webmaster Tools and Google Trends as optional additions. These are recommendations, not yet a finalized mandatory tool stack.
 
@@ -136,7 +136,7 @@ The stages below are proposed. They are not permission to start coding, and thei
 
 **Tasks**
 - Create only the approved initial entry page and minimum required assets inside `site/`.
-- Keep `documentation/` and `control-panel/` outside the public website folder.
+- Keep `documentation/` outside the public website folder.
 - Add basic document metadata and a semantic page structure.
 - Add a minimal not-found page only if it is in the approved initial scope.
 - Do not add databases, authentication, advertising, newsletter integration, or complex JavaScript yet.
@@ -311,28 +311,12 @@ If a separate object store such as Cloudflare R2 is approved, implement this onl
 
 **Checkpoint:** Media workflow accepted.
 
-### Stage 10 — Add owner tools in small modules (optional, later)
+### Stage 10 — Maintain the site through source files
 
-Do not build a large control panel all at once. The control panel is not required for the initial article-writing workflow. If approved later, split it into:
-1. Authentication and access protection.
-2. Read-only content overview.
-3. Article metadata editing.
-4. Homepage story selection.
-5. Trending topics management.
-6. Categories and tags management.
-7. Site settings.
-8. Ad-slot settings.
-9. Media management.
-10. Audit/error feedback and recovery.
-
-**Pass criteria**
-- Unauthenticated visitors cannot access protected management functions.
-- Each module changes only its intended data.
-- Invalid input is rejected with a useful message.
-- Risky operations have confirmation and a recovery path.
-- Public pages are retested after each management feature.
-
-**Checkpoint:** Each management module accepted before adding the next.
+- Keep routine article and homepage updates in HTML, CSS, JavaScript and the static article index.
+- Use Git/GitHub commits as checkpoints and rollback points.
+- Do not create an owner dashboard, article-upload portal or settings application.
+- Revisit the architecture only if a concrete requirement later makes a backend necessary.
 
 ### Stage 11 — Add external integrations individually
 
