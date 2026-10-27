@@ -129,3 +129,8 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Documented the site-root-relative URL format, the article `h1` and `img[data-hero-image]` requirements, the five-article limit, rotation order, and publish/verification workflow.
 - Documented the new `Edit-Guide/` folder in the FileMap; no website runtime files were changed.
 
+## 2026-10-28 — Add topbar-links editing guide
+
+- Added `Edit-Guide/topbar-links -edit.md` with the source file, exact markup patterns, and steps for updating the logo/home link, slogan, newsletter destination, social profiles, email address, and About link.
+- Documented the `{{ROOT}}` path token, the shared partial/build workflow, and the distinction between content edits in `topbar.html` and visual changes in `topbar.css`.
+- Kept the FileMap and all public-site runtime files unchanged.
