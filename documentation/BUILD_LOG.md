@@ -85,3 +85,9 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Implemented responsive footer columns and theme-aware text masks so the circuit pattern does not show through the footer's text.
 - Left optional RSS/Atom/JSON feeds, recent-posts module, status page, newsletter, social-link list, and unfinished policy destinations out of this implementation.
 
+## 2026-10-27 — Dark theme first-visit default
+
+- Changed the theme initializer fallback to dark mode when no valid preference is saved; saved `light` or `dark` values continue to take priority.
+- Kept the existing localStorage key and theme-toggle persistence behavior unchanged.
+- Updated the design-token documentation to reflect the dark first-visit default.
+

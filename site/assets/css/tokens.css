@@ -6,8 +6,8 @@
  * Keep global element rules, component styles, font loading, and JavaScript
  * theme-switching behavior in their separately scoped files.
  *
- * Light theme is the default. Set data-theme="dark" on <html> to use the
- * dark semantic color values. Brand SVG artwork must remain unchanged.
+ * Light semantic tokens provide the base values. theme.js sets dark mode as the
+ * first-visit default and restores any saved light/dark preference. Brand SVG artwork remains unchanged.
  */
 
 :root {
