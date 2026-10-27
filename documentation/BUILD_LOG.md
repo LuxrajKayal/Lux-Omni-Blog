@@ -96,3 +96,9 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Removed the “Source Code on GitHub” item from the shared footer Quick Links section.
 - Kept the existing Search Articles action and all other footer content unchanged.
 - Updated the FileMap footer description to match the current content.
+
+## 2026-10-27 — Sticky main header
+
+- Changed the shared main header from normal relative positioning to `position: sticky; top: 0`, so it scrolls up beneath the topbar and remains pinned at the viewport top once it reaches that edge.
+- Kept the existing header height, colors, navigation, dropdown, search, and theme styling unchanged.
+
