@@ -4,13 +4,13 @@
 **Status:** Proposed planning map — not a commitment to a framework or final implementation.  
 **Hosting direction:** Cloudflare Pages for the public site and published article HTML; Cloudflare R2 for large media; Supabase for structured metadata and developer-panel settings.
 
-This map separates the **public website** (stored in `site/`) from planning materials (`documentation/`) and any future developer control panel (`control-panel/`). The initial authoring workflow is deliberately simple: edit individual HTML article files directly in Visual Studio Code, preview and test locally, use Git/GitHub for version history, then publish through a deployment method that will be decided later. A separate article-writing tool is excluded from the initial scope.
+This map separates the **public website** (stored in `site/`) from planning materials (`documentation/`). The control panel/dashboard has been removed from the project. The initial authoring workflow is to edit individual HTML article files directly in Visual Studio Code, preview and test locally, use Git/GitHub for version history, then publish the `site/` directory.
 
 ---
 
 ## Repository Layout in GitHub
 
-The repository separates three areas. **Only `site/` is intended to be the public website's document root.** When hosting is configured later, publish `site/` rather than the repository root so planning documents and control-panel files are not website components. The existing root `README.md` remains untouched.
+The repository separates two areas. **Only `site/` is intended to be the public website's document root.** Publish `site/` rather than the repository root so planning documents are not website components. The existing root `README.md` remains untouched.
 
 ```text
 Lux-Omni-Blog/
@@ -29,12 +29,11 @@ Lux-Omni-Blog/
 │   ├── templates/
 │   ├── articles/
 │   └── assets/
-└── control-panel/                # Separate future application, outside the public site
 ```
 
 ## 1. Public Website — Cloudflare Pages
 
-The tree below is relative to `site/`. Hosting/build settings remain undecided; when chosen, the public output root should be `site/`.
+The tree below is relative to `site/`. The GitHub Pages workflow currently publishes `site/` as the public output.
 
 ```text
 site/
@@ -141,35 +140,7 @@ site/
 
 ---
 
-## 2. Developer Control Panel — Separate Application
-
-Keep the control panel separate from the public site's ordinary frontend files. It may be deployed as its own application, for example on a separate subdomain, once the deployment arrangement is chosen.
-
-```text
-control-panel/
-├── index.html                    # Dashboard entry point
-├── login.html                    # Sign-in interface, if appropriate for chosen auth flow
-├── assets/
-│   ├── css/
-│   │   ├── panel-base.css
-│   │   ├── panel-layout.css
-│   │   └── panel-components.css
-│   └── js/
-│       ├── panel-main.js
-│       ├── auth.js                # Authentication integration
-│       ├── articles.js            # Article metadata and publishing controls
-│       ├── homepage.js            # Featured stories, reviews and latest articles
-│       ├── trending.js            # Trending-topic controls
-│       ├── ads.js                 # Ad-slot/campaign settings
-│       ├── site-settings.js       # Shared settings and visibility controls
-│       └── media.js               # Media metadata and R2 workflow integration
-```
-
-**Security boundary:** client-side code is not a security boundary. Protect the panel with an appropriate authentication setup and enforce permissions in Supabase Row Level Security (RLS). Never put a Supabase service-role key in browser JavaScript.
-
----
-
-## 3. Initial Authoring and Publishing Workflow — VS Code, Git and GitHub
+## 2. Initial Authoring and Publishing Workflow — VS Code, Git and GitHub
 
 No separate Article Studio or backend article-writing tool will be built for the initial release. The owner will create and edit each article directly as an HTML file in Visual Studio Code. Articles may use custom HTML structure and article-specific CSS/JavaScript when justified; a shared starter file is optional and must not force all articles into the same layout.
 
@@ -209,35 +180,11 @@ These tools are recommendations, not an instruction to sign up for every service
 
 ---
 
-## 4. Data and Media Outside the Website Repository
+## 3. Optional External Services
 
-These are services/resources rather than folders in the public website repository.
+The current website uses static HTML, CSS, JavaScript and local article metadata. A database or control panel is not required for the current scope. Large media storage (for example, Cloudflare R2) may be evaluated separately if needed; no external backend or media service is assumed to be configured.
 
-```text
-Supabase
-├── articles metadata and publication status
-├── categories and tags
-├── homepage selections
-├── trending-topic entries
-├── site/theme settings
-├── ad-slot and campaign settings
-├── media metadata/IDs
-└── authenticated control-panel access and permissions
-
-Cloudflare R2
-├── article photographs
-├── videos and other large media
-├── banners and campaign creatives
-└── other large downloadable media
-```
-
-This is a **conceptual map**, not a finalized database schema. Exact table names, columns, policies, storage buckets and access rules must be designed before implementation.
-
-Do not assume that changing a Supabase setting automatically changes the public site: the public site must be built to read that setting. A new standalone HTML article still normally needs to be included in a Pages deployment to become available at its URL.
-
----
-
-## 5. Publishing Flow
+## 4. Publishing Flow
 
 ```text
 VS Code article authoring
@@ -273,7 +220,7 @@ The exact automation mechanism—manual Wrangler deployment, a script, or anothe
 5. Use stable lowercase filenames with hyphens; avoid spaces and frequent URL changes.
 6. Keep article IDs distinct from media IDs. IDs support management and references; they are not secrets or access controls.
 7. Keep large media in R2 and store references/metadata where appropriate.
-8. Keep public code, authenticated control-panel code, local drafts and secrets separated.
+8. Keep public website source, local drafts and secrets separated. Never put credentials or private keys in public files.
 9. Add shared CSS/JS files only when there is a real need for shared behavior; do not create empty files just to match this map.
 10. Preserve the existing file map and architecture decisions as the project evolves. Update this document when the actual structure changes.
 11. Do not treat optional files, proposed component names, or the separate-app arrangement as final until explicitly approved.
@@ -297,5 +244,5 @@ The exact automation mechanism—manual Wrangler deployment, a script, or anothe
 
 - Keep all planning files under the repository-root `documentation/` directory, outside `site/`.
 - Keep public HTML, CSS, JavaScript, and public-site asset placeholders under `site/`.
-- Do not include the root `documentation/` or `control-panel/` directories in the public website's deployment output.
+- Do not include the root `documentation/` directory in the public website's deployment output.
 - The existing root `README.md` is not modified as part of the skeleton.
