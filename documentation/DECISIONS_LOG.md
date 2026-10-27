@@ -15,8 +15,17 @@ Do not silently promote a proposal to Approved. Add a dated row when the owner c
 
 ## D-Repository-Layout — 2026-10-25
 
-**Decision:** Keep repository-root `documentation/`, public-site `site/`, and future `control-panel/` as siblings. Configure future public-site hosting to publish `site/` only.
+**Historical decision (superseded 2026-10-27):** Keep repository-root `documentation/`, public-site `site/`, and future `control-panel/` as siblings. The `site/`-only deployment boundary remains in force, but the control-panel directory was later removed.
 
-**Reason:** Planning documents must remain available on GitHub for development reference without becoming components of the public website. The control panel is a separate future application.
+**Reason:** Planning documents must remain available on GitHub for development reference without becoming components of the public website. The earlier idea of a separate control-panel application has been withdrawn.
 
 **Status:** Confirmed by the project owner.
+
+
+## D-Control-Panel-Removal — 2026-10-27
+
+**Decision:** Remove the control panel completely from the project. Do not deploy a `/dev/` copy and do not build a dashboard or browser-based article uploader.
+
+**Current workflow:** Maintain article HTML, metadata, homepage selections and static site settings directly in source files using VS Code; review changes through Git/GitHub and publish the `site/` directory.
+
+**Status:** Implemented in the repository and GitHub Pages workflow.
