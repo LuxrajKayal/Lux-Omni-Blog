@@ -1,4 +1,4 @@
-# Lux Omni Blog Architecture Plan Text Export
+> **Scope amendment — 2026-10-27:** This earlier architecture export contains historical control-panel ideas. The control panel has been removed from the repository and is not part of the current project. Use the static source-file workflow in the current File Map and Build Plan instead.\n\n# Lux Omni Blog Architecture Plan Text Export
 
 > Text extraction of the updated Word planning document for GitHub reference. Word-specific page layout and formatting are not preserved in this export.
 
@@ -15,11 +15,11 @@ Use unique titles and meta descriptions, meaningful heading hierarchy, stable de
 5. Suggested build sequence
 Agree scope and tools; prepare local workspace; create minimum public skeleton; establish design tokens; build header; assemble homepage sections with temporary content; prove one custom HTML article; add archive/categories/tags/search; add backend only if a clear requirement justifies it; add media storage and owner tools only as separately approved modules; add newsletter/ads/analytics independently; audit quality; rehearse migration/launch; launch only after explicit approval.
 6. Hosting direction under discussion
-Cloudflare Pages for public static pages, Cloudflare R2 for large media, and Supabase for structured metadata/settings were discussed. None is treated as approved in this document. Hosting, deployment triggers, custom domains, backend schema, and control-panel architecture remain open.
+Cloudflare Pages for public static pages, Cloudflare R2 for large media, and Supabase for structured metadata/settings were discussed. The control panel has since been removed from scope. Hosting and media choices remain subject to approval; no backend or database is required for the current static site.
 7. Change control
 Implement only the approved fragment and files. Define acceptance criteria before coding. Test locally and in a browser, fix and retest failures, record the tested checkpoint, and get owner approval before starting the next major fragment. No repository edits or deployment without explicit permission.
 8. Open decisions
-Confirm VS Code/Git/GitHub workflow; choose local preview method; choose hosting and deployment approach; determine whether and when Supabase or a control panel is needed; settle content metadata/sitemap workflow; define image/media delivery and privacy; decide analytics/ads/newsletter integrations; define URL and redirect policy before publishing many articles.
+Confirm VS Code/Git/GitHub workflow; choose local preview method; choose hosting and deployment approach; decide whether any backend/database is justified later; settle the static content metadata/sitemap workflow; define image/media delivery and privacy; decide analytics/ads/newsletter integrations; define URL and redirect policy before publishing many articles.
 9. Article-Group Page Structure — Update 2026-10-25
 The public website is planned as three connected levels: (1) homepage, (2) a dedicated landing page for every final article group/navigation destination, and (3) individual article HTML pages. The homepage keeps its current components; it is not substituted by the group pages.
 Navigation and file organization
