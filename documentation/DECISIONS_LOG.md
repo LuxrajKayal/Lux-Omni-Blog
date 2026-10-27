@@ -32,3 +32,13 @@ Do not silently promote a proposal to Approved. Add a dated row when the owner c
 
 
 | 2026-10-27 | Keep `site/index.html` as the only `index.html`; put every main category and subcategory under `site/categories/` with unique descriptive landing-page filenames. Every subcategory owns its `articles/` folder. | Confirmed by project owner | Avoids nested-index ambiguity and makes route targets explicit. |
+
+## D-Legacy-Redirect-Cleanup — 2026-10-27
+
+**Decision:** Remove the legacy redirect-only files and top-level directories `site/sections/` and `site/articles/` after migrating canonical category pages and articles under `site/categories/`.
+
+**Related cleanup:** Intentionally remove the empty `site/templates/article-template.html` placeholder. A shared article template is not part of the current repository structure and must not be assumed to exist.
+
+**Constraints:** Keep `site/index.html` as the only file named `index.html`; retain canonical landing pages and article files under `site/categories/`; keep the canonical sitemap at 112 URLs; do not alter CSS as part of this cleanup.
+
+**Status:** Confirmed by the project owner and implemented in commit `6fd74c1fbff7c722b857b437ba02d88bf5a6f1b9`. The file map was updated in commit `5c6e4afc1484238152a91896fcff5e9a8b39f027`.
