@@ -199,10 +199,7 @@ VS Code article authoring
                     ├── Article has a stable public URL
                     └── Sitemap/public article listing is updated
 
-Developer Control Panel ─────► Supabase
-                                  │
-                                  └── Homepage selections, tags,
-                                      visibility and other settings
+Manual source edits in VS Code ─► Git/GitHub ─► approved site deployment
 
 Large media ─────────────────► Cloudflare R2
 ```
@@ -230,8 +227,6 @@ The exact automation mechanism—manual Wrangler deployment, a script, or anothe
 ## 6. Decisions Still Open
 
 - Exact URL format for articles (`/articles/article-name.html` versus clean directory URLs).
-- Whether the control panel will be hosted on a separate subdomain or another protected deployment.
-- Exact Supabase schema and public read-access model.
 - How homepage selections, metadata and settings should be represented in static source files.
 - Deployment automation for new article files and sitemap updates.
 - Whether search is generated at build time, uses a client-side index, or uses another method.
