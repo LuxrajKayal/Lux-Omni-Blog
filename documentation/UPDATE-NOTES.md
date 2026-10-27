@@ -24,3 +24,11 @@ This package reflects the latest planning discussion.
 ## Repository skeleton addition
 
 Planning documents are retained in the repository-root `documentation/` folder. The deployable public website is isolated in `site/`, and the future developer control panel sits separately in `control-panel/`. The existing root `README.md` is unchanged.
+
+
+## Update — Control panel removal (2026-10-27)
+
+- Removed the `control-panel/` directory completely.
+- GitHub Pages now assembles only the `site/` directory; there is no `/dev/` deployment.
+- Updated current file map, blueprint, build plan and affected homepage feature specifications to describe a source-controlled static workflow.
+- The owner maintains article files, metadata and homepage selections through VS Code and Git/GitHub. Historical planning exports may retain older requirements, but those requirements are superseded by the removal decision.
