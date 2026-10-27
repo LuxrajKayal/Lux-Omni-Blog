@@ -19,7 +19,7 @@ Each card displays:
 
 ## Article Selection
 - Automatically display the latest published articles by default.
-- Allow the site owner to pin or manually override the selected articles through the developer control panel.
+- Allow the site owner to pin or manually override selected articles by editing the static homepage data/markup.
 - JavaScript populates the cards using article data available to the website.
 
 ## See All Destination
@@ -36,7 +36,7 @@ If the final editorial taxonomy splits news and guides into separate groups, upd
 |---|---|
 | Desktop card layout | Four cards in one horizontal row |
 | Default selection | Latest published articles |
-| Manual selection | Pinning or manual overrides through the developer control panel |
+| Manual selection | Update the static homepage data/markup in a reviewed source change |
 | Card information | Category, headline, excerpt, publication date, estimated reading time, article link |
 | See All destination | Dedicated group landing page (or explicit aggregate archive if the content spans groups) |
 | Responsive details | To be planned later |
