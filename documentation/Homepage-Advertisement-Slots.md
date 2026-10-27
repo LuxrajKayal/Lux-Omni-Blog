@@ -53,42 +53,9 @@ The site owner wants to avoid low-quality or unsuitable advertisements and retai
 - Excessive blocking may reduce the pool of eligible ads and potential revenue.
 - Label advertisements clearly and do not disguise ads as editorial content.
 
-## Developer Control Panel Requirements
-Plan for an Advertisement Management section in the developer control panel. These are intended capabilities, not implemented features.
+## Current Configuration Approach
 
-For each supported slot, the panel should eventually allow:
-- Enable/disable the slot independently.
-- Select a predefined slot position supported by the website.
-- Choose an approved ad provider or direct campaign.
-- Configure supported dimensions and responsive behavior.
-- Preview the slot before enabling it.
-- Show slot status.
-- For direct campaigns, configure campaign dates, banner image, destination link and other agreed details.
-- Hide a disabled or empty slot instead of leaving a large blank space.
-
-The code must define the available slots and their layout. Configuration settings cannot create a new layout capability that the website code does not support.
-
-## Supabase Configuration Concept
-The advertising configuration may be stored in Supabase so routine changes do not require editing the website source code each time.
-
-Possible configuration fields include:
-- Slot ID and predefined position.
-- Enabled/disabled status.
-- Approved provider identifier.
-- Ad slot identifier or other non-secret configuration.
-- Supported dimensions and responsive settings.
-- Direct campaign details, including banner reference, destination link and campaign dates.
-
-Implementation and schema are not yet designed.
-
-### Security and integration principles
-- Keep the core advertising integration and approved script-loading logic in the website code.
-- Avoid fetching arbitrary JavaScript from the database and executing it.
-- Use appropriate Supabase Row Level Security (RLS) policies.
-- Public visitors should only be able to read the configuration intended to be public.
-- Only authorized administrators should be able to change ad settings.
-- Never expose Supabase service-role keys or other privileged secrets in public client-side code.
-- Provider-specific ad code must comply with that provider's requirements.
+There is no control panel or Supabase-backed ad-settings interface. Any approved ad slots are configured manually in the site's HTML/CSS/JavaScript and published with the normal site update. Leave a slot out of the page when no approved ad is configured. Do not add credentials, private ad-management keys or secrets to public source files.
 
 ## Fixed-Size and Responsive Slots
 - The website controls the position and allocated space of each ad slot.
