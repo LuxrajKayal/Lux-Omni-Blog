@@ -26,9 +26,9 @@ Display selected articles prominently on the Lux Omni Blog homepage in a CNET-st
 - Each story uses the featured image associated with its individual HTML article.
 - The small stories display a short text preview below the image and headline.
 
-## Developer Control Panel
-- The site owner selects which articles appear in the Featured Story section through the developer control panel.
-- The control panel should allow selection of the large featured story and the two smaller stories.
+## Content Selection
+
+Featured stories are selected manually in the website's static source/data files. Changing the lead or supporting stories requires editing and testing the source, then publishing the change. There is no owner dashboard or browser-based settings editor.
 
 ## Behavior Summary
 - **Large story:** Automatically rotates left to right; pauses on mouse hover and resumes when the mouse leaves.
