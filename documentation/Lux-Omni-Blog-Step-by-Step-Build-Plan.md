@@ -53,10 +53,8 @@ The following must be settled in their relevant steps, rather than guessed now:
 
 - Final article-group taxonomy and the mapping from navigation items to group pages.
 - Public article URL pattern and any redirect strategy.
-- Exact author submission format, size limits, draft/review fields, and permissions.
-- The PC upload mechanism and how it authenticates securely.
-- How the control panel authenticates and how owner/admin privileges are separated from author submission privileges.
-- The database schema, storage boundaries, RLS rules, and public-read model.
+- Whether any future feature genuinely requires a backend or database beyond the current static workflow.
+- If an external service is later approved, its relevant data, access and privacy boundaries.
 - The static publishing mechanism that deploys approved article files and updates listings/sitemap.
 - Optional media storage, optional integrations, and the deployment procedure.
 
@@ -502,7 +500,6 @@ This plan intentionally does not finalize:
 - Exact article URL pattern.
 - Hosting and deployment configuration.
 - Database schema and access policies.
-- Control-panel hosting and authentication design.
 - Media storage and privacy model.
 - Newsletter, analytics, advertising, and feedback integrations.
 - The precise initial launch scope.
