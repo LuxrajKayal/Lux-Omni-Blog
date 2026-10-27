@@ -1,7 +1,9 @@
 # Lux Omni Blog — Step-by-Step Building Plan
 
 **Status:** The owner approved the staged build workflow on 2026-10-25. Approval authorizes work one step at a time; undecided technical choices remain open, and deployment is not authorized.  
-**Purpose:** Build Lux Omni Blog in small, testable fragments rather than generating the whole website at once.\n\n**Scope update — 2026-10-27:** The control panel/dashboard has been removed from the repository and is no longer part of this project. Use direct HTML/CSS/JavaScript editing in VS Code and Git/GitHub for content and site changes; older dashboard requirements below are superseded.  
+**Purpose:** Build Lux Omni Blog in small, testable fragments rather than generating the whole website at once.
+
+**Scope update — 2026-10-27:** The control panel/dashboard has been removed from the repository and is no longer part of this project. Use direct HTML/CSS/JavaScript editing in VS Code and Git/GitHub for content and site changes; older dashboard requirements below are superseded.  
 **Project principle:** Plan first, change only the approved scope, test each fragment, and keep a known-good checkpoint before continuing.
 
 > This is a build plan, not website source code. Hosting, frameworks, file structure, database design, deployment method, and other technical choices remain unapproved unless separately approved by the project owner.
