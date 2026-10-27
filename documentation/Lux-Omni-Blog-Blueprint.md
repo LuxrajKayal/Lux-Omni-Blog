@@ -3,7 +3,9 @@
 **Project:** Lux Omni Blog  
 **Target domain:** `blog.luxomni.com`  
 **Document type:** Product and functional blueprint  
-**Status:** Planning draft — proposed details remain unapproved until explicitly confirmed.\n\n**Scope update — 2026-10-27:** The developer control panel/dashboard has been removed from the repository and is not part of the project. Content, homepage selections and supported settings are maintained directly in the static source files through VS Code and Git/GitHub. Older dashboard references below are superseded by this update.
+**Status:** Planning draft — proposed details remain unapproved until explicitly confirmed.
+
+**Scope update — 2026-10-27:** The developer control panel/dashboard has been removed from the repository and is not part of the project. Content, homepage selections and supported settings are maintained directly in the static source files through VS Code and Git/GitHub. Older dashboard references below are superseded by this update.
 
 ---
 
