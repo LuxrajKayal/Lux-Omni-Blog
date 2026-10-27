@@ -77,7 +77,7 @@ The legacy redirect pages and their top-level folders, `site/sections/` and `sit
 The existing CSS files were not changed as part of this cleanup.
 ## 2. Initial Authoring and Publishing Workflow — VS Code, Git and GitHub
 
-No separate Article Studio or backend article-writing tool will be built for the initial release. The owner will create and edit each article directly as an HTML file in Visual Studio Code. Articles may use custom HTML structure and article-specific CSS/JavaScript when justified; a shared starter file is optional and must not force all articles into the same layout.
+No separate Article Studio or backend article-writing tool will be built for the initial release. The owner will create and edit each article directly as an HTML file in Visual Studio Code. Articles may use custom HTML structure and article-specific CSS/JavaScript when justified; a shared starter file is optional and must not force all articles into the same layout. For an article image selected for the planned hero showcase, add the `data-hero-image` attribute to that image element; the planned selector will use the marked image instead of guessing from untagged images. Prefer local WebP assets with paths that resolve from the article page.
 
 ```text
 Local project folder

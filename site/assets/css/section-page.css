@@ -22,6 +22,10 @@
 .article-content{max-width:var(--content-width-article);margin:0 auto}.article-content h1{margin:0 0 1rem;font-size:clamp(2.25rem,5vw,4rem);font-weight:900;letter-spacing:-.065em;line-height:1.04}
 .article-deck{margin:0 0 1.2rem;color:var(--color-text-secondary);font-size:clamp(1.12rem,2vw,1.35rem);line-height:1.45}
 .article-meta{display:flex;flex-wrap:wrap;gap:.65rem 1rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--color-border);color:var(--color-text-muted);font-size:var(--font-size-sm)}
+.article-featured-image{margin:1.5rem 0 2rem;overflow:hidden;border:1px solid var(--color-border);border-radius:var(--radius-lg);background:var(--color-surface)}
+.article-featured-image img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.article-featured-image figcaption{padding:.65rem .85rem;background:var(--color-surface);color:var(--color-text-muted);font-size:var(--font-size-xs);line-height:1.5}
+
 .article-note{padding:.9rem 1rem;border-left:3px solid var(--brand-crimson);background:var(--color-surface);color:var(--color-text-secondary);font-size:var(--font-size-sm)}
 .article-content h2{margin:2rem 0 .6rem;font-size:clamp(1.4rem,2.6vw,1.8rem)}
 .article-content p:not(.eyebrow):not(.article-deck):not(.article-note){color:var(--color-text-secondary)}

@@ -102,3 +102,10 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Changed the shared main header from normal relative positioning to `position: sticky; top: 0`, so it scrolls up beneath the topbar and remains pinned at the viewport top once it reaches that edge.
 - Kept the existing header height, colors, navigation, dropdown, search, and theme styling unchanged.
 
+## 2026-10-27 — Prepare five tagged hero-image samples
+
+- Added one local WebP sample image to each of five Tech News articles: AI on the edge, phone hardware, computer processors, display refresh rates/HDR, and gaming PC upgrades.
+- Marked each chosen article-body image with `data-hero-image` and added accessible alt text and a short illustrative caption.
+- Added responsive featured-image styling to `section-page.css` and documented the image-marker convention in the FileMap.
+- Prepared source articles for the future curated hero showcase; no hero carousel or image-fetching logic was added in this step.
+
