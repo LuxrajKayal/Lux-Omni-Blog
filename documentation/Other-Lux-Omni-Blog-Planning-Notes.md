@@ -27,48 +27,29 @@ Still undecided:
 ## 3. Trending Topics Strip
 
 - A scrolling Trending Topics strip will appear on the website.
-- Topics will be entered and managed manually through a future developer control panel.
+- Topics and destination URLs are maintained manually in the static site source files.
 - Each topic will have text and an associated destination link.
 - The website will display the published topics.
-- The developer control panel itself will be planned separately.
+- No developer control panel or dashboard is planned.
 
 Still undecided:
 - Exact visual style and scrolling behaviour.
 - Data structure, storage and publishing implementation.
 
-## 4. Developer Control Panel — Core Requirement
+## 4. Current Site-Management Workflow
 
-The user wants a custom developer control panel connected to Supabase or another suitable data/configuration layer to manage supported website content and settings without editing source code for every routine change.
-
-Desired controls discussed so far:
-- Trending Topics.
-- Homepage featured articles.
-- Article titles, text and images.
-- Navigation items and dropdown contents.
-- Social media links.
-- Top-bar slogan.
-- Homepage sections, their content and order.
-- Homepage banners, including images, text, links and supported styling.
-- Logo and brand assets.
-- Brand colors and other theme colors.
-- Light/dark theme settings, including the default mode.
-- Other supported website configuration options.
-
-Important design requirement:
-- Website components should be built to support configuration from the beginning.
-- The control panel can only control options the website has been programmed to support. Entirely new functionality or a new component may still require code changes.
-- Supabase was discussed as a possible database/authentication service, but the exact database and control-panel architecture has not been finalized.
+The control panel/dashboard idea has been withdrawn as of 2026-10-27. The site owner manages articles, metadata, homepage selections and static settings directly in HTML/CSS/JavaScript files using VS Code, then tracks changes through Git/GitHub. No browser-based article uploader, admin UI, Supabase-backed settings panel or role-management interface is part of the current scope.
 
 ## 5. Article Authoring and Publishing
 
 Preferred direction:
 - The user will create each article as a single self-contained HTML file containing its own HTML, CSS and JavaScript.
 - Articles may have different designs and unique features rather than being forced into one standard article layout.
-- The user wants to upload each article through the developer control panel.
+- Articles are added as individual HTML files under the matching `site/articles/` group folder.
 - Published article pages are intended to be hosted on Cloudflare Pages.
 
 Still to design:
-- How the control panel publishes new HTML files to Cloudflare Pages.
+- How the approved GitHub Pages deployment should publish new HTML files from `site/`.
 - How article URLs are assigned and managed.
 - How draft, publish, edit, unpublish and delete actions work.
 - How article listings, category pages, internal links and sitemap entries are updated.
@@ -126,7 +107,7 @@ Previously discussed:
 ## 11. Open Decisions — Do Not Assume
 
 The following have not been finalized:
-- The complete developer control panel design and implementation.
+- Any future backend requirements, if a concrete need emerges (not currently in scope).
 - The final database/storage choice for website data and settings.
 - The Cloudflare Pages publishing mechanism for uploaded article HTML.
 - Exact URL/routing conventions.
