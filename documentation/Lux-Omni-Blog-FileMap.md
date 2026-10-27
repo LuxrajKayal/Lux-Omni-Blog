@@ -12,6 +12,8 @@ This map separates public-site source (`site/`), build tooling (`scripts/`), and
 
 The repository separates public-site source, build tooling, and planning materials. `site/` contains authored HTML/CSS/JS and source-only partials; `scripts/build-site.mjs` produces `_site/`, which is the directory deployed to GitHub Pages. Source partials and planning documents are not published. The existing root `README.md` remains untouched.
 
+The shared footer includes the Lux Omni brand summary, author profile link, category navigation, article search trigger, public source-repository link, copyright, and Back to Top. The author-page destination is a temporary `https://example.com` placeholder.
+
 ```text
 Lux-Omni-Blog/
 ├── README.md                    # Existing file; unchanged
@@ -29,7 +31,7 @@ Lux-Omni-Blog/
 │   ├── partials/                 # Source-only shared HTML components
 │   │   ├── topbar.html            # Shared top information bar
 │   │   ├── main-header.html       # Shared navigation header and search dialog
-│   │   └── footer.html            # Shared footer shell (currently blank)
+│   │   └── footer.html            # Shared footer content and layout
 │   ├── categories/               # Category/subcategory pages and their articles
 │   ├── pages/                    # Standalone utility/legal pages, when present
 │   ├── assets/                   # Shared CSS, JavaScript and images

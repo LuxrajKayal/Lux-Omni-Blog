@@ -77,3 +77,11 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Preserved page-specific content, metadata, URLs, CSS references, and JavaScript; five empty HTML placeholders were left unchanged.
 - Reworked `scripts/build-site.mjs` into a marker-only assembler. It rejects populated pages with missing/duplicate markers or leftover hardcoded shared shell markup instead of automatically replacing legacy source markup.
 - Updated the file map to describe the source-level shared-component structure and strict build behavior.
+
+## 2026-10-27 — Initial shared footer content
+
+- Replaced the empty footer partial with a brand summary, round author avatar/profile link, seven main-category links, the existing article-search trigger, a link to the public source repository, copyright, and Back to Top.
+- Kept the author-page destination at the requested temporary `https://example.com` URL; the avatar uses the repository owner's public GitHub profile image.
+- Implemented responsive footer columns and theme-aware text masks so the circuit pattern does not show through the footer's text.
+- Left optional RSS/Atom/JSON feeds, recent-posts module, status page, newsletter, social-link list, and unfinished policy destinations out of this implementation.
+
