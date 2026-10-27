@@ -17,7 +17,7 @@ Show a two-column homepage section that highlights product reviews and buying re
 ### Right Column — Most Popular
 - Displays a ranked list of popular articles.
 - Rankings are calculated automatically using page-view data.
-- The developer control panel allows the site owner to override the automatic ranking or manually pin selected articles.
+- Manual pins are maintained in the homepage's static source/data files. Automatic popularity ranking is not active unless a suitable analytics data source is implemented.
 - Manual overrides allow selected articles to be promoted even when they are not among the most-viewed articles.
 
 ## Responsive Behavior
@@ -27,7 +27,7 @@ Show a two-column homepage section that highlights product reviews and buying re
 ## Data and Ranking
 - Automatic popularity ranking will use page-view data.
 - The definition of a valid page view and the method used to collect and store page-view data have not yet been decided.
-- The developer control panel should support manual overrides or pinned articles alongside automatic rankings.
+- The site owner can change pinned articles by editing the relevant static source/data files. An automatic ranking requires a separate analytics source and is not assumed to exist.
 
 ## Relationship to Dedicated Group Pages
 - The homepage component remains part of `index.html`; it does not replace a dedicated Reviews group page.
