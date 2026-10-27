@@ -52,3 +52,11 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Updated article-index hrefs, the dynamic Engineering navigation, local links/assets and each page's `data-site-root`.
 - Preserved old `sections/` and `articles/` URLs with compatibility redirects and regenerated the canonical sitemap with 112 URLs.
 - Kept all CSS files unchanged.
+
+## 2026-10-27 — Legacy redirect and template-placeholder cleanup
+
+- Deleted 52 legacy landing-page redirect files from `site/sections/` and 46 legacy article redirect files from the top-level `site/articles/`.
+- Removed the now-empty legacy folders; canonical category pages and articles remain under `site/categories/`.
+- Intentionally deleted the empty `site/templates/article-template.html` placeholder. No shared article-template file currently exists.
+- Kept the canonical sitemap unchanged at 112 URLs and preserved the existing CSS files.
+- Updated `documentation/Lux-Omni-Blog-FileMap.md` to describe the actual repository structure.
