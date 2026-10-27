@@ -30,7 +30,6 @@ Lux-Omni-Blog/
 ├── README.md          # Existing root file; leave unchanged
 ├── documentation/     # Planning documents retained for development reference
 ├── site/              # Public website source and eventual deployment root
-└── control-panel/     # Separate future application, not part of the public site
 ```
 
 The static-site deployment publishes `site/` only. The `documentation/` folder is for project planning/reference and must not be treated as a website component. No control panel is included.
