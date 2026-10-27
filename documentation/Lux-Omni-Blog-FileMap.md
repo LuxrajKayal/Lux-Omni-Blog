@@ -211,7 +211,7 @@ The exact automation mechanism—manual Wrangler deployment, a script, or anothe
 
 ---
 
-## 6. File and Naming Rules
+## 5. File and Naming Rules
 
 1. **One article, one HTML file** under `articles/<group-slug>/`, with custom article-specific styling or scripting when needed.
 2. Every final article group has one page under `sections/<group-slug>.html` and a matching `articles/<group-slug>/` folder.
@@ -223,16 +223,16 @@ The exact automation mechanism—manual Wrangler deployment, a script, or anothe
 8. Keep public website source, local drafts and secrets separated. Never put credentials or private keys in public files.
 9. Add shared CSS/JS files only when there is a real need for shared behavior; do not create empty files just to match this map.
 10. Preserve the existing file map and architecture decisions as the project evolves. Update this document when the actual structure changes.
-11. Do not treat optional files, proposed component names, or the separate-app arrangement as final until explicitly approved.
+11. Do not treat optional files or proposed component names as final until explicitly approved.
 
 ---
 
-## 7. Decisions Still Open
+## 6. Decisions Still Open
 
 - Exact URL format for articles (`/articles/article-name.html` versus clean directory URLs).
 - Whether the control panel will be hosted on a separate subdomain or another protected deployment.
 - Exact Supabase schema and public read-access model.
-- How the public site retrieves homepage selections and other settings.
+- How homepage selections, metadata and settings should be represented in static source files.
 - Deployment automation for new article files and sitemap updates.
 - Whether search is generated at build time, uses a client-side index, or uses another method.
 - Final CSS/JavaScript module boundaries after the first working skeleton.
