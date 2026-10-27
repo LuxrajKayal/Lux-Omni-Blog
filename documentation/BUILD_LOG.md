@@ -91,3 +91,8 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Kept the existing localStorage key and theme-toggle persistence behavior unchanged.
 - Updated the design-token documentation to reflect the dark first-visit default.
 
+## 2026-10-27 — Remove source-code link from footer
+
+- Removed the “Source Code on GitHub” item from the shared footer Quick Links section.
+- Kept the existing Search Articles action and all other footer content unchanged.
+- Updated the FileMap footer description to match the current content.
