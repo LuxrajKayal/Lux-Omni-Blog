@@ -1,4 +1,6 @@
-> **Scope amendment — 2026-10-27:** This file is a historical consolidated planning export. Its old developer-control-panel, dashboard, upload-portal and related Supabase settings-panel requirements are superseded. The control panel has been removed from the repository and the Pages workflow now publishes only `site/`. Follow the current `Lux-Omni-Blog-FileMap.md`, `Lux-Omni-Blog-Blueprint.md`, and `Lux-Omni-Blog-Step-by-Step-Build-Plan.md` for the active static-site scope.\n\n# Lux Omni Blog Consolidated Plan Text Export
+> **Scope amendment — 2026-10-27:** This file is a historical consolidated planning export. Its old developer-control-panel, dashboard, upload-portal and related Supabase settings-panel requirements are superseded. The control panel has been removed from the repository and the Pages workflow now publishes only `site/`. Follow the current `Lux-Omni-Blog-FileMap.md`, `Lux-Omni-Blog-Blueprint.md`, and `Lux-Omni-Blog-Step-by-Step-Build-Plan.md` for the active static-site scope.
+
+# Lux Omni Blog Consolidated Plan Text Export
 
 > Text extraction of the updated Word planning document for GitHub reference. Word-specific page layout and formatting are not preserved in this export.
 
