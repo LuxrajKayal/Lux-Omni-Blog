@@ -1,0 +1,94 @@
+/*
+ * Lux Omni Blog — footer shell
+ * Stage 1 is intentionally visual only: no footer copy, links, icons or forms.
+ * Reuse the topbar's theme tokens so both components change together.
+ */
+
+.site-footer {
+  --footer-background: var(--topbar-background);
+  --footer-text: var(--topbar-text);
+  --footer-link: var(--topbar-link);
+  --footer-link-hover: var(--topbar-link-hover);
+  --footer-border: var(--topbar-border);
+  --footer-circuit-color: var(--topbar-circuit-color);
+  --footer-focus: var(--topbar-focus);
+
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: clamp(14rem, 27vh, 20rem);
+  padding: var(--space-8) var(--page-gutter);
+  overflow: hidden;
+  color: var(--footer-text);
+  background-color: var(--footer-background);
+  border-top: var(--border-width-strong) solid var(--footer-border);
+
+  /* Circuit traces echo the topbar, but use a taller, more open arrangement. */
+  background-image:
+    radial-gradient(circle at 4% 20%, var(--footer-circuit-color) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 18% 20%, var(--footer-circuit-color) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 18% 50%, var(--footer-circuit-color) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 36% 50%, var(--footer-circuit-color) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 36% 30%, var(--footer-circuit-color) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 55% 30%, var(--footer-circuit-color) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 55% 72%, var(--footer-circuit-color) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 78% 72%, var(--footer-circuit-color) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 78% 38%, var(--footer-circuit-color) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 96% 38%, var(--footer-circuit-color) 0 1.5px, transparent 2px),
+    linear-gradient(var(--footer-circuit-color), var(--footer-circuit-color)),
+    linear-gradient(var(--footer-circuit-color), var(--footer-circuit-color)),
+    linear-gradient(var(--footer-circuit-color), var(--footer-circuit-color)),
+    linear-gradient(var(--footer-circuit-color), var(--footer-circuit-color)),
+    linear-gradient(var(--footer-circuit-color), var(--footer-circuit-color)),
+    linear-gradient(var(--footer-circuit-color), var(--footer-circuit-color)),
+    linear-gradient(var(--footer-circuit-color), var(--footer-circuit-color)),
+    linear-gradient(var(--footer-circuit-color), var(--footer-circuit-color)),
+    linear-gradient(var(--footer-circuit-color), var(--footer-circuit-color));
+  background-position:
+    0 0, 0 0, 0 0, 0 0, 0 0,
+    0 0, 0 0, 0 0, 0 0, 0 0,
+    4% 20%, 18% 20%, 18% 50%, 36% 30%, 36% 30%,
+    55% 30%, 55% 72%, 78% 38%, 78% 38%;
+  background-size:
+    100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%,
+    100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%,
+    14% 1px, 1px 30%, 18% 1px, 1px 20%, 19% 1px,
+    1px 42%, 23% 1px, 1px 34%, 18% 1px;
+  background-repeat: no-repeat;
+}
+
+/*
+ * Keep future text legible over the decorative traces. These solid, theme-matched
+ * backgrounds hide the circuit pattern beneath glyphs, like the topbar's text masks.
+ */
+.site-footer :is(h1, h2, h3, h4, h5, h6, p, a, button, label, li, small, span) {
+  background-color: var(--footer-background);
+  box-shadow: 0 0 0 3px var(--footer-background);
+}
+
+.site-footer a {
+  color: var(--footer-link);
+  text-decoration: none;
+  text-underline-offset: 0.2em;
+}
+
+.site-footer a:hover {
+  color: var(--footer-link-hover);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+.site-footer a:focus-visible,
+.site-footer button:focus-visible {
+  outline: var(--focus-ring-width) solid var(--footer-focus);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: var(--radius-sm);
+}
+
+@media (max-width: 560px) {
+  .site-footer {
+    min-height: 12rem;
+    padding-block: var(--space-6);
+  }
+}
