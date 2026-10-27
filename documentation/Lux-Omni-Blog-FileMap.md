@@ -1,7 +1,7 @@
 # Lux Omni Blog — File Map
 
 **Project:** `blog.luxomni.com`  
-**Status:** Proposed planning map — not a commitment to a framework or final implementation.  
+**Status:** Updated to reflect the current repository structure. Any future structural change should be recorded here after it is implemented.  
 **Hosting direction:** The current GitHub Pages workflow publishes the static site from `site/`. External database and media services are not required or configured for the current scope.
 
 This map separates the **public website** (stored in `site/`) from planning materials (`documentation/`). The control panel/dashboard has been removed from the project. The initial authoring workflow is to edit individual HTML article files directly in Visual Studio Code, preview and test locally, use Git/GitHub for version history, then publish the `site/` directory.
@@ -22,13 +22,13 @@ Lux-Omni-Blog/
 │   ├── Lux-Omni-Blog-Step-by-Step-Build-Plan.md
 │   ├── Article-Group-Pages.md
 │   └── ... other planning documents
-├── site/                        # Public website source and eventual publish root
-│   ├── index.html
-│   ├── pages/
-│   ├── sections/
-│   ├── templates/
-│   ├── articles/
-│   └── assets/
+├── site/                        # Public website source and publish root
+│   ├── index.html                # The only file named index.html
+│   ├── categories/               # Category/subcategory pages and their articles
+│   ├── pages/                    # Standalone utility/legal pages, when present
+│   ├── assets/                   # Shared CSS, JavaScript and images
+│   ├── sitemap.xml
+│   └── 404.html
 ```
 
 ## 1. Public Website — GitHub Pages
@@ -53,35 +53,38 @@ site/
 │   ├── hardware/hardware-index.html
 │   ├── software/software-index.html
 │   └── buying-advice/buying-advice-index.html
-├── pages/
-├── templates/
+├── pages/                        # Standalone utility/legal pages, when present
 ├── assets/
-│   ├── css/   # Existing stylesheets; unchanged in this migration
+│   ├── css/                      # Existing stylesheets; preserved in the cleanup
 │   ├── images/
 │   └── js/
-├── sections/  # Legacy URL redirects retained for compatibility
-├── articles/  # Legacy URL redirects retained for compatibility
-├── sitemap.xml
+├── sitemap.xml                   # Canonical URLs only
 └── 404.html
 ```
 
-There are seven main categories and 44 subcategories, including Drone Technology under Engineering. Every subcategory owns an `articles/` folder. The article index uses site-root-relative canonical hrefs; each HTML page's `data-site-root` is set for its directory depth so search and shared assets work from every level.
+There are seven main categories and 44 subcategories, including Drone Technology under Engineering. Every subcategory stores its articles in its own `articles/` folder beneath `site/categories/`. Category and subcategory landing pages use unique, descriptive filenames ending in `-index.html`; `site/index.html` is the only file named `index.html`. Each page's `data-site-root` is set for its directory depth so navigation, search and shared assets work from nested paths.
 
-Previous `sections/*.html` and `articles/*/*.html` paths remain as simple compatibility redirects. They are not canonical URLs and are excluded from the sitemap. The canonical sitemap lists 112 pages: one homepage, 51 category/subcategory landing pages and 60 sample articles.
+The legacy redirect pages and their top-level folders, `site/sections/` and `site/articles/`, have been removed. The empty `site/templates/article-template.html` placeholder was intentionally removed as well; no canonical article template currently exists in the repository. The canonical sitemap lists 112 URLs: one homepage, 51 category/subcategory landing pages and 60 sample articles.
 
-The existing visual CSS and responsive rules are not changed during a category/file-structure migration.
+The existing CSS files were not changed as part of this cleanup.
 ## 2. Initial Authoring and Publishing Workflow — VS Code, Git and GitHub
 
 No separate Article Studio or backend article-writing tool will be built for the initial release. The owner will create and edit each article directly as an HTML file in Visual Studio Code. Articles may use custom HTML structure and article-specific CSS/JavaScript when justified; a shared starter file is optional and must not force all articles into the same layout.
 
 ```text
 Local project folder
-├── index.html                 # Homepage
-├── sections/                  # Dedicated article-group landing pages
-├── templates/article-template.html  # Canonical article starter/reference
-├── articles/<group-slug>/     # Six development samples per group, then later articles
-├── assets/                    # Shared CSS, JS, images and UI assets
-└── ...
+└── site/
+    ├── index.html             # Homepage; the only index.html
+    ├── categories/
+    │   └── <main-category>/
+    │       ├── *-index.html   # Main category landing page
+    │       └── <subcategory>/
+    │           ├── *-index.html
+    │           └── articles/*.html
+    ├── pages/                 # Standalone pages, when present
+    ├── assets/                # Shared CSS, JavaScript, images and UI assets
+    ├── sitemap.xml
+    └── 404.html
 
 Git repository
 └── GitHub remote              # Version history and backup/collaboration
@@ -124,7 +127,7 @@ VS Code article authoring
         └── Prepare article for publication
                     │
                     ▼
-          Cloudflare Pages deployment
+          GitHub Pages workflow (publishes `site/`)
                     │
                     ├── Article has a stable public URL
                     └── Sitemap/public article listing is updated
@@ -140,10 +143,10 @@ The exact automation mechanism—manual Wrangler deployment, a script, or anothe
 
 ## 5. File and Naming Rules
 
-1. **One article, one HTML file** under `articles/<group-slug>/`, with custom article-specific styling or scripting when needed.
-2. Every final article group has one page under `sections/<group-slug>.html` and a matching `articles/<group-slug>/` folder.
-3. Create six sample article HTML files per group during development. They are intentionally linkable test content and may be removed later by the owner.
-4. Use `templates/article-template.html` as the canonical starter/reference; preserve stable metadata conventions, classes/IDs, navigation links and shared hooks when creating an article from it.
+1. **One article, one HTML file** under `site/categories/<main-category>/<subcategory>/articles/`, with custom article-specific styling or scripting when needed.
+2. Each main category and subcategory has its own uniquely named landing page under `site/categories/`. Do not add nested files named `index.html`.
+3. Keep article files in the `articles/` folder of their matching subcategory. Update article listings, the article metadata index and sitemap when canonical content is deliberately added, moved or removed.
+4. No shared article-template file is currently present. Create one only as a separate, deliberate task; do not assume the removed empty placeholder is available.
 5. Use stable lowercase filenames with hyphens; avoid spaces and frequent URL changes.
 6. Keep article IDs distinct from media IDs. IDs support management and references; they are not secrets or access controls.
 7. Keep large media in R2 and store references/metadata where appropriate.
@@ -156,7 +159,7 @@ The exact automation mechanism—manual Wrangler deployment, a script, or anothe
 
 ## 6. Decisions Still Open
 
-- Exact URL format for articles (`/articles/article-name.html` versus clean directory URLs).
+- Whether to retain descriptive `.html` filenames for article URLs or adopt clean directory URLs in a future, explicitly planned change.
 - How homepage selections, metadata and settings should be represented in static source files.
 - Deployment automation for new article files and sitemap updates.
 - Whether search is generated at build time, uses a client-side index, or uses another method.
