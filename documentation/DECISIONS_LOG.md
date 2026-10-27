@@ -29,3 +29,6 @@ Do not silently promote a proposal to Approved. Add a dated row when the owner c
 **Current workflow:** Maintain article HTML, metadata, homepage selections and static site settings directly in source files using VS Code; review changes through Git/GitHub and publish the `site/` directory.
 
 **Status:** Implemented in the repository and GitHub Pages workflow.
+
+
+| 2026-10-27 | Keep `site/index.html` as the only `index.html`; put every main category and subcategory under `site/categories/` with unique descriptive landing-page filenames. Every subcategory owns its `articles/` folder. | Confirmed by project owner | Avoids nested-index ambiguity and makes route targets explicit. |

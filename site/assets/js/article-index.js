@@ -11,10 +11,10 @@ export const ARTICLES = [
       "inference"
     ],
     "parentSlug": "tech",
-    "parentCategory": "Tech",
+    "parentCategory": "Tech News",
     "category": "AI",
     "categorySlug": "tech-ai",
-    "href": "articles/tech-news-and-guides/sample-article-01.html"
+    "href": "categories/tech-news/ai/articles/ai-on-the-edge-what-local-inference-changes.html"
   },
   {
     "id": "tech-phones",
@@ -28,10 +28,10 @@ export const ARTICLES = [
       "mobile"
     ],
     "parentSlug": "tech",
-    "parentCategory": "Tech",
+    "parentCategory": "Tech News",
     "category": "Phones",
     "categorySlug": "tech-phones",
-    "href": "articles/tech-news-and-guides/sample-article-02.html"
+    "href": "categories/tech-news/phones/articles/phone-hardware-explained-chips-cameras-and-radios.html"
   },
   {
     "id": "tech-computing",
@@ -45,10 +45,10 @@ export const ARTICLES = [
       "PC"
     ],
     "parentSlug": "tech",
-    "parentCategory": "Tech",
+    "parentCategory": "Tech News",
     "category": "Computing",
     "categorySlug": "tech-computing",
-    "href": "articles/tech-news-and-guides/sample-article-03.html"
+    "href": "categories/tech-news/computing/articles/a-practical-guide-to-choosing-a-computer-processor.html"
   },
   {
     "id": "tech-tv-audio",
@@ -62,10 +62,10 @@ export const ARTICLES = [
       "HDR"
     ],
     "parentSlug": "tech",
-    "parentCategory": "Tech",
+    "parentCategory": "Tech News",
     "category": "TV & Audio",
     "categorySlug": "tech-tv-audio",
-    "href": "articles/tech-news-and-guides/sample-article-04.html"
+    "href": "categories/tech-news/tv-audio/articles/display-refresh-rates-and-hdr-explained.html"
   },
   {
     "id": "tech-gaming",
@@ -79,10 +79,10 @@ export const ARTICLES = [
       "GPU"
     ],
     "parentSlug": "tech",
-    "parentCategory": "Tech",
+    "parentCategory": "Tech News",
     "category": "Gaming",
     "categorySlug": "tech-gaming",
-    "href": "articles/tech-news-and-guides/sample-article-05.html"
+    "href": "categories/tech-news/gaming/articles/what-to-check-before-upgrading-a-gaming-pc.html"
   },
   {
     "id": "tech-smart-home",
@@ -96,10 +96,10 @@ export const ARTICLES = [
       "connectivity"
     ],
     "parentSlug": "tech",
-    "parentCategory": "Tech",
+    "parentCategory": "Tech News",
     "category": "Smart Home",
     "categorySlug": "tech-smart-home",
-    "href": "articles/tech-news-and-guides/sample-article-06.html"
+    "href": "categories/tech-news/smart-home/articles/making-smart-home-devices-work-together.html"
   },
   {
     "id": "tech-internet",
@@ -113,10 +113,10 @@ export const ARTICLES = [
       "internet"
     ],
     "parentSlug": "tech",
-    "parentCategory": "Tech",
+    "parentCategory": "Tech News",
     "category": "Internet",
     "categorySlug": "tech-internet",
-    "href": "articles/tech-news-and-guides/sample-article-07.html"
+    "href": "categories/tech-news/internet/articles/wi-fi-range-speed-and-signal-strength.html"
   },
   {
     "id": "tech-cars",
@@ -130,10 +130,10 @@ export const ARTICLES = [
       "engineering"
     ],
     "parentSlug": "tech",
-    "parentCategory": "Tech",
+    "parentCategory": "Tech News",
     "category": "Cars",
     "categorySlug": "tech-cars",
-    "href": "articles/tech-news-and-guides/sample-article-08.html"
+    "href": "categories/tech-news/cars/articles/how-driver-assistance-sensors-collect-information.html"
   },
   {
     "id": "tech-security",
@@ -147,10 +147,10 @@ export const ARTICLES = [
       "authentication"
     ],
     "parentSlug": "tech",
-    "parentCategory": "Tech",
+    "parentCategory": "Tech News",
     "category": "Security",
     "categorySlug": "tech-security",
-    "href": "articles/tech-news-and-guides/sample-article-09.html"
+    "href": "categories/tech-news/security/articles/passkeys-passwords-and-multi-factor-authentication.html"
   },
   {
     "id": "tech-science",
@@ -164,10 +164,10 @@ export const ARTICLES = [
       "electronics"
     ],
     "parentSlug": "tech",
-    "parentCategory": "Tech",
+    "parentCategory": "Tech News",
     "category": "Science",
     "categorySlug": "tech-science",
-    "href": "articles/tech-news-and-guides/sample-article-10.html"
+    "href": "categories/tech-news/science/articles/the-sensors-behind-everyday-technology.html"
   },
   {
     "id": "reviews-phones",
@@ -184,7 +184,7 @@ export const ARTICLES = [
     "parentCategory": "Reviews",
     "category": "Phones",
     "categorySlug": "reviews-phones",
-    "href": "articles/reviews/sample-review-01.html"
+    "href": "categories/reviews/phones/articles/phone-review-sample-beyond-the-specification-sheet.html"
   },
   {
     "id": "reviews-laptops-pcs",
@@ -201,7 +201,7 @@ export const ARTICLES = [
     "parentCategory": "Reviews",
     "category": "Laptops & PCs",
     "categorySlug": "reviews-laptops-pcs",
-    "href": "articles/reviews/sample-review-02.html"
+    "href": "categories/reviews/laptops-pcs/articles/laptop-review-sample-performance-under-sustained-load.html"
   },
   {
     "id": "reviews-drones",
@@ -218,7 +218,7 @@ export const ARTICLES = [
     "parentCategory": "Reviews",
     "category": "Drones",
     "categorySlug": "reviews-drones",
-    "href": "articles/reviews/sample-review-03.html"
+    "href": "categories/reviews/drones/articles/drone-review-sample-flight-payload-and-serviceability.html"
   },
   {
     "id": "reviews-cameras",
@@ -235,7 +235,7 @@ export const ARTICLES = [
     "parentCategory": "Reviews",
     "category": "Cameras",
     "categorySlug": "reviews-cameras",
-    "href": "articles/reviews/sample-review-04.html"
+    "href": "categories/reviews/cameras/articles/camera-review-sample-autofocus-and-low-light-behavior.html"
   },
   {
     "id": "reviews-audio",
@@ -252,7 +252,7 @@ export const ARTICLES = [
     "parentCategory": "Reviews",
     "category": "Audio",
     "categorySlug": "reviews-audio",
-    "href": "articles/reviews/sample-review-05.html"
+    "href": "categories/reviews/audio/articles/audio-review-sample-comfort-tuning-and-connection-quality.html"
   },
   {
     "id": "reviews-smart-home",
@@ -269,7 +269,7 @@ export const ARTICLES = [
     "parentCategory": "Reviews",
     "category": "Smart Home",
     "categorySlug": "reviews-smart-home",
-    "href": "articles/reviews/sample-review-06.html"
+    "href": "categories/reviews/smart-home/articles/smart-home-review-sample-reliability-and-privacy.html"
   },
   {
     "id": "how-to-windows",
@@ -286,7 +286,7 @@ export const ARTICLES = [
     "parentCategory": "How To",
     "category": "Windows",
     "categorySlug": "how-to-windows",
-    "href": "articles/tutorials/sample-article-01.html"
+    "href": "categories/how-to/windows/articles/how-to-diagnose-a-slow-windows-pc.html"
   },
   {
     "id": "how-to-linux",
@@ -303,7 +303,7 @@ export const ARTICLES = [
     "parentCategory": "How To",
     "category": "Linux",
     "categorySlug": "how-to-linux",
-    "href": "articles/tutorials/sample-article-02.html"
+    "href": "categories/how-to/linux/articles/how-to-choose-a-linux-desktop-for-an-older-computer.html"
   },
   {
     "id": "how-to-android",
@@ -320,7 +320,7 @@ export const ARTICLES = [
     "parentCategory": "How To",
     "category": "Android",
     "categorySlug": "how-to-android",
-    "href": "articles/tutorials/sample-article-03.html"
+    "href": "categories/how-to/android/articles/how-to-improve-android-battery-life-without-guesswork.html"
   },
   {
     "id": "how-to-networking",
@@ -337,7 +337,7 @@ export const ARTICLES = [
     "parentCategory": "How To",
     "category": "Networking",
     "categorySlug": "how-to-networking",
-    "href": "articles/tutorials/sample-article-04.html"
+    "href": "categories/how-to/networking/articles/how-to-troubleshoot-a-home-wi-fi-dead-zone.html"
   },
   {
     "id": "how-to-diy-repair",
@@ -354,7 +354,7 @@ export const ARTICLES = [
     "parentCategory": "How To",
     "category": "DIY & Repair",
     "categorySlug": "how-to-diy-repair",
-    "href": "articles/tutorials/sample-article-05.html"
+    "href": "categories/how-to/diy-repair/articles/how-to-plan-a-safe-electronics-repair.html"
   },
   {
     "id": "how-to-troubleshooting",
@@ -371,7 +371,7 @@ export const ARTICLES = [
     "parentCategory": "How To",
     "category": "Troubleshooting",
     "categorySlug": "how-to-troubleshooting",
-    "href": "articles/tutorials/sample-article-06.html"
+    "href": "categories/how-to/troubleshooting/articles/a-repeatable-workflow-for-technical-troubleshooting.html"
   },
   {
     "id": "hardware-pc-components",
@@ -388,7 +388,7 @@ export const ARTICLES = [
     "parentCategory": "Hardware",
     "category": "PC Components",
     "categorySlug": "hardware-pc-components",
-    "href": "articles/hardware/sample-article-01.html"
+    "href": "categories/hardware/pc-components/articles/pc-component-sample-checking-compatibility-before-a-build.html"
   },
   {
     "id": "hardware-storage",
@@ -405,7 +405,7 @@ export const ARTICLES = [
     "parentCategory": "Hardware",
     "category": "Storage",
     "categorySlug": "hardware-storage",
-    "href": "articles/hardware/sample-article-02.html"
+    "href": "categories/hardware/storage/articles/storage-sample-ssd-interfaces-and-real-world-workloads.html"
   },
   {
     "id": "hardware-peripherals",
@@ -422,7 +422,7 @@ export const ARTICLES = [
     "parentCategory": "Hardware",
     "category": "Peripherals",
     "categorySlug": "hardware-peripherals",
-    "href": "articles/hardware/sample-article-03.html"
+    "href": "categories/hardware/peripherals/articles/peripheral-sample-choosing-tools-for-a-workstation.html"
   },
   {
     "id": "hardware-drones",
@@ -439,7 +439,7 @@ export const ARTICLES = [
     "parentCategory": "Hardware",
     "category": "Drones",
     "categorySlug": "hardware-drones",
-    "href": "articles/hardware/sample-article-04.html"
+    "href": "categories/hardware/drones/articles/drone-hardware-sample-flight-controllers-and-power-distribution.html"
   },
   {
     "id": "hardware-networking",
@@ -456,7 +456,7 @@ export const ARTICLES = [
     "parentCategory": "Hardware",
     "category": "Networking",
     "categorySlug": "hardware-networking",
-    "href": "articles/hardware/sample-article-05.html"
+    "href": "categories/hardware/networking/articles/network-hardware-sample-router-switch-and-access-point.html"
   },
   {
     "id": "hardware-bench-tools",
@@ -473,7 +473,7 @@ export const ARTICLES = [
     "parentCategory": "Hardware",
     "category": "Bench Tools",
     "categorySlug": "hardware-bench-tools",
-    "href": "articles/hardware/sample-article-06.html"
+    "href": "categories/hardware/bench-tools/articles/bench-tools-sample-choosing-a-multimeter-and-soldering-station.html"
   },
   {
     "id": "software-operating-systems",
@@ -490,7 +490,7 @@ export const ARTICLES = [
     "parentCategory": "Software",
     "category": "Operating Systems",
     "categorySlug": "software-operating-systems",
-    "href": "articles/software/sample-article-01.html"
+    "href": "categories/software/operating-systems/articles/operating-system-sample-choosing-the-right-environment.html"
   },
   {
     "id": "software-productivity",
@@ -507,7 +507,7 @@ export const ARTICLES = [
     "parentCategory": "Software",
     "category": "Productivity",
     "categorySlug": "software-productivity",
-    "href": "articles/software/sample-article-02.html"
+    "href": "categories/software/productivity/articles/productivity-software-sample-a-maintainable-workflow.html"
   },
   {
     "id": "software-developer-tools",
@@ -524,7 +524,7 @@ export const ARTICLES = [
     "parentCategory": "Software",
     "category": "Developer Tools",
     "categorySlug": "software-developer-tools",
-    "href": "articles/software/sample-article-03.html"
+    "href": "categories/software/developer-tools/articles/developer-tools-sample-editor-terminal-and-version-control.html"
   },
   {
     "id": "software-ai-tools",
@@ -541,7 +541,7 @@ export const ARTICLES = [
     "parentCategory": "Software",
     "category": "AI Tools",
     "categorySlug": "software-ai-tools",
-    "href": "articles/software/sample-article-04.html"
+    "href": "categories/software/ai-tools/articles/ai-software-sample-useful-features-and-limitations.html"
   },
   {
     "id": "software-privacy-security",
@@ -558,7 +558,7 @@ export const ARTICLES = [
     "parentCategory": "Software",
     "category": "Privacy & Security",
     "categorySlug": "software-privacy-security",
-    "href": "articles/software/sample-article-05.html"
+    "href": "categories/software/privacy-security/articles/privacy-software-sample-what-a-permission-means.html"
   },
   {
     "id": "software-open-source",
@@ -575,7 +575,7 @@ export const ARTICLES = [
     "parentCategory": "Software",
     "category": "Open-source Utilities",
     "categorySlug": "software-open-source",
-    "href": "articles/software/sample-article-06.html"
+    "href": "categories/software/open-source/articles/open-source-utilities-sample-assessing-a-small-project.html"
   },
   {
     "id": "buying-advice-phones",
@@ -592,7 +592,7 @@ export const ARTICLES = [
     "parentCategory": "Buying Advice",
     "category": "Phones",
     "categorySlug": "buying-advice-phones",
-    "href": "articles/buying-guides/sample-article-01.html"
+    "href": "categories/buying-advice/phones/articles/buying-a-phone-which-features-are-worth-paying-for.html"
   },
   {
     "id": "buying-advice-laptops",
@@ -609,7 +609,7 @@ export const ARTICLES = [
     "parentCategory": "Buying Advice",
     "category": "Laptops",
     "categorySlug": "buying-advice-laptops",
-    "href": "articles/buying-guides/sample-article-02.html"
+    "href": "categories/buying-advice/laptops/articles/buying-a-laptop-a-practical-checklist-before-checkout.html"
   },
   {
     "id": "buying-advice-pc-components",
@@ -626,7 +626,7 @@ export const ARTICLES = [
     "parentCategory": "Buying Advice",
     "category": "PC Components",
     "categorySlug": "buying-advice-pc-components",
-    "href": "articles/buying-guides/sample-article-03.html"
+    "href": "categories/buying-advice/pc-components/articles/choosing-pc-components-without-wasting-the-budget.html"
   },
   {
     "id": "buying-advice-home-networking",
@@ -643,7 +643,7 @@ export const ARTICLES = [
     "parentCategory": "Buying Advice",
     "category": "Home Networking",
     "categorySlug": "buying-advice-home-networking",
-    "href": "articles/buying-guides/sample-article-04.html"
+    "href": "categories/buying-advice/home-networking/articles/choosing-home-networking-equipment-for-your-layout.html"
   },
   {
     "id": "buying-advice-smart-home",
@@ -660,7 +660,7 @@ export const ARTICLES = [
     "parentCategory": "Buying Advice",
     "category": "Smart Home",
     "categorySlug": "buying-advice-smart-home",
-    "href": "articles/buying-guides/sample-article-05.html"
+    "href": "categories/buying-advice/smart-home/articles/buying-smart-home-devices-that-work-together.html"
   },
   {
     "id": "buying-advice-cameras",
@@ -677,6 +677,346 @@ export const ARTICLES = [
     "parentCategory": "Buying Advice",
     "category": "Cameras",
     "categorySlug": "buying-advice-cameras",
-    "href": "articles/buying-guides/sample-article-06.html"
+    "href": "categories/buying-advice/cameras/articles/buying-a-camera-matching-sensor-lens-and-workflow.html"
+  },
+  {
+    "id": "engineering-electrical-sample-01",
+    "title": "Reading a Basic Circuit Diagram Before Wiring",
+    "summary": "Identify supply rails, reference points, protective devices and connections before assembling a low-voltage circuit.",
+    "published": "2026-10-27",
+    "readingMinutes": 6,
+    "tags": [
+      "circuits",
+      "schematics",
+      "electrical"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Electrical Engineering",
+    "categorySlug": "engineering-electrical",
+    "href": "categories/engineering/electrical/articles/reading-a-basic-circuit-diagram-before-wiring.html"
+  },
+  {
+    "id": "engineering-electrical-sample-02",
+    "title": "Voltage, Current and Resistance in Practical Troubleshooting",
+    "summary": "Use voltage, current and resistance measurements to frame tests and narrow down a circuit fault.",
+    "published": "2026-10-26",
+    "readingMinutes": 7,
+    "tags": [
+      "voltage",
+      "current",
+      "resistance"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Electrical Engineering",
+    "categorySlug": "engineering-electrical",
+    "href": "categories/engineering/electrical/articles/voltage-current-and-resistance-in-practical-troubleshooting.html"
+  },
+  {
+    "id": "engineering-electrical-sample-03",
+    "title": "Choosing a Multimeter for Electrical Measurements",
+    "summary": "Compare measurement ranges, input protection, probes and safety ratings when selecting a digital multimeter.",
+    "published": "2026-10-25",
+    "readingMinutes": 6,
+    "tags": [
+      "multimeter",
+      "test equipment",
+      "safety"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Electrical Engineering",
+    "categorySlug": "engineering-electrical",
+    "href": "categories/engineering/electrical/articles/choosing-a-multimeter-for-electrical-measurements.html"
+  },
+  {
+    "id": "engineering-electrical-sample-04",
+    "title": "What MCBs and RCDs Protect Against",
+    "summary": "Understand overcurrent and residual-current protection in a properly designed electrical installation.",
+    "published": "2026-10-24",
+    "readingMinutes": 7,
+    "tags": [
+      "protection",
+      "MCB",
+      "RCD"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Electrical Engineering",
+    "categorySlug": "engineering-electrical",
+    "href": "categories/engineering/electrical/articles/what-mcbs-and-rcds-protect-against.html"
+  },
+  {
+    "id": "engineering-electrical-sample-05",
+    "title": "A Safe Checklist for Low-Voltage Bench Testing",
+    "summary": "Prepare a repeatable bench setup with current limits, correct polarity, good connections and shutdown steps.",
+    "published": "2026-10-23",
+    "readingMinutes": 5,
+    "tags": [
+      "bench testing",
+      "power supply",
+      "electronics"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Electrical Engineering",
+    "categorySlug": "engineering-electrical",
+    "href": "categories/engineering/electrical/articles/a-safe-checklist-for-low-voltage-bench-testing.html"
+  },
+  {
+    "id": "engineering-mechanical-sample-01",
+    "title": "Bearings, Shafts and Alignment: a Workshop Checklist",
+    "summary": "Inspect shaft fit, bearing support, alignment and lubrication before commissioning a rotating assembly.",
+    "published": "2026-10-22",
+    "readingMinutes": 7,
+    "tags": [
+      "bearings",
+      "alignment",
+      "maintenance"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Mechanical Engineering",
+    "categorySlug": "engineering-mechanical",
+    "href": "categories/engineering/mechanical/articles/bearings-shafts-and-alignment-a-workshop-checklist.html"
+  },
+  {
+    "id": "engineering-mechanical-sample-02",
+    "title": "Choosing Fasteners for a Mechanical Assembly",
+    "summary": "Match fastener size, grade, thread engagement, environment and joint requirements to the design.",
+    "published": "2026-10-21",
+    "readingMinutes": 6,
+    "tags": [
+      "fasteners",
+      "mechanical design",
+      "assembly"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Mechanical Engineering",
+    "categorySlug": "engineering-mechanical",
+    "href": "categories/engineering/mechanical/articles/choosing-fasteners-for-a-mechanical-assembly.html"
+  },
+  {
+    "id": "engineering-mechanical-sample-03",
+    "title": "Torque, Preload and Thread Engagement Explained",
+    "summary": "See how tightening torque, clamp load and thread engagement affect the reliability of a bolted joint.",
+    "published": "2026-10-20",
+    "readingMinutes": 8,
+    "tags": [
+      "torque",
+      "preload",
+      "fasteners"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Mechanical Engineering",
+    "categorySlug": "engineering-mechanical",
+    "href": "categories/engineering/mechanical/articles/torque-preload-and-thread-engagement-explained.html"
+  },
+  {
+    "id": "engineering-mechanical-sample-04",
+    "title": "Why Vibration Appears in Rotating Machinery",
+    "summary": "Trace common vibration sources such as imbalance, misalignment, looseness and bearing condition.",
+    "published": "2026-10-19",
+    "readingMinutes": 7,
+    "tags": [
+      "vibration",
+      "rotating machinery",
+      "diagnostics"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Mechanical Engineering",
+    "categorySlug": "engineering-mechanical",
+    "href": "categories/engineering/mechanical/articles/why-vibration-appears-in-rotating-machinery.html"
+  },
+  {
+    "id": "engineering-mechanical-sample-05",
+    "title": "A Maintenance Checklist for Small Mechanisms",
+    "summary": "Create a consistent inspection routine for fasteners, moving interfaces, lubrication, wear and abnormal noise.",
+    "published": "2026-10-18",
+    "readingMinutes": 5,
+    "tags": [
+      "maintenance",
+      "mechanisms",
+      "inspection"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Mechanical Engineering",
+    "categorySlug": "engineering-mechanical",
+    "href": "categories/engineering/mechanical/articles/a-maintenance-checklist-for-small-mechanisms.html"
+  },
+  {
+    "id": "engineering-labs-sample-01",
+    "title": "Setting Up a Repeatable Electronics Bench",
+    "summary": "Organize power, instruments, leads, ESD precautions and documentation so experiments are easier to reproduce.",
+    "published": "2026-10-17",
+    "readingMinutes": 6,
+    "tags": [
+      "electronics lab",
+      "workbench",
+      "testing"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Labs",
+    "categorySlug": "engineering-labs",
+    "href": "categories/engineering/labs/articles/setting-up-a-repeatable-electronics-bench.html"
+  },
+  {
+    "id": "engineering-labs-sample-02",
+    "title": "How to Document a Test So It Can Be Repeated",
+    "summary": "Capture the objective, setup, method, readings and limitations of a lab test in a concise technical record.",
+    "published": "2026-10-16",
+    "readingMinutes": 5,
+    "tags": [
+      "documentation",
+      "testing",
+      "engineering"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Labs",
+    "categorySlug": "engineering-labs",
+    "href": "categories/engineering/labs/articles/how-to-document-a-test-so-it-can-be-repeated.html"
+  },
+  {
+    "id": "engineering-labs-sample-03",
+    "title": "Using a Bench Power Supply Safely",
+    "summary": "Choose voltage and current limits deliberately and recognize the warning signs of an unexpected load.",
+    "published": "2026-10-15",
+    "readingMinutes": 6,
+    "tags": [
+      "bench supply",
+      "electronics",
+      "safety"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Labs",
+    "categorySlug": "engineering-labs",
+    "href": "categories/engineering/labs/articles/using-a-bench-power-supply-safely.html"
+  },
+  {
+    "id": "engineering-labs-sample-04",
+    "title": "A First Approach to Oscilloscope Measurements",
+    "summary": "Prepare the probe, choose a suitable time base and voltage scale, and avoid grounding mistakes.",
+    "published": "2026-10-14",
+    "readingMinutes": 8,
+    "tags": [
+      "oscilloscope",
+      "measurement",
+      "electronics"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Labs",
+    "categorySlug": "engineering-labs",
+    "href": "categories/engineering/labs/articles/a-first-approach-to-oscilloscope-measurements.html"
+  },
+  {
+    "id": "engineering-labs-sample-05",
+    "title": "Organizing Prototypes, Measurements and Revisions",
+    "summary": "Keep hardware revisions, firmware builds, test notes and measurements connected during iterative project work.",
+    "published": "2026-10-13",
+    "readingMinutes": 6,
+    "tags": [
+      "prototyping",
+      "version control",
+      "lab notes"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Labs",
+    "categorySlug": "engineering-labs",
+    "href": "categories/engineering/labs/articles/organizing-prototypes-measurements-and-revisions.html"
+  },
+  {
+    "id": "engineering-drone-technology-sample-01",
+    "title": "How a Drone Flight Controller Connects Aircraft Systems",
+    "summary": "Understand how the flight controller combines sensor data, pilot commands and outputs to aircraft control systems.",
+    "published": "2026-10-12",
+    "readingMinutes": 7,
+    "tags": [
+      "drones",
+      "flight controller",
+      "systems"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Drone Technology",
+    "categorySlug": "engineering-drone-technology",
+    "href": "categories/engineering/drone-technology/articles/how-a-drone-flight-controller-connects-aircraft-systems.html"
+  },
+  {
+    "id": "engineering-drone-technology-sample-02",
+    "title": "Choosing a Power Distribution Board for a Multirotor",
+    "summary": "Compare current rating, voltage compatibility, connector layout and monitoring features for drone power distribution.",
+    "published": "2026-10-11",
+    "readingMinutes": 6,
+    "tags": [
+      "power distribution",
+      "multirotor",
+      "electronics"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Drone Technology",
+    "categorySlug": "engineering-drone-technology",
+    "href": "categories/engineering/drone-technology/articles/choosing-a-power-distribution-board-for-a-multirotor.html"
+  },
+  {
+    "id": "engineering-drone-technology-sample-03",
+    "title": "Drone Batteries: Current, Connectors and Voltage Sag",
+    "summary": "Learn how load current, connector resistance and battery condition influence voltage under motor demand.",
+    "published": "2026-10-10",
+    "readingMinutes": 7,
+    "tags": [
+      "battery",
+      "voltage sag",
+      "drones"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Drone Technology",
+    "categorySlug": "engineering-drone-technology",
+    "href": "categories/engineering/drone-technology/articles/drone-batteries-current-connectors-and-voltage-sag.html"
+  },
+  {
+    "id": "engineering-drone-technology-sample-04",
+    "title": "A Pre-Flight Inspection Checklist for Small Drones",
+    "summary": "Create a repeatable inspection for frame, propellers, battery, sensors, firmware and the planned operating area.",
+    "published": "2026-10-09",
+    "readingMinutes": 5,
+    "tags": [
+      "pre-flight",
+      "maintenance",
+      "drone safety"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Drone Technology",
+    "categorySlug": "engineering-drone-technology",
+    "href": "categories/engineering/drone-technology/articles/a-pre-flight-inspection-checklist-for-small-drones.html"
+  },
+  {
+    "id": "engineering-drone-technology-sample-05",
+    "title": "Diagnosing a Drone That Will Not Arm",
+    "summary": "Use a structured checklist to distinguish configuration, sensor, power and safety-interlock issues before flight.",
+    "published": "2026-10-08",
+    "readingMinutes": 6,
+    "tags": [
+      "drone diagnostics",
+      "flight controller",
+      "troubleshooting"
+    ],
+    "parentSlug": "engineering",
+    "parentCategory": "Engineering",
+    "category": "Drone Technology",
+    "categorySlug": "engineering-drone-technology",
+    "href": "categories/engineering/drone-technology/articles/diagnosing-a-drone-that-will-not-arm.html"
   }
 ];

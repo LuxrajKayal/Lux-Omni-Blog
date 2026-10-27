@@ -31,115 +31,45 @@ Lux-Omni-Blog/
 │   └── assets/
 ```
 
-## 1. Public Website — Cloudflare Pages
+## 1. Public Website — GitHub Pages
 
-The tree below is relative to `site/`. The GitHub Pages workflow currently publishes `site/` as the public output.
+The active workflow publishes only `site/`. The homepage is the **only file named `index.html`** in the public website. Category and subcategory landing pages use descriptive, unique names ending in `-index.html`; articles use descriptive filenames in each subcategory's `articles/` directory. Do not add nested `index.html` files.
 
 ```text
 site/
-├── index.html                    # Homepage; contains the homepage components already planned
-├── 404.html                      # Custom not-found page; should return HTTP 404
-├── robots.txt                    # Search-engine crawling rules
-├── sitemap.xml                   # Updated to reflect the actual URLs currently included in the site
-├── favicon.ico
-├── manifest.webmanifest          # Optional; add if install/PWA support is wanted
-│
-├── pages/                        # Standalone utility/legal pages
-│   ├── search.html               # Search interface
-│   ├── archive.html              # Cross-group article archive with filters/pagination
-│   ├── privacy.html              # Blog-specific privacy information
-│   ├── advertising.html           # Advertising/contact information
-│   └── contact.html              # Optional; can instead link to a Google Form
-│
-├── sections/                     # One dedicated landing page for each final article group/navigation destination
-│   ├── reviews.html               # Example group landing page
-│   ├── drone-technology.html      # Example group landing page
-│   ├── tutorials.html             # Example group landing page
-│   ├── tech-news-and-guides.html  # Example group landing page
-│   ├── buying-guides.html         # Example group landing page
-│   └── <group-slug>.html          # Add one page for every additional final group/destination
-│
+├── index.html
+├── categories/
+│   ├── tech-news/tech-news-index.html
+│   │   ├── ai/tech-ai-index.html
+│   │   ├── phones/tech-phones-index.html
+│   │   └── ... remaining Tech News subcategories
+│   ├── engineering/engineering-index.html
+│   │   ├── electrical/electrical-engineering-index.html
+│   │   ├── mechanical/mechanical-engineering-index.html
+│   │   ├── labs/engineering-labs-index.html
+│   │   └── drone-technology/drone-technology-index.html
+│   ├── reviews/reviews-index.html
+│   ├── how-to/how-to-index.html
+│   ├── hardware/hardware-index.html
+│   ├── software/software-index.html
+│   └── buying-advice/buying-advice-index.html
+├── pages/
 ├── templates/
-│   └── article-template.html      # Canonical article starter/contract for authors and future publishing software
-│
-├── articles/                     # Individual sample and editorial article HTML files, grouped by article group
-│   ├── reviews/
-│   │   ├── sample-review-01.html
-│   │   ├── sample-review-02.html
-│   │   ├── sample-review-03.html
-│   │   ├── sample-review-04.html
-│   │   ├── sample-review-05.html
-│   │   └── sample-review-06.html
-│   ├── drone-technology/          # Six sample articles during development, plus later real articles
-│   ├── tutorials/                 # Six sample articles during development, plus later real articles
-│   ├── tech-news-and-guides/      # Six sample articles during development, plus later real articles
-│   ├── buying-guides/             # Six sample articles during development, plus later real articles
-│   └── <group-slug>/              # One matching folder for every additional article group
-│
 ├── assets/
-│   ├── css/
-│   │   ├── tokens.css            # Shared brand, theme, spacing and typography tokens
-│   │   ├── base.css              # Resets, body defaults and shared typography
-│   │   ├── layout.css            # Shared page/container layout
-│   │   ├── topbar.css            # Top information bar
-│   │   ├── header.css            # Main navigation header and theme/search controls
-│   │   ├── dropdowns.css         # Navigation dropdowns
-│   │   ├── trending.css          # Trending topics strip
-│   │   ├── featured-story.css    # Homepage featured-story layout
-│   │   ├── ads.css               # Reserved ad-slot layout
-│   │   ├── reviews.css           # Homepage Reviews & Recommendations section
-│   │   ├── latest-articles.css   # Homepage Latest Tech News & Guides section
-│   │   ├── section-page.css      # Shared layout for parent and subcategory landing pages
-│   │   ├── article-page.css      # Shared defaults used by the canonical article template
-│   │   ├── newsletter.css        # Newsletter section
-│   │   ├── footer.css            # Footer
-│   │   ├── search.css            # Search popup and filter controls
-│   │   └── responsive.css        # Shared responsive adjustments
-│   │
-│   ├── js/
-│   │   ├── main.js               # Public-site entry point
-│   │   ├── theme.js              # Working theme toggle and localStorage persistence
-│   │   ├── navigation.js         # Click-operated dropdown and mobile navigation behavior
-│   │   ├── featured-story.js     # Homepage featured-story rotation and interactions
-│   │   ├── homepage-data.js      # Homepage article selections/settings where required
-│   │   ├── search.js             # Search, category filter, reading-time slider and sorting
-│   │   ├── article-index.js      # Shared static article metadata for search and landing pages
-│   │   ├── newsletter.js         # Newsletter form integration
-│   │   └── analytics.js           # Optional analytics integration, if adopted
-│   │
+│   ├── css/   # Existing stylesheets; unchanged in this migration
 │   ├── images/
-│   │   ├── brand/                # Supplied Lux Omni identity SVGs; preserve original artwork
-│   │   │   ├── Lux-Omni-Blog-App-Icon.svg
-│   │   │   ├── lux-Omni-Blog-micro-icon.svg
-│   │   │   └── lux-Omni-Blog-Transparent-Symbol.svg
-│   │   └── ui/                   # Supplied loading and article-animation SVGs
-│   │       ├── lux-Omni-Blog-Loader.svg
-│   │       └── lux-Omni-Blog-Subtle-Animation-For-Article.svg
-│   │
-│   └── fonts/                    # Only if self-hosted fonts are needed
-│
+│   └── js/
+├── sections/  # Legacy URL redirects retained for compatibility
+├── articles/  # Legacy URL redirects retained for compatibility
+├── sitemap.xml
+└── 404.html
 ```
 
-**Folder-name rule:** the illustrative groups above are examples from the planning discussion, not a final exhaustive taxonomy. Every article group ultimately included in the navigation/content plan must have (1) one dedicated page under `sections/`, (2) a matching folder under `articles/`, and (3) six sample article HTML files during development. The exact set of groups follows the final agreed dropdown taxonomy.
+There are seven main categories and 44 subcategories, including Drone Technology under Engineering. Every subcategory owns an `articles/` folder. The article index uses site-root-relative canonical hrefs; each HTML page's `data-site-root` is set for its directory depth so search and shared assets work from every level.
 
-### Public-site notes
+Previous `sections/*.html` and `articles/*/*.html` paths remain as simple compatibility redirects. They are not canonical URLs and are excluded from the sitemap. The canonical sitemap lists 112 pages: one homepage, 51 category/subcategory landing pages and 60 sample articles.
 
-- The homepage (`index.html`) keeps its own planned components. Its article cards are selected previews and link either to an individual article or to the appropriate group landing page through a “See All”/equivalent link.
-- Every final article group has a dedicated landing page under `sections/`. This is separate from the similarly named homepage section: the homepage section is a preview; the group page is the full browseable destination.
-- A dropdown item links to the matching group landing page. The group page links to its articles, stored in a matching `articles/<group-slug>/` folder. A group page must not merely reload the homepage or point at a non-existent destination.
-- During development, create **six sample article pages per article group, not six total**. They are deliberate test fixtures for checking cards, metadata, images, article layouts, navigation, and group-specific behavior. Keep them linkable from their group pages while testing; do not automatically hide them or exclude them from development listings or sitemap tests. The owner will decide when to delete them later.
-- `templates/article-template.html` is the canonical starter/reference structure for consistent article scaffolding and future publishing software. It is not itself one of the six sample articles for a group; make a real sample article file when testing an article page.
-- Keep individual article HTML pages flexible: the canonical template protects stable metadata, shared hooks, navigation and link conventions, but does not prohibit deliberate article-specific layouts or CSS/JS.
-- Use stable, human-readable article filenames, for example `articles/reviews/sample-review-01.html`. Once an article URL is intentionally retained as a public URL, avoid changing it unless a redirect is provided.
-- Large article photographs, video, banners and other media belong in **Cloudflare R2** if that storage direction is approved, not in this source tree. Small essential interface assets, including the supplied SVG icon set, belong under `site/assets/images/`.
-- The supplied SVG assets are retained at the exact paths listed in the tree: brand identity artwork under `assets/images/brand/`, and the loader/article animation artwork under `assets/images/ui/`.
-- Preserve the supplied SVG artwork as provided, including original colours, gradients, opacity and animation. Do not recolour, flatten, replace, or globally override these SVGs during theme changes. The micro icon uses `currentColor`, so theme-controlled recolouring should use that asset's intended current-colour behaviour rather than altering the file.
-- The supplied icon archive does not include a `.ico` favicon. `site/favicon.ico` remains a placeholder until a proper favicon file is supplied or a conversion is explicitly approved; do not treat the empty placeholder as a finished favicon.
-- `sitemap.xml` should match the URLs intentionally included in the current development or release build. During development, sample articles may be included so the sitemap/link checks can be tested. Before launch, the owner will decide which samples to delete; update the sitemap and internal links after that cleanup.
-- The file names above are a proposed starting point. Files should be created when needed; this is not a requirement to create every listed file immediately.
-
----
-
+The existing visual CSS and responsive rules are not changed during a category/file-structure migration.
 ## 2. Initial Authoring and Publishing Workflow — VS Code, Git and GitHub
 
 No separate Article Studio or backend article-writing tool will be built for the initial release. The owner will create and edit each article directly as an HTML file in Visual Studio Code. Articles may use custom HTML structure and article-specific CSS/JavaScript when justified; a shared starter file is optional and must not force all articles into the same layout.

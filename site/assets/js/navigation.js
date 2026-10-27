@@ -6,25 +6,19 @@ function syncPrimaryNavigation(){
  if(!techItem)return;
  const techLink=techItem.querySelector('[data-nav-parent="tech"]');
  const techToggle=techItem.querySelector("[data-dropdown-toggle]");
- if(techLink){
-  techLink.textContent="Tech News";
-  techLink.setAttribute("aria-label","Tech News");
- }
- if(techToggle){
-  techToggle.setAttribute("aria-label","Open Tech News categories");
-  techToggle.setAttribute("title","Open Tech News categories");
- }
+ if(techLink){techLink.textContent="Tech News";techLink.setAttribute("aria-label","Tech News");}
+ if(techToggle){techToggle.setAttribute("aria-label","Open Tech News categories");techToggle.setAttribute("title","Open Tech News categories");}
  const techMenu=techItem.querySelector(".nav-dropdown");
  if(techMenu)techMenu.setAttribute("aria-label","Tech News categories");
  if(document.querySelector('.nav-item[data-nav-group="engineering"]'))return;
  if(!techLink||!techToggle||!techMenu)return;
- const sectionBase=new URL(".",techLink.href);
+ const root=document.body.dataset.siteRoot||"";
  const engineeringItem=document.createElement("div");
  engineeringItem.className="nav-item";
  engineeringItem.dataset.navGroup="engineering";
  const engineeringLink=document.createElement("a");
  engineeringLink.className="nav-link";
- engineeringLink.href=new URL("engineering.html",sectionBase).href;
+ engineeringLink.href=root+"categories/engineering/engineering-index.html";
  engineeringLink.dataset.navParent="engineering";
  engineeringLink.textContent="Engineering";
  const toggle=techToggle.cloneNode(true);
@@ -33,25 +27,15 @@ function syncPrimaryNavigation(){
  toggle.setAttribute("aria-label","Open Engineering categories");
  toggle.setAttribute("title","Open Engineering categories");
  const menu=techMenu.cloneNode(false);
- menu.id="dropdown-engineering";
- menu.setAttribute("aria-label","Engineering categories");
- menu.hidden=true;
+ menu.id="dropdown-engineering";menu.setAttribute("aria-label","Engineering categories");menu.hidden=true;
  const categories=[
-  ["Electrical Engineering","engineering-electrical.html","engineering-electrical"],
-  ["Mechanical Engineering","engineering-mechanical.html","engineering-mechanical"],
-  ["Labs","engineering-labs.html","engineering-labs"]
+  ["Electrical Engineering","categories/engineering/electrical/electrical-engineering-index.html","engineering-electrical"],
+  ["Mechanical Engineering","categories/engineering/mechanical/mechanical-engineering-index.html","engineering-mechanical"],
+  ["Labs","categories/engineering/labs/engineering-labs-index.html","engineering-labs"],
+  ["Drone Technology","categories/engineering/drone-technology/drone-technology-index.html","engineering-drone-technology"]
  ];
- categories.forEach(([label,file,key])=>{
-  const li=document.createElement("li");
-  const link=document.createElement("a");
-  link.href=new URL(file,sectionBase).href;
-  link.dataset.navCategory=key;
-  link.textContent=label;
-  li.append(link);
-  menu.append(li);
- });
- engineeringItem.append(engineeringLink,toggle,menu);
- techItem.after(engineeringItem);
+ categories.forEach(([label,path,key])=>{const li=document.createElement("li");const link=document.createElement("a");link.href=root+path;link.dataset.navCategory=key;link.textContent=label;li.append(link);menu.append(li);});
+ engineeringItem.append(engineeringLink,toggle,menu);techItem.after(engineeringItem);
 }
 export function initNavigation(){
  syncPrimaryNavigation();

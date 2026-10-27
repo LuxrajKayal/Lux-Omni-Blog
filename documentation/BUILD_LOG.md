@@ -42,3 +42,13 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Updated `.github/workflows/pages.yml` to publish only `site/`; removed the `/dev/` assembly, control-panel existence check, and control-panel path trigger.
 - Updated active architecture and feature planning documents to use manual source-file configuration instead of a control-panel workflow.
 - No public-site source files were changed as part of this removal.
+
+
+## 2026-10-27 — Category folder migration
+
+- Reorganized seven main categories and 44 subcategories beneath `site/categories/`, using distinct descriptive landing-page filenames. `site/index.html` remains the only `index.html` page.
+- Migrated 40 existing populated sample articles into their subcategory-specific `articles/` folders with descriptive filenames.
+- Added Engineering's Electrical Engineering, Mechanical Engineering, Labs and Drone Technology topic pages, with five sample articles per topic.
+- Updated article-index hrefs, the dynamic Engineering navigation, local links/assets and each page's `data-site-root`.
+- Preserved old `sections/` and `articles/` URLs with compatibility redirects and regenerated the canonical sitemap with 112 URLs.
+- Kept all CSS files unchanged.
