@@ -4,7 +4,7 @@
 **Status:** Updated to reflect the current repository structure. Any future structural change should be recorded here after it is implemented.  
 **Hosting direction:** The public-site source lives in `site/`; GitHub Actions builds it into `_site/` and deploys that generated output. External database and media services are not required or configured for the current scope.
 
-This map separates public-site source (`site/`), build tooling (`scripts/`), and planning materials (`documentation/`). The control panel/dashboard has been removed from the project. The Node.js build script expands explicit shared-component markers into complete HTML pages in `_site/`; GitHub Pages deploys `_site/`, not source partials. The homepage is the first page migrated to shared topbar, main-header/search-dialog, and footer partials; category and article pages remain unchanged until the owner authorizes each migration step.
+This map separates public-site source (`site/`), build tooling (`scripts/`), and planning materials (`documentation/`). The control panel/dashboard has been removed from the project. Every populated HTML page uses one explicit marker each for the canonical topbar, main header/search dialog, and footer under `site/partials/`. The source pages contain their own content only; `scripts/build-site.mjs` stitches the markers into complete HTML in `_site/`. It does not detect, hide, or replace legacy components; it fails if a populated page is missing markers or still contains hardcoded shared shell markup.
 
 ---
 
@@ -143,7 +143,7 @@ Manual source edits in VS Code ─► Git/GitHub ─► approved site deployment
 Large media ─────────────────► Cloudflare R2
 ```
 
-The GitHub Pages workflow now runs `node scripts/build-site.mjs` before deployment. The build expands only explicitly marked shared components; pages without markers are copied unchanged. Only the homepage currently uses shared shell markers. Migration of category and article pages remains a separate, owner-controlled rollout.
+The GitHub Pages workflow runs `node scripts/build-site.mjs` before deployment. Every populated HTML source page must contain exactly one marker for TOPBAR, MAIN-HEADER, and FOOTER. The builder only expands those explicit markers, validates the generated shell, and fails on missing markers or leftover hardcoded shared components. Empty HTML placeholders remain untouched.
 
 ---
 
@@ -167,7 +167,6 @@ The GitHub Pages workflow now runs `node scripts/build-site.mjs` before deployme
 
 - Whether to retain descriptive `.html` filenames for article URLs or adopt clean directory URLs in a future, explicitly planned change.
 - How homepage selections, metadata and settings should be represented in static source files.
-- Whether to migrate each category/article page to shared shell markers; only the homepage is migrated in the initial rollout.
 - Further automation for article listings and sitemap updates.
 - Whether search is generated at build time, uses a client-side index, or uses another method.
 - Final CSS/JavaScript module boundaries after the first working skeleton.

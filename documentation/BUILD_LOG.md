@@ -68,3 +68,12 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Migrated only site/index.html to shared markers. Category, subcategory, article, and other pages retain their existing markup until the owner approves each subsequent migration step.
 - Kept the footer content blank and retained the existing dedicated CSS files.
 - Updated the GitHub Pages workflow to run the build before deployment and updated the file map to describe the implemented source/build/output structure.
+
+
+## 2026-10-27 — Source-level shared shell migration
+
+- Migrated all 112 populated HTML pages under `site/` to one explicit marker each for the canonical topbar, main header/search dialog, and footer.
+- Removed the duplicated inline topbar, main header, and search dialog from category, subcategory, and article source files; replaced any existing shared footer shell where present, and added the shared footer marker to each populated page.
+- Preserved page-specific content, metadata, URLs, CSS references, and JavaScript; five empty HTML placeholders were left unchanged.
+- Reworked `scripts/build-site.mjs` into a marker-only assembler. It rejects populated pages with missing/duplicate markers or leftover hardcoded shared shell markup instead of automatically replacing legacy source markup.
+- Updated the file map to describe the source-level shared-component structure and strict build behavior.

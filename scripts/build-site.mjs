@@ -2,8 +2,10 @@
 /**
  * Lux Omni Blog static-site build.
  *
- * Expands explicitly marked shared components into complete HTML at build time.
- * Pages without component markers are copied without shell migration.
+ * This builder stitches explicit shared-component markers into complete HTML.
+ * It does not detect, replace, hide, or repair legacy inline components.
+ * Populated source pages must already use the shared markers; invalid source
+ * fails the build so duplicated markup cannot silently reach the public site.
  * Source partials are excluded from the public output.
  */
 import { cp, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
@@ -20,6 +22,8 @@ const PARTIALS = {
   'MAIN-HEADER': path.join(PARTIAL_DIR, 'main-header.html'),
   FOOTER: path.join(PARTIAL_DIR, 'footer.html')
 };
+const MARKER_NAMES = Object.keys(PARTIALS);
+const markerFor = name => '<!-- SHARED:' + name + ' -->';
 
 function pageRootPrefix(html, relativeFile) {
   const bodyTag = html.match(/<body\b[^>]*>/i)?.[0] || '';
@@ -28,22 +32,44 @@ function pageRootPrefix(html, relativeFile) {
 
   const directory = path.posix.dirname(relativeFile.split(path.sep).join('/'));
   if (directory === '.') return '';
-  const depth = directory.split('/').filter(Boolean).length;
-  return '../'.repeat(depth);
+  return '../'.repeat(directory.split('/').filter(Boolean).length);
+}
+
+function countMatches(html, expression) {
+  return Array.from(html.matchAll(expression)).length;
 }
 
 function assertMarkerCounts(html, relativeFile) {
-  for (const markerName of Object.keys(PARTIALS)) {
-    const marker = '<!-- SHARED:' + markerName + ' -->';
+  for (const name of MARKER_NAMES) {
+    const marker = markerFor(name);
     const count = html.split(marker).length - 1;
-    if (count > 1) {
-      throw new Error(relativeFile + ' contains the marker ' + marker + ' more than once.');
+    if (count !== 1) {
+      throw new Error(relativeFile + ' must contain exactly one ' + marker + '; found ' + count + '.');
+    }
+  }
+  let withoutKnownMarkers = html;
+  for (const name of MARKER_NAMES) withoutKnownMarkers = withoutKnownMarkers.replaceAll(markerFor(name), '');
+  if (/<!-- SHARED:|{{ROOT}}/.test(withoutKnownMarkers)) {
+    throw new Error(relativeFile + ' contains an unknown shared marker or unresolved root token.');
+  }
+}
+
+function assertNoLegacyShell(html, relativeFile) {
+  const legacy = [
+    ['hardcoded topbar', /<aside\b[^>]*class\s*=\s*(["'])[^"']*\btopbar\b[^"']*\1/i],
+    ['hardcoded main header', /<header\b[^>]*class\s*=\s*(["'])[^"']*\bsite-header\b[^"']*\1/i],
+    ['hardcoded search dialog', /<dialog\b[^>]*\bid\s*=\s*(["'])search-dialog\1/i],
+    ['hardcoded shared footer', /<footer\b[^>]*class\s*=\s*(["'])[^"']*\bsite-footer\b[^"']*\1/i]
+  ];
+  for (const [name, expression] of legacy) {
+    if (expression.test(html)) {
+      throw new Error(relativeFile + ' still contains a ' + name + '. Remove it from the source and use the shared marker.');
     }
   }
 }
 
-function injectFooterStylesheet(html, rootPrefix, relativeFile, usesFooter) {
-  if (!usesFooter || html.includes('assets/css/footer.css')) return html;
+function injectFooterStylesheet(html, rootPrefix, relativeFile) {
+  if (/href\s*=\s*(["'])[^"']*assets\/css\/footer\.css\1/i.test(html)) return html;
   const headEnd = html.toLowerCase().lastIndexOf('</head>');
   if (headEnd < 0) {
     throw new Error(relativeFile + ' uses the shared footer but has no closing </head> tag.');
@@ -52,7 +78,43 @@ function injectFooterStylesheet(html, rootPrefix, relativeFile, usesFooter) {
   return html.slice(0, headEnd) + link + html.slice(headEnd);
 }
 
-async function walkAndBuild(sourceDirectory, relativeDirectory, partialContents) {
+function expandSharedComponents(sourceHtml, relativeFile, partialContents) {
+  assertMarkerCounts(sourceHtml, relativeFile);
+  assertNoLegacyShell(sourceHtml, relativeFile);
+
+  const rootPrefix = pageRootPrefix(sourceHtml, relativeFile);
+  let html = sourceHtml;
+
+  for (const name of MARKER_NAMES) {
+    const marker = markerFor(name);
+    const fragment = partialContents[name].replaceAll('{{ROOT}}', rootPrefix).trim();
+    html = html.replace(marker, fragment);
+  }
+
+  if (/<!-- SHARED:|{{ROOT}}/.test(html)) {
+    throw new Error(relativeFile + ' contains an unresolved shared marker or root token after assembly.');
+  }
+  html = injectFooterStylesheet(html, rootPrefix, relativeFile);
+  validateBuiltPage(html, relativeFile);
+  return html;
+}
+
+function validateBuiltPage(html, relativeFile) {
+  const required = [
+    ['topbar', /<aside\b[^>]*class\s*=\s*(["'])[^"']*\btopbar\b[^"']*\1/gi],
+    ['main header', /<header\b[^>]*class\s*=\s*(["'])[^"']*\bsite-header\b[^"']*\1/gi],
+    ['search dialog', /<dialog\b[^>]*\bid\s*=\s*(["'])search-dialog\1/gi],
+    ['footer', /<footer\b[^>]*class\s*=\s*(["'])[^"']*\bsite-footer\b[^"']*\1/gi]
+  ];
+  for (const [name, expression] of required) {
+    const count = countMatches(html, expression);
+    if (count !== 1) {
+      throw new Error(relativeFile + ' must contain exactly one assembled ' + name + '; found ' + count + '.');
+    }
+  }
+}
+
+async function walkAndBuild(sourceDirectory, relativeDirectory, partialContents, stats) {
   const entries = await readdir(sourceDirectory, { withFileTypes: true });
 
   for (const entry of entries) {
@@ -61,7 +123,7 @@ async function walkAndBuild(sourceDirectory, relativeDirectory, partialContents)
       : entry.name;
     const normalizedRelativePath = relativePath.split(path.sep).join('/');
 
-    // These are authoring fragments, not public pages or static assets.
+    // Shared HTML fragments are inputs to assembly, not public pages.
     if (!relativeDirectory && entry.isDirectory() && entry.name === 'partials') continue;
 
     const sourcePath = path.join(sourceDirectory, entry.name);
@@ -69,7 +131,7 @@ async function walkAndBuild(sourceDirectory, relativeDirectory, partialContents)
 
     if (entry.isDirectory()) {
       await mkdir(outputPath, { recursive: true });
-      await walkAndBuild(sourcePath, relativePath, partialContents);
+      await walkAndBuild(sourcePath, relativePath, partialContents, stats);
       continue;
     }
 
@@ -81,58 +143,45 @@ async function walkAndBuild(sourceDirectory, relativeDirectory, partialContents)
       continue;
     }
 
-    let html = await readFile(sourcePath, 'utf8');
-    const hasSharedMarker = /<!-- SHARED:(?:TOPBAR|MAIN-HEADER|FOOTER) -->/.test(html);
-    if (hasSharedMarker) {
-      assertMarkerCounts(html, normalizedRelativePath);
-      const rootPrefix = pageRootPrefix(html, normalizedRelativePath);
-      const usesFooter = html.includes('<!-- SHARED:FOOTER -->');
+    const sourceHtml = await readFile(sourcePath, 'utf8');
 
-      for (const [markerName] of Object.entries(PARTIALS)) {
-        const marker = '<!-- SHARED:' + markerName + ' -->';
-        if (!html.includes(marker)) continue;
-        const fragment = partialContents[markerName].replaceAll('{{ROOT}}', rootPrefix).trim();
-        html = html.replace(marker, fragment);
-      }
-
-      html = injectFooterStylesheet(html, rootPrefix, normalizedRelativePath, usesFooter);
-      if (/<!-- SHARED:|{{ROOT}}/.test(html)) {
-        throw new Error(normalizedRelativePath + ' contains an unresolved shared-component marker or root token.');
-      }
+    // Empty placeholders are deliberately left empty until their own implementation.
+    if (!sourceHtml.trim()) {
+      await writeFile(outputPath, sourceHtml, 'utf8');
+      stats.emptyPlaceholders += 1;
+      continue;
     }
 
-    await writeFile(outputPath, html, 'utf8');
+    if (!/<body\b/i.test(sourceHtml)) {
+      throw new Error(normalizedRelativePath + ' is non-empty HTML but has no <body> element.');
+    }
+
+    const builtHtml = expandSharedComponents(sourceHtml, normalizedRelativePath, partialContents);
+    await writeFile(outputPath, builtHtml, 'utf8');
+    stats.builtPages += 1;
   }
 }
 
 async function main() {
   await readFile(path.join(SITE_DIR, 'index.html'), 'utf8');
+
   const partialContents = {};
-  for (const [markerName, partialPath] of Object.entries(PARTIALS)) {
-    partialContents[markerName] = await readFile(partialPath, 'utf8');
+  for (const [name, partialPath] of Object.entries(PARTIALS)) {
+    partialContents[name] = await readFile(partialPath, 'utf8');
   }
 
   await rm(OUTPUT_DIR, { recursive: true, force: true });
   await mkdir(OUTPUT_DIR, { recursive: true });
-  await walkAndBuild(SITE_DIR, '', partialContents);
+
+  const stats = { builtPages: 0, emptyPlaceholders: 0 };
+  await walkAndBuild(SITE_DIR, '', partialContents, stats);
   await writeFile(path.join(OUTPUT_DIR, '.nojekyll'), '', 'utf8');
 
-  const builtHome = await readFile(path.join(OUTPUT_DIR, 'index.html'), 'utf8');
-  for (const [name, selector] of [
-    ['topbar', 'class="topbar"'],
-    ['main header', 'class="site-header"'],
-    ['search dialog', 'id="search-dialog"'],
-    ['footer', 'class="site-footer"']
-  ]) {
-    if (!builtHome.includes(selector)) {
-      throw new Error('Homepage build verification failed: missing ' + name + '.');
-    }
-  }
-  if (/<!-- SHARED:|{{ROOT}}/.test(builtHome)) {
-    throw new Error('Homepage build verification failed: unresolved shared-component marker or root token.');
-  }
-
-  console.log('Built static site into _site/. Shared components are expanded only on pages with explicit markers.');
+  console.log(
+    'Built _site/: assembled and verified shared components on ' +
+    stats.builtPages + ' populated HTML pages; left ' +
+    stats.emptyPlaceholders + ' empty HTML placeholders unchanged.'
+  );
 }
 
 main().catch(error => {
