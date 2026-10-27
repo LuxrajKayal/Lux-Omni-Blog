@@ -392,7 +392,7 @@ Exact legal copy should be reviewed for the real services and practices used at 
 
 ### Phase 4 — Evaluate optional backend needs
 - Finalize Supabase schema, access rules and public-read model.
-- Implement the smallest useful authenticated control panel.
+
 - Add supported homepage and article visibility settings.
 - Test authorization and failure states.
 
