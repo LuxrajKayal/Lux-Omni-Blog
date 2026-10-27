@@ -117,3 +117,9 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Added responsive showcase styling in `hero.css` and initialized it from `main.js`; image and headline links each point to the exact configured article URL.
 - Kept the rest of the homepage content and all article sources unchanged.
 
+## 2026-10-28 — Compact hero showcase layout
+
+- Moved the curated article headline onto the bottom of the image with a dark gradient, single-line ellipsis truncation, and a small open-article icon.
+- Moved previous/next arrows to the left and right sides of the image; removed the duplicate featured-article label, separate Read article link, dots, and bottom control bar.
+- Kept the top Editor's Picks label and slide counter, the five-second rotation interval, exact article links, and pause-on-hover/focus and hidden-tab handling.
+
