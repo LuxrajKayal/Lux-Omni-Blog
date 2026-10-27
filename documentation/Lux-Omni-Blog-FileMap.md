@@ -2,7 +2,7 @@
 
 **Project:** `blog.luxomni.com`  
 **Status:** Updated to reflect the current repository structure. Any future structural change should be recorded here after it is implemented.  
-**Hosting direction:** The current GitHub Pages workflow publishes the static site from `site/`. External database and media services are not required or configured for the current scope.
+**Hosting direction:** The public-site source lives in `site/`; GitHub Actions builds it into `_site/` and deploys that generated output. External database and media services are not required or configured for the current scope.
 
 This map separates public-site source (`site/`), build tooling (`scripts/`), and planning materials (`documentation/`). The control panel/dashboard has been removed from the project. The Node.js build script expands explicit shared-component markers into complete HTML pages in `_site/`; GitHub Pages deploys `_site/`, not source partials. The homepage is the first page migrated to shared topbar, main-header/search-dialog, and footer partials; category and article pages remain unchanged until the owner authorizes each migration step.
 
@@ -24,7 +24,7 @@ Lux-Omni-Blog/
 │   ├── Lux-Omni-Blog-Step-by-Step-Build-Plan.md
 │   ├── Article-Group-Pages.md
 │   └── ... other planning documents
-├── site/                        # Public website source and publish root
+├── site/                        # Public website source and build input
 │   ├── index.html                # The only file named index.html
 │   ├── partials/                 # Source-only shared HTML components
 │   │   ├── topbar.html            # Shared top information bar
@@ -96,14 +96,14 @@ Git repository
 └── GitHub remote              # Version history and backup/collaboration
 ```
 
-**Proposed working cycle (not yet approved as a final deployment procedure):**
+**Working cycle:**
 1. Create or edit one scoped fragment in VS Code.
 2. Run `node scripts/build-site.mjs` and preview the generated `_site/` output locally in a browser.
 3. Check responsive behaviour, links, browser-console errors and basic accessibility.
 4. Check SEO basics for each article: unique title and description, meaningful headings, descriptive URL/slug, canonical URL when appropriate, image alt text, and social-preview metadata.
 5. Run relevant Lighthouse/PageSpeed checks at suitable milestones rather than after every tiny text edit.
 6. Commit the tested change in Git and push it to GitHub. Do not label a known-broken change as a good checkpoint.
-7. Publish using the deployment method selected later; verify the live URL and update sitemap/listings as needed.
+7. Push tested changes to GitHub; the Pages workflow builds and deploys `_site/`. Verify the live URL and update sitemap/listings as needed.
 
 **Initial tool shortlist:**
 - Visual Studio Code — editing individual HTML/CSS/JS files.
@@ -133,7 +133,7 @@ VS Code article authoring
         └── Prepare article for publication
                     │
                     ▼
-          GitHub Pages workflow (publishes `site/`)
+          GitHub Pages workflow (builds `site/` into `_site/` and deploys `_site/`)
                     │
                     ├── Article has a stable public URL
                     └── Sitemap/public article listing is updated
