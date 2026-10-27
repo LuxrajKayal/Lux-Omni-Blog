@@ -20,6 +20,8 @@ Lux-Omni-Blog/
 ├── scripts/                      # Node.js static-site build tooling
 │   └── build-site.mjs             # Expands shared component markers into _site/
 ├── documentation/               # Planning references for development only
+├── Edit-Guide/                   # Practical guides for editing existing site features
+│   └── hero-section-link -edit.md # Change curated homepage hero article URLs
 │   ├── PLAN_INDEX.md
 │   ├── Lux-Omni-Blog-FileMap.md
 │   ├── Lux-Omni-Blog-Blueprint.md

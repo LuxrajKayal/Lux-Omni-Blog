@@ -123,3 +123,9 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Moved previous/next arrows to the left and right sides of the image; removed the duplicate featured-article label, separate Read article link, dots, and bottom control bar.
 - Kept the top Editor's Picks label and slide counter, the five-second rotation interval, exact article links, and pause-on-hover/focus and hidden-tab handling.
 
+## 2026-10-28 — Add hero-section editing guide
+
+- Added `Edit-Guide/hero-section-link -edit.md` with instructions for editing the manual `FEATURED_ARTICLE_URLS` list in `site/assets/js/hero-showcase.js`.
+- Documented the site-root-relative URL format, the article `h1` and `img[data-hero-image]` requirements, the five-article limit, rotation order, and publish/verification workflow.
+- Documented the new `Edit-Guide/` folder in the FileMap; no website runtime files were changed.
+
