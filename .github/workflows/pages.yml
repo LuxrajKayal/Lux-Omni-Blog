@@ -1,4 +1,4 @@
-name: Deploy Lux Omni Blog and Dev Site to GitHub Pages
+name: Deploy Lux Omni Blog to GitHub Pages
 
 on:
   push:
@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - "site/**"
-      - "control-panel/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -32,17 +31,15 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Assemble public site and dev site
+      - name: Assemble public site
         shell: bash
         run: |
           set -euo pipefail
 
           test -f site/index.html
-          test -f control-panel/index.html
 
-          mkdir -p _site/dev
+          mkdir -p _site
           cp -a site/. _site/
-          cp -a control-panel/. _site/dev/
           touch _site/.nojekyll
 
           echo "Prepared public site:"
