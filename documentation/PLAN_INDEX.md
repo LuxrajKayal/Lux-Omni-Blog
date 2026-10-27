@@ -1,5 +1,23 @@
-## Current scope update — 2026-10-27\n\n- Removed the entire `control-panel/` directory.\n- Updated GitHub Pages deployment to publish only `site/`; `/dev/` is no longer assembled.\n- Active architecture notes now describe manual source-file updates through VS Code and Git/GitHub rather than a dashboard.\n\nThe requested file reference is not currently visible. Use files.search or files.list to rediscover the file, then retry with a returned ref_id or file_id.
+# Lux Omni Blog — Planning Index
 
-## Historical repository skeleton checkpoint — 2026-10-25 (superseded)
+## Current project scope — 2026-10-27
 
-The initial empty-site snapshot below is historical and has since been superseded by implementation work. The current public site includes a populated homepage, CSS/JavaScript modules, section pages, article samples, and a GitHub Pages workflow. The control panel has been removed from both the repository and deployment.
+- The public website source is under `site/`.
+- Planning documents remain under `documentation/`.
+- The control panel has been removed; no dashboard, browser-based article uploader, or `/dev/` site is part of the project.
+- GitHub Pages publishes the contents of `site/` only.
+- Article content, metadata, homepage selections, and supported static settings are maintained directly in source files using VS Code and Git/GitHub.
+
+## Recommended reading order
+
+1. `Lux-Omni-Blog-Blueprint.md` — intended site experience and feature scope.
+2. `Lux-Omni-Blog-FileMap.md` — repository layout and source-file conventions.
+3. `Lux-Omni-Blog-Step-by-Step-Build-Plan.md` — staged implementation and change-control rules.
+4. `Article-Group-Pages.md` — homepage, group-page, and article hierarchy.
+5. `COLOR_SYSTEM.md` — approved color-system baseline.
+6. `Main-Navigation-Header.md` and `Main-Navigation-Dropdowns.md` — current navigation behavior.
+7. `BUILD_LOG.md` and `DECISIONS_LOG.md` — implementation milestones and owner decisions.
+
+## Historical note
+
+The repository initially contained a mostly empty skeleton on 2026-10-25. That checkpoint has been superseded by the current populated homepage, shared CSS/JavaScript, section pages, sample articles, and GitHub Pages workflow.
