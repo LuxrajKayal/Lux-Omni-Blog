@@ -2,7 +2,7 @@
 
 **Project:** `blog.luxomni.com`  
 **Status:** Proposed planning map — not a commitment to a framework or final implementation.  
-**Hosting direction:** Cloudflare Pages for the public site and published article HTML; Cloudflare R2 for large media; Supabase for structured metadata and developer-panel settings.
+**Hosting direction:** The current GitHub Pages workflow publishes the static site from `site/`. External database and media services are not required or configured for the current scope.
 
 This map separates the **public website** (stored in `site/`) from planning materials (`documentation/`). The control panel/dashboard has been removed from the project. The initial authoring workflow is to edit individual HTML article files directly in Visual Studio Code, preview and test locally, use Git/GitHub for version history, then publish the `site/` directory.
 
