@@ -109,3 +109,11 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Added responsive featured-image styling to `section-page.css` and documented the image-marker convention in the FileMap.
 - Prepared source articles for the future curated hero showcase; no hero carousel or image-fetching logic was added in this step.
 
+## 2026-10-28 — Curated homepage hero showcase
+
+- Replaced the homepage's decorative LO visual with a curated article slide that retrieves each configured article's h1 and explicitly marked `img[data-hero-image]` from same-origin article HTML.
+- Configured five manually maintained article URLs in `site/assets/js/hero-showcase.js`; changing that list controls which articles appear, up to five.
+- Added five-second automatic rotation, previous/next controls, slide indicators, pause/play, pause-on-hover, tab-visibility handling, and reduced-motion support.
+- Added responsive showcase styling in `hero.css` and initialized it from `main.js`; image and headline links each point to the exact configured article URL.
+- Kept the rest of the homepage content and all article sources unchanged.
+
