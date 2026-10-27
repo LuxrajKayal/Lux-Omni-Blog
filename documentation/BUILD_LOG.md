@@ -34,3 +34,11 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Implemented the search popup with text search, category filtering, a reading-time slider and sorting by date/category/article title.
 - Implemented a persistent light/dark theme toggle and placed JavaScript in the existing `site/assets/js/` structure with `main.js` as the entry point.
 - Added responsive navigation and updated the file map and navigation planning documents. The finalized copper topbar stylesheet and design tokens were not changed.
+
+
+## 2026-10-27 — Control panel removed
+
+- Deleted the complete `control-panel/` directory and its HTML/CSS/JavaScript placeholders.
+- Updated `.github/workflows/pages.yml` to publish only `site/`; removed the `/dev/` assembly, control-panel existence check, and control-panel path trigger.
+- Updated active architecture and feature planning documents to use manual source-file configuration instead of a control-panel workflow.
+- No public-site source files were changed as part of this removal.
