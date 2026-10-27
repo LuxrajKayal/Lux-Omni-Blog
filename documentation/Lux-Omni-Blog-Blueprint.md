@@ -3,7 +3,7 @@
 **Project:** Lux Omni Blog  
 **Target domain:** `blog.luxomni.com`  
 **Document type:** Product and functional blueprint  
-**Status:** Planning draft — proposed details remain unapproved until explicitly confirmed.
+**Status:** Planning draft — proposed details remain unapproved until explicitly confirmed.\n\n**Scope update — 2026-10-27:** The developer control panel/dashboard has been removed from the repository and is not part of the project. Content, homepage selections and supported settings are maintained directly in the static source files through VS Code and Git/GitHub. Older dashboard references below are superseded by this update.
 
 ---
 
@@ -23,7 +23,7 @@ This blueprint describes the intended product. It is not source code and does no
 
 ## Repository Layout for Planning and Implementation
 
-The GitHub repository separates working source from planning references and the future control panel:
+The GitHub repository separates public website source from planning references:
 
 ```text
 Lux-Omni-Blog/
@@ -33,7 +33,7 @@ Lux-Omni-Blog/
 └── control-panel/     # Separate future application, not part of the public site
 ```
 
-The eventual static-site deployment must publish `site/` only. The `documentation/` folder is for project planning/reference and must not be treated as a website component. The control panel also remains outside the public site's directory.
+The static-site deployment publishes `site/` only. The `documentation/` folder is for project planning/reference and must not be treated as a website component. No control panel is included.
 
 ## 2. Audiences and Core Use Cases
 
@@ -73,7 +73,7 @@ Public website — Cloudflare Pages (planned)
 
 Site owner
   ├── VS Code + local browser preview ──► Git/GitHub ──► Publishing workflow
-  └── Developer Control Panel ── manages allowed settings ──────────► Supabase
+  └── Source changes in VS Code + Git/GitHub ──► approved deployment
 ```
 
 This is a proposed service layout, not a finalized implementation. Public site code must only access data intended to be public. Authentication and database permissions must be enforced independently of the visible interface.
@@ -125,7 +125,7 @@ The homepage should use one primary navigation row rather than adding a second c
 Purpose: highlight selected topics or current areas of interest.
 
 Planned behavior:
-- Topics and destination URLs are entered by the owner through the control panel.
+- Topic labels and destination URLs are maintained in static site files; there is no dashboard or live settings service.
 - Display the topic label and link.
 - Scrolling or static behavior is not yet decided; do not add motion by default before that decision.
 
@@ -148,7 +148,7 @@ Initial proposed slots:
 Initial exclusions:
 - No ads in the top information bar, navigation, trending strip or featured-story content.
 
-The control panel should eventually support enabling/disabling a slot and storing its placement/provider/campaign details. Exact ad sizes, responsive behavior and campaign management are not finalized. Begin with manually placed ad units; direct advertising campaigns can be considered later.
+Advertisement slots, if implemented, are configured in the static source files. Exact ad sizes, responsive behavior and campaign management are not finalized. Begin with manually placed ad units; direct advertising campaigns can be considered later.
 
 ### 4.7 Reviews & Recommendations
 Planned two-column section:
@@ -169,7 +169,7 @@ Each card may include:
 - Estimated reading time.
 - Article link.
 
-Default selection: latest published articles. The owner may pin or override selections through the control panel.
+Default selection: latest published articles. Manual pinning or overrides, if needed, are maintained in the static homepage data/markup.
 
 A “See All” link leads to the dedicated Tech News & Guides group landing page (or to a specifically planned aggregate archive if the selected content spans multiple groups). The group page can support filters, search links and pagination once those behaviors are agreed. Tablet/mobile layout and exact filters remain open.
 
@@ -272,18 +272,9 @@ Important boundary: a browser-side script that hides content does not prevent th
 
 ## 7. Owner Tools
 
-### 7.1 Developer Control Panel
-Planned management areas:
-- Article metadata and publication status.
-- Homepage featured-story selections.
-- Reviews/recommendations and manual popular-content overrides.
-- Trending topics and links.
-- Site settings and supported theme/configuration settings.
-- Advertisement slots and campaign metadata.
-- Media records and references.
-- Article visibility setting.
+### 7.1 Manual Source-Based Workflow
 
-The panel should manage structured content and settings, not become a general-purpose code editor unless separately planned.
+The owner edits article HTML, article metadata and homepage selections directly in VS Code. Preview changes locally, check links and browser-console errors, then commit and publish through the approved Git/GitHub workflow. No dashboard, article-upload portal or browser-based settings editor is in scope.
 
 ### 7.2 Initial Article Authoring Workflow
 
@@ -369,7 +360,7 @@ Exact legal copy should be reviewed for the real services and practices used at 
 ## 12. Security and Reliability
 
 - Never expose Supabase service-role credentials or other secrets in public JavaScript.
-- Enforce control-panel permissions using appropriate authentication and Supabase RLS.
+- Treat public HTML, CSS, JavaScript and static metadata as public; never store credentials or secrets in the deployed site.
 - Validate input in the trusted layer, not only in browser forms.
 - Treat custom article HTML/JavaScript as executable code and review it before publication.
 - Keep drafts, credentials and private configuration out of the public deployment directory.
@@ -399,7 +390,7 @@ Exact legal copy should be reviewed for the real services and practices used at 
 - Test all dedicated group landing pages using the six samples per group.
 - Add dynamic settings only where they provide a clear benefit.
 
-### Phase 4 — Backend and owner tools
+### Phase 4 — Evaluate optional backend needs
 - Finalize Supabase schema, access rules and public-read model.
 - Implement the smallest useful authenticated control panel.
 - Add supported homepage and article visibility settings.
