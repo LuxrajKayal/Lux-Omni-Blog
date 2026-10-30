@@ -134,3 +134,10 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Added `Edit-Guide/topbar-links -edit.md` with the source file, exact markup patterns, and steps for updating the logo/home link, slogan, newsletter destination, social profiles, email address, and About link.
 - Documented the `{{ROOT}}` path token, the shared partial/build workflow, and the distinction between content edits in `topbar.html` and visual changes in `topbar.css`.
 - Kept the FileMap and all public-site runtime files unchanged.
+
+## 2026-10-30 — Remove redundant homepage sections
+
+- Removed the “Browse by Interest / Explore the topics” category-card section from `site/index.html`.
+- Removed the hardcoded “Latest Sample Stories / Fresh perspectives” article-card section and the temporary development-preview notice from the homepage; the linked sample article files remain intact.
+- Removed the homepage's now-unused `section-page.css` stylesheet reference and obsolete homepage-only category-grid, spacing and development-notice CSS, including their responsive rules.
+- Preserved the homepage hero and Editor's Picks carousel, shared topbar/header/footer, article files, shared article-card styling used by category pages, and the FileMap.
