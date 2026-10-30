@@ -160,3 +160,9 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Added the eyebrow “On This Day in Science & Engineering”, the H2 “Famous Scientists, Engineers & Inventors Born Today”, and a concise supporting description above the existing empty panel.
 - Kept the content panel blank; no person data, portrait, quotation, article details, external fetch, or JavaScript was added.
 - Kept all section typography and layout in the dedicated `technical-pioneer.css` file. The FileMap and unrelated homepage components were not changed.
+
+## 2026-10-30 — Refine Technical Pioneer description
+
+- Replaced the Technical Pioneer section's introductory description with concise wording focused on a relevant theory, principle or original passage paired with a related Lux Omni article.
+- Preserved the heading, empty content panel, section layout, dedicated stylesheet and all other homepage content.
+- No daily data, images, quotations, article content or fetching behavior was added.
