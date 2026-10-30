@@ -148,3 +148,9 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Created a dedicated `technical-pioneer.css` stylesheet for the section title and empty bordered panel, matching the homepage hero's surface, border, radius and width conventions.
 - Kept the section content empty; no person data, image, quotation, article link, fetch logic or JavaScript was added.
 - Left the existing hero, shared header/footer, FileMap and article files unchanged.
+
+## 2026-10-30 — Keep Technical Pioneer placeholder blank
+
+- Removed the visible section heading from the homepage; the section now contains only its empty bordered panel.
+- Removed the heading-specific CSS. Kept the section's accessible label, position, panel dimensions, border, radius, and dedicated stylesheet.
+- No data, image, quotation, article card, fetching logic or JavaScript was added.
