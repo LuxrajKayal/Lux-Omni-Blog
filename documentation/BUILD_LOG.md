@@ -141,3 +141,10 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Removed the hardcoded “Latest Sample Stories / Fresh perspectives” article-card section and the temporary development-preview notice from the homepage; the linked sample article files remain intact.
 - Removed the homepage's now-unused `section-page.css` stylesheet reference and obsolete homepage-only category-grid, spacing and development-notice CSS, including their responsive rules.
 - Preserved the homepage hero and Editor's Picks carousel, shared topbar/header/footer, article files, shared article-card styling used by category pages, and the FileMap.
+
+## 2026-10-30 — Add Technical Pioneer homepage placeholder
+
+- Added a blank “Technical Pioneer born today” section immediately below the homepage hero.
+- Created a dedicated `technical-pioneer.css` stylesheet for the section title and empty bordered panel, matching the homepage hero's surface, border, radius and width conventions.
+- Kept the section content empty; no person data, image, quotation, article link, fetch logic or JavaScript was added.
+- Left the existing hero, shared header/footer, FileMap and article files unchanged.
