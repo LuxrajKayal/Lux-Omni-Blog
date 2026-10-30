@@ -166,3 +166,8 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Replaced the Technical Pioneer section's introductory description with concise wording focused on a relevant theory, principle or original passage paired with a related Lux Omni article.
 - Preserved the heading, empty content panel, section layout, dedicated stylesheet and all other homepage content.
 - No daily data, images, quotations, article content or fetching behavior was added.
+
+## 2026-10-30 — Widen Technical Pioneer description
+
+- Removed the 900px intro-container and 75ch description width caps so the supporting description can use the available homepage content width on desktop.
+- Kept natural text wrapping for smaller viewports; did not force `white-space: nowrap` or change typography, spacing, heading, or panel dimensions.
