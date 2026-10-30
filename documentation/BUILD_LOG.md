@@ -154,3 +154,9 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Removed the visible section heading from the homepage; the section now contains only its empty bordered panel.
 - Removed the heading-specific CSS. Kept the section's accessible label, position, panel dimensions, border, radius, and dedicated stylesheet.
 - No data, image, quotation, article card, fetching logic or JavaScript was added.
+
+## 2026-10-30 — Add SEO heading to Technical Pioneer section
+
+- Added the eyebrow “On This Day in Science & Engineering”, the H2 “Famous Scientists, Engineers & Inventors Born Today”, and a concise supporting description above the existing empty panel.
+- Kept the content panel blank; no person data, portrait, quotation, article details, external fetch, or JavaScript was added.
+- Kept all section typography and layout in the dedicated `technical-pioneer.css` file. The FileMap and unrelated homepage components were not changed.
