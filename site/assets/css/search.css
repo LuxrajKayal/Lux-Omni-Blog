@@ -13,3 +13,11 @@
 .search-result h3{margin:.42rem 0;font-size:1.06rem;line-height:1.25}.search-result h3 a{color:var(--color-text-primary);text-decoration:none}.search-result h3 a:hover{color:var(--brand-crimson);text-decoration:underline}
 .search-result p{margin:0;color:var(--color-text-secondary);font-size:var(--font-size-sm);line-height:1.5}.search-result__footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem;margin-top:.6rem;color:var(--color-text-muted);font-size:var(--font-size-xs)}
 .search-result__tags{display:flex;flex-wrap:wrap;gap:.3rem}.search-result__tag{padding:.15rem .42rem;border-radius:var(--radius-pill);background:var(--color-surface);color:var(--color-text-secondary)}.search-empty{padding:1.5rem .5rem;color:var(--color-text-secondary);text-align:center}.search-dialog__note{margin:.8rem 0 0;color:var(--color-text-muted);font-size:var(--font-size-xs)}
+
+/* Tag Search mode shares the existing dialog and result-card presentation. */
+.search-dialog__view[hidden]{display:none!important}
+.tag-search__actions{display:flex;justify-content:center;margin-top:.85rem}
+.tag-search__load-more{min-height:42px;padding:.65rem 1.1rem;border:1px solid var(--color-border-strong);border-radius:var(--radius-md);background:var(--color-surface);color:var(--color-text-primary);font:inherit;font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);cursor:pointer;transition:background .15s ease,border-color .15s ease}
+.tag-search__load-more:hover{border-color:var(--brand-crimson);background:var(--color-surface-raised)}
+.tag-search__load-more:focus-visible{outline:2px solid var(--brand-crimson);outline-offset:3px}
+.tag-search__load-more[hidden]{display:none}

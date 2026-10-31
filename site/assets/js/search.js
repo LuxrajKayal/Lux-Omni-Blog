@@ -1,5 +1,5 @@
 import { ARTICLES } from "./article-index.js";
-import { getArticleTagNames } from "./tag-indexer.js";
+import { getArticleIdsByBoxId, getArticleTagNames } from "./tag-indexer.js";
 
 const titleCompare = (a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: "base" });
 const catCompare = (a, b) => a.category.localeCompare(b.category, undefined, { sensitivity: "base" });
@@ -10,8 +10,22 @@ const fmtDate = value => new Date(value + "T12:00:00Z").toLocaleDateString("en-G
   day: "numeric", month: "short", year: "numeric", timeZone: "UTC"
 });
 
+function renderArticleCard(article, root) {
+  return '<article class="search-result"><div class="search-result__eyebrow"><span>' +
+    escapeHTML(article.parentCategory) + " / " + escapeHTML(article.category) +
+    '</span><span>' + escapeHTML(fmtDate(article.published)) +
+    '</span></div><h3><a href="' + root + escapeHTML(article.href) + '">' +
+    escapeHTML(article.title) + '</a></h3><p>' + escapeHTML(article.summary) +
+    '</p><div class="search-result__footer"><span>' + article.readingMinutes +
+    ' min read</span></div></article>';
+}
+
 export function initSearch() {
   const dialog = document.querySelector("#search-dialog");
+  const eyebrow = document.querySelector("#search-dialog-eyebrow");
+  const title = document.querySelector("#search-dialog-title");
+  const generalView = document.querySelector("#general-search-view");
+  const tagView = document.querySelector("#tag-search-view");
   const form = document.querySelector("#search-form");
   const input = document.querySelector("#search-query");
   const category = document.querySelector("#search-category-filter");
@@ -20,7 +34,13 @@ export function initSearch() {
   const output = document.querySelector("#search-reading-output");
   const results = document.querySelector("#search-results");
   const count = document.querySelector("#search-result-count");
-  if (!dialog || !form || !input || !category || !sort || !slider || !output || !results || !count) return;
+  const tagResults = document.querySelector("#tag-search-results");
+  const tagCount = document.querySelector("#tag-search-result-count");
+  const loadMore = document.querySelector("#tag-search-load-more");
+
+  if (!dialog || !eyebrow || !title || !generalView || !tagView ||
+      !form || !input || !category || !sort || !slider || !output ||
+      !results || !count || !tagResults || !tagCount || !loadMore) return;
 
   [...new Set(ARTICLES.map(article => article.category))]
     .sort((a, b) => a.localeCompare(b))
@@ -54,7 +74,7 @@ export function initSearch() {
     return list;
   }
 
-  function render() {
+  function renderGeneralSearch() {
     const max = Number(slider.value);
     output.textContent = (max === 15 ? "15+" : String(max)) + " min max";
     const list = matches();
@@ -64,32 +84,93 @@ export function initSearch() {
       return;
     }
     const root = document.body.dataset.siteRoot || "";
-    results.innerHTML = list.map(article =>
-      '<article class="search-result"><div class="search-result__eyebrow"><span>' +
-      escapeHTML(article.parentCategory) + " / " + escapeHTML(article.category) +
-      '</span><span>' + escapeHTML(fmtDate(article.published)) +
-      '</span></div><h3><a href="' + root + escapeHTML(article.href) + '">' +
-      escapeHTML(article.title) + '</a></h3><p>' + escapeHTML(article.summary) +
-      '</p><div class="search-result__footer"><span>' + article.readingMinutes +
-      ' min read</span></div></article>'
-    ).join("");
+    results.innerHTML = list.map(article => renderArticleCard(article, root)).join("");
+  }
+
+  const tagState = {
+    boxId: null,
+    tagName: "",
+    articles: [],
+    visibleCount: 0
+  };
+
+  function setMode(mode) {
+    const tagMode = mode === "tag";
+    generalView.hidden = tagMode;
+    tagView.hidden = !tagMode;
+    eyebrow.textContent = tagMode ? "TAG SEARCH" : "LUX OMNI LIBRARY";
+    title.textContent = tagMode ? tagState.tagName : "Search articles";
+  }
+
+  function openDialog() {
+    if (typeof dialog.showModal === "function" && !dialog.open) dialog.showModal();
+    else if (!dialog.open) dialog.setAttribute("open", "");
+  }
+
+  function renderTagSearch(reset = false) {
+    if (reset) tagState.visibleCount = Math.min(10, tagState.articles.length);
+
+    const total = tagState.articles.length;
+    const visible = tagState.articles.slice(0, tagState.visibleCount);
+    const noun = total === 1 ? "article" : "articles";
+    tagCount.textContent = "Showing " + visible.length + " of " + total + " " + noun;
+
+    if (!total) {
+      tagResults.innerHTML = '<p class="search-empty">No articles are currently connected to this tag.</p>';
+    } else {
+      const root = document.body.dataset.siteRoot || "";
+      tagResults.innerHTML = visible.map(article => renderArticleCard(article, root)).join("");
+    }
+
+    loadMore.hidden = tagState.visibleCount >= total;
   }
 
   let lastTrigger = null;
+
   document.querySelectorAll("[data-search-open]").forEach(button => button.addEventListener("click", () => {
     lastTrigger = button;
-    if (typeof dialog.showModal === "function") dialog.showModal();
-    else dialog.setAttribute("open", "");
-    render();
+    tagState.boxId = null;
+    setMode("general");
+    openDialog();
+    renderGeneralSearch();
     input.focus();
   }));
+
   document.querySelector("[data-search-close]")?.addEventListener("click", () => dialog.close());
   dialog.addEventListener("click", event => { if (event.target === dialog) dialog.close(); });
-  dialog.addEventListener("close", () => lastTrigger?.focus());
-  form.addEventListener("submit", event => { event.preventDefault(); render(); });
-  input.addEventListener("input", render);
-  category.addEventListener("change", render);
-  sort.addEventListener("change", render);
-  slider.addEventListener("input", render);
-  render();
+  dialog.addEventListener("close", () => {
+    setMode("general");
+    lastTrigger?.focus();
+  });
+
+  form.addEventListener("submit", event => { event.preventDefault(); renderGeneralSearch(); });
+  input.addEventListener("input", renderGeneralSearch);
+  category.addEventListener("change", renderGeneralSearch);
+  sort.addEventListener("change", renderGeneralSearch);
+  slider.addEventListener("input", renderGeneralSearch);
+
+  loadMore.addEventListener("click", () => {
+    tagState.visibleCount = Math.min(tagState.visibleCount + 10, tagState.articles.length);
+    renderTagSearch();
+  });
+
+  document.addEventListener("luxomni:tag-select", event => {
+    const detail = event.detail || {};
+    if (!detail.tagId) return;
+
+    lastTrigger = document.activeElement;
+    tagState.boxId = detail.tagId;
+    tagState.tagName = detail.tagName || "Selected tag";
+
+    const articleIds = new Set(getArticleIdsByBoxId(tagState.boxId));
+    tagState.articles = ARTICLES
+      .filter(article => articleIds.has(article.id))
+      .sort((a, b) => b.published.localeCompare(a.published) || titleCompare(a, b));
+
+    setMode("tag");
+    renderTagSearch(true);
+    openDialog();
+  });
+
+  renderGeneralSearch();
 }

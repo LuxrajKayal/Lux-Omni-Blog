@@ -89,6 +89,15 @@ export function getArticleTagNames(articleId) {
   return getArticlePouchContents(articleId).map(item => item.name);
 }
 
+/** Return each article once when any active pouch is connected to this library Box. */
+export function getArticleIdsByBoxId(boxId) {
+  if (!boxId || !TAGS_BY_ID[boxId]) return [];
+
+  return Object.entries(ARTICLE_TAG_RULES)
+    .filter(([, rules]) => ACTIVE_POUCHES.some(pouch => rules[pouch] === boxId))
+    .map(([articleId]) => articleId);
+}
+
 /** Return article-to-library references that no longer resolve, for maintenance checks. */
 export function getUnresolvedTagReferences() {
   return Object.entries(ARTICLE_TAG_RULES).flatMap(([articleId, rules]) =>
