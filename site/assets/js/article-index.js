@@ -6,9 +6,10 @@ export const ARTICLES = [
     "published": "2026-10-31",
     "readingMinutes": 7,
     "tags": [
-      "AI",
-      "edge computing",
-      "inference"
+      "artificial-intelligence",
+      "edge-computing",
+      "ai-inference",
+      "privacy-data-protection"
     ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
@@ -23,9 +24,11 @@ export const ARTICLES = [
     "published": "2026-10-30",
     "readingMinutes": 6,
     "tags": [
-      "phones",
-      "hardware",
-      "mobile"
+      "smartphones",
+      "computer-processors",
+      "cameras-imaging",
+      "batteries-power",
+      "wireless-connectivity"
     ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
@@ -40,9 +43,8 @@ export const ARTICLES = [
     "published": "2026-10-29",
     "readingMinutes": 8,
     "tags": [
-      "computing",
-      "processors",
-      "PC"
+      "computer-processors",
+      "pc-hardware"
     ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
@@ -57,9 +59,8 @@ export const ARTICLES = [
     "published": "2026-10-28",
     "readingMinutes": 6,
     "tags": [
-      "display",
-      "audio-video",
-      "HDR"
+      "displays-hdr",
+      "audio-equipment"
     ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
@@ -74,9 +75,10 @@ export const ARTICLES = [
     "published": "2026-10-27",
     "readingMinutes": 7,
     "tags": [
-      "gaming",
-      "PC",
-      "GPU"
+      "gaming-pcs",
+      "pc-hardware",
+      "graphics-processing-units",
+      "computer-processors"
     ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
@@ -91,9 +93,10 @@ export const ARTICLES = [
     "published": "2026-10-26",
     "readingMinutes": 6,
     "tags": [
-      "smart home",
-      "IoT",
-      "connectivity"
+      "smart-home",
+      "internet-of-things-iot",
+      "wireless-connectivity",
+      "networking"
     ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
@@ -108,9 +111,10 @@ export const ARTICLES = [
     "published": "2026-10-25",
     "readingMinutes": 7,
     "tags": [
-      "Wi-Fi",
       "networking",
-      "internet"
+      "wi-fi",
+      "internet-connectivity",
+      "routers-access-points"
     ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
@@ -125,9 +129,8 @@ export const ARTICLES = [
     "published": "2026-10-24",
     "readingMinutes": 6,
     "tags": [
-      "cars",
       "sensors",
-      "engineering"
+      "electronics"
     ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
@@ -142,9 +145,9 @@ export const ARTICLES = [
     "published": "2026-10-23",
     "readingMinutes": 8,
     "tags": [
-      "security",
-      "privacy",
-      "authentication"
+      "cybersecurity",
+      "authentication",
+      "privacy-data-protection"
     ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
@@ -159,7 +162,6 @@ export const ARTICLES = [
     "published": "2026-10-22",
     "readingMinutes": 6,
     "tags": [
-      "science",
       "sensors",
       "electronics"
     ],
@@ -176,9 +178,10 @@ export const ARTICLES = [
     "published": "2026-10-31",
     "readingMinutes": 6,
     "tags": [
-      "phones",
-      "reviews",
-      "testing"
+      "smartphones",
+      "cameras-imaging",
+      "batteries-power",
+      "displays-hdr"
     ],
     "parentSlug": "reviews",
     "parentCategory": "Reviews",
@@ -193,9 +196,11 @@ export const ARTICLES = [
     "published": "2026-10-30",
     "readingMinutes": 8,
     "tags": [
-      "laptops",
-      "PC",
-      "reviews"
+      "pc-hardware",
+      "computer-processors",
+      "computer-storage-ssds",
+      "displays-hdr",
+      "batteries-power"
     ],
     "parentSlug": "reviews",
     "parentCategory": "Reviews",
@@ -210,9 +215,10 @@ export const ARTICLES = [
     "published": "2026-10-29",
     "readingMinutes": 7,
     "tags": [
-      "drones",
-      "flight",
-      "reviews"
+      "drones-uavs",
+      "flight-controllers",
+      "drone-safety",
+      "maintenance-inspection"
     ],
     "parentSlug": "reviews",
     "parentCategory": "Reviews",
@@ -227,9 +233,8 @@ export const ARTICLES = [
     "published": "2026-10-28",
     "readingMinutes": 6,
     "tags": [
-      "cameras",
-      "imaging",
-      "reviews"
+      "cameras-imaging",
+      "sensors"
     ],
     "parentSlug": "reviews",
     "parentCategory": "Reviews",
@@ -244,9 +249,9 @@ export const ARTICLES = [
     "published": "2026-10-27",
     "readingMinutes": 5,
     "tags": [
-      "audio",
-      "headphones",
-      "reviews"
+      "audio-equipment",
+      "wireless-connectivity",
+      "batteries-power"
     ],
     "parentSlug": "reviews",
     "parentCategory": "Reviews",
@@ -261,9 +266,10 @@ export const ARTICLES = [
     "published": "2026-10-26",
     "readingMinutes": 6,
     "tags": [
-      "smart home",
-      "IoT",
-      "reviews"
+      "smart-home",
+      "internet-of-things-iot",
+      "networking",
+      "privacy-data-protection"
     ],
     "parentSlug": "reviews",
     "parentCategory": "Reviews",
@@ -278,9 +284,10 @@ export const ARTICLES = [
     "published": "2026-10-31",
     "readingMinutes": 6,
     "tags": [
-      "Windows",
-      "troubleshooting",
-      "tutorial"
+      "windows",
+      "operating-systems",
+      "pc-hardware",
+      "troubleshooting"
     ],
     "parentSlug": "how-to",
     "parentCategory": "How To",
@@ -295,9 +302,9 @@ export const ARTICLES = [
     "published": "2026-10-30",
     "readingMinutes": 7,
     "tags": [
-      "Linux",
-      "desktop",
-      "tutorial"
+      "linux",
+      "operating-systems",
+      "pc-hardware"
     ],
     "parentSlug": "how-to",
     "parentCategory": "How To",
@@ -312,9 +319,10 @@ export const ARTICLES = [
     "published": "2026-10-29",
     "readingMinutes": 5,
     "tags": [
-      "Android",
-      "battery",
-      "tutorial"
+      "android",
+      "smartphones",
+      "batteries-power",
+      "troubleshooting"
     ],
     "parentSlug": "how-to",
     "parentCategory": "How To",
@@ -330,8 +338,9 @@ export const ARTICLES = [
     "readingMinutes": 8,
     "tags": [
       "networking",
-      "Wi-Fi",
-      "tutorial"
+      "wi-fi",
+      "routers-access-points",
+      "internet-connectivity"
     ],
     "parentSlug": "how-to",
     "parentCategory": "How To",
@@ -346,9 +355,11 @@ export const ARTICLES = [
     "published": "2026-10-27",
     "readingMinutes": 7,
     "tags": [
-      "DIY",
-      "repair",
-      "electronics"
+      "technical-repair",
+      "electronics",
+      "electrical-safety",
+      "test-equipment",
+      "electrical-measurements"
     ],
     "parentSlug": "how-to",
     "parentCategory": "How To",
@@ -364,8 +375,7 @@ export const ARTICLES = [
     "readingMinutes": 6,
     "tags": [
       "troubleshooting",
-      "workflow",
-      "tutorial"
+      "technical-repair"
     ],
     "parentSlug": "how-to",
     "parentCategory": "How To",
@@ -380,9 +390,11 @@ export const ARTICLES = [
     "published": "2026-10-31",
     "readingMinutes": 7,
     "tags": [
-      "PC components",
-      "compatibility",
-      "hardware"
+      "pc-hardware",
+      "computer-processors",
+      "computer-storage-ssds",
+      "graphics-processing-units",
+      "power-supplies"
     ],
     "parentSlug": "hardware",
     "parentCategory": "Hardware",
@@ -397,9 +409,8 @@ export const ARTICLES = [
     "published": "2026-10-30",
     "readingMinutes": 6,
     "tags": [
-      "storage",
-      "SSD",
-      "hardware"
+      "computer-storage-ssds",
+      "pc-hardware"
     ],
     "parentSlug": "hardware",
     "parentCategory": "Hardware",
@@ -414,9 +425,7 @@ export const ARTICLES = [
     "published": "2026-10-29",
     "readingMinutes": 5,
     "tags": [
-      "peripherals",
-      "workstation",
-      "hardware"
+      "pc-hardware"
     ],
     "parentSlug": "hardware",
     "parentCategory": "Hardware",
@@ -431,9 +440,11 @@ export const ARTICLES = [
     "published": "2026-10-28",
     "readingMinutes": 8,
     "tags": [
-      "drones",
+      "drones-uavs",
+      "flight-controllers",
+      "power-distribution-boards",
       "electronics",
-      "hardware"
+      "multirotors"
     ],
     "parentSlug": "hardware",
     "parentCategory": "Hardware",
@@ -449,8 +460,9 @@ export const ARTICLES = [
     "readingMinutes": 6,
     "tags": [
       "networking",
-      "router",
-      "hardware"
+      "routers-access-points",
+      "wi-fi",
+      "internet-connectivity"
     ],
     "parentSlug": "hardware",
     "parentCategory": "Hardware",
@@ -465,9 +477,11 @@ export const ARTICLES = [
     "published": "2026-10-26",
     "readingMinutes": 6,
     "tags": [
-      "bench tools",
+      "test-equipment",
+      "multimeters",
+      "soldering",
       "electronics",
-      "hardware"
+      "electrical-safety"
     ],
     "parentSlug": "hardware",
     "parentCategory": "Hardware",
@@ -482,9 +496,8 @@ export const ARTICLES = [
     "published": "2026-10-31",
     "readingMinutes": 7,
     "tags": [
-      "operating systems",
-      "software",
-      "OS"
+      "operating-systems",
+      "pc-hardware"
     ],
     "parentSlug": "software",
     "parentCategory": "Software",
@@ -499,9 +512,7 @@ export const ARTICLES = [
     "published": "2026-10-30",
     "readingMinutes": 5,
     "tags": [
-      "productivity",
-      "workflow",
-      "software"
+      "productivity-software"
     ],
     "parentSlug": "software",
     "parentCategory": "Software",
@@ -516,9 +527,11 @@ export const ARTICLES = [
     "published": "2026-10-29",
     "readingMinutes": 8,
     "tags": [
-      "developer tools",
-      "coding",
-      "software"
+      "software-development",
+      "developer-tools",
+      "version-control",
+      "open-source",
+      "linux"
     ],
     "parentSlug": "software",
     "parentCategory": "Software",
@@ -533,9 +546,8 @@ export const ARTICLES = [
     "published": "2026-10-28",
     "readingMinutes": 6,
     "tags": [
-      "AI tools",
-      "software",
-      "privacy"
+      "artificial-intelligence",
+      "privacy-data-protection"
     ],
     "parentSlug": "software",
     "parentCategory": "Software",
@@ -550,9 +562,9 @@ export const ARTICLES = [
     "published": "2026-10-27",
     "readingMinutes": 7,
     "tags": [
-      "privacy",
-      "security",
-      "software"
+      "privacy-data-protection",
+      "cybersecurity",
+      "authentication"
     ],
     "parentSlug": "software",
     "parentCategory": "Software",
@@ -567,9 +579,10 @@ export const ARTICLES = [
     "published": "2026-10-26",
     "readingMinutes": 6,
     "tags": [
-      "open source",
-      "utilities",
-      "software"
+      "open-source",
+      "software-development",
+      "developer-tools",
+      "version-control"
     ],
     "parentSlug": "software",
     "parentCategory": "Software",
@@ -584,9 +597,10 @@ export const ARTICLES = [
     "published": "2026-10-31",
     "readingMinutes": 6,
     "tags": [
-      "phones",
-      "buying advice",
-      "budget"
+      "smartphones",
+      "cameras-imaging",
+      "batteries-power",
+      "displays-hdr"
     ],
     "parentSlug": "buying-advice",
     "parentCategory": "Buying Advice",
@@ -601,9 +615,11 @@ export const ARTICLES = [
     "published": "2026-10-30",
     "readingMinutes": 7,
     "tags": [
-      "laptops",
-      "buying advice",
-      "PC"
+      "pc-hardware",
+      "computer-processors",
+      "computer-storage-ssds",
+      "displays-hdr",
+      "batteries-power"
     ],
     "parentSlug": "buying-advice",
     "parentCategory": "Buying Advice",
@@ -618,9 +634,11 @@ export const ARTICLES = [
     "published": "2026-10-29",
     "readingMinutes": 8,
     "tags": [
-      "PC components",
-      "buying advice",
-      "build"
+      "pc-hardware",
+      "computer-processors",
+      "graphics-processing-units",
+      "computer-storage-ssds",
+      "power-supplies"
     ],
     "parentSlug": "buying-advice",
     "parentCategory": "Buying Advice",
@@ -636,8 +654,9 @@ export const ARTICLES = [
     "readingMinutes": 6,
     "tags": [
       "networking",
-      "router",
-      "buying advice"
+      "routers-access-points",
+      "wi-fi",
+      "internet-connectivity"
     ],
     "parentSlug": "buying-advice",
     "parentCategory": "Buying Advice",
@@ -652,9 +671,10 @@ export const ARTICLES = [
     "published": "2026-10-27",
     "readingMinutes": 6,
     "tags": [
-      "smart home",
-      "IoT",
-      "buying advice"
+      "smart-home",
+      "internet-of-things-iot",
+      "wireless-connectivity",
+      "privacy-data-protection"
     ],
     "parentSlug": "buying-advice",
     "parentCategory": "Buying Advice",
@@ -669,9 +689,9 @@ export const ARTICLES = [
     "published": "2026-10-26",
     "readingMinutes": 7,
     "tags": [
-      "cameras",
-      "buying advice",
-      "imaging"
+      "cameras-imaging",
+      "sensors",
+      "batteries-power"
     ],
     "parentSlug": "buying-advice",
     "parentCategory": "Buying Advice",
@@ -686,9 +706,10 @@ export const ARTICLES = [
     "published": "2026-10-31",
     "readingMinutes": 6,
     "tags": [
-      "circuits",
-      "schematics",
-      "electrical"
+      "electronics",
+      "electrical-circuits",
+      "circuit-diagrams",
+      "electrical-safety"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
@@ -703,9 +724,10 @@ export const ARTICLES = [
     "published": "2026-10-30",
     "readingMinutes": 7,
     "tags": [
-      "voltage",
-      "current",
-      "resistance"
+      "electronics",
+      "electrical-measurements",
+      "multimeters",
+      "troubleshooting"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
@@ -720,9 +742,10 @@ export const ARTICLES = [
     "published": "2026-10-29",
     "readingMinutes": 6,
     "tags": [
-      "multimeter",
-      "test equipment",
-      "safety"
+      "multimeters",
+      "test-equipment",
+      "electrical-measurements",
+      "electrical-safety"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
@@ -737,9 +760,9 @@ export const ARTICLES = [
     "published": "2026-10-28",
     "readingMinutes": 7,
     "tags": [
-      "protection",
-      "MCB",
-      "RCD"
+      "electrical-protection",
+      "electrical-safety",
+      "electrical-circuits"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
@@ -754,9 +777,11 @@ export const ARTICLES = [
     "published": "2026-10-27",
     "readingMinutes": 5,
     "tags": [
-      "bench testing",
-      "power supply",
-      "electronics"
+      "bench-testing",
+      "power-supplies",
+      "electronics",
+      "electrical-safety",
+      "test-equipment"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
@@ -771,9 +796,10 @@ export const ARTICLES = [
     "published": "2026-10-26",
     "readingMinutes": 7,
     "tags": [
-      "bearings",
-      "alignment",
-      "maintenance"
+      "mechanical-design",
+      "bearings-shafts",
+      "maintenance-inspection",
+      "rotating-machinery"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
@@ -788,9 +814,9 @@ export const ARTICLES = [
     "published": "2026-10-25",
     "readingMinutes": 6,
     "tags": [
+      "mechanical-design",
       "fasteners",
-      "mechanical design",
-      "assembly"
+      "torque-preload"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
@@ -805,9 +831,9 @@ export const ARTICLES = [
     "published": "2026-10-24",
     "readingMinutes": 8,
     "tags": [
-      "torque",
-      "preload",
-      "fasteners"
+      "fasteners",
+      "torque-preload",
+      "mechanical-design"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
@@ -822,9 +848,10 @@ export const ARTICLES = [
     "published": "2026-10-23",
     "readingMinutes": 7,
     "tags": [
-      "vibration",
-      "rotating machinery",
-      "diagnostics"
+      "vibration-analysis",
+      "rotating-machinery",
+      "maintenance-inspection",
+      "troubleshooting"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
@@ -839,9 +866,9 @@ export const ARTICLES = [
     "published": "2026-10-22",
     "readingMinutes": 5,
     "tags": [
-      "maintenance",
-      "mechanisms",
-      "inspection"
+      "maintenance-inspection",
+      "mechanical-design",
+      "rotating-machinery"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
@@ -856,9 +883,10 @@ export const ARTICLES = [
     "published": "2026-10-21",
     "readingMinutes": 6,
     "tags": [
-      "electronics lab",
-      "workbench",
-      "testing"
+      "electronics-labs",
+      "test-equipment",
+      "electronics",
+      "bench-testing"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
@@ -873,9 +901,9 @@ export const ARTICLES = [
     "published": "2026-10-20",
     "readingMinutes": 5,
     "tags": [
-      "documentation",
-      "testing",
-      "engineering"
+      "lab-documentation",
+      "bench-testing",
+      "electronics-labs"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
@@ -890,9 +918,10 @@ export const ARTICLES = [
     "published": "2026-10-19",
     "readingMinutes": 6,
     "tags": [
-      "bench supply",
+      "power-supplies",
       "electronics",
-      "safety"
+      "electrical-safety",
+      "bench-testing"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
@@ -907,8 +936,9 @@ export const ARTICLES = [
     "published": "2026-10-18",
     "readingMinutes": 8,
     "tags": [
-      "oscilloscope",
-      "measurement",
+      "oscilloscopes",
+      "electrical-measurements",
+      "test-equipment",
       "electronics"
     ],
     "parentSlug": "engineering",
@@ -925,8 +955,10 @@ export const ARTICLES = [
     "readingMinutes": 6,
     "tags": [
       "prototyping",
-      "version control",
-      "lab notes"
+      "lab-documentation",
+      "version-control",
+      "electronics-labs",
+      "software-development"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
@@ -941,9 +973,11 @@ export const ARTICLES = [
     "published": "2026-10-16",
     "readingMinutes": 7,
     "tags": [
-      "drones",
-      "flight controller",
-      "systems"
+      "drones-uavs",
+      "flight-controllers",
+      "electronics",
+      "sensors",
+      "multirotors"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
@@ -958,9 +992,11 @@ export const ARTICLES = [
     "published": "2026-10-15",
     "readingMinutes": 6,
     "tags": [
-      "power distribution",
-      "multirotor",
-      "electronics"
+      "drones-uavs",
+      "power-distribution-boards",
+      "multirotors",
+      "electronics",
+      "electrical-measurements"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
@@ -975,9 +1011,10 @@ export const ARTICLES = [
     "published": "2026-10-14",
     "readingMinutes": 7,
     "tags": [
-      "battery",
-      "voltage sag",
-      "drones"
+      "drones-uavs",
+      "drone-batteries",
+      "batteries-power",
+      "electrical-measurements"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
@@ -992,9 +1029,10 @@ export const ARTICLES = [
     "published": "2026-10-13",
     "readingMinutes": 5,
     "tags": [
-      "pre-flight",
-      "maintenance",
-      "drone safety"
+      "drones-uavs",
+      "pre-flight-inspection",
+      "drone-safety",
+      "maintenance-inspection"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
@@ -1009,9 +1047,11 @@ export const ARTICLES = [
     "published": "2026-10-12",
     "readingMinutes": 6,
     "tags": [
-      "drone diagnostics",
-      "flight controller",
-      "troubleshooting"
+      "drones-uavs",
+      "drone-troubleshooting",
+      "flight-controllers",
+      "troubleshooting",
+      "drone-safety"
     ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",

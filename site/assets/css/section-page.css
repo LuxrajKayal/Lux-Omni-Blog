@@ -30,3 +30,11 @@
 .article-content h2{margin:2rem 0 .6rem;font-size:clamp(1.4rem,2.6vw,1.8rem)}
 .article-content p:not(.eyebrow):not(.article-deck):not(.article-note){color:var(--color-text-secondary)}
 .article-return{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-top:2.25rem}
+
+/* Reusable article tags; the dedicated Tag Search popup is a separate step. */
+.article-tags{display:flex;align-items:center;flex-wrap:wrap;gap:.65rem;margin:0 0 1.5rem;padding:0 0 1rem;border-bottom:1px solid var(--color-border)}
+.article-tags__label{color:var(--color-text-muted);font-size:var(--font-size-xs);font-weight:var(--font-weight-bold);letter-spacing:.06em;text-transform:uppercase}
+.article-tags__list{display:flex;flex-wrap:wrap;gap:.45rem}
+.article-tag{appearance:none;display:inline-flex;align-items:center;min-height:32px;padding:.35rem .7rem;border:1px solid var(--color-border);border-radius:var(--radius-pill);background:var(--color-surface-raised);color:var(--color-text-secondary);font:inherit;font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);cursor:pointer}
+.article-tag:hover,.article-tag:focus-visible{border-color:var(--brand-crimson);background:var(--color-surface);color:var(--brand-crimson)}
+.article-tag:focus-visible{outline:2px solid var(--brand-crimson);outline-offset:2px}
