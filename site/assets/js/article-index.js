@@ -3,7 +3,7 @@ export const ARTICLES = [
     "id": "tech-ai",
     "title": "AI on the edge: what local inference changes",
     "summary": "A practical introduction to running AI workloads closer to the device, and the trade-offs involving latency, privacy and compute.",
-    "published": "2026-10-25",
+    "published": "2026-10-31",
     "readingMinutes": 7,
     "tags": [
       "AI",
@@ -20,7 +20,7 @@ export const ARTICLES = [
     "id": "tech-phones",
     "title": "Phone hardware explained: chips, cameras and radios",
     "summary": "Look beyond headline specifications to understand mobile processors, camera systems, radios and battery trade-offs.",
-    "published": "2026-10-24",
+    "published": "2026-10-30",
     "readingMinutes": 6,
     "tags": [
       "phones",
@@ -37,7 +37,7 @@ export const ARTICLES = [
     "id": "tech-computing",
     "title": "A practical guide to choosing a computer processor",
     "summary": "Learn how cores, workload, power limits and platform support affect everyday computing performance.",
-    "published": "2026-10-23",
+    "published": "2026-10-29",
     "readingMinutes": 8,
     "tags": [
       "computing",
@@ -54,7 +54,7 @@ export const ARTICLES = [
     "id": "tech-tv-audio",
     "title": "Display refresh rates and HDR, explained",
     "summary": "A plain-language guide to refresh rates, brightness, contrast and the specifications behind modern displays.",
-    "published": "2026-10-22",
+    "published": "2026-10-28",
     "readingMinutes": 6,
     "tags": [
       "display",
@@ -71,7 +71,7 @@ export const ARTICLES = [
     "id": "tech-gaming",
     "title": "What to check before upgrading a gaming PC",
     "summary": "A systematic way to evaluate GPU limits, thermals, power supply capacity and the games you play.",
-    "published": "2026-10-21",
+    "published": "2026-10-27",
     "readingMinutes": 7,
     "tags": [
       "gaming",
@@ -88,7 +88,7 @@ export const ARTICLES = [
     "id": "tech-smart-home",
     "title": "Making smart-home devices work together",
     "summary": "Understand hubs, wireless standards, automations and compatibility before adding more connected devices.",
-    "published": "2026-10-20",
+    "published": "2026-10-26",
     "readingMinutes": 6,
     "tags": [
       "smart home",
@@ -105,7 +105,7 @@ export const ARTICLES = [
     "id": "tech-internet",
     "title": "Wi-Fi range, speed and signal strength",
     "summary": "Learn why advertised speeds differ from real-world results and how placement and interference affect a network.",
-    "published": "2026-10-19",
+    "published": "2026-10-25",
     "readingMinutes": 7,
     "tags": [
       "Wi-Fi",
@@ -122,7 +122,7 @@ export const ARTICLES = [
     "id": "tech-cars",
     "title": "How driver-assistance sensors collect information",
     "summary": "A high-level look at cameras, radar, ultrasonic sensors and the limits of assisted-driving systems.",
-    "published": "2026-10-18",
+    "published": "2026-10-24",
     "readingMinutes": 6,
     "tags": [
       "cars",
@@ -139,7 +139,7 @@ export const ARTICLES = [
     "id": "tech-security",
     "title": "Passkeys, passwords and multi-factor authentication",
     "summary": "Compare common sign-in protections and learn where each helps reduce account takeover risk.",
-    "published": "2026-10-17",
+    "published": "2026-10-23",
     "readingMinutes": 8,
     "tags": [
       "security",
@@ -156,7 +156,7 @@ export const ARTICLES = [
     "id": "tech-science",
     "title": "The sensors behind everyday technology",
     "summary": "Explore how sensors turn physical signals into measurements used by phones, wearables and connected equipment.",
-    "published": "2026-10-16",
+    "published": "2026-10-22",
     "readingMinutes": 6,
     "tags": [
       "science",
@@ -173,7 +173,7 @@ export const ARTICLES = [
     "id": "reviews-phones",
     "title": "Phone review sample: beyond the specification sheet",
     "summary": "A review framework for battery life, camera consistency, thermal performance, software support and daily usability.",
-    "published": "2026-10-15",
+    "published": "2026-10-31",
     "readingMinutes": 6,
     "tags": [
       "phones",
@@ -190,7 +190,7 @@ export const ARTICLES = [
     "id": "reviews-laptops-pcs",
     "title": "Laptop review sample: performance under sustained load",
     "summary": "A sample evaluation of performance, thermals, fan noise, display quality and port selection.",
-    "published": "2026-10-14",
+    "published": "2026-10-30",
     "readingMinutes": 8,
     "tags": [
       "laptops",
@@ -207,7 +207,7 @@ export const ARTICLES = [
     "id": "reviews-drones",
     "title": "Drone review sample: flight, payload and serviceability",
     "summary": "A technical review framework that considers flight stability, payload limits, repair access and battery logistics.",
-    "published": "2026-10-13",
+    "published": "2026-10-29",
     "readingMinutes": 7,
     "tags": [
       "drones",
@@ -224,7 +224,7 @@ export const ARTICLES = [
     "id": "reviews-cameras",
     "title": "Camera review sample: autofocus and low-light behavior",
     "summary": "How to assess image quality, autofocus consistency, stabilization and results in challenging light.",
-    "published": "2026-10-12",
+    "published": "2026-10-28",
     "readingMinutes": 6,
     "tags": [
       "cameras",
@@ -241,7 +241,7 @@ export const ARTICLES = [
     "id": "reviews-audio",
     "title": "Audio review sample: comfort, tuning and connection quality",
     "summary": "A balanced way to review sound, comfort, microphones, codec support and real-world battery life.",
-    "published": "2026-10-11",
+    "published": "2026-10-27",
     "readingMinutes": 5,
     "tags": [
       "audio",
@@ -258,7 +258,7 @@ export const ARTICLES = [
     "id": "reviews-smart-home",
     "title": "Smart-home review sample: reliability and privacy",
     "summary": "A device review should cover setup, network reliability, integrations, privacy settings and long-term support.",
-    "published": "2026-10-10",
+    "published": "2026-10-26",
     "readingMinutes": 6,
     "tags": [
       "smart home",
@@ -275,7 +275,7 @@ export const ARTICLES = [
     "id": "how-to-windows",
     "title": "How to diagnose a slow Windows PC",
     "summary": "A structured checklist for checking startup apps, storage space, background activity and system updates.",
-    "published": "2026-10-09",
+    "published": "2026-10-31",
     "readingMinutes": 6,
     "tags": [
       "Windows",
@@ -292,7 +292,7 @@ export const ARTICLES = [
     "id": "how-to-linux",
     "title": "How to choose a Linux desktop for an older computer",
     "summary": "Compare lightweight desktop environments and practical checks before switching an older PC.",
-    "published": "2026-10-08",
+    "published": "2026-10-30",
     "readingMinutes": 7,
     "tags": [
       "Linux",
@@ -309,7 +309,7 @@ export const ARTICLES = [
     "id": "how-to-android",
     "title": "How to improve Android battery life without guesswork",
     "summary": "Use battery statistics, background restrictions and display settings to identify useful changes.",
-    "published": "2026-10-07",
+    "published": "2026-10-29",
     "readingMinutes": 5,
     "tags": [
       "Android",
@@ -326,7 +326,7 @@ export const ARTICLES = [
     "id": "how-to-networking",
     "title": "How to troubleshoot a home Wi-Fi dead zone",
     "summary": "Work from router placement and interference checks to mesh, access-point and wired-backhaul options.",
-    "published": "2026-10-06",
+    "published": "2026-10-28",
     "readingMinutes": 8,
     "tags": [
       "networking",
@@ -343,7 +343,7 @@ export const ARTICLES = [
     "id": "how-to-diy-repair",
     "title": "How to plan a safe electronics repair",
     "summary": "A preparation checklist for documentation, tools, ESD protection, power isolation and post-repair testing.",
-    "published": "2026-10-05",
+    "published": "2026-10-27",
     "readingMinutes": 7,
     "tags": [
       "DIY",
@@ -360,7 +360,7 @@ export const ARTICLES = [
     "id": "how-to-troubleshooting",
     "title": "A repeatable workflow for technical troubleshooting",
     "summary": "Record symptoms, change one variable at a time, test a hypothesis and keep a reliable rollback path.",
-    "published": "2026-10-04",
+    "published": "2026-10-26",
     "readingMinutes": 6,
     "tags": [
       "troubleshooting",
@@ -377,7 +377,7 @@ export const ARTICLES = [
     "id": "hardware-pc-components",
     "title": "PC component sample: checking compatibility before a build",
     "summary": "Check socket, memory support, board dimensions, power delivery, cooling clearance and power supply headroom.",
-    "published": "2026-10-03",
+    "published": "2026-10-31",
     "readingMinutes": 7,
     "tags": [
       "PC components",
@@ -394,7 +394,7 @@ export const ARTICLES = [
     "id": "hardware-storage",
     "title": "Storage sample: SSD interfaces and real-world workloads",
     "summary": "Compare interface limits, controller behavior, capacity, endurance and backup strategy.",
-    "published": "2026-10-02",
+    "published": "2026-10-30",
     "readingMinutes": 6,
     "tags": [
       "storage",
@@ -411,7 +411,7 @@ export const ARTICLES = [
     "id": "hardware-peripherals",
     "title": "Peripheral sample: choosing tools for a workstation",
     "summary": "Evaluate ergonomics, connection options, driver support, repairability and everyday controls.",
-    "published": "2026-10-01",
+    "published": "2026-10-29",
     "readingMinutes": 5,
     "tags": [
       "peripherals",
@@ -428,7 +428,7 @@ export const ARTICLES = [
     "id": "hardware-drones",
     "title": "Drone hardware sample: flight controllers and power distribution",
     "summary": "A system overview of flight controllers, power distribution, sensors, wiring and careful integration.",
-    "published": "2026-09-30",
+    "published": "2026-10-28",
     "readingMinutes": 8,
     "tags": [
       "drones",
@@ -445,7 +445,7 @@ export const ARTICLES = [
     "id": "hardware-networking",
     "title": "Network hardware sample: router, switch and access point",
     "summary": "Understand the distinct roles of routers, switches and wireless access points in a home network.",
-    "published": "2026-09-29",
+    "published": "2026-10-27",
     "readingMinutes": 6,
     "tags": [
       "networking",
@@ -462,7 +462,7 @@ export const ARTICLES = [
     "id": "hardware-bench-tools",
     "title": "Bench tools sample: choosing a multimeter and soldering station",
     "summary": "Compare measurement needs, safety features, tip options, temperature control and a sensible starter setup.",
-    "published": "2026-09-28",
+    "published": "2026-10-26",
     "readingMinutes": 6,
     "tags": [
       "bench tools",
@@ -479,7 +479,7 @@ export const ARTICLES = [
     "id": "software-operating-systems",
     "title": "Operating system sample: choosing the right environment",
     "summary": "Compare software support, hardware requirements, update policies and the workflows that matter to you.",
-    "published": "2026-09-27",
+    "published": "2026-10-31",
     "readingMinutes": 7,
     "tags": [
       "operating systems",
@@ -496,7 +496,7 @@ export const ARTICLES = [
     "id": "software-productivity",
     "title": "Productivity software sample: a maintainable workflow",
     "summary": "A practical checklist for file formats, export options, backups, keyboard access and avoiding vendor lock-in.",
-    "published": "2026-09-26",
+    "published": "2026-10-30",
     "readingMinutes": 5,
     "tags": [
       "productivity",
@@ -513,7 +513,7 @@ export const ARTICLES = [
     "id": "software-developer-tools",
     "title": "Developer tools sample: editor, terminal and version control",
     "summary": "See how an editor, terminal, Git and a simple test loop fit together in a manageable workflow.",
-    "published": "2026-09-25",
+    "published": "2026-10-29",
     "readingMinutes": 8,
     "tags": [
       "developer tools",
@@ -530,7 +530,7 @@ export const ARTICLES = [
     "id": "software-ai-tools",
     "title": "AI software sample: useful features and limitations",
     "summary": "Evaluate privacy, data retention, accuracy, cost and whether an AI feature improves a task.",
-    "published": "2026-09-24",
+    "published": "2026-10-28",
     "readingMinutes": 6,
     "tags": [
       "AI tools",
@@ -547,7 +547,7 @@ export const ARTICLES = [
     "id": "software-privacy-security",
     "title": "Privacy software sample: what a permission means",
     "summary": "Understand common app permissions, update policies, encryption claims and privacy-dashboard limitations.",
-    "published": "2026-09-23",
+    "published": "2026-10-27",
     "readingMinutes": 7,
     "tags": [
       "privacy",
@@ -564,7 +564,7 @@ export const ARTICLES = [
     "id": "software-open-source",
     "title": "Open-source utilities sample: assessing a small project",
     "summary": "Review documentation, release activity, license, issue handling and data export.",
-    "published": "2026-09-22",
+    "published": "2026-10-26",
     "readingMinutes": 6,
     "tags": [
       "open source",
@@ -581,7 +581,7 @@ export const ARTICLES = [
     "id": "buying-advice-phones",
     "title": "Buying a phone: which features are worth paying for?",
     "summary": "Match camera, battery, update support, storage and repair options to your actual daily use.",
-    "published": "2026-09-21",
+    "published": "2026-10-31",
     "readingMinutes": 6,
     "tags": [
       "phones",
@@ -598,7 +598,7 @@ export const ARTICLES = [
     "id": "buying-advice-laptops",
     "title": "Buying a laptop: a practical checklist before checkout",
     "summary": "Prioritize workload, RAM, SSD capacity, display, ports, battery, service and upgrade options.",
-    "published": "2026-09-20",
+    "published": "2026-10-30",
     "readingMinutes": 7,
     "tags": [
       "laptops",
@@ -615,7 +615,7 @@ export const ARTICLES = [
     "id": "buying-advice-pc-components",
     "title": "Choosing PC components without wasting the budget",
     "summary": "Plan around compatibility, target workload, power draw and balanced performance rather than one standout part.",
-    "published": "2026-09-19",
+    "published": "2026-10-29",
     "readingMinutes": 8,
     "tags": [
       "PC components",
@@ -632,7 +632,7 @@ export const ARTICLES = [
     "id": "buying-advice-home-networking",
     "title": "Choosing home networking equipment for your layout",
     "summary": "Compare access points, mesh systems, wired backhaul, coverage and the ports your internet plan needs.",
-    "published": "2026-09-18",
+    "published": "2026-10-28",
     "readingMinutes": 6,
     "tags": [
       "networking",
@@ -649,7 +649,7 @@ export const ARTICLES = [
     "id": "buying-advice-smart-home",
     "title": "Buying smart-home devices that work together",
     "summary": "Check standards, hub dependencies, local control, update commitments and whether devices work without cloud access.",
-    "published": "2026-09-17",
+    "published": "2026-10-27",
     "readingMinutes": 6,
     "tags": [
       "smart home",
@@ -666,7 +666,7 @@ export const ARTICLES = [
     "id": "buying-advice-cameras",
     "title": "Buying a camera: matching sensor, lens and workflow",
     "summary": "Think about autofocus, lenses, stabilization, storage, low-light needs and the whole-system cost.",
-    "published": "2026-09-16",
+    "published": "2026-10-26",
     "readingMinutes": 7,
     "tags": [
       "cameras",
@@ -683,7 +683,7 @@ export const ARTICLES = [
     "id": "engineering-electrical-sample-01",
     "title": "Reading a Basic Circuit Diagram Before Wiring",
     "summary": "Identify supply rails, reference points, protective devices and connections before assembling a low-voltage circuit.",
-    "published": "2026-10-27",
+    "published": "2026-10-31",
     "readingMinutes": 6,
     "tags": [
       "circuits",
@@ -700,7 +700,7 @@ export const ARTICLES = [
     "id": "engineering-electrical-sample-02",
     "title": "Voltage, Current and Resistance in Practical Troubleshooting",
     "summary": "Use voltage, current and resistance measurements to frame tests and narrow down a circuit fault.",
-    "published": "2026-10-26",
+    "published": "2026-10-30",
     "readingMinutes": 7,
     "tags": [
       "voltage",
@@ -717,7 +717,7 @@ export const ARTICLES = [
     "id": "engineering-electrical-sample-03",
     "title": "Choosing a Multimeter for Electrical Measurements",
     "summary": "Compare measurement ranges, input protection, probes and safety ratings when selecting a digital multimeter.",
-    "published": "2026-10-25",
+    "published": "2026-10-29",
     "readingMinutes": 6,
     "tags": [
       "multimeter",
@@ -734,7 +734,7 @@ export const ARTICLES = [
     "id": "engineering-electrical-sample-04",
     "title": "What MCBs and RCDs Protect Against",
     "summary": "Understand overcurrent and residual-current protection in a properly designed electrical installation.",
-    "published": "2026-10-24",
+    "published": "2026-10-28",
     "readingMinutes": 7,
     "tags": [
       "protection",
@@ -751,7 +751,7 @@ export const ARTICLES = [
     "id": "engineering-electrical-sample-05",
     "title": "A Safe Checklist for Low-Voltage Bench Testing",
     "summary": "Prepare a repeatable bench setup with current limits, correct polarity, good connections and shutdown steps.",
-    "published": "2026-10-23",
+    "published": "2026-10-27",
     "readingMinutes": 5,
     "tags": [
       "bench testing",
@@ -768,7 +768,7 @@ export const ARTICLES = [
     "id": "engineering-mechanical-sample-01",
     "title": "Bearings, Shafts and Alignment: a Workshop Checklist",
     "summary": "Inspect shaft fit, bearing support, alignment and lubrication before commissioning a rotating assembly.",
-    "published": "2026-10-22",
+    "published": "2026-10-26",
     "readingMinutes": 7,
     "tags": [
       "bearings",
@@ -785,7 +785,7 @@ export const ARTICLES = [
     "id": "engineering-mechanical-sample-02",
     "title": "Choosing Fasteners for a Mechanical Assembly",
     "summary": "Match fastener size, grade, thread engagement, environment and joint requirements to the design.",
-    "published": "2026-10-21",
+    "published": "2026-10-25",
     "readingMinutes": 6,
     "tags": [
       "fasteners",
@@ -802,7 +802,7 @@ export const ARTICLES = [
     "id": "engineering-mechanical-sample-03",
     "title": "Torque, Preload and Thread Engagement Explained",
     "summary": "See how tightening torque, clamp load and thread engagement affect the reliability of a bolted joint.",
-    "published": "2026-10-20",
+    "published": "2026-10-24",
     "readingMinutes": 8,
     "tags": [
       "torque",
@@ -819,7 +819,7 @@ export const ARTICLES = [
     "id": "engineering-mechanical-sample-04",
     "title": "Why Vibration Appears in Rotating Machinery",
     "summary": "Trace common vibration sources such as imbalance, misalignment, looseness and bearing condition.",
-    "published": "2026-10-19",
+    "published": "2026-10-23",
     "readingMinutes": 7,
     "tags": [
       "vibration",
@@ -836,7 +836,7 @@ export const ARTICLES = [
     "id": "engineering-mechanical-sample-05",
     "title": "A Maintenance Checklist for Small Mechanisms",
     "summary": "Create a consistent inspection routine for fasteners, moving interfaces, lubrication, wear and abnormal noise.",
-    "published": "2026-10-18",
+    "published": "2026-10-22",
     "readingMinutes": 5,
     "tags": [
       "maintenance",
@@ -853,7 +853,7 @@ export const ARTICLES = [
     "id": "engineering-labs-sample-01",
     "title": "Setting Up a Repeatable Electronics Bench",
     "summary": "Organize power, instruments, leads, ESD precautions and documentation so experiments are easier to reproduce.",
-    "published": "2026-10-17",
+    "published": "2026-10-21",
     "readingMinutes": 6,
     "tags": [
       "electronics lab",
@@ -870,7 +870,7 @@ export const ARTICLES = [
     "id": "engineering-labs-sample-02",
     "title": "How to Document a Test So It Can Be Repeated",
     "summary": "Capture the objective, setup, method, readings and limitations of a lab test in a concise technical record.",
-    "published": "2026-10-16",
+    "published": "2026-10-20",
     "readingMinutes": 5,
     "tags": [
       "documentation",
@@ -887,7 +887,7 @@ export const ARTICLES = [
     "id": "engineering-labs-sample-03",
     "title": "Using a Bench Power Supply Safely",
     "summary": "Choose voltage and current limits deliberately and recognize the warning signs of an unexpected load.",
-    "published": "2026-10-15",
+    "published": "2026-10-19",
     "readingMinutes": 6,
     "tags": [
       "bench supply",
@@ -904,7 +904,7 @@ export const ARTICLES = [
     "id": "engineering-labs-sample-04",
     "title": "A First Approach to Oscilloscope Measurements",
     "summary": "Prepare the probe, choose a suitable time base and voltage scale, and avoid grounding mistakes.",
-    "published": "2026-10-14",
+    "published": "2026-10-18",
     "readingMinutes": 8,
     "tags": [
       "oscilloscope",
@@ -921,7 +921,7 @@ export const ARTICLES = [
     "id": "engineering-labs-sample-05",
     "title": "Organizing Prototypes, Measurements and Revisions",
     "summary": "Keep hardware revisions, firmware builds, test notes and measurements connected during iterative project work.",
-    "published": "2026-10-13",
+    "published": "2026-10-17",
     "readingMinutes": 6,
     "tags": [
       "prototyping",
@@ -938,7 +938,7 @@ export const ARTICLES = [
     "id": "engineering-drone-technology-sample-01",
     "title": "How a Drone Flight Controller Connects Aircraft Systems",
     "summary": "Understand how the flight controller combines sensor data, pilot commands and outputs to aircraft control systems.",
-    "published": "2026-10-12",
+    "published": "2026-10-16",
     "readingMinutes": 7,
     "tags": [
       "drones",
@@ -955,7 +955,7 @@ export const ARTICLES = [
     "id": "engineering-drone-technology-sample-02",
     "title": "Choosing a Power Distribution Board for a Multirotor",
     "summary": "Compare current rating, voltage compatibility, connector layout and monitoring features for drone power distribution.",
-    "published": "2026-10-11",
+    "published": "2026-10-15",
     "readingMinutes": 6,
     "tags": [
       "power distribution",
@@ -972,7 +972,7 @@ export const ARTICLES = [
     "id": "engineering-drone-technology-sample-03",
     "title": "Drone Batteries: Current, Connectors and Voltage Sag",
     "summary": "Learn how load current, connector resistance and battery condition influence voltage under motor demand.",
-    "published": "2026-10-10",
+    "published": "2026-10-14",
     "readingMinutes": 7,
     "tags": [
       "battery",
@@ -989,7 +989,7 @@ export const ARTICLES = [
     "id": "engineering-drone-technology-sample-04",
     "title": "A Pre-Flight Inspection Checklist for Small Drones",
     "summary": "Create a repeatable inspection for frame, propellers, battery, sensors, firmware and the planned operating area.",
-    "published": "2026-10-09",
+    "published": "2026-10-13",
     "readingMinutes": 5,
     "tags": [
       "pre-flight",
@@ -1006,7 +1006,7 @@ export const ARTICLES = [
     "id": "engineering-drone-technology-sample-05",
     "title": "Diagnosing a Drone That Will Not Arm",
     "summary": "Use a structured checklist to distinguish configuration, sensor, power and safety-interlock issues before flight.",
-    "published": "2026-10-08",
+    "published": "2026-10-12",
     "readingMinutes": 6,
     "tags": [
       "drone diagnostics",
