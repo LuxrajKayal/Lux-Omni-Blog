@@ -5,12 +5,6 @@ export const ARTICLES = [
     "summary": "A practical introduction to running AI workloads closer to the device, and the trade-offs involving latency, privacy and compute.",
     "published": "2026-10-31",
     "readingMinutes": 7,
-    "tags": [
-      "artificial-intelligence",
-      "edge-computing",
-      "ai-inference",
-      "privacy-data-protection"
-    ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
     "category": "AI",
@@ -23,13 +17,6 @@ export const ARTICLES = [
     "summary": "Look beyond headline specifications to understand mobile processors, camera systems, radios and battery trade-offs.",
     "published": "2026-10-30",
     "readingMinutes": 6,
-    "tags": [
-      "smartphones",
-      "computer-processors",
-      "cameras-imaging",
-      "batteries-power",
-      "wireless-connectivity"
-    ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
     "category": "Phones",
@@ -42,10 +29,6 @@ export const ARTICLES = [
     "summary": "Learn how cores, workload, power limits and platform support affect everyday computing performance.",
     "published": "2026-10-29",
     "readingMinutes": 8,
-    "tags": [
-      "computer-processors",
-      "pc-hardware"
-    ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
     "category": "Computing",
@@ -58,10 +41,6 @@ export const ARTICLES = [
     "summary": "A plain-language guide to refresh rates, brightness, contrast and the specifications behind modern displays.",
     "published": "2026-10-28",
     "readingMinutes": 6,
-    "tags": [
-      "displays-hdr",
-      "audio-equipment"
-    ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
     "category": "TV & Audio",
@@ -74,12 +53,6 @@ export const ARTICLES = [
     "summary": "A systematic way to evaluate GPU limits, thermals, power supply capacity and the games you play.",
     "published": "2026-10-27",
     "readingMinutes": 7,
-    "tags": [
-      "gaming-pcs",
-      "pc-hardware",
-      "graphics-processing-units",
-      "computer-processors"
-    ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
     "category": "Gaming",
@@ -92,12 +65,6 @@ export const ARTICLES = [
     "summary": "Understand hubs, wireless standards, automations and compatibility before adding more connected devices.",
     "published": "2026-10-26",
     "readingMinutes": 6,
-    "tags": [
-      "smart-home",
-      "internet-of-things-iot",
-      "wireless-connectivity",
-      "networking"
-    ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
     "category": "Smart Home",
@@ -110,12 +77,6 @@ export const ARTICLES = [
     "summary": "Learn why advertised speeds differ from real-world results and how placement and interference affect a network.",
     "published": "2026-10-25",
     "readingMinutes": 7,
-    "tags": [
-      "networking",
-      "wi-fi",
-      "internet-connectivity",
-      "routers-access-points"
-    ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
     "category": "Internet",
@@ -128,10 +89,6 @@ export const ARTICLES = [
     "summary": "A high-level look at cameras, radar, ultrasonic sensors and the limits of assisted-driving systems.",
     "published": "2026-10-24",
     "readingMinutes": 6,
-    "tags": [
-      "sensors",
-      "electronics"
-    ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
     "category": "Cars",
@@ -144,11 +101,6 @@ export const ARTICLES = [
     "summary": "Compare common sign-in protections and learn where each helps reduce account takeover risk.",
     "published": "2026-10-23",
     "readingMinutes": 8,
-    "tags": [
-      "cybersecurity",
-      "authentication",
-      "privacy-data-protection"
-    ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
     "category": "Security",
@@ -161,10 +113,6 @@ export const ARTICLES = [
     "summary": "Explore how sensors turn physical signals into measurements used by phones, wearables and connected equipment.",
     "published": "2026-10-22",
     "readingMinutes": 6,
-    "tags": [
-      "sensors",
-      "electronics"
-    ],
     "parentSlug": "tech",
     "parentCategory": "Tech News",
     "category": "Science",
@@ -177,12 +125,6 @@ export const ARTICLES = [
     "summary": "A review framework for battery life, camera consistency, thermal performance, software support and daily usability.",
     "published": "2026-10-31",
     "readingMinutes": 6,
-    "tags": [
-      "smartphones",
-      "cameras-imaging",
-      "batteries-power",
-      "displays-hdr"
-    ],
     "parentSlug": "reviews",
     "parentCategory": "Reviews",
     "category": "Phones",
@@ -195,13 +137,6 @@ export const ARTICLES = [
     "summary": "A sample evaluation of performance, thermals, fan noise, display quality and port selection.",
     "published": "2026-10-30",
     "readingMinutes": 8,
-    "tags": [
-      "pc-hardware",
-      "computer-processors",
-      "computer-storage-ssds",
-      "displays-hdr",
-      "batteries-power"
-    ],
     "parentSlug": "reviews",
     "parentCategory": "Reviews",
     "category": "Laptops & PCs",
@@ -214,12 +149,6 @@ export const ARTICLES = [
     "summary": "A technical review framework that considers flight stability, payload limits, repair access and battery logistics.",
     "published": "2026-10-29",
     "readingMinutes": 7,
-    "tags": [
-      "drones-uavs",
-      "flight-controllers",
-      "drone-safety",
-      "maintenance-inspection"
-    ],
     "parentSlug": "reviews",
     "parentCategory": "Reviews",
     "category": "Drones",
@@ -232,10 +161,6 @@ export const ARTICLES = [
     "summary": "How to assess image quality, autofocus consistency, stabilization and results in challenging light.",
     "published": "2026-10-28",
     "readingMinutes": 6,
-    "tags": [
-      "cameras-imaging",
-      "sensors"
-    ],
     "parentSlug": "reviews",
     "parentCategory": "Reviews",
     "category": "Cameras",
@@ -248,11 +173,6 @@ export const ARTICLES = [
     "summary": "A balanced way to review sound, comfort, microphones, codec support and real-world battery life.",
     "published": "2026-10-27",
     "readingMinutes": 5,
-    "tags": [
-      "audio-equipment",
-      "wireless-connectivity",
-      "batteries-power"
-    ],
     "parentSlug": "reviews",
     "parentCategory": "Reviews",
     "category": "Audio",
@@ -265,12 +185,6 @@ export const ARTICLES = [
     "summary": "A device review should cover setup, network reliability, integrations, privacy settings and long-term support.",
     "published": "2026-10-26",
     "readingMinutes": 6,
-    "tags": [
-      "smart-home",
-      "internet-of-things-iot",
-      "networking",
-      "privacy-data-protection"
-    ],
     "parentSlug": "reviews",
     "parentCategory": "Reviews",
     "category": "Smart Home",
@@ -283,12 +197,6 @@ export const ARTICLES = [
     "summary": "A structured checklist for checking startup apps, storage space, background activity and system updates.",
     "published": "2026-10-31",
     "readingMinutes": 6,
-    "tags": [
-      "windows",
-      "operating-systems",
-      "pc-hardware",
-      "troubleshooting"
-    ],
     "parentSlug": "how-to",
     "parentCategory": "How To",
     "category": "Windows",
@@ -301,11 +209,6 @@ export const ARTICLES = [
     "summary": "Compare lightweight desktop environments and practical checks before switching an older PC.",
     "published": "2026-10-30",
     "readingMinutes": 7,
-    "tags": [
-      "linux",
-      "operating-systems",
-      "pc-hardware"
-    ],
     "parentSlug": "how-to",
     "parentCategory": "How To",
     "category": "Linux",
@@ -318,12 +221,6 @@ export const ARTICLES = [
     "summary": "Use battery statistics, background restrictions and display settings to identify useful changes.",
     "published": "2026-10-29",
     "readingMinutes": 5,
-    "tags": [
-      "android",
-      "smartphones",
-      "batteries-power",
-      "troubleshooting"
-    ],
     "parentSlug": "how-to",
     "parentCategory": "How To",
     "category": "Android",
@@ -336,12 +233,6 @@ export const ARTICLES = [
     "summary": "Work from router placement and interference checks to mesh, access-point and wired-backhaul options.",
     "published": "2026-10-28",
     "readingMinutes": 8,
-    "tags": [
-      "networking",
-      "wi-fi",
-      "routers-access-points",
-      "internet-connectivity"
-    ],
     "parentSlug": "how-to",
     "parentCategory": "How To",
     "category": "Networking",
@@ -354,13 +245,6 @@ export const ARTICLES = [
     "summary": "A preparation checklist for documentation, tools, ESD protection, power isolation and post-repair testing.",
     "published": "2026-10-27",
     "readingMinutes": 7,
-    "tags": [
-      "technical-repair",
-      "electronics",
-      "electrical-safety",
-      "test-equipment",
-      "electrical-measurements"
-    ],
     "parentSlug": "how-to",
     "parentCategory": "How To",
     "category": "DIY & Repair",
@@ -373,10 +257,6 @@ export const ARTICLES = [
     "summary": "Record symptoms, change one variable at a time, test a hypothesis and keep a reliable rollback path.",
     "published": "2026-10-26",
     "readingMinutes": 6,
-    "tags": [
-      "troubleshooting",
-      "technical-repair"
-    ],
     "parentSlug": "how-to",
     "parentCategory": "How To",
     "category": "Troubleshooting",
@@ -389,13 +269,6 @@ export const ARTICLES = [
     "summary": "Check socket, memory support, board dimensions, power delivery, cooling clearance and power supply headroom.",
     "published": "2026-10-31",
     "readingMinutes": 7,
-    "tags": [
-      "pc-hardware",
-      "computer-processors",
-      "computer-storage-ssds",
-      "graphics-processing-units",
-      "power-supplies"
-    ],
     "parentSlug": "hardware",
     "parentCategory": "Hardware",
     "category": "PC Components",
@@ -408,10 +281,6 @@ export const ARTICLES = [
     "summary": "Compare interface limits, controller behavior, capacity, endurance and backup strategy.",
     "published": "2026-10-30",
     "readingMinutes": 6,
-    "tags": [
-      "computer-storage-ssds",
-      "pc-hardware"
-    ],
     "parentSlug": "hardware",
     "parentCategory": "Hardware",
     "category": "Storage",
@@ -424,9 +293,6 @@ export const ARTICLES = [
     "summary": "Evaluate ergonomics, connection options, driver support, repairability and everyday controls.",
     "published": "2026-10-29",
     "readingMinutes": 5,
-    "tags": [
-      "pc-hardware"
-    ],
     "parentSlug": "hardware",
     "parentCategory": "Hardware",
     "category": "Peripherals",
@@ -439,13 +305,6 @@ export const ARTICLES = [
     "summary": "A system overview of flight controllers, power distribution, sensors, wiring and careful integration.",
     "published": "2026-10-28",
     "readingMinutes": 8,
-    "tags": [
-      "drones-uavs",
-      "flight-controllers",
-      "power-distribution-boards",
-      "electronics",
-      "multirotors"
-    ],
     "parentSlug": "hardware",
     "parentCategory": "Hardware",
     "category": "Drones",
@@ -458,12 +317,6 @@ export const ARTICLES = [
     "summary": "Understand the distinct roles of routers, switches and wireless access points in a home network.",
     "published": "2026-10-27",
     "readingMinutes": 6,
-    "tags": [
-      "networking",
-      "routers-access-points",
-      "wi-fi",
-      "internet-connectivity"
-    ],
     "parentSlug": "hardware",
     "parentCategory": "Hardware",
     "category": "Networking",
@@ -476,13 +329,6 @@ export const ARTICLES = [
     "summary": "Compare measurement needs, safety features, tip options, temperature control and a sensible starter setup.",
     "published": "2026-10-26",
     "readingMinutes": 6,
-    "tags": [
-      "test-equipment",
-      "multimeters",
-      "soldering",
-      "electronics",
-      "electrical-safety"
-    ],
     "parentSlug": "hardware",
     "parentCategory": "Hardware",
     "category": "Bench Tools",
@@ -495,10 +341,6 @@ export const ARTICLES = [
     "summary": "Compare software support, hardware requirements, update policies and the workflows that matter to you.",
     "published": "2026-10-31",
     "readingMinutes": 7,
-    "tags": [
-      "operating-systems",
-      "pc-hardware"
-    ],
     "parentSlug": "software",
     "parentCategory": "Software",
     "category": "Operating Systems",
@@ -511,9 +353,6 @@ export const ARTICLES = [
     "summary": "A practical checklist for file formats, export options, backups, keyboard access and avoiding vendor lock-in.",
     "published": "2026-10-30",
     "readingMinutes": 5,
-    "tags": [
-      "productivity-software"
-    ],
     "parentSlug": "software",
     "parentCategory": "Software",
     "category": "Productivity",
@@ -526,13 +365,6 @@ export const ARTICLES = [
     "summary": "See how an editor, terminal, Git and a simple test loop fit together in a manageable workflow.",
     "published": "2026-10-29",
     "readingMinutes": 8,
-    "tags": [
-      "software-development",
-      "developer-tools",
-      "version-control",
-      "open-source",
-      "linux"
-    ],
     "parentSlug": "software",
     "parentCategory": "Software",
     "category": "Developer Tools",
@@ -545,10 +377,6 @@ export const ARTICLES = [
     "summary": "Evaluate privacy, data retention, accuracy, cost and whether an AI feature improves a task.",
     "published": "2026-10-28",
     "readingMinutes": 6,
-    "tags": [
-      "artificial-intelligence",
-      "privacy-data-protection"
-    ],
     "parentSlug": "software",
     "parentCategory": "Software",
     "category": "AI Tools",
@@ -561,11 +389,6 @@ export const ARTICLES = [
     "summary": "Understand common app permissions, update policies, encryption claims and privacy-dashboard limitations.",
     "published": "2026-10-27",
     "readingMinutes": 7,
-    "tags": [
-      "privacy-data-protection",
-      "cybersecurity",
-      "authentication"
-    ],
     "parentSlug": "software",
     "parentCategory": "Software",
     "category": "Privacy & Security",
@@ -578,12 +401,6 @@ export const ARTICLES = [
     "summary": "Review documentation, release activity, license, issue handling and data export.",
     "published": "2026-10-26",
     "readingMinutes": 6,
-    "tags": [
-      "open-source",
-      "software-development",
-      "developer-tools",
-      "version-control"
-    ],
     "parentSlug": "software",
     "parentCategory": "Software",
     "category": "Open-source Utilities",
@@ -596,12 +413,6 @@ export const ARTICLES = [
     "summary": "Match camera, battery, update support, storage and repair options to your actual daily use.",
     "published": "2026-10-31",
     "readingMinutes": 6,
-    "tags": [
-      "smartphones",
-      "cameras-imaging",
-      "batteries-power",
-      "displays-hdr"
-    ],
     "parentSlug": "buying-advice",
     "parentCategory": "Buying Advice",
     "category": "Phones",
@@ -614,13 +425,6 @@ export const ARTICLES = [
     "summary": "Prioritize workload, RAM, SSD capacity, display, ports, battery, service and upgrade options.",
     "published": "2026-10-30",
     "readingMinutes": 7,
-    "tags": [
-      "pc-hardware",
-      "computer-processors",
-      "computer-storage-ssds",
-      "displays-hdr",
-      "batteries-power"
-    ],
     "parentSlug": "buying-advice",
     "parentCategory": "Buying Advice",
     "category": "Laptops",
@@ -633,13 +437,6 @@ export const ARTICLES = [
     "summary": "Plan around compatibility, target workload, power draw and balanced performance rather than one standout part.",
     "published": "2026-10-29",
     "readingMinutes": 8,
-    "tags": [
-      "pc-hardware",
-      "computer-processors",
-      "graphics-processing-units",
-      "computer-storage-ssds",
-      "power-supplies"
-    ],
     "parentSlug": "buying-advice",
     "parentCategory": "Buying Advice",
     "category": "PC Components",
@@ -652,12 +449,6 @@ export const ARTICLES = [
     "summary": "Compare access points, mesh systems, wired backhaul, coverage and the ports your internet plan needs.",
     "published": "2026-10-28",
     "readingMinutes": 6,
-    "tags": [
-      "networking",
-      "routers-access-points",
-      "wi-fi",
-      "internet-connectivity"
-    ],
     "parentSlug": "buying-advice",
     "parentCategory": "Buying Advice",
     "category": "Home Networking",
@@ -670,12 +461,6 @@ export const ARTICLES = [
     "summary": "Check standards, hub dependencies, local control, update commitments and whether devices work without cloud access.",
     "published": "2026-10-27",
     "readingMinutes": 6,
-    "tags": [
-      "smart-home",
-      "internet-of-things-iot",
-      "wireless-connectivity",
-      "privacy-data-protection"
-    ],
     "parentSlug": "buying-advice",
     "parentCategory": "Buying Advice",
     "category": "Smart Home",
@@ -688,11 +473,6 @@ export const ARTICLES = [
     "summary": "Think about autofocus, lenses, stabilization, storage, low-light needs and the whole-system cost.",
     "published": "2026-10-26",
     "readingMinutes": 7,
-    "tags": [
-      "cameras-imaging",
-      "sensors",
-      "batteries-power"
-    ],
     "parentSlug": "buying-advice",
     "parentCategory": "Buying Advice",
     "category": "Cameras",
@@ -705,12 +485,6 @@ export const ARTICLES = [
     "summary": "Identify supply rails, reference points, protective devices and connections before assembling a low-voltage circuit.",
     "published": "2026-10-31",
     "readingMinutes": 6,
-    "tags": [
-      "electronics",
-      "electrical-circuits",
-      "circuit-diagrams",
-      "electrical-safety"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Electrical Engineering",
@@ -723,12 +497,6 @@ export const ARTICLES = [
     "summary": "Use voltage, current and resistance measurements to frame tests and narrow down a circuit fault.",
     "published": "2026-10-30",
     "readingMinutes": 7,
-    "tags": [
-      "electronics",
-      "electrical-measurements",
-      "multimeters",
-      "troubleshooting"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Electrical Engineering",
@@ -741,12 +509,6 @@ export const ARTICLES = [
     "summary": "Compare measurement ranges, input protection, probes and safety ratings when selecting a digital multimeter.",
     "published": "2026-10-29",
     "readingMinutes": 6,
-    "tags": [
-      "multimeters",
-      "test-equipment",
-      "electrical-measurements",
-      "electrical-safety"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Electrical Engineering",
@@ -759,11 +521,6 @@ export const ARTICLES = [
     "summary": "Understand overcurrent and residual-current protection in a properly designed electrical installation.",
     "published": "2026-10-28",
     "readingMinutes": 7,
-    "tags": [
-      "electrical-protection",
-      "electrical-safety",
-      "electrical-circuits"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Electrical Engineering",
@@ -776,13 +533,6 @@ export const ARTICLES = [
     "summary": "Prepare a repeatable bench setup with current limits, correct polarity, good connections and shutdown steps.",
     "published": "2026-10-27",
     "readingMinutes": 5,
-    "tags": [
-      "bench-testing",
-      "power-supplies",
-      "electronics",
-      "electrical-safety",
-      "test-equipment"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Electrical Engineering",
@@ -795,12 +545,6 @@ export const ARTICLES = [
     "summary": "Inspect shaft fit, bearing support, alignment and lubrication before commissioning a rotating assembly.",
     "published": "2026-10-26",
     "readingMinutes": 7,
-    "tags": [
-      "mechanical-design",
-      "bearings-shafts",
-      "maintenance-inspection",
-      "rotating-machinery"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Mechanical Engineering",
@@ -813,11 +557,6 @@ export const ARTICLES = [
     "summary": "Match fastener size, grade, thread engagement, environment and joint requirements to the design.",
     "published": "2026-10-25",
     "readingMinutes": 6,
-    "tags": [
-      "mechanical-design",
-      "fasteners",
-      "torque-preload"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Mechanical Engineering",
@@ -830,11 +569,6 @@ export const ARTICLES = [
     "summary": "See how tightening torque, clamp load and thread engagement affect the reliability of a bolted joint.",
     "published": "2026-10-24",
     "readingMinutes": 8,
-    "tags": [
-      "fasteners",
-      "torque-preload",
-      "mechanical-design"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Mechanical Engineering",
@@ -847,12 +581,6 @@ export const ARTICLES = [
     "summary": "Trace common vibration sources such as imbalance, misalignment, looseness and bearing condition.",
     "published": "2026-10-23",
     "readingMinutes": 7,
-    "tags": [
-      "vibration-analysis",
-      "rotating-machinery",
-      "maintenance-inspection",
-      "troubleshooting"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Mechanical Engineering",
@@ -865,11 +593,6 @@ export const ARTICLES = [
     "summary": "Create a consistent inspection routine for fasteners, moving interfaces, lubrication, wear and abnormal noise.",
     "published": "2026-10-22",
     "readingMinutes": 5,
-    "tags": [
-      "maintenance-inspection",
-      "mechanical-design",
-      "rotating-machinery"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Mechanical Engineering",
@@ -882,12 +605,6 @@ export const ARTICLES = [
     "summary": "Organize power, instruments, leads, ESD precautions and documentation so experiments are easier to reproduce.",
     "published": "2026-10-21",
     "readingMinutes": 6,
-    "tags": [
-      "electronics-labs",
-      "test-equipment",
-      "electronics",
-      "bench-testing"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Labs",
@@ -900,11 +617,6 @@ export const ARTICLES = [
     "summary": "Capture the objective, setup, method, readings and limitations of a lab test in a concise technical record.",
     "published": "2026-10-20",
     "readingMinutes": 5,
-    "tags": [
-      "lab-documentation",
-      "bench-testing",
-      "electronics-labs"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Labs",
@@ -917,12 +629,6 @@ export const ARTICLES = [
     "summary": "Choose voltage and current limits deliberately and recognize the warning signs of an unexpected load.",
     "published": "2026-10-19",
     "readingMinutes": 6,
-    "tags": [
-      "power-supplies",
-      "electronics",
-      "electrical-safety",
-      "bench-testing"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Labs",
@@ -935,12 +641,6 @@ export const ARTICLES = [
     "summary": "Prepare the probe, choose a suitable time base and voltage scale, and avoid grounding mistakes.",
     "published": "2026-10-18",
     "readingMinutes": 8,
-    "tags": [
-      "oscilloscopes",
-      "electrical-measurements",
-      "test-equipment",
-      "electronics"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Labs",
@@ -953,13 +653,6 @@ export const ARTICLES = [
     "summary": "Keep hardware revisions, firmware builds, test notes and measurements connected during iterative project work.",
     "published": "2026-10-17",
     "readingMinutes": 6,
-    "tags": [
-      "prototyping",
-      "lab-documentation",
-      "version-control",
-      "electronics-labs",
-      "software-development"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Labs",
@@ -972,13 +665,6 @@ export const ARTICLES = [
     "summary": "Understand how the flight controller combines sensor data, pilot commands and outputs to aircraft control systems.",
     "published": "2026-10-16",
     "readingMinutes": 7,
-    "tags": [
-      "drones-uavs",
-      "flight-controllers",
-      "electronics",
-      "sensors",
-      "multirotors"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Drone Technology",
@@ -991,13 +677,6 @@ export const ARTICLES = [
     "summary": "Compare current rating, voltage compatibility, connector layout and monitoring features for drone power distribution.",
     "published": "2026-10-15",
     "readingMinutes": 6,
-    "tags": [
-      "drones-uavs",
-      "power-distribution-boards",
-      "multirotors",
-      "electronics",
-      "electrical-measurements"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Drone Technology",
@@ -1010,12 +689,6 @@ export const ARTICLES = [
     "summary": "Learn how load current, connector resistance and battery condition influence voltage under motor demand.",
     "published": "2026-10-14",
     "readingMinutes": 7,
-    "tags": [
-      "drones-uavs",
-      "drone-batteries",
-      "batteries-power",
-      "electrical-measurements"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Drone Technology",
@@ -1028,12 +701,6 @@ export const ARTICLES = [
     "summary": "Create a repeatable inspection for frame, propellers, battery, sensors, firmware and the planned operating area.",
     "published": "2026-10-13",
     "readingMinutes": 5,
-    "tags": [
-      "drones-uavs",
-      "pre-flight-inspection",
-      "drone-safety",
-      "maintenance-inspection"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Drone Technology",
@@ -1046,13 +713,6 @@ export const ARTICLES = [
     "summary": "Use a structured checklist to distinguish configuration, sensor, power and safety-interlock issues before flight.",
     "published": "2026-10-12",
     "readingMinutes": 6,
-    "tags": [
-      "drones-uavs",
-      "drone-troubleshooting",
-      "flight-controllers",
-      "troubleshooting",
-      "drone-safety"
-    ],
     "parentSlug": "engineering",
     "parentCategory": "Engineering",
     "category": "Drone Technology",

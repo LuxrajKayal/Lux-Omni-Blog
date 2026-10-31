@@ -1,5 +1,5 @@
 import { ARTICLES } from "./article-index.js";
-import { TAGS_BY_ID } from "./tag-library.js";
+import { getArticleTagNames } from "./tag-indexer.js";
 
 const titleCompare = (a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: "base" });
 const catCompare = (a, b) => a.category.localeCompare(b.category, undefined, { sensitivity: "base" });
@@ -36,7 +36,7 @@ export function initSearch() {
     const selectedCategory = category.value;
     const maxReadingTime = Number(slider.value);
     const list = ARTICLES.filter(article => {
-      const tagNames = (article.tags || []).map(id => TAGS_BY_ID[id]?.name || "").filter(Boolean);
+      const tagNames = getArticleTagNames(article.id);
       const searchable = [article.title, article.summary, article.category, article.parentCategory, ...tagNames]
         .join(" ").toLocaleLowerCase();
       return (!query || searchable.includes(query)) &&
