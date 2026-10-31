@@ -1,5 +1,5 @@
 import { ARTICLES } from "./article-index.js";
-import { TAGS_BY_ID } from "./tag-index.js";
+import { TAGS_BY_ID } from "./tag-library.js";
 
 const titleCompare = (a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: "base" });
 const catCompare = (a, b) => a.category.localeCompare(b.category, undefined, { sensitivity: "base" });

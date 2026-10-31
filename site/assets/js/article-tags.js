@@ -1,5 +1,5 @@
 import { ARTICLES } from "./article-index.js";
-import { TAGS_BY_ID } from "./tag-index.js";
+import { TAGS_BY_ID } from "./tag-library.js";
 
 const escapeHTML = value => String(value)
   .replaceAll("&", "&amp;")
