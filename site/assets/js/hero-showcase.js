@@ -5,10 +5,10 @@
  */
 const FEATURED_ARTICLE_URLS = [
   "categories/tech-news/ai/articles/ai-on-the-edge-what-local-inference-changes.html",
-  "categories/tech-news/phones/articles/phone-hardware-explained-chips-cameras-and-radios.html",
-  "categories/tech-news/computing/articles/a-practical-guide-to-choosing-a-computer-processor.html",
-  "categories/tech-news/tv-audio/articles/display-refresh-rates-and-hdr-explained.html",
-  "categories/tech-news/gaming/articles/what-to-check-before-upgrading-a-gaming-pc.html"
+  "categories/how-to/linux/articles/how-to-choose-a-linux-desktop-for-an-older-computer.html",
+  "categories/engineering/drone-technology/articles/how-a-drone-flight-controller-connects-aircraft-systems.html",
+  "categories/reviews/phones/articles/phone-review-sample-beyond-the-specification-sheet.html",
+  "categories/buying-advice/phones/articles/buying-a-phone-which-features-are-worth-paying-for.html"
 ];
 const MAX_FEATURED_ARTICLES = 5;
 const ROTATION_INTERVAL_MS = 5000;
