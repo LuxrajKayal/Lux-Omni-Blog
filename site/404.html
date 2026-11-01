@@ -334,6 +334,13 @@ let score = 0;
 let animationId;
 let isGameOver = false;
 
+// Fixed-step simulation: preserve the original 60 FPS movement on every display.
+const SIMULATION_STEP = 1 / 60;
+const MAX_FRAME_DELTA = 0.25;
+const PADDLE_SPEED = 420; // Equivalent to the original 7 pixels per 60 FPS frame.
+let previousFrameTime = 0;
+let timeAccumulator = 0;
+
 // Colors
 const paddleColor = "#EA580C";
 const ballColor = "#DC2626";
@@ -343,7 +350,11 @@ function initBricks() {
     for (let c = 0; c < brickColumnCount; c++) {
         bricks[c] = [];
         for (let r = 0; r < brickRowCount; r++) {
-            bricks[c][r] = { x: 0, y: 0, status: 1 };
+            bricks[c][r] = {
+                x: (c * (brickWidth + brickPadding)) + brickOffsetLeft,
+                y: (r * (brickHeight + brickPadding)) + brickOffsetTop,
+                status: 1
+            };
         }
     }
 }
@@ -355,14 +366,17 @@ function initGame() {
     
     x = canvas.width / 2;
     y = canvas.height - 30;
-    dx = 3;
-    dy = -3;
+    // 180 px/s per axis preserves the original 3 px per frame at 60 FPS.
+    dx = 180;
+    dy = -180;
     paddleX = (canvas.width - paddleWidth) / 2;
     score = 0;
     currentScoreEl.textContent = score;
     
     initBricks();
-    draw();
+    previousFrameTime = performance.now();
+    timeAccumulator = 0;
+    animationId = requestAnimationFrame(draw);
 }
 
 // Controls
@@ -411,8 +425,9 @@ function collisionDetection() {
                     if (score == brickRowCount * brickColumnCount) {
                         // Win - reset bricks and increase speed slightly
                         initBricks();
-                        dy = Math.sign(dy) * (Math.abs(dy) + 0.5);
-                        dx = Math.sign(dx) * (Math.abs(dx) + 0.5);
+                        // Preserve the original +0.5 px/frame increase at 60 FPS.
+                        dy = Math.sign(dy) * (Math.abs(dy) + 30);
+                        dx = Math.sign(dx) * (Math.abs(dx) + 30);
                     }
                 }
             }
@@ -466,27 +481,25 @@ function drawBricks() {
     }
 }
 
-function draw() {
-    if (isGameOver) return;
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    drawBricks();
-    drawBall();
-    drawPaddle();
+function updateGame() {
+    // Check collisions once per fixed physics step, not once per rendered frame.
     collisionDetection();
 
+    const nextX = x + dx * SIMULATION_STEP;
+    const nextY = y + dy * SIMULATION_STEP;
+
     // Wall collision
-    if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+    if (nextX > canvas.width - ballRadius || nextX < ballRadius) {
         dx = -dx;
     }
-    if (y + dy < ballRadius) {
+
+    if (nextY < ballRadius) {
         dy = -dy;
-    } else if (y + dy > canvas.height - ballRadius) {
+    } else if (nextY > canvas.height - ballRadius) {
         if (x > paddleX && x < paddleX + paddleWidth) {
-            // Add a little english based on where it hit the paddle
-            let hitPoint = x - (paddleX + paddleWidth/2);
-            dx = hitPoint * 0.1;
+            // Keep the original paddle-angle response, converted to pixels per second.
+            const hitPoint = x - (paddleX + paddleWidth / 2);
+            dx = hitPoint * 6;
             dy = -dy;
         } else {
             isGameOver = true;
@@ -497,15 +510,43 @@ function draw() {
     }
 
     if (rightPressed && paddleX < canvas.width - paddleWidth) {
-        paddleX += 7;
+        paddleX += PADDLE_SPEED * SIMULATION_STEP;
     } else if (leftPressed && paddleX > 0) {
-        paddleX -= 7;
+        paddleX -= PADDLE_SPEED * SIMULATION_STEP;
     }
 
-    x += dx;
-    y += dy;
-    
-    animationId = requestAnimationFrame(draw);
+    x += dx * SIMULATION_STEP;
+    y += dy * SIMULATION_STEP;
+}
+
+function renderGame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBricks();
+    drawBall();
+    drawPaddle();
+}
+
+function draw(timestamp) {
+    if (isGameOver) return;
+
+    const elapsed = Math.max(
+        0,
+        Math.min((timestamp - previousFrameTime) / 1000, MAX_FRAME_DELTA)
+    );
+    previousFrameTime = timestamp;
+    timeAccumulator += elapsed;
+
+    // Catch up with elapsed time when the browser renders fewer frames.
+    while (timeAccumulator >= SIMULATION_STEP && !isGameOver) {
+        updateGame();
+        timeAccumulator -= SIMULATION_STEP;
+    }
+
+    renderGame();
+
+    if (!isGameOver) {
+        animationId = requestAnimationFrame(draw);
+    }
 }
 
 // Start game
