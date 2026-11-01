@@ -78,6 +78,33 @@ function injectFooterStylesheet(html, rootPrefix, relativeFile) {
   return html.slice(0, headEnd) + link + html.slice(headEnd);
 }
 
+
+/*
+ * The root 404 document is self-contained. Copy it without shared-component
+ * injection so it can render at malformed or deeply nested request URLs.
+ */
+function validateStandalone404(html, relativeFile) {
+  if (!/<html\b/i.test(html) || !/<body\b/i.test(html) || !html.toLowerCase().includes("</html>")) {
+    throw new Error(relativeFile + ' must be a complete standalone HTML document.');
+  }
+  if (/<!-- SHARED:|{{ROOT}}/.test(html)) {
+    throw new Error(relativeFile + ' must not contain shared-component markers or root tokens.');
+  }
+  if (/<link\b[^>]*\brel\s*=\s*(["'])[^"']*stylesheet[^"']*\1/i.test(html)) {
+    throw new Error(relativeFile + ' must keep its CSS inline; external stylesheets are not allowed.');
+  }
+  if (/<script\b[^>]*\bsrc\s*=/i.test(html)) {
+    throw new Error(relativeFile + ' must keep its JavaScript inline; external scripts are not allowed.');
+  }
+  if (!/<style\b[\s\S]*?<\/style>/i.test(html)) {
+    throw new Error(relativeFile + ' must contain its standalone styles in an inline <style> block.');
+  }
+  if (!/<script\b[^>]*>[\s\S]*?<\/script>/i.test(html)) {
+    throw new Error(relativeFile + ' must contain its standalone behavior in an inline <script> block.');
+  }
+  return html;
+}
+
 function expandSharedComponents(sourceHtml, relativeFile, partialContents) {
   assertMarkerCounts(sourceHtml, relativeFile);
   assertNoLegacyShell(sourceHtml, relativeFile);
@@ -156,6 +183,14 @@ async function walkAndBuild(sourceDirectory, relativeDirectory, partialContents,
       throw new Error(normalizedRelativePath + ' is non-empty HTML but has no <body> element.');
     }
 
+    // The root 404 page is self-contained and must not receive the shared site shell.
+    if (normalizedRelativePath === '404.html') {
+      const standaloneHtml = validateStandalone404(sourceHtml, normalizedRelativePath);
+      await writeFile(outputPath, standaloneHtml, 'utf8');
+      stats.standalonePages += 1;
+      continue;
+    }
+
     const builtHtml = expandSharedComponents(sourceHtml, normalizedRelativePath, partialContents);
     await writeFile(outputPath, builtHtml, 'utf8');
     stats.builtPages += 1;
@@ -173,13 +208,14 @@ async function main() {
   await rm(OUTPUT_DIR, { recursive: true, force: true });
   await mkdir(OUTPUT_DIR, { recursive: true });
 
-  const stats = { builtPages: 0, emptyPlaceholders: 0 };
+  const stats = { builtPages: 0, emptyPlaceholders: 0, standalonePages: 0 };
   await walkAndBuild(SITE_DIR, '', partialContents, stats);
   await writeFile(path.join(OUTPUT_DIR, '.nojekyll'), '', 'utf8');
 
   console.log(
     'Built _site/: assembled and verified shared components on ' +
-    stats.builtPages + ' populated HTML pages; left ' +
+    stats.builtPages + ' populated HTML pages; copied ' +
+    stats.standalonePages + ' standalone HTML pages; left ' +
     stats.emptyPlaceholders + ' empty HTML placeholders unchanged.'
   );
 }

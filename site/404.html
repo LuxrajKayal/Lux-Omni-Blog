@@ -1,80 +1,254 @@
-<!doctype html>
-<html lang="en" data-theme="dark">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="The page you were looking for could not be found. Take a break and play Lux Omni's brick-breaker game.">
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#171717">
-  <title>404 — Page Not Found | Lux Omni</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap"
-    rel="stylesheet"
-  >
-
-  <!-- Shared Lux Omni foundation and site shell. -->
-  <link rel="stylesheet" href="assets/css/tokens.css">
-  <link rel="stylesheet" href="assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/topbar.css">
-  <link rel="stylesheet" href="assets/css/header.css">
-  <link rel="stylesheet" href="assets/css/dropdowns.css">
-  <link rel="stylesheet" href="assets/css/search.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
-  <link rel="stylesheet" href="assets/css/footer.css">
-
-  <!-- Page-specific styling is intentionally kept separate. -->
-  <link rel="stylesheet" href="assets/css/404-page.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#171717">
+<meta name="description" content="The page you were looking for could not be found. Break some bricks while you're here.">
+<title>404 — Page Not Found | Lux Omni</title>
+<style>
+:root{color-scheme:dark;--page:#171717;--crimson:#DC2626;--red:#B91C1C;--orange:#EA580C;--amber:#D97706;--gold:#F59E0B;--gold-light:#FBBF24;--red-soft:#FCA5A5;--text:#FAFAFA;--secondary:#D4D4D4;--muted:#A3A3A3;--glass:rgb(38 38 38 / 82%);--glass-border:rgb(255 255 255 / 12%);--game:#211719;--ball:#FCA5A5;--paddle:#D97706;--brick-border:rgb(252 165 165 / 46%);--glow:rgb(220 38 38 / 24%)}
+*,*::before,*::after{box-sizing:border-box}
+html{min-height:100%;background:var(--page);-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{position:relative;display:flex;min-height:100vh;min-height:100svh;align-items:center;justify-content:center;margin:0;padding:clamp(1.25rem,4vw,3rem) 1rem;overflow-x:hidden;background:var(--page);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,a{font:inherit}
+a:focus-visible,button:focus-visible,canvas:focus-visible{outline:3px solid var(--gold-light);outline-offset:3px}
+.blob{position:fixed;z-index:0;width:40vw;height:40vw;min-width:18rem;min-height:18rem;border-radius:50%;filter:blur(80px);opacity:.55;pointer-events:none;animation:float 10s infinite ease-in-out}
+.blob-1{top:-12%;left:-12%;background:radial-gradient(circle,rgb(220 38 38 / 25%) 0%,transparent 70%)}
+.blob-2{right:-14%;bottom:-18%;width:50vw;height:50vw;background:radial-gradient(circle,rgb(217 119 6 / 19%) 0%,transparent 70%);animation-delay:-5s}
+.container{position:relative;z-index:1;width:min(100%,42rem);padding:clamp(1.25rem,4vw,2rem);border:1px solid var(--glass-border);border-radius:24px;background:var(--glass);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 25px 50px -12px rgb(0 0 0 / 50%);text-align:center}
+.brand-label{margin:0 0 .5rem;color:var(--muted);font-size:.72rem;font-weight:700;letter-spacing:.17em}
+h1{margin:0;background:linear-gradient(105deg,var(--red-soft),var(--gold-light));background-clip:text;color:transparent;font-size:clamp(5rem,18vw,6rem);font-weight:800;letter-spacing:-.075em;line-height:1;-webkit-background-clip:text;animation:pulse 2s infinite alternate}
+.intro{margin:.85rem 0 1.75rem;color:var(--secondary);font-size:clamp(1rem,2.8vw,1.2rem);line-height:1.65}
+#game-container{position:relative;width:min(100%,480px);margin:0 auto 1rem;overflow:hidden;border:1px solid var(--brick-border);border-radius:12px;background:var(--game);box-shadow:0 0 22px var(--glow)}
+#gameCanvas{display:block;width:100%;height:auto;aspect-ratio:3/2;background:var(--game);cursor:crosshair;touch-action:none}
+.score-display{position:absolute;top:10px;left:15px;display:flex;gap:.45rem;align-items:baseline;color:rgb(255 255 255 / 78%);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.8rem;font-weight:700;letter-spacing:.08em;pointer-events:none;text-shadow:0 1px 8px var(--glow)}
+#current-score{color:var(--gold-light);font-size:1.1rem;letter-spacing:0}
+#game-over{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;padding:1rem;background:rgb(23 23 23 / 92%);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+#game-over.visible{display:flex}
+#game-over h2{margin:0;color:var(--text);font-size:clamp(1.7rem,5vw,2.1rem)}
+#final-score{margin:.65rem 0 .9rem;color:var(--gold-light);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:1.45rem;font-weight:700}
+.btn{display:inline-flex;min-height:2.75rem;align-items:center;justify-content:center;margin:.45rem;padding:.75rem 1.5rem;border:1px solid var(--crimson);border-radius:9999px;background:rgb(220 38 38 / 12%);color:var(--red-soft);font-weight:650;text-decoration:none;cursor:pointer;transition:background-color .2s ease,color .2s ease,box-shadow .2s ease,transform .2s ease}
+.btn:hover{transform:translateY(-1px);background:var(--crimson);color:#fff;box-shadow:0 0 20px rgb(220 38 38 / 35%)}
+.btn:active{transform:translateY(0)}
+.game-hint{margin:.75rem 0 1rem;color:var(--muted);font-size:.85rem;line-height:1.5}
+.home-button{min-width:10.5rem;border-color:var(--amber);background:rgb(217 119 6 / 10%);color:var(--gold-light)}
+.home-button:hover{background:var(--amber);color:#171717;box-shadow:0 0 20px rgb(217 119 6 / 32%)}
+@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-20px) scale(1.05)}}
+@keyframes pulse{0%{filter:drop-shadow(0 0 10px rgb(220 38 38 / 20%))}100%{filter:drop-shadow(0 0 25px rgb(245 158 11 / 42%))}}
+@media(max-width:560px){body{align-items:flex-start;padding-block:1.25rem}.container{border-radius:18px}.intro{margin-bottom:1.25rem}.game-hint{font-size:.75rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
 </head>
-<body data-site-root="" data-page-type="404">
-  <!-- SHARED:TOPBAR -->
-  <!-- SHARED:MAIN-HEADER -->
+<body>
+<div class="blob blob-1" aria-hidden="true"></div>
+<div class="blob blob-2" aria-hidden="true"></div>
+<main class="container">
+<p class="brand-label">LUX OMNI</p>
+<h1>404</h1>
+<p class="intro">Looks like you're lost. Break some bricks while you're here.</p>
+<div id="game-container">
+<canvas id="gameCanvas" width="480" height="320" tabindex="0" role="img" aria-label="Brick breaker game. Focus the game and use the left and right arrow keys, or move your mouse or touch across the game to control the paddle."></canvas>
+<div class="score-display" aria-live="polite" aria-atomic="true"><span>SCORE</span><span id="current-score">0</span></div>
+<div id="game-over" aria-hidden="true"><h2>Game Over</h2><div id="final-score">Score: 0</div><button class="btn" id="restart-game" type="button">Play Again</button></div>
+</div>
+<p class="game-hint">Use ← →, move your mouse, or drag on the game to control the paddle.</p>
+<a href="/Lux-Omni-Blog/" class="btn home-button">Go Back Home</a>
+</main>
+<script>
+(() => {
+  "use strict";
+  const canvas = document.getElementById("gameCanvas");
+  const ctx = canvas?.getContext("2d");
+  const currentScoreEl = document.getElementById("current-score");
+  const gameOverScreen = document.getElementById("game-over");
+  const finalScoreEl = document.getElementById("final-score");
+  const restartButton = document.getElementById("restart-game");
+  if (!canvas || !ctx || !currentScoreEl || !gameOverScreen || !finalScoreEl || !restartButton) return;
 
-  <main class="error-page" aria-labelledby="error-page-title">
-    <div class="error-page__ambient" aria-hidden="true">
-      <span class="error-page__glow error-page__glow--one"></span>
-      <span class="error-page__glow error-page__glow--two"></span>
-    </div>
+  const ballRadius = 6, paddleHeight = 10, paddleWidth = 75;
+  const brickRowCount = 5, brickColumnCount = 7, brickWidth = 55, brickHeight = 15;
+  const brickPadding = 10, brickOffsetTop = 40, brickOffsetLeft = 15;
+  const totalBricks = brickRowCount * brickColumnCount;
+  const colors = {ball:"#FCA5A5",paddle:"#D97706",brickStroke:"rgba(252,165,165,.46)"};
+  let x = canvas.width / 2, y = canvas.height - 30, dx = 3, dy = -3;
+  let paddleX = (canvas.width - paddleWidth) / 2;
+  let rightPressed = false, leftPressed = false, bricks = [], score = 0;
+  let bricksClearedThisRound = 0, animationId = null, isGameOver = false;
 
-    <section class="error-page__card">
-      <p class="error-page__eyebrow">LUX OMNI · LOST IN TRANSMISSION</p>
-      <h1 class="error-page__code" id="error-page-title">404</h1>
-      <p class="error-page__message">Looks like you're lost. Break some bricks while you're here.</p>
+  function initBricks() {
+    bricks = [];
+    for (let column = 0; column < brickColumnCount; column += 1) {
+      bricks[column] = [];
+      for (let row = 0; row < brickRowCount; row += 1) {
+        bricks[column][row] = {
+          x: brickOffsetLeft + column * (brickWidth + brickPadding),
+          y: brickOffsetTop + row * (brickHeight + brickPadding),
+          status: 1
+        };
+      }
+    }
+  }
+  function clampPaddle() {
+    paddleX = Math.max(0, Math.min(canvas.width - paddleWidth, paddleX));
+  }
+  function updateScore() {
+    currentScoreEl.textContent = String(score);
+  }
+  function endGame() {
+    isGameOver = true;
+    if (animationId !== null) cancelAnimationFrame(animationId);
+    animationId = null;
+    finalScoreEl.textContent = `Score: ${score}`;
+    gameOverScreen.classList.add("visible");
+    gameOverScreen.setAttribute("aria-hidden", "false");
+    restartButton.focus({preventScroll:true});
+  }
+  function initGame() {
+    if (animationId !== null) cancelAnimationFrame(animationId);
+    animationId = null;
+    isGameOver = false;
+    rightPressed = false;
+    leftPressed = false;
+    bricksClearedThisRound = 0;
+    x = canvas.width / 2;
+    y = canvas.height - 30;
+    dx = 3;
+    dy = -3;
+    paddleX = (canvas.width - paddleWidth) / 2;
+    score = 0;
+    updateScore();
+    gameOverScreen.classList.remove("visible");
+    gameOverScreen.setAttribute("aria-hidden", "true");
+    initBricks();
+    canvas.focus({preventScroll:true});
+    draw();
+  }
+  function movePaddleTo(clientX) {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width <= 0) return;
+    const canvasX = (clientX - rect.left) * (canvas.width / rect.width);
+    paddleX = canvasX - paddleWidth / 2;
+    clampPaddle();
+  }
+  function keyDownHandler(event) {
+    if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+    if (document.activeElement !== canvas) return;
+    event.preventDefault();
+    if (event.key === "ArrowRight") rightPressed = true;
+    if (event.key === "ArrowLeft") leftPressed = true;
+  }
+  function keyUpHandler(event) {
+    if (event.key === "ArrowRight") rightPressed = false;
+    if (event.key === "ArrowLeft") leftPressed = false;
+  }
+  function drawBall() {
+    ctx.beginPath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+    ctx.fillStyle = colors.ball;
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = colors.ball;
+    ctx.fill();
+    ctx.closePath();
+    ctx.shadowBlur = 0;
+  }
+  function drawPaddle() {
+    ctx.beginPath();
+    ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+    ctx.fillStyle = colors.paddle;
+    ctx.shadowBlur = 15;
+    ctx.shadowColor = colors.paddle;
+    ctx.fill();
+    ctx.closePath();
+    ctx.shadowBlur = 0;
+  }
+  function drawBricks() {
+    for (let column = 0; column < brickColumnCount; column += 1) {
+      for (let row = 0; row < brickRowCount; row += 1) {
+        const brick = bricks[column][row];
+        if (brick.status !== 1) continue;
+        ctx.beginPath();
+        ctx.rect(brick.x, brick.y, brickWidth, brickHeight);
+        const gradient = ctx.createLinearGradient(brick.x, brick.y, brick.x, brick.y + brickHeight);
+        gradient.addColorStop(0, "rgba(255,255,255,.20)");
+        gradient.addColorStop(1, "rgba(255,255,255,.05)");
+        ctx.fillStyle = gradient;
+        ctx.strokeStyle = colors.brickStroke;
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+      }
+    }
+  }
+  function collisionDetection() {
+    for (let column = 0; column < brickColumnCount; column += 1) {
+      for (let row = 0; row < brickRowCount; row += 1) {
+        const brick = bricks[column][row];
+        if (brick.status !== 1) continue;
+        if (x > brick.x && x < brick.x + brickWidth && y > brick.y && y < brick.y + brickHeight) {
+          dy = -dy;
+          brick.status = 0;
+          score += 1;
+          bricksClearedThisRound += 1;
+          updateScore();
+          if (bricksClearedThisRound === totalBricks) {
+            initBricks();
+            bricksClearedThisRound = 0;
+            dx = Math.sign(dx) * (Math.abs(dx) + .5);
+            dy = Math.sign(dy) * (Math.abs(dy) + .5);
+          }
+          return;
+        }
+      }
+    }
+  }
+  function draw() {
+    if (isGameOver) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBricks();
+    drawBall();
+    drawPaddle();
+    collisionDetection();
+    if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) dx = -dx;
+    if (y + dy < ballRadius) {
+      dy = -dy;
+    } else if (y + dy > canvas.height - ballRadius) {
+      if (x >= paddleX - ballRadius && x <= paddleX + paddleWidth + ballRadius) {
+        const hitPoint = x - (paddleX + paddleWidth / 2);
+        dx = hitPoint * .1;
+        dy = -Math.abs(dy);
+      } else {
+        endGame();
+        return;
+      }
+    }
+    if (rightPressed) paddleX += 7;
+    if (leftPressed) paddleX -= 7;
+    clampPaddle();
+    x += dx;
+    y += dy;
+    animationId = requestAnimationFrame(draw);
+  }
 
-      <div class="error-page__game-shell" id="game-container">
-        <canvas
-          id="gameCanvas"
-          width="480"
-          height="320"
-          tabindex="0"
-          aria-label="Brick breaker game. Focus this game and use the left and right arrow keys, or move your pointer or touch across the game to control the paddle."
-        ></canvas>
-
-        <div class="error-page__score" aria-live="polite" aria-atomic="true">
-          SCORE <span id="current-score">0</span>
-        </div>
-
-        <div
-          class="error-page__game-over"
-          id="game-over"
-          aria-hidden="true"
-          aria-labelledby="game-over-title"
-        >
-          <h2 id="game-over-title">Game Over</h2>
-          <p class="error-page__final-score" id="final-score">Score: 0</p>
-          <button class="error-page__button" id="restart-game" type="button">Play Again</button>
-        </div>
-      </div>
-
-      <p class="error-page__controls-hint">Focus the game and use ← →, or move with your mouse or touch.</p>
-      <a class="error-page__button error-page__button--home" href="index.html">Go Back Home</a>
-    </section>
-  </main>
-
-  <!-- SHARED:FOOTER -->
-
-  <script type="module" src="assets/js/main.js"></script>
+  canvas.addEventListener("keydown", keyDownHandler);
+  window.addEventListener("keyup", keyUpHandler);
+  window.addEventListener("blur", () => {rightPressed = false; leftPressed = false;});
+  canvas.addEventListener("pointerdown", event => {
+    canvas.focus({preventScroll:true});
+    movePaddleTo(event.clientX);
+    if (event.pointerType !== "mouse") {
+      event.preventDefault();
+      canvas.setPointerCapture?.(event.pointerId);
+    }
+  });
+  canvas.addEventListener("pointermove", event => movePaddleTo(event.clientX));
+  canvas.addEventListener("contextmenu", event => event.preventDefault());
+  restartButton.addEventListener("click", initGame);
+  initBricks();
+  updateScore();
+  draw();
+})();
+</script>
 </body>
 </html>
