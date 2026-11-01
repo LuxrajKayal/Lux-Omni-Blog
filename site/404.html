@@ -439,22 +439,16 @@ function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
     ctx.fillStyle = ballColor;
-    ctx.shadowBlur = 10;
-    ctx.shadowColor = ballColor;
     ctx.fill();
     ctx.closePath();
-    ctx.shadowBlur = 0; // reset
 }
 
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
     ctx.fillStyle = paddleColor;
-    ctx.shadowBlur = 15;
-    ctx.shadowColor = paddleColor;
     ctx.fill();
     ctx.closePath();
-    ctx.shadowBlur = 0;
 }
 
 function drawBricks() {
