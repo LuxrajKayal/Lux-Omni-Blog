@@ -340,9 +340,11 @@ function mouseMoveHandler(e) {
 
 function touchMoveHandler(e) {
     e.preventDefault();
-    const relativeX = e.touches[0].clientX - canvas.getBoundingClientRect().left;
-    if (relativeX > 0 && relativeX < canvas.width) {
-        paddleX = relativeX - paddleWidth / 2;
+    const rect = canvas.getBoundingClientRect();
+    const relativeX = e.touches[0].clientX - rect.left;
+    if (relativeX > 0 && relativeX < rect.width) {
+        const canvasX = relativeX * (canvas.width / rect.width);
+        paddleX = canvasX - paddleWidth / 2;
     }
 }
 
