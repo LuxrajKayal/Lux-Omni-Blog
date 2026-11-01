@@ -537,9 +537,9 @@ function draw(timestamp) {
     timeAccumulator += elapsed;
 
     // Catch up with elapsed time when the browser renders fewer frames.
-    while (timeAccumulator >= SIMULATION_STEP && !isGameOver) {
+    while (timeAccumulator + 1e-8 >= SIMULATION_STEP && !isGameOver) {
         updateGame();
-        timeAccumulator -= SIMULATION_STEP;
+        timeAccumulator = Math.max(0, timeAccumulator - SIMULATION_STEP);
     }
 
     renderGame();
