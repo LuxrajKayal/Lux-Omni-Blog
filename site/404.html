@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The page you were looking for could not be found. Take a break and play Lux Omni's brick-breaker game.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#171717">
+  <title>404 — Page Not Found | Lux Omni</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Shared Lux Omni foundation and site shell. -->
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/topbar.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/dropdowns.css">
+  <link rel="stylesheet" href="assets/css/search.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+
+  <!-- Page-specific styling is intentionally kept separate. -->
+  <link rel="stylesheet" href="assets/css/404-page.css">
+</head>
+<body data-site-root="" data-page-type="404">
+  <!-- SHARED:TOPBAR -->
+  <!-- SHARED:MAIN-HEADER -->
+
+  <main class="error-page" aria-labelledby="error-page-title">
+    <div class="error-page__ambient" aria-hidden="true">
+      <span class="error-page__glow error-page__glow--one"></span>
+      <span class="error-page__glow error-page__glow--two"></span>
+    </div>
+
+    <section class="error-page__card">
+      <p class="error-page__eyebrow">LUX OMNI · LOST IN TRANSMISSION</p>
+      <h1 class="error-page__code" id="error-page-title">404</h1>
+      <p class="error-page__message">Looks like you're lost. Break some bricks while you're here.</p>
+
+      <div class="error-page__game-shell" id="game-container">
+        <canvas
+          id="gameCanvas"
+          width="480"
+          height="320"
+          tabindex="0"
+          aria-label="Brick breaker game. Focus this game and use the left and right arrow keys, or move your pointer or touch across the game to control the paddle."
+        ></canvas>
+
+        <div class="error-page__score" aria-live="polite" aria-atomic="true">
+          SCORE <span id="current-score">0</span>
+        </div>
+
+        <div
+          class="error-page__game-over"
+          id="game-over"
+          aria-hidden="true"
+          aria-labelledby="game-over-title"
+        >
+          <h2 id="game-over-title">Game Over</h2>
+          <p class="error-page__final-score" id="final-score">Score: 0</p>
+          <button class="error-page__button" id="restart-game" type="button">Play Again</button>
+        </div>
+      </div>
+
+      <p class="error-page__controls-hint">Focus the game and use ← →, or move with your mouse or touch.</p>
+      <a class="error-page__button error-page__button--home" href="index.html">Go Back Home</a>
+    </section>
+  </main>
+
+  <!-- SHARED:FOOTER -->
+
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
