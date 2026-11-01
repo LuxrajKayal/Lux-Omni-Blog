@@ -88,7 +88,7 @@
         h1 {
             font-size: clamp(4.5rem, 16vw, 6rem);
             margin: 0;
-            background: linear-gradient(to right, #FCA5A5, var(--gold-light));
+            background: linear-gradient(to right, #DC2626, #B91C1C);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -285,8 +285,8 @@ let animationId;
 let isGameOver = false;
 
 // Colors
-const paddleColor = "#8b5cf6";
-const ballColor = "#38bdf8";
+const paddleColor = "#EA580C";
+const ballColor = "#DC2626";
 
 function initBricks() {
     bricks = [];
@@ -402,10 +402,10 @@ function drawBricks() {
                 ctx.rect(brickX, brickY, brickWidth, brickHeight);
                 // Gradient for bricks
                 let grad = ctx.createLinearGradient(brickX, brickY, brickX, brickY + brickHeight);
-                grad.addColorStop(0, "rgba(255,255,255,0.2)");
-                grad.addColorStop(1, "rgba(255,255,255,0.05)");
+                grad.addColorStop(0, "rgba(220,38,38,0.95)");
+                grad.addColorStop(1, "rgba(136,19,55,0.92)");
                 ctx.fillStyle = grad;
-                ctx.strokeStyle = "rgba(56, 189, 248, 0.4)";
+                ctx.strokeStyle = "rgba(252, 165, 165, 0.8)";
                 ctx.fill();
                 ctx.stroke();
                 ctx.closePath();
