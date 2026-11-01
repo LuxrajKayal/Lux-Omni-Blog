@@ -247,6 +247,7 @@ h1{margin:0;background:linear-gradient(105deg,var(--red-soft),var(--gold-light))
   restartButton.addEventListener("click", initGame);
   initBricks();
   updateScore();
+  canvas.focus({preventScroll:true});
   draw();
 })();
 </script>
