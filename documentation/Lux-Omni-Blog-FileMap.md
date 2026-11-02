@@ -4,7 +4,7 @@
 **Status:** Updated to reflect the current repository structure. Any future structural change should be recorded here after it is implemented.  
 **Hosting direction:** The public-site source lives in `site/`; GitHub Actions builds it into `_site/` and deploys that generated output. External database and media services are not required or configured for the current scope.
 
-This map separates public-site source (`site/`), build tooling (`scripts/`), and planning materials (`documentation/`). The control panel/dashboard has been removed from the project. Every populated HTML page uses one explicit marker each for the canonical topbar, main header/search dialog, and footer under `site/partials/`. The source pages contain their own content only; `scripts/build-site.mjs` stitches the markers into complete HTML in `_site/`. It does not detect, hide, or replace legacy components; it fails if a populated page is missing markers or still contains hardcoded shared shell markup.
+This map separates public-site source (`site/`), build tooling (`scripts/`), and planning materials (`documentation/`). The control panel/dashboard has been removed from the project. Every populated HTML page uses one explicit marker each for the canonical topbar, main header/search dialog, and footer under `site/partials/`. Article pages may additionally opt into `SHARED:ARTICLE-LAYOUT`, supplying separate HEADER and CONTENT slots; the build script assembles those article-specific slots into the shared full-width entry-header, two-column content frame and empty sidebar rail. Article text and data remain hand-authored in each article source file. The builder does not detect, hide, or replace legacy components; it fails if a populated page is missing required shell markers or still contains hardcoded shared shell markup.
 
 ---
 
@@ -31,7 +31,8 @@ Lux-Omni-Blog/
 │   ├── partials/                 # Source-only shared HTML components
 │   │   ├── topbar.html            # Shared top information bar
 │   │   ├── main-header.html       # Shared navigation header and search dialog
-│   │   └── footer.html            # Shared footer content and layout
+│   │   ├── footer.html            # Shared footer content and layout
+│   │   └── article-layout.html    # Optional shared article frame with full-width header and empty sidebar rail
 │   ├── categories/               # Category/subcategory pages and their articles
 │   ├── pages/                    # Standalone utility/legal pages, when present
 │   ├── assets/                   # Shared CSS, JavaScript and images
@@ -63,16 +64,16 @@ site/
 │   └── buying-advice/buying-advice-index.html
 ├── pages/                        # Standalone utility/legal pages, when present
 ├── assets/
-│   ├── css/                      # Existing stylesheets; preserved in the cleanup
+│   ├── css/                      # Shared stylesheets, including article-layout.css
 │   ├── images/
-│   └── js/
+│   └── js/                       # Shared scripts, including article-share.js
 ├── sitemap.xml                   # Canonical URLs only
 └── 404.html
 ```
 
 There are seven main categories and 44 subcategories, including Drone Technology under Engineering. Every subcategory stores its articles in its own `articles/` folder beneath `site/categories/`. Category and subcategory landing pages use unique, descriptive filenames ending in `-index.html`; `site/index.html` is the only file named `index.html`. Each page's `data-site-root` is set for its directory depth so navigation, search and shared assets work from nested paths.
 
-The legacy redirect pages and their top-level folders, `site/sections/` and `site/articles/`, have been removed. The empty `site/templates/article-template.html` placeholder was intentionally removed as well; no canonical article template currently exists in the repository. The canonical sitemap lists 112 URLs: one homepage, 51 category/subcategory landing pages and 60 sample articles.
+The legacy redirect pages and their top-level folders, `site/sections/` and `site/articles/`, have been removed. The empty `site/templates/article-template.html` placeholder was intentionally removed as well. No universal article-content template is mandated. The optional `site/partials/article-layout.html` provides only the shared page frame; each opted-in article supplies its own HEADER and CONTENT slots. The first implementation test is `a-pre-flight-inspection-checklist-for-small-drones.html`; the other articles have not been migrated. The canonical sitemap lists 112 URLs: one homepage, 51 category/subcategory landing pages and 60 sample articles.
 
 The existing CSS files were not changed as part of this cleanup.
 ## 2. Initial Authoring and Publishing Workflow — VS Code, Git and GitHub
@@ -145,7 +146,7 @@ Manual source edits in VS Code ─► Git/GitHub ─► approved site deployment
 Large media ─────────────────► Cloudflare R2
 ```
 
-The GitHub Pages workflow runs `node scripts/build-site.mjs` before deployment. Every populated HTML source page must contain exactly one marker for TOPBAR, MAIN-HEADER, and FOOTER. The builder only expands those explicit markers, validates the generated shell, and fails on missing markers or leftover hardcoded shared components. Empty HTML placeholders remain untouched.
+The GitHub Pages workflow runs `node scripts/build-site.mjs` before deployment. Every populated HTML source page must contain exactly one marker for TOPBAR, MAIN-HEADER, and FOOTER. Article pages that opt into the shared frame also contain one `SHARED:ARTICLE-LAYOUT` marker and one pair each of `ARTICLE:HEADER` and `ARTICLE:CONTENT` slot markers. The builder inserts the source slots into the shared frame at build time, validates the assembled article header/grid/sidebar rail, and leaves pages that do not opt in unchanged. It also fails on missing required shell markers or leftover hardcoded shared components. Empty HTML placeholders remain untouched.
 
 ---
 
