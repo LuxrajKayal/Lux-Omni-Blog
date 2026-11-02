@@ -70,7 +70,7 @@
   min-width: 0;
 }
 
-.author-card__eyebrow {
+.article-content .author-card__eyebrow {
   margin: 0 0 0.25rem;
   color: var(--brand-crimson);
   font-size: var(--font-size-xs);
@@ -80,7 +80,7 @@
   text-transform: uppercase;
 }
 
-.author-card__name {
+.article-content .author-card__name {
   margin: 0 0 0.3rem;
   font-size: 1.05rem;
   font-weight: var(--font-weight-bold);
