@@ -62,7 +62,7 @@ export function initAuthorCard() {
     content.className = "author-card__content";
 
     const label = document.createElement("p");
-    label.className = "author-card__eyebrow";
+    label.className = "eyebrow author-card__eyebrow";
     label.textContent = "Author";
 
     const name = document.createElement("h2");
