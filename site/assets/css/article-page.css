@@ -4,25 +4,28 @@
  */
 
 .article-content.article-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 52rem) minmax(13rem, 16rem);
-  grid-template-areas:
-    "intro author"
-    "body author";
-  align-items: start;
-  column-gap: clamp(1.5rem, 3vw, 2rem);
-  row-gap: 0;
   width: min(100%, 72rem);
   max-width: 72rem;
   margin-inline: auto;
 }
 
 .article-layout > .article-intro {
-  grid-area: intro;
+  width: 100%;
   min-width: 0;
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
 }
 
-.article-layout > .article-author-card {
+.article-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 52rem) minmax(13rem, 16rem);
+  grid-template-areas: "body author";
+  align-items: start;
+  column-gap: clamp(1.5rem, 3vw, 2rem);
+  row-gap: 0;
+  width: 100%;
+}
+
+.article-content-grid > .article-author-card {
   grid-area: author;
   align-self: start;
   min-width: 0;
@@ -34,7 +37,7 @@
   box-shadow: var(--shadow-xs);
 }
 
-.article-layout > .article-body {
+.article-content-grid > .article-body {
   grid-area: body;
   min-width: 0;
 }
@@ -122,22 +125,21 @@
 }
 
 @media (max-width: 960px) {
-  .article-content.article-layout {
+  .article-content-grid {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
-      "intro"
       "author"
       "body";
     row-gap: 1.15rem;
   }
 
-  .article-layout > .article-author-card {
+  .article-content-grid > .article-author-card {
     margin: 0;
   }
 }
 
 @media (max-width: 560px) {
-  .article-layout > .article-author-card {
+  .article-content-grid > .article-author-card {
     padding: 0.85rem;
   }
 
