@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- ================================================= -->
+    <!-- 1. ESSENTIAL DOCUMENT METADATA                    -->
+    <!-- ================================================= -->
+
+    <!-- Character encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--
+        PAGE TITLE
+        Appears in browser tabs and can appear as the
+        clickable title in Google search results.
+
+        Use the actual article headline.
+        Append the publication name.
+    -->
+    <title>{{ARTICLE_TITLE}} | Lux Omni</title>
+
+
+    <!--
+        META DESCRIPTION
+        A concise, accurate summary of the actual article.
+        Google may use this for the search result snippet.
+        Do not treat 150-160 characters as a fixed limit.
+    -->
+    <meta
+        name="description"
+        content="{{ARTICLE_META_DESCRIPTION}}"
+    >
+
+
+    <!--
+        CANONICAL URL
+        Identifies the preferred public URL of this article.
+        Must match the final published URL.
+        Do not use the temporary development URL.
+    -->
+    <link
+        rel="canonical"
+        href="{{ARTICLE_CANONICAL_URL}}"
+    >
+
+
+    <!--
+        ROBOTS DIRECTIVES
+
+        index = allow indexing
+        follow = allow following links
+        max-image-preview:large = allow large image previews
+
+        Index and follow are defaults, but are stated
+        explicitly here for clarity.
+    -->
+    <meta
+        name="robots"
+        content="index, follow, max-image-preview:large"
+    >
+
+
+    <!-- ================================================= -->
+    <!-- 2. AUTHOR INFORMATION                              -->
+    <!-- ================================================= -->
+
+    <!--
+        The actual article author.
+
+        Use the real author name.
+        Remove this tag if an individual author is
+        not identified.
+    -->
+    <meta
+        name="author"
+        content="{{AUTHOR_NAME}}"
+    >
+
+
+    <!-- ================================================= -->
+    <!-- 3. OPEN GRAPH METADATA                             -->
+    <!-- ================================================= -->
+
+    <!--
+        Used by social platforms that support Open Graph,
+        including Facebook and LinkedIn.
+    -->
+
+    <meta property="og:type" content="article">
+
+    <meta
+        property="og:site_name"
+        content="Lux Omni Blog"
+    >
+
+    <meta
+        property="og:title"
+        content="{{ARTICLE_TITLE}}"
+    >
+
+    <meta
+        property="og:description"
+        content="{{ARTICLE_SOCIAL_DESCRIPTION}}"
+    >
+
+    <meta
+        property="og:url"
+        content="{{ARTICLE_CANONICAL_URL}}"
+    >
+
+
+    <!--
+        SOCIAL SHARING IMAGE
+
+        Use the actual featured image.
+        The image URL must be publicly accessible.
+
+        Recommended Open Graph image size:
+        1200 x 630 pixels.
+
+        Provide width and height only when known.
+    -->
+    <meta
+        property="og:image"
+        content="{{FEATURED_IMAGE_URL}}"
+    >
+
+    <meta
+        property="og:image:alt"
+        content="{{FEATURED_IMAGE_ALT}}"
+    >
+
+    <meta
+        property="og:image:width"
+        content="{{FEATURED_IMAGE_WIDTH}}"
+    >
+
+    <meta
+        property="og:image:height"
+        content="{{FEATURED_IMAGE_HEIGHT}}"
+    >
+
+
+    <!--
+        ARTICLE PUBLICATION INFORMATION
+
+        published_time = original publication time
+        modified_time = actual last modification time
+
+        Both must represent real dates.
+    -->
+    <meta
+        property="article:published_time"
+        content="{{PUBLISHED_ISO_8601}}"
+    >
+
+    <meta
+        property="article:modified_time"
+        content="{{MODIFIED_ISO_8601}}"
+    >
+
+
+    <!--
+        ARTICLE AUTHOR PROFILE
+
+        Provide the actual author profile URL.
+        This is a profile reference, not the author's name.
+        Remove when no profile exists.
+    -->
+    <meta
+        property="article:author"
+        content="{{AUTHOR_PROFILE_URL}}"
+    >
+
+
+    <!--
+        ARTICLE CATEGORY
+
+        Use the main editorial category.
+        Example: Engineering, Hardware, Reviews.
+    -->
+    <meta
+        property="article:section"
+        content="{{ARTICLE_MAIN_CATEGORY}}"
+    >
+
+
+    <!--
+        ARTICLE TAGS
+
+        Repeat article:tag for each relevant tag.
+        These are optional.
+    -->
+    <meta
+        property="article:tag"
+        content="{{ARTICLE_TAG_1}}"
+    >
+
+    <meta
+        property="article:tag"
+        content="{{ARTICLE_TAG_2}}"
+    >
+
+
+    <!-- ================================================= -->
+    <!-- 4. X / TWITTER CARD METADATA                       -->
+    <!-- ================================================= -->
+
+    <!--
+        Controls the appearance of the article
+        when shared on platforms supporting X Cards.
+    -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="{{ARTICLE_TITLE}}"
+    >
+
+    <meta
+        name="twitter:description"
+        content="{{ARTICLE_SOCIAL_DESCRIPTION}}"
+    >
+
+    <meta
+        name="twitter:image"
+        content="{{FEATURED_IMAGE_URL}}"
+    >
+
+    <meta
+        name="twitter:image:alt"
+        content="{{FEATURED_IMAGE_ALT}}"
+    >
+
+
+    <!--
+        OPTIONAL SOCIAL ACCOUNTS
+
+        Only include these when the accounts actually exist.
+    -->
+
+    <meta
+        name="twitter:site"
+        content="{{LUX_OMNI_X_HANDLE}}"
+    >
+
+    <meta
+        name="twitter:creator"
+        content="{{AUTHOR_X_HANDLE}}"
+    >
+
+
+    <!-- ================================================= -->
+    <!-- 5. STRUCTURED DATA (JSON-LD)                       -->
+    <!-- ================================================= -->
+
+    <!--
+        JSON-LD describes the website, publisher,
+        webpage and actual article.
+
+        BlogPosting is the default article type here.
+
+        Do not put HTML comments inside the JSON object.
+        Keep the JSON syntactically valid after replacing
+        the placeholders.
+
+        All structured information must agree with
+        the actual visible article.
+    -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+
+        "@graph": [
+
+            {
+                "@type": "Organization",
+
+                "@id": "{{SITE_URL}}#organization",
+
+                "name": "Lux Omni",
+
+                "url": "{{SITE_URL}}",
+
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "{{PUBLISHER_LOGO_URL}}"
+                }
+            },
+
+
+            {
+                "@type": "WebSite",
+
+                "@id": "{{SITE_URL}}#website",
+
+                "name": "Lux Omni Blog",
+
+                "url": "{{SITE_URL}}",
+
+                "publisher": {
+                    "@id": "{{SITE_URL}}#organization"
+                },
+
+                "inLanguage": "en"
+            },
+
+
+            {
+                "@type": "WebPage",
+
+                "@id": "{{ARTICLE_CANONICAL_URL}}#webpage",
+
+                "url": "{{ARTICLE_CANONICAL_URL}}",
+
+                "name": "{{ARTICLE_TITLE}}",
+
+                "isPartOf": {
+                    "@id": "{{SITE_URL}}#website"
+                },
+
+                "mainEntity": {
+                    "@id": "{{ARTICLE_CANONICAL_URL}}#article"
+                },
+
+                "inLanguage": "en"
+            },
+
+
+            {
+                "@type": "BlogPosting",
+
+                "@id": "{{ARTICLE_CANONICAL_URL}}#article",
+
+                "mainEntityOfPage": {
+                    "@id": "{{ARTICLE_CANONICAL_URL}}#webpage"
+                },
+
+                "headline": "{{ARTICLE_TITLE}}",
+
+                "description": "{{ARTICLE_DESCRIPTION}}",
+
+                "image": [
+                    "{{FEATURED_IMAGE_16_9_URL}}",
+                    "{{FEATURED_IMAGE_4_3_URL}}",
+                    "{{FEATURED_IMAGE_1_1_URL}}"
+                ],
+
+                "datePublished": "{{PUBLISHED_ISO_8601}}",
+
+                "dateModified": "{{MODIFIED_ISO_8601}}",
+
+                "author": {
+                    "@type": "Person",
+                    "name": "{{AUTHOR_NAME}}",
+                    "url": "{{AUTHOR_PROFILE_URL}}"
+                },
+
+                "publisher": {
+                    "@id": "{{SITE_URL}}#organization"
+                },
+
+                "articleSection": "{{ARTICLE_MAIN_CATEGORY}}",
+
+                "keywords": [
+                    "{{ARTICLE_KEYWORD_1}}",
+                    "{{ARTICLE_KEYWORD_2}}",
+                    "{{ARTICLE_KEYWORD_3}}"
+                ],
+
+                "isPartOf": {
+                    "@id": "{{SITE_URL}}#website"
+                },
+
+                "inLanguage": "en"
+            }
+
+        ]
+    }
+    </script>
+
+
+    <!-- ================================================= -->
+    <!-- 6. STYLESHEET REFERENCES                          -->
+    <!-- ================================================= -->
+
+    <!--
+        SHARED WEBSITE COMPONENTS
+
+        Load only the styles needed by:
+        - Topbar
+        - Main header
+        - Footer
+
+        Use the actual stylesheet paths from the project.
+    -->
+
+    <!-- SHARED TOPBAR CSS -->
+    <!-- SHARED MAIN HEADER CSS -->
+    <!-- SHARED FOOTER CSS -->
+
+
+    <!--
+        ARTICLE-SPECIFIC CSS
+
+        Every article can use its own stylesheet.
+
+        No mandatory common article layout,
+        typography or content-grid stylesheet.
+    -->
+
+    <link
+        rel="stylesheet"
+        href="{{ARTICLE_CSS_PATH}}"
+    >
+
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================================= -->
+    <!-- 7. SHARED WEBSITE COMPONENTS                      -->
+    <!-- ================================================= -->
+
+    <!--
+        Insert the existing shared topbar component here.
+        Use the project's actual integration method.
+    -->
+
+    <!-- SHARED: TOPBAR -->
+
+
+    <!--
+        Insert the existing shared main header component here.
+    -->
+
+    <!-- SHARED: MAIN HEADER -->
+
+
+
+    <!-- ================================================= -->
+    <!-- 8. MAIN ARTICLE AREA                               -->
+    <!-- ================================================= -->
+
+    <main id="main-content">
+
+
+        <!--
+            OPTIONAL BREADCRUMB NAVIGATION
+
+            Show the actual category hierarchy.
+
+            Keep visible navigation and any future
+            BreadcrumbList structured data consistent.
+        -->
+
+        <nav aria-label="Breadcrumb">
+
+            <a href="{{SITE_URL}}">Home</a>
+
+            <span aria-hidden="true"> / </span>
+
+            <a href="{{ARTICLE_CATEGORY_URL}}">
+                {{ARTICLE_MAIN_CATEGORY}}
+            </a>
+
+            <span aria-hidden="true"> / </span>
+
+            <span aria-current="page">
+                {{ARTICLE_TITLE}}
+            </span>
+
+        </nav>
+
+
+
+        <!-- ================================================= -->
+        <!-- 9. ARTICLE CONTENT                                -->
+        <!-- ================================================= -->
+
+        <!--
+            ARTICLE
+
+            This is the semantic article container.
+
+            Its internal layout is completely independent.
+
+            You can create different structures for:
+            - Engineering articles
+            - Product reviews
+            - Technical tutorials
+            - News articles
+            - Buying guides
+            - General editorial articles
+        -->
+
+        <article>
+
+
+            <!-- ARTICLE INTRODUCTION -->
+
+            <header class="article-header">
+
+
+                <!-- Main editorial category -->
+
+                <p class="article-category">
+                    {{ARTICLE_SUBCATEGORY}}
+                </p>
+
+
+                <!-- Main article headline -->
+
+                <h1>{{ARTICLE_TITLE}}</h1>
+
+
+                <!-- Article introduction / deck -->
+
+                <p class="article-introduction">
+                    {{ARTICLE_INTRODUCTION}}
+                </p>
+
+
+                <!--
+                    VISIBLE PUBLICATION INFORMATION
+
+                    Use the same dates as JSON-LD.
+                    Include the modification information
+                    only when it is applicable.
+                -->
+
+                <div class="article-byline">
+
+                    <span>
+                        By
+                        <a href="{{AUTHOR_PROFILE_URL}}">
+                            {{AUTHOR_NAME}}
+                        </a>
+                    </span>
+
+
+                    <time datetime="{{PUBLISHED_ISO_8601}}">
+                        {{PUBLISHED_DISPLAY_DATE}}
+                    </time>
+
+
+                    <span>
+                        Updated:
+                        <time datetime="{{MODIFIED_ISO_8601}}">
+                            {{MODIFIED_DISPLAY_DATE}}
+                        </time>
+                    </span>
+
+                </div>
+
+
+            </header>
+
+
+
+            <!-- ================================================= -->
+            <!-- FEATURED IMAGE                                    -->
+            <!-- ================================================= -->
+
+            <!--
+                Use the actual article image.
+
+                ALT text describes the image accurately.
+                Do not stuff keywords into alt text.
+
+                Set width and height to the actual image
+                dimensions to help prevent layout shifts.
+            -->
+
+            <figure class="article-featured-image">
+
+                <img
+                    src="{{FEATURED_IMAGE_URL}}"
+                    alt="{{FEATURED_IMAGE_ALT}}"
+                    width="{{FEATURED_IMAGE_WIDTH}}"
+                    height="{{FEATURED_IMAGE_HEIGHT}}"
+                    fetchpriority="high"
+                >
+
+                <!-- Optional image caption -->
+
+                <figcaption>
+                    {{FEATURED_IMAGE_CAPTION}}
+                </figcaption>
+
+            </figure>
+
+
+
+            <!-- ================================================= -->
+            <!-- ARTICLE BODY                                      -->
+            <!-- ================================================= -->
+
+            <!--
+                ARTICLE BODY
+
+                The following is only an example.
+
+                You may create your own sections, diagrams,
+                images, tables, code blocks, lists and other
+                elements according to the article subject.
+
+                No compulsory article layout is imposed.
+            -->
+
+            <div class="article-body">
+
+
+                <section>
+
+                    <h2>{{SECTION_HEADING}}</h2>
+
+                    <p>
+                        {{SECTION_CONTENT}}
+                    </p>
+
+                </section>
+
+
+                <!--
+                    ADD ADDITIONAL ARTICLE SECTIONS AS REQUIRED.
+
+                    H2 = Main sections.
+                    H3 = Subsections.
+                    
+                    Choose headings according to the actual
+                    subject and logical content hierarchy.
+                -->
+
+
+            </div>
+
+
+
+            <!-- ================================================= -->
+            <!-- OPTIONAL REFERENCES                               -->
+            <!-- ================================================= -->
+
+            <!--
+                Include references when relevant to the article.
+
+                Do not add empty or placeholder references
+                to published pages.
+            -->
+
+            <footer class="article-footer">
+
+
+                <section aria-labelledby="references-heading">
+
+                    <h2 id="references-heading">
+                        References
+                    </h2>
+
+                    <ul>
+
+                        <li>
+                            <a href="{{SOURCE_URL}}">
+                                {{SOURCE_TITLE}}
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </section>
+
+
+            </footer>
+
+
+        </article>
+
+
+    </main>
+
+
+
+    <!-- ================================================= -->
+    <!-- 10. SHARED WEBSITE FOOTER                          -->
+    <!-- ================================================= -->
+
+    <!-- SHARED: FOOTER -->
+
+
+
+    <!-- ================================================= -->
+    <!-- 11. ARTICLE-SPECIFIC JAVASCRIPT                    -->
+    <!-- ================================================= -->
+
+    <!--
+        Add JavaScript only when required by this article.
+
+        The article does not need a shared article
+        JavaScript framework.
+    -->
+
+
+</body>
+
+</html>
