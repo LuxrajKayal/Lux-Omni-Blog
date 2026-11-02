@@ -390,63 +390,285 @@
 
 
     <!-- ================================================= -->
-    <!-- 6. STYLESHEET REFERENCES                          -->
+    <!-- 6. SHARED WEBSITE COMPONENT DEPENDENCIES          -->
     <!-- ================================================= -->
 
-    <!--
-        SHARED WEBSITE COMPONENTS
+    <!-- Load the existing Lux Omni UI font used by the shared shell. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
 
-        Load only the styles needed by:
-        - Topbar
-        - Main header
-        - Footer
+    <!-- Design tokens used by the topbar, main header and footer. -->
+    <link rel="stylesheet" href="../../../../assets/css/tokens.css">
 
-        Use the actual stylesheet paths from the project.
-    -->
-
-    <!-- SHARED TOPBAR CSS -->
-    <!-- SHARED MAIN HEADER CSS -->
-    <!-- SHARED FOOTER CSS -->
-
-
-    <!--
-        ARTICLE-SPECIFIC CSS
-
-        Every article can use its own stylesheet.
-
-        No mandatory common article layout,
-        typography or content-grid stylesheet.
-    -->
-
+    <!-- Each article may provide its own independent stylesheet. -->
     <link
         rel="stylesheet"
         href="{{ARTICLE_CSS_PATH}}"
     >
 
+    <!-- Existing styles for the three shared components. -->
+    <link rel="stylesheet" href="../../../../assets/css/topbar.css">
+    <link rel="stylesheet" href="../../../../assets/css/header.css">
+    <link rel="stylesheet" href="../../../../assets/css/dropdowns.css">
+    <link rel="stylesheet" href="../../../../assets/css/search.css">
+
+    <!--
+        Component-only foundation and responsive rules.
+
+        These rules are scoped to the shared topbar, main header,
+        search dialog inside the main header, and footer.
+        They do not set article typography or article layout.
+        footer.css is inserted automatically by build-site.mjs
+        when the shared footer marker is assembled.
+    -->
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .topbar,
+        .topbar *,
+        .topbar *::before,
+        .topbar *::after,
+        .site-header,
+        .site-header *,
+        .site-header *::before,
+        .site-header *::after,
+        .search-dialog,
+        .search-dialog *,
+        .search-dialog *::before,
+        .search-dialog *::after,
+        .site-footer,
+        .site-footer *,
+        .site-footer *::before,
+        .site-footer *::after {
+            box-sizing: border-box;
+        }
+
+        .topbar,
+        .site-header,
+        .search-dialog,
+        .site-footer {
+            font-family: var(--font-ui);
+        }
+
+        .site-header button,
+        .search-dialog button,
+        .search-dialog input,
+        .search-dialog select,
+        .site-footer button {
+            font: inherit;
+        }
+
+        .site-header button,
+        .search-dialog button,
+        .site-footer button {
+            cursor: pointer;
+        }
+
+        .search-dialog__header .eyebrow {
+            margin: 0 0 .25rem;
+            color: var(--brand-crimson);
+            font-size: .72rem;
+            font-weight: var(--font-weight-bold);
+            letter-spacing: .12em;
+            line-height: 1.35;
+            text-transform: uppercase;
+        }
+
+        .site-header a:focus-visible,
+        .site-header button:focus-visible,
+        .search-dialog a:focus-visible,
+        .search-dialog button:focus-visible,
+        .search-dialog input:focus-visible,
+        .search-dialog select:focus-visible {
+            outline: var(--focus-ring-width) solid var(--color-focus);
+            outline-offset: var(--focus-ring-offset);
+        }
+
+        /* Main-header tablet sizing. */
+        @media (max-width: 1120px) {
+            .site-header__inner {
+                gap: .6rem;
+            }
+
+            .site-brand__symbol {
+                width: 33px;
+                height: 33px;
+            }
+
+            .site-brand__wordmark {
+                font-size: 1.5rem;
+            }
+
+            .site-header__nav-list {
+                gap: .1rem;
+            }
+
+            .nav-link {
+                font-size: .8rem;
+            }
+
+            .nav-dropdown-toggle {
+                width: 21px;
+            }
+
+            .header-icon-button {
+                width: 36px;
+                height: 38px;
+            }
+        }
+
+        /* Main-header mobile navigation. */
+        @media (max-width: 1000px) {
+            .site-header__inner {
+                min-height: 66px;
+                flex-wrap: wrap;
+                padding-block: .7rem;
+            }
+
+            .mobile-nav-toggle {
+                display: inline-flex;
+                order: 3;
+            }
+
+            .site-header__actions {
+                margin-inline-start: auto;
+            }
+
+            .site-header__nav {
+                display: none;
+                flex: 0 0 100%;
+                order: 4;
+                width: 100%;
+                margin: 0;
+            }
+
+            .site-header__nav.is-open {
+                display: block;
+            }
+
+            .site-header__nav-list {
+                display: flex;
+                align-items: stretch;
+                flex-direction: column;
+                gap: 0;
+                padding-top: .65rem;
+                border-top: 1px solid var(--color-border);
+            }
+
+            .site-header .nav-item {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) 38px;
+                align-items: center;
+                min-height: auto;
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            .nav-link {
+                min-height: 44px;
+                padding: .7rem .3rem;
+                font-size: var(--font-size-base);
+            }
+
+            .site-header .nav-item.is-active > .nav-link::after {
+                content: none;
+            }
+
+            .nav-dropdown-toggle {
+                width: 38px;
+                height: 38px;
+            }
+
+            .site-header .nav-dropdown:not([hidden]) {
+                position: static;
+                grid-column: 1 / -1;
+                width: 100%;
+                max-width: none;
+                max-height: none;
+                overflow: visible;
+                border: 0;
+                border-top: 1px solid var(--color-border);
+                border-radius: 0;
+                box-shadow: none;
+                padding: .35rem .35rem .7rem .65rem;
+            }
+
+            .site-header .nav-dropdown a {
+                padding: .6rem .7rem;
+            }
+        }
+
+        /* Compact header and search dialog on small phones. */
+        @media (max-width: 560px) {
+            .site-header__inner {
+                gap: .4rem;
+            }
+
+            .site-brand {
+                gap: .32rem;
+            }
+
+            .site-brand__symbol {
+                width: 29px;
+                height: 29px;
+            }
+
+            .site-brand__wordmark {
+                font-size: 1.34rem;
+            }
+
+            .header-icon-button,
+            .mobile-nav-toggle {
+                width: 35px;
+                height: 36px;
+            }
+
+            .site-header__actions {
+                gap: .1rem;
+            }
+
+            .search-controls {
+                grid-template-columns: 1fr;
+            }
+
+            .search-dialog {
+                padding: 1rem;
+            }
+
+            .search-results {
+                max-height: 31dvh;
+            }
+
+            .search-results-heading > span {
+                display: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .nav-dropdown-toggle svg {
+                transition: none;
+            }
+        }
+    </style>
 
 </head>
 
 
-<body>
+<body data-site-root="../../../../">
 
 
     <!-- ================================================= -->
     <!-- 7. SHARED WEBSITE COMPONENTS                      -->
     <!-- ================================================= -->
 
-    <!--
-        Insert the existing shared topbar component here.
-        Use the project's actual integration method.
-    -->
+    <!-- SHARED:TOPBAR -->
 
-    <!-- SHARED: TOPBAR -->
-
-
-    <!--
-        Insert the existing shared main header component here.
-    -->
-
-    <!-- SHARED: MAIN HEADER -->
+    <!-- SHARED:MAIN-HEADER -->
 
 
 
@@ -696,7 +918,7 @@
     <!-- 10. SHARED WEBSITE FOOTER                          -->
     <!-- ================================================= -->
 
-    <!-- SHARED: FOOTER -->
+    <!-- SHARED:FOOTER -->
 
 
 
@@ -711,6 +933,8 @@
         JavaScript framework.
     -->
 
+
+    <script type="module" src="../../../../assets/js/main.js"></script>
 
 </body>
 
