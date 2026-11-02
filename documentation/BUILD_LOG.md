@@ -171,3 +171,12 @@ Append-only after implementation begins. Record real milestones only; do not pre
 
 - Removed the 900px intro-container and 75ch description width caps so the supporting description can use the available homepage content width on desktop.
 - Kept natural text wrapping for smaller viewports; did not force `white-space: nowrap` or change typography, spacing, heading, or panel dimensions.
+
+## 2026-11-02 — First shared article-layout implementation
+
+- Added the optional source-only `site/partials/article-layout.html` frame and extended `scripts/build-site.mjs` to assemble article-specific HEADER and CONTENT slots at build time. Pages that do not use the optional marker continue through the existing shell build unchanged.
+- Applied the frame only to `site/categories/engineering/drone-technology/articles/a-pre-flight-inspection-checklist-for-small-drones.html` as the approved first test article.
+- Kept the breadcrumb, title, description, author/date row and share/copy controls in the full-width entry header. The featured image, article body and references occupy the left column. The right sidebar rail is empty; no ad slots, ad elements or ad data were added.
+- Added `site/assets/css/article-layout.css` for the shared frame geometry and `site/assets/js/article-share.js` for the header's share/copy controls. Existing article CSS files and other article HTML files were not changed.
+- At a 1,100px viewport, the 80rem maximum container with 1rem side gutters and a 12-column 8/4 grid with 3rem gaps produces a 696px article column, 48px gap and 324px sidebar rail. The two columns stack below 1,024px.
+- Updated the FileMap. GitHub Actions run [#125](https://github.com/LuxrajKayal/Lux-Omni-Blog/actions/runs/41497622839) completed successfully, including the public-site build and GitHub Pages deployment.
