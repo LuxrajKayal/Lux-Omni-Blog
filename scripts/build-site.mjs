@@ -227,9 +227,9 @@ function validateBuiltPage(html, relativeFile, usesArticleLayout = false) {
 
   if (usesArticleLayout) {
     const articleElements = [
-      ['article entry header', /<header\\b[^>]*class\\s*=\\s*(["'])[^"']*\\barticle-entry-header\\b[^"']*\\1/gi],
-      ['article layout grid', /<div\\b[^>]*class\\s*=\\s*(["'])[^"']*\\barticle-layout-grid\\b[^"']*\\1/gi],
-      ['article sidebar rail', /<aside\\b[^>]*class\\s*=\\s*(["'])[^"']*\\barticle-sidebar-rail\\b[^"']*\\1/gi]
+      ['article entry header', /<header\b[^>]*class\s*=\s*(["'])[^"']*\barticle-entry-header\b[^"']*\1/gi],
+      ['article layout grid', /<div\b[^>]*class\s*=\s*(["'])[^"']*\barticle-layout-grid\b[^"']*\1/gi],
+      ['article sidebar rail', /<aside\b[^>]*class\s*=\s*(["'])[^"']*\barticle-sidebar-rail\b[^"']*\1/gi]
     ];
 
     for (const [name, expression] of articleElements) {
