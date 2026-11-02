@@ -20,10 +20,91 @@ const OUTPUT_DIR = path.join(REPOSITORY_ROOT, '_site');
 const PARTIALS = {
   TOPBAR: path.join(PARTIAL_DIR, 'topbar.html'),
   'MAIN-HEADER': path.join(PARTIAL_DIR, 'main-header.html'),
-  FOOTER: path.join(PARTIAL_DIR, 'footer.html')
+  FOOTER: path.join(PARTIAL_DIR, 'footer.html'),
+  'ARTICLE-LAYOUT': path.join(PARTIAL_DIR, 'article-layout.html')
 };
+const REQUIRED_MARKER_NAMES = ['TOPBAR', 'MAIN-HEADER', 'FOOTER'];
 const MARKER_NAMES = Object.keys(PARTIALS);
 const markerFor = name => '<!-- SHARED:' + name + ' -->';
+const ARTICLE_SLOT_NAMES = ['HEADER', 'CONTENT'];
+
+function extractArticleSlot(html, name, relativeFile) {
+  const startMarker = '<!-- ARTICLE:' + name + ':START -->';
+  const endMarker = '<!-- ARTICLE:' + name + ':END -->';
+  const startCount = html.split(startMarker).length - 1;
+  const endCount = html.split(endMarker).length - 1;
+
+  if (startCount !== 1 || endCount !== 1) {
+    throw new Error(
+      relativeFile + ' must contain exactly one ' + startMarker +
+      ' and one ' + endMarker + '.'
+    );
+  }
+
+  const startIndex = html.indexOf(startMarker);
+  const contentStart = startIndex + startMarker.length;
+  const endIndex = html.indexOf(endMarker, contentStart);
+
+  if (endIndex < contentStart) {
+    throw new Error(relativeFile + ' has an incorrectly ordered ARTICLE:' + name + ' slot.');
+  }
+
+  const content = html.slice(contentStart, endIndex).trim();
+  if (!content) {
+    throw new Error(relativeFile + ' has an empty ARTICLE:' + name + ' slot.');
+  }
+
+  return {
+    html: html.slice(0, startIndex) + html.slice(endIndex + endMarker.length),
+    content
+  };
+}
+
+function expandArticleLayout(sourceHtml, relativeFile, partialContents) {
+  const marker = markerFor('ARTICLE-LAYOUT');
+  const markerCount = sourceHtml.split(marker).length - 1;
+  const hasArticleSlots = /<!-- ARTICLE:(?:HEADER|CONTENT):(?:START|END) -->/.test(sourceHtml);
+
+  if (markerCount === 0) {
+    if (hasArticleSlots) {
+      throw new Error(relativeFile + ' has article content slots but no ' + marker + '.');
+    }
+    return sourceHtml;
+  }
+
+  if (markerCount !== 1) {
+    throw new Error(relativeFile + ' must contain at most one ' + marker + '; found ' + markerCount + '.');
+  }
+
+  let html = sourceHtml;
+  const slotContent = {};
+
+  for (const name of ARTICLE_SLOT_NAMES) {
+    const extracted = extractArticleSlot(html, name, relativeFile);
+    html = extracted.html;
+    slotContent[name] = extracted.content;
+  }
+
+  let layout = partialContents['ARTICLE-LAYOUT'];
+  for (const [token, value] of [
+    ['{{ARTICLE_HEADER}}', slotContent.HEADER],
+    ['{{ARTICLE_CONTENT}}', slotContent.CONTENT]
+  ]) {
+    const tokenCount = layout.split(token).length - 1;
+    if (tokenCount !== 1) {
+      throw new Error('article-layout.html must contain exactly one ' + token + '; found ' + tokenCount + '.');
+    }
+    layout = layout.replace(token, value);
+  }
+
+  html = html.replace(marker, layout);
+
+  if (/<!-- ARTICLE:(?:HEADER|CONTENT):(?:START|END) -->|{{ARTICLE_(?:HEADER|CONTENT)}}/.test(html)) {
+    throw new Error(relativeFile + ' contains an unresolved article layout slot.');
+  }
+
+  return html;
+}
 
 function pageRootPrefix(html, relativeFile) {
   const bodyTag = html.match(/<body\b[^>]*>/i)?.[0] || '';
@@ -43,8 +124,10 @@ function assertMarkerCounts(html, relativeFile) {
   for (const name of MARKER_NAMES) {
     const marker = markerFor(name);
     const count = html.split(marker).length - 1;
-    if (count !== 1) {
-      throw new Error(relativeFile + ' must contain exactly one ' + marker + '; found ' + count + '.');
+    const required = REQUIRED_MARKER_NAMES.includes(name);
+    if ((required && count !== 1) || (!required && count > 1)) {
+      const expectation = required ? 'exactly one' : 'at most one';
+      throw new Error(relativeFile + ' must contain ' + expectation + ' ' + marker + '; found ' + count + '.');
     }
   }
   let withoutKnownMarkers = html;
@@ -106,11 +189,13 @@ function validateStandalone404(html, relativeFile) {
 }
 
 function expandSharedComponents(sourceHtml, relativeFile, partialContents) {
-  assertMarkerCounts(sourceHtml, relativeFile);
-  assertNoLegacyShell(sourceHtml, relativeFile);
+  const usesArticleLayout = sourceHtml.includes(markerFor('ARTICLE-LAYOUT'));
+  let html = expandArticleLayout(sourceHtml, relativeFile, partialContents);
+
+  assertMarkerCounts(html, relativeFile);
+  assertNoLegacyShell(html, relativeFile);
 
   const rootPrefix = pageRootPrefix(sourceHtml, relativeFile);
-  let html = sourceHtml;
 
   for (const name of MARKER_NAMES) {
     const marker = markerFor(name);
@@ -122,11 +207,11 @@ function expandSharedComponents(sourceHtml, relativeFile, partialContents) {
     throw new Error(relativeFile + ' contains an unresolved shared marker or root token after assembly.');
   }
   html = injectFooterStylesheet(html, rootPrefix, relativeFile);
-  validateBuiltPage(html, relativeFile);
+  validateBuiltPage(html, relativeFile, usesArticleLayout);
   return html;
 }
 
-function validateBuiltPage(html, relativeFile) {
+function validateBuiltPage(html, relativeFile, usesArticleLayout = false) {
   const required = [
     ['topbar', /<aside\b[^>]*class\s*=\s*(["'])[^"']*\btopbar\b[^"']*\1/gi],
     ['main header', /<header\b[^>]*class\s*=\s*(["'])[^"']*\bsite-header\b[^"']*\1/gi],
@@ -137,6 +222,21 @@ function validateBuiltPage(html, relativeFile) {
     const count = countMatches(html, expression);
     if (count !== 1) {
       throw new Error(relativeFile + ' must contain exactly one assembled ' + name + '; found ' + count + '.');
+    }
+  }
+
+  if (usesArticleLayout) {
+    const articleElements = [
+      ['article entry header', /<header\\b[^>]*class\\s*=\\s*(["'])[^"']*\\barticle-entry-header\\b[^"']*\\1/gi],
+      ['article layout grid', /<div\\b[^>]*class\\s*=\\s*(["'])[^"']*\\barticle-layout-grid\\b[^"']*\\1/gi],
+      ['article sidebar rail', /<aside\\b[^>]*class\\s*=\\s*(["'])[^"']*\\barticle-sidebar-rail\\b[^"']*\\1/gi]
+    ];
+
+    for (const [name, expression] of articleElements) {
+      const count = countMatches(html, expression);
+      if (count !== 1) {
+        throw new Error(relativeFile + ' must contain exactly one assembled ' + name + '; found ' + count + '.');
+      }
     }
   }
 }
