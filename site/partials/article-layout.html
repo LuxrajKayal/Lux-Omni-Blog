@@ -1,0 +1,26 @@
+<!--
+    Shared article-page frame.
+
+    ARTICLE_HEADER is supplied by each article and spans the full content width.
+    ARTICLE_CONTENT is supplied by each article and occupies the left column.
+    The right sidebar rail is intentionally empty; ad slots and other modules
+    are not part of this shared frame.
+-->
+<main id="main-content" class="article-page-shell">
+    <div class="article-page-container">
+        <article class="article-entry">
+            {{ARTICLE_HEADER}}
+
+            <div class="article-layout-grid">
+                <div class="article-main-column">
+                    {{ARTICLE_CONTENT}}
+                </div>
+
+                <aside
+                    class="article-sidebar-rail"
+                    aria-label="Advertisement sidebar"
+                ></aside>
+            </div>
+        </article>
+    </div>
+</main>
