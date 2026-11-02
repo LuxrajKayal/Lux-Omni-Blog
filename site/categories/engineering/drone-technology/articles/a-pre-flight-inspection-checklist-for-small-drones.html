@@ -405,10 +405,7 @@
     <link rel="stylesheet" href="../../../../assets/css/tokens.css">
 
     <!-- Each article may provide its own independent stylesheet. -->
-    <link
-        rel="stylesheet"
-        href="{{ARTICLE_CSS_PATH}}"
-    >
+    <link rel="stylesheet" href="../../../../assets/css/article-layout.css">
 
     <!-- Existing styles for the three shared components. -->
     <link rel="stylesheet" href="../../../../assets/css/topbar.css">
@@ -673,245 +670,200 @@
 
 
     <!-- ================================================= -->
-    <!-- 8. MAIN ARTICLE AREA                               -->
+    <!-- 8. ARTICLE-SPECIFIC CONTENT SLOTS                  -->
     <!-- ================================================= -->
 
-    <main id="main-content">
+    <!--
+        The build step inserts these article-specific slots into
+        site/partials/article-layout.html.
+
+        HEADER = full-width breadcrumb and article-entry header.
+        CONTENT = featured image, article body and article footer.
+        The shared partial supplies the empty right sidebar rail.
+    -->
+
+    <!-- ARTICLE:HEADER:START -->
+
+    <nav class="article-breadcrumb" aria-label="Breadcrumb">
+
+        <a href="{{SITE_URL}}">Home</a>
+
+        <span aria-hidden="true"> / </span>
+
+        <a href="{{ARTICLE_CATEGORY_URL}}">
+            {{ARTICLE_MAIN_CATEGORY}}
+        </a>
+
+        <span aria-hidden="true"> / </span>
+
+        <span aria-current="page">
+            {{ARTICLE_TITLE}}
+        </span>
+
+    </nav>
 
 
-        <!--
-            OPTIONAL BREADCRUMB NAVIGATION
+    <header class="article-entry-header">
 
-            Show the actual category hierarchy.
+        <p class="article-category">
+            {{ARTICLE_SUBCATEGORY}}
+        </p>
 
-            Keep visible navigation and any future
-            BreadcrumbList structured data consistent.
-        -->
+        <h1>{{ARTICLE_TITLE}}</h1>
 
-        <nav aria-label="Breadcrumb">
+        <p class="article-introduction">
+            {{ARTICLE_INTRODUCTION}}
+        </p>
 
-            <a href="{{SITE_URL}}">Home</a>
+        <div class="article-entry-header__meta-row">
 
-            <span aria-hidden="true"> / </span>
+            <div class="article-entry-header__byline">
 
-            <a href="{{ARTICLE_CATEGORY_URL}}">
-                {{ARTICLE_MAIN_CATEGORY}}
-            </a>
+                <span>
+                    By
+                    <a href="{{AUTHOR_PROFILE_URL}}">
+                        {{AUTHOR_NAME}}
+                    </a>
+                </span>
 
-            <span aria-hidden="true"> / </span>
+                <time datetime="{{PUBLISHED_ISO_8601}}">
+                    {{PUBLISHED_DISPLAY_DATE}}
+                </time>
 
-            <span aria-current="page">
-                {{ARTICLE_TITLE}}
-            </span>
-
-        </nav>
-
-
-
-        <!-- ================================================= -->
-        <!-- 9. ARTICLE CONTENT                                -->
-        <!-- ================================================= -->
-
-        <!--
-            ARTICLE
-
-            This is the semantic article container.
-
-            Its internal layout is completely independent.
-
-            You can create different structures for:
-            - Engineering articles
-            - Product reviews
-            - Technical tutorials
-            - News articles
-            - Buying guides
-            - General editorial articles
-        -->
-
-        <article>
-
-
-            <!-- ARTICLE INTRODUCTION -->
-
-            <header class="article-header">
-
-
-                <!-- Main editorial category -->
-
-                <p class="article-category">
-                    {{ARTICLE_SUBCATEGORY}}
-                </p>
-
-
-                <!-- Main article headline -->
-
-                <h1>{{ARTICLE_TITLE}}</h1>
-
-
-                <!-- Article introduction / deck -->
-
-                <p class="article-introduction">
-                    {{ARTICLE_INTRODUCTION}}
-                </p>
-
-
-                <!--
-                    VISIBLE PUBLICATION INFORMATION
-
-                    Use the same dates as JSON-LD.
-                    Include the modification information
-                    only when it is applicable.
-                -->
-
-                <div class="article-byline">
-
-                    <span>
-                        By
-                        <a href="{{AUTHOR_PROFILE_URL}}">
-                            {{AUTHOR_NAME}}
-                        </a>
-                    </span>
-
-
-                    <time datetime="{{PUBLISHED_ISO_8601}}">
-                        {{PUBLISHED_DISPLAY_DATE}}
+                <span>
+                    Updated:
+                    <time datetime="{{MODIFIED_ISO_8601}}">
+                        {{MODIFIED_DISPLAY_DATE}}
                     </time>
-
-
-                    <span>
-                        Updated:
-                        <time datetime="{{MODIFIED_ISO_8601}}">
-                            {{MODIFIED_DISPLAY_DATE}}
-                        </time>
-                    </span>
-
-                </div>
-
-
-            </header>
-
-
-
-            <!-- ================================================= -->
-            <!-- FEATURED IMAGE                                    -->
-            <!-- ================================================= -->
-
-            <!--
-                Use the actual article image.
-
-                ALT text describes the image accurately.
-                Do not stuff keywords into alt text.
-
-                Set width and height to the actual image
-                dimensions to help prevent layout shifts.
-            -->
-
-            <figure class="article-featured-image">
-
-                <img
-                    src="{{FEATURED_IMAGE_URL}}"
-                    alt="{{FEATURED_IMAGE_ALT}}"
-                    width="{{FEATURED_IMAGE_WIDTH}}"
-                    height="{{FEATURED_IMAGE_HEIGHT}}"
-                    fetchpriority="high"
-                >
-
-                <!-- Optional image caption -->
-
-                <figcaption>
-                    {{FEATURED_IMAGE_CAPTION}}
-                </figcaption>
-
-            </figure>
-
-
-
-            <!-- ================================================= -->
-            <!-- ARTICLE BODY                                      -->
-            <!-- ================================================= -->
-
-            <!--
-                ARTICLE BODY
-
-                The following is only an example.
-
-                You may create your own sections, diagrams,
-                images, tables, code blocks, lists and other
-                elements according to the article subject.
-
-                No compulsory article layout is imposed.
-            -->
-
-            <div class="article-body">
-
-
-                <section>
-
-                    <h2>{{SECTION_HEADING}}</h2>
-
-                    <p>
-                        {{SECTION_CONTENT}}
-                    </p>
-
-                </section>
-
-
-                <!--
-                    ADD ADDITIONAL ARTICLE SECTIONS AS REQUIRED.
-
-                    H2 = Main sections.
-                    H3 = Subsections.
-                    
-                    Choose headings according to the actual
-                    subject and logical content hierarchy.
-                -->
-
+                </span>
 
             </div>
 
+            <div class="article-share-actions" aria-label="Article sharing">
+
+                <button type="button" data-article-share>
+                    Share
+                </button>
+
+                <button type="button" data-article-copy>
+                    Copy link
+                </button>
+
+                <span
+                    class="article-share-status"
+                    data-article-share-status
+                    role="status"
+                    aria-live="polite"
+                ></span>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- ARTICLE:HEADER:END -->
 
 
-            <!-- ================================================= -->
-            <!-- OPTIONAL REFERENCES                               -->
-            <!-- ================================================= -->
+    <!-- ARTICLE:CONTENT:START -->
 
-            <!--
-                Include references when relevant to the article.
+    <!-- ================================================= -->
+    <!-- FEATURED IMAGE                                    -->
+    <!-- ================================================= -->
 
-                Do not add empty or placeholder references
-                to published pages.
-            -->
+    <!--
+        Use the actual article image.
 
-            <footer class="article-footer">
+        ALT text describes the image accurately.
+        Do not stuff keywords into alt text.
 
+        Set width and height to the actual image
+        dimensions to help prevent layout shifts.
+    -->
 
-                <section aria-labelledby="references-heading">
+    <figure class="article-featured-image">
 
-                    <h2 id="references-heading">
-                        References
-                    </h2>
+        <img
+            src="{{FEATURED_IMAGE_URL}}"
+            alt="{{FEATURED_IMAGE_ALT}}"
+            width="{{FEATURED_IMAGE_WIDTH}}"
+            height="{{FEATURED_IMAGE_HEIGHT}}"
+            fetchpriority="high"
+        >
 
-                    <ul>
+        <figcaption>
+            {{FEATURED_IMAGE_CAPTION}}
+        </figcaption>
 
-                        <li>
-                            <a href="{{SOURCE_URL}}">
-                                {{SOURCE_TITLE}}
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </section>
-
-
-            </footer>
+    </figure>
 
 
-        </article>
+    <!-- ================================================= -->
+    <!-- ARTICLE BODY                                      -->
+    <!-- ================================================= -->
+
+    <!--
+        The following is only an example.
+
+        Create sections, diagrams, images, tables, code
+        blocks, lists and other elements according to the
+        actual article subject. No compulsory body layout
+        is imposed.
+    -->
+
+    <div class="article-body">
+
+        <section>
+
+            <h2>{{SECTION_HEADING}}</h2>
+
+            <p>
+                {{SECTION_CONTENT}}
+            </p>
+
+        </section>
+
+        <!-- Add additional article sections as required. -->
+
+    </div>
 
 
-    </main>
+    <!-- ================================================= -->
+    <!-- OPTIONAL REFERENCES                               -->
+    <!-- ================================================= -->
 
+    <!--
+        Include references when relevant to the article.
+        Do not add empty or placeholder references to
+        published pages.
+    -->
+
+    <footer class="article-footer">
+
+        <section aria-labelledby="references-heading">
+
+            <h2 id="references-heading">
+                References
+            </h2>
+
+            <ul>
+
+                <li>
+                    <a href="{{SOURCE_URL}}">
+                        {{SOURCE_TITLE}}
+                    </a>
+                </li>
+
+            </ul>
+
+        </section>
+
+    </footer>
+
+    <!-- ARTICLE:CONTENT:END -->
+
+
+    <!-- SHARED:ARTICLE-LAYOUT -->
 
 
     <!-- ================================================= -->
@@ -935,6 +887,7 @@
 
 
     <script type="module" src="../../../../assets/js/main.js"></script>
+    <script type="module" src="../../../../assets/js/article-share.js"></script>
 
 </body>
 
