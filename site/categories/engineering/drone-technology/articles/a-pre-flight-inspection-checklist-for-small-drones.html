@@ -667,6 +667,78 @@
     <!-- These rules belong to this article only.          -->
     <!-- ================================================= -->
     <style id="article-local-typography">
+        /*
+         * Article-local content boundary.
+         * Keeps every article component inside the left-column width.
+         */
+        .article-content-frame {
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .article-content-frame *,
+        .article-content-frame *::before,
+        .article-content-frame *::after {
+            box-sizing: inherit;
+            min-width: 0;
+        }
+
+        .article-content-frame > * {
+            max-width: 100%;
+        }
+
+        .article-content-frame img {
+            max-width: 100%;
+        }
+
+        /*
+         * Dedicated 16:9 featured-image frame.
+         * The full image remains visible; it is contained rather than cropped.
+         */
+        .article-featured-media {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            margin: 0 0 2.25rem;
+        }
+
+        .article-featured-media__frame {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: var(--color-surface, #F5F5F5);
+        }
+
+        .article-featured-media__frame img {
+            display: block;
+            width: 100%;
+            max-width: none;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        /* Separate image-context box beneath the image. */
+        .article-image-caption {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            margin-block-start: 0.65rem;
+            padding: 0.75rem 1rem;
+            border-inline-start: 3px solid var(--brand-crimson, #DC2626);
+            background: var(--color-surface, #F5F5F5);
+            color: var(--color-text-muted, #737373);
+            font-family: var(--font-ui, Arial, sans-serif);
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
         .article-body {
             color: var(--color-text-primary, #171717);
             font-family: var(--font-ui, Arial, sans-serif);
@@ -822,14 +894,6 @@
             color: var(--brand-red-soft, #FCA5A5);
         }
 
-        .article-featured-image figcaption {
-            margin-block-start: 0.7rem;
-            color: var(--color-text-muted, #737373);
-            font-family: var(--font-ui, Arial, sans-serif);
-            font-size: 0.875rem;
-            line-height: 1.5;
-        }
-
         .article-footer {
             margin-block-start: 3.5rem;
             padding-block-start: 1.5rem;
@@ -980,6 +1044,8 @@
 
 
     <!-- ARTICLE:CONTENT:START -->
+
+    <div class="article-content-frame">
 <!-- ================================================= -->
     <!-- FEATURED IMAGE                                    -->
     <!-- ================================================= -->
@@ -990,7 +1056,9 @@
         USGS marks this image Public Domain.
         Photo by Michelle Jeffries, USGS.
     -->
-    <figure class="article-featured-image">
+    <figure class="article-featured-media">
+
+        <div class="article-featured-media__frame">
 
         <img
             src="https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/images/drone%20on%20orange%20landing%20pad%2020230606_102937.jpg"
@@ -999,7 +1067,9 @@
             decoding="async"
         >
 
-        <figcaption>
+        </div>
+
+        <figcaption class="article-image-caption">
             A quadcopter positioned on its landing pad before a field data-collection flight.
         </figcaption>
 
@@ -1609,6 +1679,8 @@
         </section>
 
     </footer>
+
+    </div>
 
         <!-- ARTICLE:CONTENT:END -->
 
