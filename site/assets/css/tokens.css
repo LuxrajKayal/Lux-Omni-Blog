@@ -181,6 +181,17 @@
   --topbar-section-border: #E5E5E5;
   --topbar-circuit-color: rgb(220 38 38 / 0.16);
   --topbar-focus: #B91C1C;
+
+  /* --------------------------------------------------------------
+     10. Dedicated eyebrow brand tokens — shared in every theme
+     -------------------------------------------------------------- */
+  --lux-eyebrow-red: #DC2626;
+  --lux-eyebrow-font-family: "Source Sans 3", Arial, sans-serif;
+  --lux-eyebrow-font-size: 0.72rem;
+  --lux-eyebrow-font-weight: 700;
+  --lux-eyebrow-letter-spacing: 0.12em;
+  --lux-eyebrow-line-height: 1.35;
+  --lux-eyebrow-text-transform: uppercase;
 }
 
 /* --------------------------------------------------------------

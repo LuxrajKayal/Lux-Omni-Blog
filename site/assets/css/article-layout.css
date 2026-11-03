@@ -31,13 +31,6 @@
 
 .article-category {
     margin: 0 0 var(--space-3);
-    color: var(--color-action);
-    font-family: var(--font-ui);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--letter-spacing-wide);
-    line-height: var(--line-height-ui);
-    text-transform: uppercase;
 }
 
 .article-entry-header h1 {

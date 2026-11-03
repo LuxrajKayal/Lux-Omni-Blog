@@ -1,0 +1,23 @@
+/*
+ * Lux Omni Blog — centralized eyebrow styling
+ *
+ * All eyebrow labels share the category landing-page brand typography.
+ * Component-specific layout, placement, and margins remain with their
+ * respective components.
+ */
+
+.eyebrow,
+.article-category,
+.story-card__eyebrow,
+.hero-showcase__eyebrow,
+.search-result__eyebrow,
+.author-card__eyebrow,
+.technical-pioneer__eyebrow {
+    color: var(--lux-eyebrow-red);
+    font-family: var(--lux-eyebrow-font-family);
+    font-size: var(--lux-eyebrow-font-size);
+    font-weight: var(--lux-eyebrow-font-weight);
+    letter-spacing: var(--lux-eyebrow-letter-spacing);
+    line-height: var(--lux-eyebrow-line-height);
+    text-transform: var(--lux-eyebrow-text-transform);
+}

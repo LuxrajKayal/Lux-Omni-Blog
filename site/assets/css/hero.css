@@ -9,7 +9,7 @@
 /* Compact article image card: its headline and navigation sit over the image. */
 .homepage-hero__visual{position:relative;display:flex;min-width:0;min-height:270px;align-self:stretch;flex-direction:column;overflow:hidden;border:1px solid var(--color-border);border-radius:var(--radius-md);background:var(--color-surface-raised)}
 .hero-showcase__topline{display:flex;flex:0 0 auto;align-items:center;justify-content:space-between;gap:.75rem;min-height:40px;padding:.58rem .8rem;border-bottom:1px solid var(--color-border);background:var(--color-surface-raised)}
-.hero-showcase__eyebrow{color:var(--brand-crimson);font-size:.65rem;font-weight:var(--font-weight-bold);letter-spacing:.12em;line-height:1.2}
+
 .hero-showcase__count{flex:0 0 auto;color:var(--color-text-muted);font-size:var(--font-size-xs);font-variant-numeric:tabular-nums}
 .hero-showcase__slide{position:relative;display:flex;flex:1 1 auto;min-width:0;min-height:230px;background:var(--color-surface)}
 .hero-showcase__slide.is-entering{animation:hero-showcase-slide-in 320ms ease-out both}

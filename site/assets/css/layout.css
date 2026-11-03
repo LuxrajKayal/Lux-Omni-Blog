@@ -2,7 +2,7 @@
 .page-shell{width:min(calc(100% - 2 * var(--page-gutter)),var(--content-width-wide));margin-inline:auto}
 .home-page{padding-block:clamp(1.4rem,3vw,2.6rem) 4rem}
 
-.eyebrow{margin:0 0 .75rem;color:var(--brand-crimson);font-size:.72rem;font-weight:var(--font-weight-bold);letter-spacing:.12em;line-height:1.35;text-transform:uppercase}
+.eyebrow{margin:0 0 .75rem}
 
 .button-link{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:.65rem 1rem;border:1px solid var(--brand-crimson);border-radius:var(--radius-sm);background:var(--brand-crimson);color:#fff;font-size:var(--font-size-sm);font-weight:var(--font-weight-bold);line-height:1.2;text-decoration:none}
 .button-link:hover{border-color:var(--brand-red-deep);background:var(--brand-red-deep);color:#fff;text-decoration:none}

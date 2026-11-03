@@ -205,3 +205,12 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Changed the approved article-layout test page to use the same `.breadcrumbs` class and standard separator markup, and loaded `breadcrumbs.css` directly.
 - Removed the duplicate `.article-breadcrumb` rules from `article-layout.css`. The article and landing pages now share one breadcrumb selector and one visual implementation.
 - Updated the FileMap. No other article pages or breadcrumb content were migrated.
+
+
+## 2026-11-03 — Centralize eyebrow design
+
+- Added dedicated `--lux-eyebrow-*` brand tokens for the eyebrow red, font family, size, weight, letter spacing, line height and uppercase transformation. Values match the existing category landing-page eyebrow treatment and remain consistent across light and dark themes.
+- Added `site/assets/css/eyebrows.css` as the single shared typography and colour implementation for page, article, story-card, hero-showcase, search-result, author-card and Technical Pioneer eyebrow selectors.
+- Imported the shared stylesheet from `search.css`, which is already loaded by the populated site pages.
+- Removed duplicate eyebrow typography and colour rules from `layout.css`, `article-layout.css`, `section-page.css`, `hero.css`, `search.css` and `article-page.css`.
+- Preserved component-specific spacing and layout rules. Eyebrow wording remains authored in each HTML page or component; no page copy was changed.
