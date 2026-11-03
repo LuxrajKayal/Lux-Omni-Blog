@@ -685,6 +685,9 @@
             color: var(--color-text-secondary, #525252);
             font-size: 1em;
             line-height: 1.8;
+            text-align: justify;
+            text-justify: inter-word;
+            hyphens: auto;
         }
 
         .article-body h2 {
@@ -748,14 +751,14 @@
         }
 
         .article-opening-word {
-            display: inline-block;
-            margin-inline-end: 0.045em;
+            display: inline;
+            margin-inline-end: 0.04em;
             color: var(--brand-crimson, #DC2626);
-            font-size: 2.55em;
-            font-weight: 900;
-            letter-spacing: -0.075em;
-            line-height: 0.78;
-            vertical-align: -0.11em;
+            font-size: 1.35em;
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            line-height: inherit;
+            vertical-align: baseline;
         }
 
         .article-featured-image figcaption {
@@ -818,7 +821,7 @@
             }
 
             .article-opening-word {
-                font-size: 2.35em;
+                font-size: 1.3em;
             }
         }
     </style>
