@@ -180,3 +180,12 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Added `site/assets/css/article-layout.css` for the shared frame geometry and `site/assets/js/article-share.js` for the header's share/copy controls. Existing article CSS files and other article HTML files were not changed.
 - At a 1,100px viewport, the 80rem maximum container with 1rem side gutters and a 12-column 8/4 grid with 3rem gaps produces a 696px article column, 48px gap and 324px sidebar rail. The two columns stack below 1,024px.
 - Updated the FileMap. GitHub Actions run [#125](https://github.com/LuxrajKayal/Lux-Omni-Blog/actions/runs/41497622839) completed successfully, including the public-site build and GitHub Pages deployment.
+
+
+## 2026-11-03 — Unify page-title typography
+
+- Added universal page-title tokens for desktop/mobile size, display weight and tight display letter spacing, preserving the established landing-page H1 appearance.
+- Updated the global H1 rule in `base.css` to use those tokens.
+- Removed duplicate H1 typography overrides from `section-page.css`, `responsive.css` and `article-layout.css`; component-specific spacing and the article introduction's responsive sizing remain.
+- Added `base.css` to the approved pre-flight test article so its entry H1 uses the same universal H1 rule as landing pages. Removed the now-unused Source Serif 4 font request from that test page.
+- Other article pages were not migrated or modified. The change is limited to the shared H1 foundation and the existing approved test article.
