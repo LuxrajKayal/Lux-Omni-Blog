@@ -72,7 +72,7 @@
 }
 
 .author-bar__name {
-    color: var(--color-text-primary);
+    color: var(--brand-crimson);
     font-size: 0.875rem;
     font-weight: var(--font-weight-bold);
     line-height: 1.25;
@@ -182,6 +182,27 @@
     stroke-width: 1.8;
     stroke-linecap: round;
     stroke-linejoin: round;
+}
+
+/* The copy-link control uses the active theme's semantic surface and text. */
+.author-bar__social--copy {
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+}
+
+.author-bar__social--copy svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.author-bar__social--copy:hover {
+    border-color: var(--color-action);
+    background: var(--color-surface-raised);
+    color: var(--color-action);
 }
 
 .author-bar__instagram-dot {

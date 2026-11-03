@@ -256,3 +256,10 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Removed the enclosing panel treatment from `author-bar.css`: no outer background, rounded container, border on all four sides or card shadow. The bar is defined by thin top and bottom rules.
 - Changed the sharing area to a compact SHARE label followed by circular X, Facebook, Instagram and copy-link controls.
 - Kept the bar standalone in `author-bar.css` and the renderer in `author-bar.js`. Only the existing pilot article uses this component; other articles remain unchanged.
+
+## 2026-11-03 — Set author name to Lux Red and refine copy-link icon
+
+- Changed `.author-bar__name` to use the shared `--brand-crimson` Lux Red token.
+- Replaced the copy-link icon path with a clearer linked-chain outline and explicitly applied an unfilled SVG stroke using `currentColor`.
+- Styled the copy-link control with the semantic surface, text, border and action tokens so its contrast and hover state adapt to light and dark themes.
+- Left the byline layout, author handle, other social icons and article integration unchanged.

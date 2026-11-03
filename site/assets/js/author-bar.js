@@ -1,7 +1,7 @@
 import { AUTHORS_BY_ID } from "./author-library.js";
 
 const ICONS = {
-  link: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3A5 5 0 0 0 13 2.93l-1.72 1.72"></path><path d="M14 11a5 5 0 0 0-7.07 0l-3 3A5 5 0 0 0 11 21.07l1.72-1.72"></path></svg>',
+  link: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07l-1.62 1.62"></path><path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 0 0 7.07 7.07l1.62-1.62"></path><path d="m8.5 15.5 7-7"></path></svg>',
   facebook: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5H17V3.6c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v1.9H7v3.1h3V21h3.5Z"></path></svg>',
   x: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2.8h2.8l-6.1 7 7.2 11.4h-5.6l-4.4-6.9-6 6.9H4l6.5-7.5L3.6 2.8h5.7l4 6.3 5.6-6.3Zm-1 16.3h1.5L8.1 4.8H6.5l11.4 14.3Z"></path></svg>',
   instagram: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.8" r=".8" class="author-bar__instagram-dot"></circle></svg>'
