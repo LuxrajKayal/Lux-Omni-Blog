@@ -1,0 +1,379 @@
+/*
+ * Lux Omni — reusable author and article-sharing bar
+ *
+ * Component-only styling. This file is independent of article-page layouts
+ * and can be loaded by any page that uses the author bar.
+ */
+
+.author-bar,
+.author-bar * {
+    box-sizing: border-box;
+}
+
+.author-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    padding: 1.05rem 1.2rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    background: var(--color-surface-raised);
+    color: var(--color-text-primary);
+    box-shadow: var(--shadow-xs);
+    font-family: var(--font-ui);
+}
+
+.author-bar__profile {
+    display: flex;
+    flex: 1.45 1 15.5rem;
+    align-items: center;
+    gap: 1rem;
+    min-width: 0;
+    padding-inline-end: 1.35rem;
+}
+
+.author-bar__avatar-link {
+    display: inline-flex;
+    flex: 0 0 5.25rem;
+    align-items: center;
+    justify-content: center;
+    width: 5.25rem;
+    height: 5.25rem;
+    overflow: hidden;
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+    background: var(--color-surface);
+}
+
+.author-bar__avatar {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+}
+
+.author-bar__identity {
+    display: grid;
+    justify-items: start;
+    gap: 0.28rem;
+    min-width: 0;
+}
+
+.author-bar__name {
+    max-width: 100%;
+    color: var(--color-text-primary);
+    font-size: clamp(1.08rem, 1.5vw, 1.45rem);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.author-bar__handle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    max-width: 100%;
+    color: var(--author-bar-profile-link, #2563EB);
+    font-size: clamp(0.95rem, 1.25vw, 1.18rem);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.25;
+    text-decoration: underline;
+    text-underline-offset: 0.13em;
+    overflow-wrap: anywhere;
+}
+
+.author-bar__handle:hover {
+    text-decoration-thickness: 2px;
+}
+
+.author-bar__external-icon {
+    flex: 0 0 1rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+.author-bar__date-group {
+    display: flex;
+    flex: 1 1 11rem;
+    align-items: center;
+    gap: 0.8rem;
+    min-width: 0;
+    min-height: 4.5rem;
+    padding-inline: 1.25rem;
+    border-inline-start: 1px solid var(--color-border);
+}
+
+.author-bar__date-icon {
+    flex: 0 0 1.85rem;
+    width: 1.85rem;
+    height: 1.85rem;
+    fill: none;
+    stroke: var(--color-text-secondary);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.author-bar__date-text {
+    display: grid;
+    gap: 0.15rem;
+    min-width: 0;
+}
+
+.author-bar__date-label {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.2;
+}
+
+.author-bar__date-value {
+    color: var(--color-text-primary);
+    font-size: clamp(0.95rem, 1.2vw, 1.12rem);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.25;
+    white-space: nowrap;
+}
+
+.author-bar__sharing {
+    display: flex;
+    flex: 1.65 1 18rem;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.7rem;
+    min-width: 0;
+    min-height: 4.5rem;
+    padding-inline-start: 1.25rem;
+    border-inline-start: 1px solid var(--color-border);
+}
+
+.author-bar__copy {
+    display: inline-flex;
+    flex: 0 1 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-width: 8.4rem;
+    min-height: 3.1rem;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-raised);
+    color: var(--color-text-primary);
+    box-shadow: var(--shadow-xs);
+    font: inherit;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.author-bar__copy:hover {
+    border-color: var(--color-action);
+    color: var(--color-action);
+}
+
+.author-bar__copy svg {
+    flex: 0 0 1.25rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.author-bar__social {
+    display: inline-flex;
+    flex: 0 0 2.75rem;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 0;
+    border-radius: 0.65rem;
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 150ms ease, filter 150ms ease;
+}
+
+.author-bar__social:hover {
+    filter: brightness(0.94);
+    transform: translateY(-1px);
+}
+
+.author-bar__social:focus-visible,
+.author-bar__copy:focus-visible,
+.author-bar__avatar-link:focus-visible,
+.author-bar__name:focus-visible,
+.author-bar__handle:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus);
+    outline-offset: var(--focus-ring-offset);
+}
+
+.author-bar__social svg {
+    display: block;
+    width: 1.45rem;
+    height: 1.45rem;
+}
+
+.author-bar__social--facebook {
+    background: #1877F2;
+}
+
+.author-bar__social--facebook svg,
+.author-bar__social--x svg {
+    fill: currentColor;
+}
+
+.author-bar__social--x {
+    background: #000000;
+}
+
+.author-bar__social--instagram {
+    background: linear-gradient(135deg, #7C3AED 0%, #DB2777 48%, #F59E0B 100%);
+}
+
+.author-bar__social--instagram svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.author-bar__instagram-dot {
+    fill: currentColor;
+    stroke: none;
+}
+
+.author-bar__status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+:root {
+    --author-bar-profile-link: #2563EB;
+}
+
+:root[data-theme="dark"] {
+    --author-bar-profile-link: #60A5FA;
+}
+
+@media (max-width: 1120px) {
+    .author-bar {
+        flex-wrap: wrap;
+        row-gap: 0.9rem;
+    }
+
+    .author-bar__profile {
+        flex: 1 1 100%;
+        padding: 0 0 0.9rem;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .author-bar__date-group {
+        flex: 1 1 0;
+        padding: 0.25rem 1rem 0.25rem 0;
+        border-inline-start: 0;
+    }
+
+    .author-bar__date-group + .author-bar__date-group {
+        padding-inline-start: 1rem;
+        border-inline-start: 1px solid var(--color-border);
+    }
+
+    .author-bar__sharing {
+        flex: 1 1 100%;
+        justify-content: flex-start;
+        min-height: 0;
+        padding: 0.9rem 0 0;
+        border-top: 1px solid var(--color-border);
+        border-inline-start: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .author-bar {
+        padding: 0.9rem;
+    }
+
+    .author-bar__profile {
+        gap: 0.8rem;
+    }
+
+    .author-bar__avatar-link {
+        flex-basis: 4.5rem;
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+
+    .author-bar__date-group {
+        align-items: flex-start;
+        gap: 0.55rem;
+        padding: 0.25rem 0.5rem 0.25rem 0;
+    }
+
+    .author-bar__date-group + .author-bar__date-group {
+        padding-inline-start: 0.7rem;
+    }
+
+    .author-bar__date-icon {
+        flex-basis: 1.35rem;
+        width: 1.35rem;
+        height: 1.35rem;
+    }
+
+    .author-bar__date-value {
+        white-space: normal;
+    }
+
+    .author-bar__sharing {
+        flex-wrap: wrap;
+        gap: 0.55rem;
+    }
+
+    .author-bar__copy {
+        flex: 1 1 auto;
+    }
+
+    .author-bar__social {
+        flex-basis: 2.55rem;
+        width: 2.55rem;
+        height: 2.55rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .author-bar__date-group {
+        flex-basis: 100%;
+        padding: 0.65rem 0;
+        border-top: 1px solid var(--color-border);
+    }
+
+    .author-bar__date-group + .author-bar__date-group {
+        padding-inline-start: 0;
+        border-inline-start: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .author-bar__social {
+        transition: none;
+    }
+
+    .author-bar__social:hover {
+        transform: none;
+    }
+}

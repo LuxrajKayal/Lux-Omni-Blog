@@ -413,6 +413,9 @@
     <!-- Each article may provide its own independent stylesheet. -->
     <link rel="stylesheet" href="../../../../assets/css/article-layout.css">
 
+    <!-- Reusable author identity, dates and sharing bar. -->
+    <link rel="stylesheet" href="../../../../assets/css/author-bar.css">
+
     <!-- Existing styles for the three shared components. -->
     <link rel="stylesheet" href="../../../../assets/css/topbar.css">
     <link rel="stylesheet" href="../../../../assets/css/header.css">
@@ -727,47 +730,13 @@
             flight controls and safety equipment before takeoff.
         </p>
 
-        <div class="article-entry-header__meta-row">
-
-            <div class="article-entry-header__byline">
-
-                <span class="article-entry-header__author">
-                    By
-                    <a href="{{AUTHOR_PROFILE_URL}}">Lux Omni Editorial Team</a>
-                </span>
-
-                <span class="article-entry-header__date">
-                    Published:
-                    <time datetime="2026-10-28">28 October 2026</time>
-                </span>
-
-                <span class="article-entry-header__date">
-                    Updated:
-                    <time datetime="2026-11-02">2 November 2026</time>
-                </span>
-
-            </div>
-
-            <div class="article-share-actions" aria-label="Article sharing">
-
-                <button type="button" data-article-share>
-                    Share
-                </button>
-
-                <button type="button" data-article-copy>
-                    Copy link
-                </button>
-
-                <span
-                    class="article-share-status"
-                    data-article-share-status
-                    role="status"
-                    aria-live="polite"
-                ></span>
-
-            </div>
-
-        </div>
+        <div
+            class="author-bar"
+            data-author-bar
+            data-author-id="author-luxraj-kayal"
+            data-published-date="2026-10-28"
+            data-modified-date="2026-11-02"
+        ></div>
 
     </header>
 

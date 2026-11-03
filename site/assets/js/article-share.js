@@ -1,15 +1,11 @@
 /*
- * Lux Omni Blog — article share and copy controls
+ * Lux Omni Blog — article sharing controls
  *
- * Uses the native Web Share API where available. The copy action uses the
- * Clipboard API when available and a textarea fallback otherwise.
+ * Supports the reusable author bar and the older article-share attributes
+ * during the gradual article migration.
  */
 
-const shareButton = document.querySelector("[data-article-share]");
-const copyButton = document.querySelector("[data-article-copy]");
-const statusElement = document.querySelector("[data-article-share-status]");
-
-function articleShareData() {
+function getArticleShareData() {
     const title = document.querySelector(".article-entry-header h1")?.textContent?.trim()
         || document.title;
     const description = document.querySelector(".article-introduction")?.textContent?.trim()
@@ -22,16 +18,20 @@ function articleShareData() {
     };
 }
 
-function setShareStatus(message) {
-    if (statusElement) {
-        statusElement.textContent = message;
-    }
+function getStatusElement(trigger) {
+    return trigger?.closest("[data-author-bar]")?.querySelector("[data-author-bar-status]")
+        || document.querySelector("[data-article-share-status]");
+}
+
+function setShareStatus(message, trigger) {
+    const statusElement = getStatusElement(trigger);
+    if (statusElement) statusElement.textContent = message;
 }
 
 async function copyArticleUrl() {
     const url = window.location.href;
 
-    if (navigator.clipboard?.writeText) {
+    if (navigator.clipboard?.writeText && window.isSecureContext) {
         await navigator.clipboard.writeText(url);
         return;
     }
@@ -52,24 +52,23 @@ async function copyArticleUrl() {
     }
 }
 
-copyButton?.addEventListener("click", async () => {
+async function handleCopy(trigger) {
     try {
         await copyArticleUrl();
-        setShareStatus("Link copied.");
+        setShareStatus("Link copied.", trigger);
     } catch {
-        setShareStatus("Copy failed. You can copy the address from your browser.");
+        setShareStatus("Copy failed. You can copy the address from your browser.", trigger);
     }
-});
+}
 
-shareButton?.addEventListener("click", async () => {
-    const shareData = articleShareData();
-
+async function handleDeviceShare(trigger, unavailableMessage) {
     if (navigator.share) {
         try {
-            await navigator.share(shareData);
+            await navigator.share(getArticleShareData());
+            setShareStatus("Sharing completed.", trigger);
         } catch (error) {
             if (error?.name !== "AbortError") {
-                setShareStatus("Sharing could not be completed.");
+                setShareStatus("Sharing could not be completed.", trigger);
             }
         }
         return;
@@ -77,8 +76,39 @@ shareButton?.addEventListener("click", async () => {
 
     try {
         await copyArticleUrl();
-        setShareStatus("Native sharing is unavailable here. Link copied instead.");
+        setShareStatus(unavailableMessage, trigger);
     } catch {
-        setShareStatus("Sharing is unavailable in this browser.");
+        setShareStatus("Sharing is unavailable in this browser.", trigger);
+    }
+}
+
+document.addEventListener("click", event => {
+    const target = event.target instanceof Element ? event.target : event.target?.parentElement;
+    if (!target) return;
+
+    const copyButton = target.closest("[data-article-copy]");
+    if (copyButton) {
+        event.preventDefault();
+        handleCopy(copyButton);
+        return;
+    }
+
+    const instagramButton = target.closest("[data-author-bar-instagram]");
+    if (instagramButton) {
+        event.preventDefault();
+        handleDeviceShare(
+            instagramButton,
+            "Link copied. Paste it into your Instagram post or message."
+        );
+        return;
+    }
+
+    const legacyShareButton = target.closest("[data-article-share]");
+    if (legacyShareButton) {
+        event.preventDefault();
+        handleDeviceShare(
+            legacyShareButton,
+            "Native sharing is unavailable here. Link copied instead."
+        );
     }
 });

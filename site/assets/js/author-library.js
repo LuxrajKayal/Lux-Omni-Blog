@@ -14,6 +14,15 @@ export const AUTHORS = Object.freeze([
     description: "Website tester for mobile",
     website: "https://example.com",
     image: "assets/images/brand/lux-Omni-Blog-Transparent-Symbol.svg"
+  }),
+  Object.freeze({
+    // Temporary sample record for the author-bar pilot.
+    // Replace the sample photograph and confirm the author-page route before launch.
+    id: "author-luxraj-kayal",
+    name: "Luxraj Kayal",
+    handle: "@Luxraj_Kayal",
+    profileUrl: "authors/luxraj-kayal/",
+    image: "assets/images/authors/luxraj-author-sample.webp"
   })
 ]);
 
