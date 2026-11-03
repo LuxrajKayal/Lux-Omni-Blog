@@ -1,8 +1,8 @@
 /*
- * Lux Omni — reusable author and article-sharing bar
+ * Lux Omni — reusable editorial author byline
  *
- * Component-only styling. This file is independent of article-page layouts
- * and can be loaded by any page that uses the author bar.
+ * Open horizontal byline styling. This component has no enclosing card,
+ * panel background, rounded container or box shadow.
  */
 
 .author-bar,
@@ -14,35 +14,36 @@
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 1rem 1.25rem;
     width: 100%;
     min-width: 0;
-    padding: 1.05rem 1.2rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-xl);
-    background: var(--color-surface-raised);
+    margin: 1.75rem 0 1.8rem;
+    padding: 0.9rem 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    background: transparent;
     color: var(--color-text-primary);
-    box-shadow: var(--shadow-xs);
     font-family: var(--font-ui);
 }
 
 .author-bar__profile {
     display: flex;
-    flex: 1.45 1 15.5rem;
+    flex: 1 1 auto;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
     min-width: 0;
-    padding-inline-end: 1.35rem;
 }
 
 .author-bar__avatar-link {
     display: inline-flex;
-    flex: 0 0 5.25rem;
+    flex: 0 0 3rem;
     align-items: center;
     justify-content: center;
-    width: 5.25rem;
-    height: 5.25rem;
+    width: 3rem;
+    height: 3rem;
     overflow: hidden;
-    border: 2px solid var(--color-border);
+    border: 1px solid var(--color-border-strong);
     border-radius: 50%;
     background: var(--color-surface);
 }
@@ -57,164 +58,103 @@
 
 .author-bar__identity {
     display: grid;
-    justify-items: start;
-    gap: 0.28rem;
+    gap: 0.25rem;
+    min-width: 0;
+}
+
+.author-bar__name-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 0.5rem;
+    row-gap: 0.15rem;
     min-width: 0;
 }
 
 .author-bar__name {
-    max-width: 100%;
     color: var(--color-text-primary);
-    font-size: clamp(1.08rem, 1.5vw, 1.45rem);
+    font-size: 0.875rem;
     font-weight: var(--font-weight-bold);
-    line-height: 1.2;
+    line-height: 1.25;
     text-decoration: none;
-    overflow-wrap: anywhere;
+}
+
+.author-bar__name:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.14em;
 }
 
 .author-bar__handle {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    max-width: 100%;
-    color: var(--author-bar-profile-link, #2563EB);
-    font-size: clamp(0.95rem, 1.25vw, 1.18rem);
+    color: var(--author-bar-profile-link);
+    font-size: 0.75rem;
     font-weight: var(--font-weight-medium);
     line-height: 1.25;
-    text-decoration: underline;
-    text-underline-offset: 0.13em;
+    text-decoration: none;
     overflow-wrap: anywhere;
 }
 
 .author-bar__handle:hover {
-    text-decoration-thickness: 2px;
+    text-decoration: underline;
+    text-underline-offset: 0.14em;
 }
 
-.author-bar__external-icon {
-    flex: 0 0 1rem;
-    width: 1rem;
-    height: 1rem;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.author-bar__date-group {
+.author-bar__date-line {
     display: flex;
-    flex: 1 1 11rem;
-    align-items: center;
-    gap: 0.8rem;
-    min-width: 0;
-    min-height: 4.5rem;
-    padding-inline: 1.25rem;
-    border-inline-start: 1px solid var(--color-border);
-}
-
-.author-bar__date-icon {
-    flex: 0 0 1.85rem;
-    width: 1.85rem;
-    height: 1.85rem;
-    fill: none;
-    stroke: var(--color-text-secondary);
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.author-bar__date-text {
-    display: grid;
-    gap: 0.15rem;
-    min-width: 0;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.2rem 0.4rem;
+    color: var(--color-text-muted);
+    font-size: 0.6875rem;
+    line-height: 1.35;
 }
 
 .author-bar__date-label {
     color: var(--color-text-secondary);
-    font-size: var(--font-size-sm);
-    line-height: 1.2;
+    font-weight: var(--font-weight-medium);
 }
 
-.author-bar__date-value {
-    color: var(--color-text-primary);
-    font-size: clamp(0.95rem, 1.2vw, 1.12rem);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.25;
-    white-space: nowrap;
+.author-bar__date-separator {
+    color: var(--color-text-muted);
 }
 
 .author-bar__sharing {
     display: flex;
-    flex: 1.65 1 18rem;
+    flex: 0 0 auto;
     align-items: center;
-    justify-content: flex-end;
-    gap: 0.7rem;
-    min-width: 0;
-    min-height: 4.5rem;
-    padding-inline-start: 1.25rem;
-    border-inline-start: 1px solid var(--color-border);
-}
-
-.author-bar__copy {
-    display: inline-flex;
-    flex: 0 1 auto;
-    align-items: center;
-    justify-content: center;
     gap: 0.55rem;
-    min-width: 8.4rem;
-    min-height: 3.1rem;
-    padding: 0.65rem 0.9rem;
-    border: 1px solid var(--color-border-strong);
-    border-radius: var(--radius-lg);
-    background: var(--color-surface-raised);
-    color: var(--color-text-primary);
-    box-shadow: var(--shadow-xs);
-    font: inherit;
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-medium);
-    white-space: nowrap;
-    cursor: pointer;
 }
 
-.author-bar__copy:hover {
-    border-color: var(--color-action);
-    color: var(--color-action);
-}
-
-.author-bar__copy svg {
-    flex: 0 0 1.25rem;
-    width: 1.25rem;
-    height: 1.25rem;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+.author-bar__share-label {
+    margin-inline-end: 0.25rem;
+    color: var(--color-text-muted);
+    font-size: 0.625rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.09em;
 }
 
 .author-bar__social {
     display: inline-flex;
-    flex: 0 0 2.75rem;
+    flex: 0 0 2.25rem;
     align-items: center;
     justify-content: center;
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2.25rem;
+    height: 2.25rem;
     padding: 0;
     border: 0;
-    border-radius: 0.65rem;
-    color: #FFFFFF;
+    border-radius: 50%;
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
     text-decoration: none;
     cursor: pointer;
-    transition: transform 150ms ease, filter 150ms ease;
+    transition: background-color 150ms ease, color 150ms ease;
 }
 
 .author-bar__social:hover {
-    filter: brightness(0.94);
-    transform: translateY(-1px);
+    background: var(--color-border);
+    color: var(--color-text-primary);
 }
 
 .author-bar__social:focus-visible,
-.author-bar__copy:focus-visible,
 .author-bar__avatar-link:focus-visible,
 .author-bar__name:focus-visible,
 .author-bar__handle:focus-visible {
@@ -224,25 +164,16 @@
 
 .author-bar__social svg {
     display: block;
-    width: 1.45rem;
-    height: 1.45rem;
+    width: 1rem;
+    height: 1rem;
 }
 
-.author-bar__social--facebook {
-    background: #1877F2;
-}
-
-.author-bar__social--facebook svg,
 .author-bar__social--x svg {
     fill: currentColor;
 }
 
-.author-bar__social--x {
-    background: #000000;
-}
-
-.author-bar__social--instagram {
-    background: linear-gradient(135deg, #7C3AED 0%, #DB2777 48%, #F59E0B 100%);
+.author-bar__social--facebook svg {
+    fill: currentColor;
 }
 
 .author-bar__social--instagram svg {
@@ -273,112 +204,44 @@
 }
 
 :root[data-theme="dark"] {
-    --author-bar-profile-link: #60A5FA;
+    --author-bar-profile-link: #93C5FD;
 }
 
-@media (max-width: 1120px) {
+@media (max-width: 640px) {
     .author-bar {
         flex-wrap: wrap;
-        row-gap: 0.9rem;
+        row-gap: 0.85rem;
+        padding-block: 0.8rem;
     }
 
     .author-bar__profile {
         flex: 1 1 100%;
-        padding: 0 0 0.9rem;
-        border-bottom: 1px solid var(--color-border);
-    }
-
-    .author-bar__date-group {
-        flex: 1 1 0;
-        padding: 0.25rem 1rem 0.25rem 0;
-        border-inline-start: 0;
-    }
-
-    .author-bar__date-group + .author-bar__date-group {
-        padding-inline-start: 1rem;
-        border-inline-start: 1px solid var(--color-border);
     }
 
     .author-bar__sharing {
-        flex: 1 1 100%;
-        justify-content: flex-start;
-        min-height: 0;
-        padding: 0.9rem 0 0;
-        border-top: 1px solid var(--color-border);
-        border-inline-start: 0;
-    }
-}
-
-@media (max-width: 600px) {
-    .author-bar {
-        padding: 0.9rem;
-    }
-
-    .author-bar__profile {
-        gap: 0.8rem;
-    }
-
-    .author-bar__avatar-link {
-        flex-basis: 4.5rem;
-        width: 4.5rem;
-        height: 4.5rem;
-    }
-
-    .author-bar__date-group {
-        align-items: flex-start;
-        gap: 0.55rem;
-        padding: 0.25rem 0.5rem 0.25rem 0;
-    }
-
-    .author-bar__date-group + .author-bar__date-group {
-        padding-inline-start: 0.7rem;
-    }
-
-    .author-bar__date-icon {
-        flex-basis: 1.35rem;
-        width: 1.35rem;
-        height: 1.35rem;
-    }
-
-    .author-bar__date-value {
-        white-space: normal;
-    }
-
-    .author-bar__sharing {
-        flex-wrap: wrap;
-        gap: 0.55rem;
-    }
-
-    .author-bar__copy {
-        flex: 1 1 auto;
-    }
-
-    .author-bar__social {
-        flex-basis: 2.55rem;
-        width: 2.55rem;
-        height: 2.55rem;
+        margin-inline-start: 3.8rem;
     }
 }
 
 @media (max-width: 380px) {
-    .author-bar__date-group {
-        flex-basis: 100%;
-        padding: 0.65rem 0;
-        border-top: 1px solid var(--color-border);
+    .author-bar__sharing {
+        gap: 0.4rem;
+        margin-inline-start: 0;
     }
 
-    .author-bar__date-group + .author-bar__date-group {
-        padding-inline-start: 0;
-        border-inline-start: 0;
+    .author-bar__share-label {
+        margin-inline-end: 0.05rem;
+    }
+
+    .author-bar__social {
+        flex-basis: 2.05rem;
+        width: 2.05rem;
+        height: 2.05rem;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .author-bar__social {
         transition: none;
-    }
-
-    .author-bar__social:hover {
-        transform: none;
     }
 }

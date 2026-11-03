@@ -249,3 +249,10 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Replaced the previous metadata/share row only in `a-pre-flight-inspection-checklist-for-small-drones.html`, loaded `author-bar.css`, and kept its existing SEO author metadata unchanged.
 - The sample portrait is a temporary crop from the approved author-bar design reference. The author profile route is provisional until the author page exists.
 - Other articles were not migrated. The new component is a pilot and should be visually reviewed before wider rollout.
+
+## 2026-11-03 — Refine author bar as open editorial byline
+
+- Reworked the author bar to follow the approved editorial byline reference: small circular author avatar; author name and handle on one line; published and updated dates on the line below; sharing controls aligned to the right.
+- Removed the enclosing panel treatment from `author-bar.css`: no outer background, rounded container, border on all four sides or card shadow. The bar is defined by thin top and bottom rules.
+- Changed the sharing area to a compact SHARE label followed by circular X, Facebook, Instagram and copy-link controls.
+- Kept the bar standalone in `author-bar.css` and the renderer in `author-bar.js`. Only the existing pilot article uses this component; other articles remain unchanged.
