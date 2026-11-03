@@ -231,3 +231,10 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Preserved component-specific H1 margins and layout rules in `section-page.css` and `article-layout.css`. No HTML content or heading text was changed.
 
 - Corrected the H1 token-section comment labels; no token values or rendered styles changed.
+
+
+## 2026-11-03 — Rename shared H1 stylesheet
+
+- Renamed `site/assets/css/h1.css` to `site/assets/css/shared-h1.css` to distinguish the shared standard H1 system from the homepage hero's independent H1 styling.
+- Updated the import in `search.css` and the stylesheet references in the FileMap.
+- Kept the stylesheet contents, H1 tokens, selectors, typography, responsive behavior and homepage hero styling unchanged.
