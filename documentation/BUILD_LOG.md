@@ -238,3 +238,14 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Renamed `site/assets/css/h1.css` to `site/assets/css/shared-h1.css` to distinguish the shared standard H1 system from the homepage hero's independent H1 styling.
 - Updated the import in `search.css` and the stylesheet references in the FileMap.
 - Kept the stylesheet contents, H1 tokens, selectors, typography, responsive behavior and homepage hero styling unchanged.
+
+## 2026-11-03 — Implement reusable author details bar pilot
+
+- Added the standalone, reusable `site/assets/css/author-bar.css` component stylesheet. Author-bar styling is not placed in `article-page.css` and is not tied to one page layout.
+- Added `site/assets/js/author-bar.js` to render the single horizontal author and sharing bar using the article's author ID and article-specific publication/modification dates.
+- Extended `site/assets/js/author-library.js` with a temporary Luxraj Kayal sample record containing the author name, handle, author-page route and sample photograph.
+- Updated `main.js` to initialize the new author bar. The old author-card module and stylesheet were not repurposed as the new bar.
+- Updated `article-share.js` for the bar's Copy Link and Instagram device-share/copy-fallback controls while retaining support for the older article-share attributes. Facebook and X use their share links.
+- Replaced the previous metadata/share row only in `a-pre-flight-inspection-checklist-for-small-drones.html`, loaded `author-bar.css`, and kept its existing SEO author metadata unchanged.
+- The sample portrait is a temporary crop from the approved author-bar design reference. The author profile route is provisional until the author page exists.
+- Other articles were not migrated. The new component is a pilot and should be visually reviewed before wider rollout.
