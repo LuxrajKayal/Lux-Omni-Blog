@@ -196,3 +196,12 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Removed the `max-width: var(--content-width-reading)` constraint from `.article-introduction` in `site/assets/css/article-layout.css`.
 - Preserved its existing font, font size, weight, text color, line height and top spacing. The description now uses the available article-entry header width and wraps naturally.
 - Did not change the global `--content-width-reading` token or any other article layout rules.
+
+
+## 2026-11-03 — Unify breadcrumb component styling
+
+- Moved the existing landing-page `.breadcrumbs` rules into the dedicated `site/assets/css/breadcrumbs.css` stylesheet without changing their normal or hover colors, spacing, or typography.
+- Made `section-page.css` import the shared breadcrumb stylesheet so existing landing pages retain their appearance.
+- Changed the approved article-layout test page to use the same `.breadcrumbs` class and standard separator markup, and loaded `breadcrumbs.css` directly.
+- Removed the duplicate `.article-breadcrumb` rules from `article-layout.css`. The article and landing pages now share one breadcrumb selector and one visual implementation.
+- Updated the FileMap. No other article pages or breadcrumb content were migrated.
