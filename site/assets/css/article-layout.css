@@ -76,7 +76,6 @@
 }
 
 .article-introduction {
-    max-width: var(--content-width-reading);
     margin: var(--space-4) 0 0;
     color: var(--color-text-secondary);
     font-family: var(--font-ui);
