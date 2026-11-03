@@ -229,3 +229,5 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Removed the standard H1 typography rule from `base.css`; its shared heading defaults now apply to H2–H6, while H1 typography is owned by `h1.css`.
 - Kept the homepage hero H1 typography unchanged in `hero.css`. Its more-specific component rule continues to override the standard H1 style intentionally.
 - Preserved component-specific H1 margins and layout rules in `section-page.css` and `article-layout.css`. No HTML content or heading text was changed.
+
+- Corrected the H1 token-section comment labels; no token values or rendered styles changed.

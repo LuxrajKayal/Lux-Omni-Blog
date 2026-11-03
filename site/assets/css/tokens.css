@@ -102,7 +102,7 @@
   --letter-spacing-wide: 0.04em;
 
   /* --------------------------------------------------------------
-     4. Dedicated standard H1 brand tokens
+     Dedicated standard H1 brand tokens
      The homepage hero intentionally overrides this standard style.
      -------------------------------------------------------------- */
   --lux-h1-font-family: var(--font-ui);
@@ -255,7 +255,7 @@
 }
 
 
-/* Universal page-title size adjustment for compact screens. */
+/* Standard H1 size adjustment for compact screens. */
 @media (max-width: 560px) {
   :root {
     --lux-h1-font-size: clamp(2.15rem, 10vw, 3.2rem);
