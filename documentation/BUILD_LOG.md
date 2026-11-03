@@ -220,3 +220,12 @@ Append-only after implementation begins. Record real milestones only; do not pre
 
 - Increased `--lux-eyebrow-font-size` in `site/assets/css/tokens.css` from `0.72rem` (approximately 11.5px) to `0.875rem` (14px) to improve visibility across all centralized eyebrow components.
 - Left eyebrow colour, font family, weight, letter spacing, line height, text transformation, component spacing and page content unchanged.
+
+
+## 2026-11-03 — Centralize standard H1 typography
+
+- Added dedicated `--lux-h1-*` brand tokens for font family, responsive size, weight, line height, letter spacing, text color and text wrapping. The values preserve the existing standard category/subcategory H1 appearance.
+- Added `site/assets/css/h1.css` as the single standard H1 typography implementation and imported it through `search.css`, which is already loaded by populated pages including article pages that do not load `base.css`.
+- Removed the standard H1 typography rule from `base.css`; its shared heading defaults now apply to H2–H6, while H1 typography is owned by `h1.css`.
+- Kept the homepage hero H1 typography unchanged in `hero.css`. Its more-specific component rule continues to override the standard H1 style intentionally.
+- Preserved component-specific H1 margins and layout rules in `section-page.css` and `article-layout.css`. No HTML content or heading text was changed.
