@@ -73,12 +73,6 @@
 
 .article-entry-header h1 {
     margin: 0;
-    color: var(--color-text-primary);
-    font-family: var(--font-editorial);
-    font-size: var(--font-size-5xl);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--letter-spacing-tight);
-    line-height: var(--line-height-tight);
 }
 
 .article-introduction {
@@ -192,18 +186,8 @@
 }
 
 @media (max-width: 767px) {
-    .article-entry-header h1 {
-        font-size: var(--font-size-4xl);
-    }
-
     .article-introduction {
         font-size: var(--font-size-lg);
-    }
-}
-
-@media (max-width: 479px) {
-    .article-entry-header h1 {
-        font-size: var(--font-size-3xl);
     }
 }
 
