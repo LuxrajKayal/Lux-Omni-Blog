@@ -85,11 +85,13 @@
   --font-size-4xl: 2.25rem;
   --font-size-5xl: 3rem;
   --font-size-6xl: 3.75rem;
+  --font-size-page-title: clamp(2.3rem, 5vw, 4rem);
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+  --font-weight-display: 900;
 
   --line-height-tight: 1.15;
   --line-height-heading: 1.25;
@@ -98,6 +100,7 @@
   --line-height-relaxed: 1.8;
 
   --letter-spacing-tight: -0.025em;
+  --letter-spacing-display: -0.065em;
   --letter-spacing-normal: 0;
   --letter-spacing-wide: 0.04em;
 
@@ -229,4 +232,12 @@
   --shadow-sm: 0 2px 6px rgb(0 0 0 / 0.24);
   --shadow-md: 0 6px 18px rgb(0 0 0 / 0.28);
   --shadow-lg: 0 12px 36px rgb(0 0 0 / 0.32);
+}
+
+
+/* Universal page-title size adjustment for compact screens. */
+@media (max-width: 560px) {
+  :root {
+    --font-size-page-title: clamp(2.15rem, 10vw, 3.2rem);
+  }
 }
