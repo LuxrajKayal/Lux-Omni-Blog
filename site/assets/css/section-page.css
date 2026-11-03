@@ -2,7 +2,7 @@
 .section-page,.article-page{padding-block:1.25rem 4rem}
 .breadcrumbs{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin:0 0 1.8rem;color:var(--color-text-muted);font-size:var(--font-size-sm)}
 .breadcrumbs a{color:var(--color-text-secondary);text-decoration:none}.breadcrumbs a:hover{color:var(--brand-crimson);text-decoration:underline}
-.section-heading{max-width:850px;margin-bottom:1.35rem}.section-heading h1{margin:0 0 .75rem;font-size:clamp(2.3rem,5vw,4rem);font-weight:900;letter-spacing:-.065em}
+.section-heading{max-width:850px;margin-bottom:1.35rem}.section-heading h1{margin:0 0 .75rem}
 .section-heading>p:not(.eyebrow){max-width:72ch;margin:0;color:var(--color-text-secondary);font-size:clamp(1rem,1.35vw,1.15rem)}
 .section-heading__count{display:inline-block;margin-top:.9rem;color:var(--color-text-muted);font-size:var(--font-size-xs);font-weight:var(--font-weight-semibold)}
 .topic-chip-row{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 2rem;padding-block:.1rem}
@@ -19,7 +19,7 @@
 .story-card h3 a{color:var(--color-text-primary);text-decoration:none}.story-card h3 a:hover{color:var(--brand-crimson);text-decoration:underline;text-underline-offset:.16em}
 .story-card>p{margin:0;color:var(--color-text-secondary);font-size:var(--font-size-sm);line-height:1.55}
 .story-card__meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem;margin-top:auto;padding-top:.7rem;border-top:1px solid var(--color-border);color:var(--color-text-muted);font-size:var(--font-size-xs)}
-.article-content{max-width:var(--content-width-article);margin:0 auto}.article-content h1{margin:0 0 1rem;font-size:clamp(2.25rem,5vw,4rem);font-weight:900;letter-spacing:-.065em;line-height:1.04}
+.article-content{max-width:var(--content-width-article);margin:0 auto}.article-content h1{margin:0 0 1rem}
 .article-deck{margin:0 0 1.2rem;color:var(--color-text-secondary);font-size:clamp(1.12rem,2vw,1.35rem);line-height:1.45}
 .article-meta{display:flex;flex-wrap:wrap;gap:.65rem 1rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--color-border);color:var(--color-text-muted);font-size:var(--font-size-sm)}
 .article-featured-image{margin:1.5rem 0 2rem;overflow:hidden;border:1px solid var(--color-border);border-radius:var(--radius-lg);background:var(--color-surface)}
