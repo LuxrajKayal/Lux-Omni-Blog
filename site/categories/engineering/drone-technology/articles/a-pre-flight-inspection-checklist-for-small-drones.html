@@ -662,6 +662,167 @@
         }
     </style>
 
+    <!-- ================================================= -->
+    <!-- ARTICLE-LOCAL TYPOGRAPHY                          -->
+    <!-- These rules belong to this article only.          -->
+    <!-- ================================================= -->
+    <style id="article-local-typography">
+        .article-body {
+            color: var(--color-text-primary, #171717);
+            font-family: var(--font-ui, Arial, sans-serif);
+            font-size: clamp(1.0625rem, 1.05vw + 0.72rem, 1.125rem);
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        .article-body section + section {
+            margin-block-start: 3.25rem;
+        }
+
+        .article-body p {
+            max-width: 72ch;
+            margin: 0 0 1.35em;
+            color: var(--color-text-secondary, #525252);
+            font-size: 1em;
+            line-height: 1.8;
+        }
+
+        .article-body h2 {
+            margin: 0 0 1.15rem;
+            color: var(--color-text-primary, #171717);
+            font-family: var(--font-ui, Arial, sans-serif);
+            font-size: clamp(1.65rem, 2.2vw, 2rem);
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            line-height: 1.22;
+            text-wrap: balance;
+        }
+
+        .article-body h3 {
+            margin: 2rem 0 0.7rem;
+            color: var(--color-text-primary, #171717);
+            font-family: var(--font-ui, Arial, sans-serif);
+            font-size: clamp(1.15rem, 1.4vw, 1.3rem);
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            line-height: 1.35;
+            text-wrap: balance;
+        }
+
+        .article-body ul,
+        .article-body ol {
+            max-width: 70ch;
+            margin: 0 0 1.6rem;
+            padding-inline-start: 1.55rem;
+            color: var(--color-text-secondary, #525252);
+            font-size: 1em;
+            line-height: 1.75;
+        }
+
+        .article-body li {
+            padding-inline-start: 0.2rem;
+            margin-block: 0.45rem;
+        }
+
+        .article-body li::marker {
+            color: var(--brand-crimson, #DC2626);
+        }
+
+        .article-body a,
+        .article-footer a {
+            color: var(--color-link, #B91C1C);
+            text-decoration: underline;
+            text-decoration-thickness: 0.07em;
+            text-underline-offset: 0.18em;
+        }
+
+        .article-body a:hover,
+        .article-footer a:hover {
+            color: var(--color-link-hover, #7F1D1D);
+        }
+
+        .article-body strong,
+        .article-footer strong {
+            color: var(--color-text-primary, #171717);
+            font-weight: 700;
+        }
+
+        .article-opening-word {
+            display: inline-block;
+            margin-inline-end: 0.045em;
+            color: var(--brand-crimson, #DC2626);
+            font-size: 2.55em;
+            font-weight: 900;
+            letter-spacing: -0.075em;
+            line-height: 0.78;
+            vertical-align: -0.11em;
+        }
+
+        .article-featured-image figcaption {
+            margin-block-start: 0.7rem;
+            color: var(--color-text-muted, #737373);
+            font-family: var(--font-ui, Arial, sans-serif);
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .article-footer {
+            margin-block-start: 3.5rem;
+            padding-block-start: 1.5rem;
+            border-top: 1px solid var(--color-border, #E5E5E5);
+            color: var(--color-text-secondary, #525252);
+            font-family: var(--font-ui, Arial, sans-serif);
+            font-size: 0.975rem;
+            line-height: 1.7;
+        }
+
+        .article-footer h2 {
+            margin: 0 0 0.9rem;
+            color: var(--color-text-primary, #171717);
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+
+        .article-footer ul {
+            margin: 0;
+            padding-inline-start: 1.3rem;
+        }
+
+        .article-footer li {
+            margin-block: 0.55rem;
+            padding-inline-start: 0.15rem;
+        }
+
+        .article-footer li::marker {
+            color: var(--brand-crimson, #DC2626);
+        }
+
+        @media (max-width: 600px) {
+            .article-body {
+                font-size: 1.025rem;
+                line-height: 1.75;
+            }
+
+            .article-body section + section {
+                margin-block-start: 2.6rem;
+            }
+
+            .article-body p {
+                line-height: 1.75;
+            }
+
+            .article-body h2 {
+                font-size: clamp(1.55rem, 7vw, 1.8rem);
+            }
+
+            .article-opening-word {
+                font-size: 2.35em;
+            }
+        }
+    </style>
+
 </head>
 
 
@@ -780,7 +941,7 @@
             <h2>Why a Pre-flight Inspection Matters</h2>
 
             <p>
-                A drone can appear ready to fly while still having a problem
+                <span class="article-opening-word">A</span> drone can appear ready to fly while still having a problem
                 that is not immediately obvious. A slightly damaged propeller,
                 an unsecured battery, a loose payload mount, or an unexpected
                 system warning can affect how the aircraft responds once it
