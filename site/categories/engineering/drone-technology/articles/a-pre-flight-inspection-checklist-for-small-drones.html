@@ -407,6 +407,9 @@
     <!-- Universal HTML defaults and shared typography foundation. -->
     <link rel="stylesheet" href="../../../../assets/css/base.css">
 
+    <!-- Shared breadcrumb navigation used across page types. -->
+    <link rel="stylesheet" href="../../../../assets/css/breadcrumbs.css">
+
     <!-- Each article may provide its own independent stylesheet. -->
     <link rel="stylesheet" href="../../../../assets/css/article-layout.css">
 
@@ -692,19 +695,19 @@
         Replace these sample details with researched article metadata
         before publication.
     -->
-    <nav class="article-breadcrumb" aria-label="Breadcrumb">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
 
         <a href="{{SITE_URL}}">Home</a>
 
-        <span class="article-breadcrumb__separator" aria-hidden="true">/</span>
+        <span aria-hidden="true">/</span>
 
         <a href="{{ARTICLE_CATEGORY_URL}}">Engineering</a>
 
-        <span class="article-breadcrumb__separator" aria-hidden="true">/</span>
+        <span aria-hidden="true">/</span>
 
         <span>Drone Technology</span>
 
-        <span class="article-breadcrumb__separator" aria-hidden="true">/</span>
+        <span aria-hidden="true">/</span>
 
         <span aria-current="page">
             A Pre-flight Inspection Checklist for Small Drones
