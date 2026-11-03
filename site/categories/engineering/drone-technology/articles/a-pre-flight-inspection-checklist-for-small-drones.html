@@ -668,57 +668,27 @@
     <!-- ================================================= -->
     <style id="article-local-typography">
         /*
-         * Article-local content boundary.
-         * Keeps every article component inside the left-column width.
+         * Invisible boundary for all content inside the article's left column.
+         * Global box sizing and responsive media limits come from base.css.
          */
         .article-content-frame {
-            box-sizing: border-box;
             width: 100%;
-            max-width: 100%;
-            min-width: 0;
-            overflow-wrap: anywhere;
-        }
-
-        .article-content-frame *,
-        .article-content-frame *::before,
-        .article-content-frame *::after {
-            box-sizing: inherit;
             min-width: 0;
         }
 
-        .article-content-frame > * {
-            max-width: 100%;
-        }
-
-        .article-content-frame img {
-            max-width: 100%;
-        }
-
-        /*
-         * Dedicated 16:9 featured-image frame.
-         * The full image remains visible; it is contained rather than cropped.
-         */
+        /* Dedicated 16:9 featured-image frame. */
         .article-featured-media {
-            width: 100%;
-            max-width: 100%;
-            min-width: 0;
             margin: 0 0 2.25rem;
         }
 
         .article-featured-media__frame {
-            position: relative;
-            width: 100%;
-            max-width: 100%;
-            min-width: 0;
             aspect-ratio: 16 / 9;
             overflow: hidden;
             background: var(--color-surface, #F5F5F5);
         }
 
         .article-featured-media__frame img {
-            display: block;
             width: 100%;
-            max-width: none;
             height: 100%;
             object-fit: contain;
             object-position: center;
@@ -726,9 +696,6 @@
 
         /* Separate image-context box beneath the image. */
         .article-image-caption {
-            width: 100%;
-            max-width: 100%;
-            min-width: 0;
             margin-block-start: 0.65rem;
             padding: 0.75rem 1rem;
             border-inline-start: 3px solid var(--brand-crimson, #DC2626);
@@ -737,13 +704,6 @@
             font-family: var(--font-ui, Arial, sans-serif);
             font-size: 0.875rem;
             line-height: 1.5;
-        }
-
-        .article-body,
-        .article-footer {
-            width: 100%;
-            max-width: 100%;
-            min-width: 0;
         }
 
         .article-body {
@@ -759,8 +719,6 @@
         }
 
         .article-body p {
-            width: 100%;
-            max-width: 100%;
             margin: 0 0 1.35em;
             color: var(--color-text-secondary, #525252);
             font-size: 1em;
@@ -798,8 +756,6 @@
 
         .article-body ul,
         .article-body ol {
-            width: 100%;
-            max-width: 100%;
             margin: 0 0 1.6rem;
             padding-inline-start: 1.35rem;
             color: var(--color-text-secondary, #525252);
@@ -873,8 +829,6 @@
         }
 
         .article-body .article-pull-quote {
-            width: 100%;
-            max-width: 100%;
             margin: 2.5rem 0;
             padding: 0.15rem 0 0.15rem 1.5rem;
             border-left: 4px solid var(--brand-crimson, #DC2626);
@@ -882,8 +836,6 @@
         }
 
         .article-body .article-pull-quote p {
-            width: 100%;
-            max-width: 100%;
             margin: 0;
             color: var(--color-text-primary, #171717);
             font-size: clamp(1.45rem, 2.5vw, 1.85rem);
