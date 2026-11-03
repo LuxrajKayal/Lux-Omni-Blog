@@ -214,3 +214,9 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Imported the shared stylesheet from `search.css`, which is already loaded by the populated site pages.
 - Removed duplicate eyebrow typography and colour rules from `layout.css`, `article-layout.css`, `section-page.css`, `hero.css`, `search.css` and `article-page.css`.
 - Preserved component-specific spacing and layout rules. Eyebrow wording remains authored in each HTML page or component; no page copy was changed.
+
+
+## 2026-11-03 — Increase centralized eyebrow text size
+
+- Increased `--lux-eyebrow-font-size` in `site/assets/css/tokens.css` from `0.72rem` (approximately 11.5px) to `0.875rem` (14px) to improve visibility across all centralized eyebrow components.
+- Left eyebrow colour, font family, weight, letter spacing, line height, text transformation, component spacing and page content unchanged.
