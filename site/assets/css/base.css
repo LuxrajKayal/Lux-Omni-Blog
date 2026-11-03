@@ -47,8 +47,9 @@ h6 {
 }
 
 h1 {
-  font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-5xl));
-  letter-spacing: var(--letter-spacing-tight);
+  font-size: var(--font-size-page-title);
+  font-weight: var(--font-weight-display);
+  letter-spacing: var(--letter-spacing-display);
 }
 
 h2 {
