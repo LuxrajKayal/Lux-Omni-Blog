@@ -189,3 +189,10 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Removed duplicate H1 typography overrides from `section-page.css`, `responsive.css` and `article-layout.css`; component-specific spacing and the article introduction's responsive sizing remain.
 - Added `base.css` to the approved pre-flight test article so its entry H1 uses the same universal H1 rule as landing pages. Removed the now-unused Source Serif 4 font request from that test page.
 - Other article pages were not migrated or modified. The change is limited to the shared H1 foundation and the existing approved test article.
+
+
+## 2026-11-03 — Allow article introduction to use full header width
+
+- Removed the `max-width: var(--content-width-reading)` constraint from `.article-introduction` in `site/assets/css/article-layout.css`.
+- Preserved its existing font, font size, weight, text color, line height and top spacing. The description now uses the available article-entry header width and wraps naturally.
+- Did not change the global `--content-width-reading` token or any other article layout rules.
