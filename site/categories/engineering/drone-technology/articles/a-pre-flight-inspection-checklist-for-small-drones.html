@@ -744,33 +744,27 @@
 
 
     <!-- ARTICLE:CONTENT:START -->
-
-    <!-- ================================================= -->
+<!-- ================================================= -->
     <!-- FEATURED IMAGE                                    -->
     <!-- ================================================= -->
 
     <!--
-        Use the actual article image.
-
-        ALT text describes the image accurately.
-        Do not stuff keywords into alt text.
-
-        Set width and height to the actual image
-        dimensions to help prevent layout shifts.
+        Featured image source: U.S. Geological Survey,
+        "Drone ready to fly" (June 6, 2023).
+        USGS marks this image Public Domain.
+        Photo by Michelle Jeffries, USGS.
     -->
-
     <figure class="article-featured-image">
 
         <img
-            src="{{FEATURED_IMAGE_URL}}"
-            alt="{{FEATURED_IMAGE_ALT}}"
-            width="{{FEATURED_IMAGE_WIDTH}}"
-            height="{{FEATURED_IMAGE_HEIGHT}}"
+            src="https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/media/images/drone%20on%20orange%20landing%20pad%2020230606_102937.jpg"
+            alt="A quadcopter drone positioned on an orange circular landing pad before a field flight."
             fetchpriority="high"
+            decoding="async"
         >
 
         <figcaption>
-            {{FEATURED_IMAGE_CAPTION}}
+            A quadcopter positioned on its landing pad before a field data-collection flight.
         </figcaption>
 
     </figure>
@@ -780,41 +774,544 @@
     <!-- ARTICLE BODY                                      -->
     <!-- ================================================= -->
 
-    <!--
-        The following is only an example.
-
-        Create sections, diagrams, images, tables, code
-        blocks, lists and other elements according to the
-        actual article subject. No compulsory body layout
-        is imposed.
-    -->
-
     <div class="article-body">
 
         <section>
-
-            <h2>{{SECTION_HEADING}}</h2>
+            <h2>Why a Pre-flight Inspection Matters</h2>
 
             <p>
-                {{SECTION_CONTENT}}
+                A drone can appear ready to fly while still having a problem
+                that is not immediately obvious. A slightly damaged propeller,
+                an unsecured battery, a loose payload mount, or an unexpected
+                system warning can affect how the aircraft responds once it
+                is airborne.
             </p>
 
+            <p>
+                A pre-flight inspection is a deliberate check of three things:
+                the physical condition of the aircraft, the readiness of its
+                electronic systems, and the suitability of the environment
+                in which it will operate. It should be performed before every
+                flight, even when the same drone has already completed several
+                successful flights that day.
+            </p>
+
+            <p>
+                The exact procedure depends on the aircraft. A small camera
+                drone, an agricultural multirotor and a custom-built
+                unmanned aircraft do not necessarily have the same inspection
+                requirements. Always follow the manufacturer's operating
+                manual, maintenance manual and model-specific checklist.
+                The following procedure provides a general framework for
+                organising those checks.
+            </p>
         </section>
 
-        <!-- Add additional article sections as required. -->
+
+        <section>
+            <h2>1. Assess the Flight Area and Weather Conditions</h2>
+
+            <p>
+                Begin with the operating environment rather than immediately
+                powering on the aircraft. The suitability of a location can
+                change with weather, nearby activity, temporary restrictions
+                and other ground conditions.
+            </p>
+
+            <h3>Check the weather</h3>
+
+            <p>
+                Review current and expected weather conditions for the planned
+                flight period. Pay particular attention to wind speed, gusts,
+                visibility, precipitation and temperature. Conditions that
+                appear manageable at ground level may be less suitable at
+                the intended operating altitude.
+            </p>
+
+            <p>
+                Compare the forecast and observed conditions with the operating
+                limits specified for the particular drone. Do not apply a
+                universal wind-speed or temperature limit to every aircraft.
+                The permissible range can differ between models, payload
+                configurations and battery systems.
+            </p>
+
+            <p>
+                Postpone the operation when wind, rain, poor visibility,
+                extreme temperature or another environmental condition falls
+                outside the aircraft's permitted operating conditions.
+            </p>
+
+            <h3>Verify airspace and local restrictions</h3>
+
+            <p>
+                Confirm that the intended location and flight plan are
+                permitted. Check the applicable airspace map, restricted
+                locations, temporary notices and any permissions required
+                for the operation. A location that was available for a
+                previous flight should not automatically be assumed to be
+                available again.
+            </p>
+
+            <p>
+                In India, remote pilots should check the DigitalSky platform
+                before each operation for applicable airspace restrictions.
+                The Drone Rules provide for red, yellow and green zones.
+                Operations in red or yellow zones require permission from
+                the appropriate authority, as applicable. Pilots must also
+                follow the requirements relevant to their aircraft,
+                operation and certificate.
+            </p>
+
+            <h3>Inspect the ground environment</h3>
+
+            <p>
+                Walk around the proposed take-off and landing area. Look for
+                overhead wires, trees, buildings, poles, vehicles, people,
+                animals and other obstacles that could interfere with the
+                operation. Consider the planned flight path as well as the
+                immediate launch point.
+            </p>
+
+            <ul>
+                <li>Choose a clear and suitable take-off and landing area.</li>
+                <li>Identify an alternative landing location where practical.</li>
+                <li>Keep people who are not participating in the operation clear of the working area.</li>
+                <li>Look for nearby structures and sources of signal interference.</li>
+                <li>Make sure the pilot has a suitable position from which to observe the aircraft.</li>
+            </ul>
+        </section>
+
+
+        <section>
+            <h2>2. Inspect the Airframe and Landing Gear</h2>
+
+            <p>
+                With the aircraft switched off, examine the frame from
+                multiple angles. Small cracks, damaged joints and loose
+                fittings can be difficult to notice when looking at the
+                aircraft from only one side.
+            </p>
+
+            <p>
+                Pay attention to the body, arms, motor mounts, landing gear,
+                folding joints and protective covers. Look for signs of
+                impact, deformation, loose fasteners, damaged plastic,
+                corrosion or unusual gaps between connected parts.
+            </p>
+
+            <ul>
+                <li>Check the main frame for cracks, bends or deformation.</li>
+                <li>Inspect each arm and its locking or folding mechanism.</li>
+                <li>Examine motor mounting points for visible damage or looseness.</li>
+                <li>Check landing gear and legs for cracks or damaged fittings.</li>
+                <li>Look for loose screws, missing fasteners and unsecured covers.</li>
+                <li>Check that exposed wiring and connectors are not trapped or damaged.</li>
+            </ul>
+
+            <p>
+                If the drone has experienced a hard landing, collision or
+                unusual vibration during its previous flight, pay particular
+                attention to the affected area. A visual inspection may reveal
+                damage, but it cannot always establish whether an internal
+                component remains serviceable.
+            </p>
+
+            <p>
+                Do not conceal structural damage with temporary repairs
+                before a flight. Follow the manufacturer's repair procedure
+                or have the aircraft inspected by an appropriately qualified
+                service provider.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>3. Examine the Propellers and Motors</h2>
+
+            <p>
+                The propulsion system is one of the most important parts of a
+                multirotor aircraft. Each propeller and motor contributes to
+                the thrust and control needed to maintain stable flight.
+                A damaged blade, incorrect propeller installation or
+                obstructed motor can affect that balance.
+            </p>
+
+            <h3>Inspect every propeller</h3>
+
+            <p>
+                Examine the full length of every blade, including its leading
+                and trailing edges and the area around the mounting hub.
+                Look for cracks, chips, bends, deep scratches and other
+                visible damage. Also check for dirt or foreign material
+                attached to the blades.
+            </p>
+
+            <ul>
+                <li>Confirm that the propellers are the correct type for the aircraft.</li>
+                <li>Check that each propeller is installed in the correct position and orientation.</li>
+                <li>Verify that the mounting mechanism is secured as specified by the manufacturer.</li>
+                <li>Replace damaged propellers rather than attempting to straighten or reshape them.</li>
+                <li>Confirm that no protective cover or transport lock remains fitted where it should be removed.</li>
+            </ul>
+
+            <h3>Inspect the motors</h3>
+
+            <p>
+                Examine the motor housings, visible shafts and mounting points.
+                Look for dirt, dust, fibres or other material that could
+                interfere with motor operation. Check for visible damage,
+                loose fittings or signs of overheating.
+            </p>
+
+            <p>
+                With the aircraft powered off and handled according to its
+                manual, check for obvious mechanical obstruction or
+                abnormal resistance where the design permits a manual check.
+                Do not force a motor to rotate or dismantle it as part of a
+                routine field inspection.
+            </p>
+
+            <p>
+                Never place fingers near propellers while the aircraft is
+                powered. If a model-specific procedure requires a powered
+                propulsion test, perform it only in the controlled manner
+                described by the manufacturer, with the surrounding area clear.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>4. Inspect the Flight Battery and Power Connections</h2>
+
+            <p>
+                A battery can have sufficient charge displayed on an indicator
+                and still be unsuitable for use if its casing, connector or
+                internal condition is compromised. Inspect the battery before
+                installing it in the aircraft.
+            </p>
+
+            <ul>
+                <li>Look for swelling, cracks, deformation or other physical damage.</li>
+                <li>Check the battery casing and locking mechanism.</li>
+                <li>Inspect the connector for dirt, corrosion, bent contacts or damage.</li>
+                <li>Check exposed cables for cuts, loose insulation or damaged connections.</li>
+                <li>Confirm that the battery is seated and secured correctly.</li>
+                <li>Check the aircraft and controller battery status for warnings.</li>
+            </ul>
+
+            <p>
+                Make sure the available battery capacity is appropriate for
+                the planned flight, including the expected route, operating
+                conditions and a suitable landing reserve. A flight should
+                not begin with a battery that is already close to its
+                operational limit.
+            </p>
+
+            <p>
+                Follow the battery manufacturer's instructions for charging,
+                storage, temperature limits and service life. Do not use a
+                battery that is swollen, leaking, unusually hot, physically
+                damaged or reporting a fault. Set it aside for the appropriate
+                inspection or disposal procedure.
+            </p>
+
+            <p>
+                If the aircraft uses a separate power distribution system
+                or external battery connections, inspect accessible
+                connectors and cables for secure fitting. Do not continue
+                with a flight if a power connection is loose or shows signs
+                of overheating.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>5. Check the Camera, Payload and Accessories</h2>
+
+            <p>
+                A camera, sensor, sprayer, delivery attachment or other payload
+                becomes part of the aircraft's operating configuration. Its
+                installation should not be treated as a separate cosmetic
+                check.
+            </p>
+
+            <p>
+                Confirm that the equipment is firmly attached and that its
+                weight and position are permitted for the aircraft. A poorly
+                secured or unsuitable payload can change the aircraft's
+                balance and flight characteristics.
+            </p>
+
+            <ul>
+                <li>Check that the camera or payload is securely mounted.</li>
+                <li>Inspect mounting screws, brackets, dampers and locking mechanisms.</li>
+                <li>Make sure no cable is loose, hanging or likely to contact a propeller.</li>
+                <li>Check that the gimbal and camera have room to move as intended.</li>
+                <li>Confirm that accessories do not obstruct navigation or obstacle-detection sensors.</li>
+                <li>Verify that the installed configuration remains within the manufacturer's limits.</li>
+            </ul>
+
+            <p>
+                For a camera drone, also confirm that the required memory
+                card is installed and that the camera settings are suitable
+                for the planned work. These checks do not replace the
+                mechanical and electrical inspection of the aircraft.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>6. Check the Remote Controller and Communication System</h2>
+
+            <p>
+                The aircraft and its control station must be able to
+                communicate reliably before flight. A controller that is
+                switched on is not necessarily ready for operation.
+            </p>
+
+            <p>
+                Check the controller's battery level, physical condition,
+                controls, switches, display and antenna arrangement. If a
+                mobile device is used, confirm that it is connected correctly
+                and has enough battery capacity for the planned operation.
+            </p>
+
+            <ul>
+                <li>Confirm that the controller has sufficient power.</li>
+                <li>Inspect the control sticks, switches and buttons for damage or obstruction.</li>
+                <li>Check that the mobile device and control application are operating correctly.</li>
+                <li>Verify that the aircraft and controller have established the expected connection.</li>
+                <li>Check the displayed signal status and look for connection warnings.</li>
+                <li>Ensure that the controller antennas are positioned as instructed by the manufacturer.</li>
+            </ul>
+
+            <p>
+                Read all system messages shown during startup. Warnings
+                relating to the compass, inertial measurement unit (IMU),
+                vision system, communication link or other flight-critical
+                functions should be understood and resolved before flight.
+                Do not dismiss a warning simply because the aircraft appears
+                to respond normally.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>7. Verify Navigation, Home Point and Failsafe Settings</h2>
+
+            <p>
+                Navigation and safety functions should be checked before
+                take-off, particularly when the aircraft uses satellite
+                positioning, automated flight modes or a return-to-home
+                function.
+            </p>
+
+            <p>
+                Where the aircraft uses GNSS positioning, wait for the
+                required positioning status specified by the manufacturer.
+                Confirm that the displayed home point corresponds to the
+                intended launch location and that the application reports
+                the expected status.
+            </p>
+
+            <h3>Review the return-to-home configuration</h3>
+
+            <p>
+                Check the configured response to a lost control connection
+                and the return-to-home altitude, where those functions are
+                available. Consider the height of surrounding trees,
+                buildings, masts and other obstacles when reviewing the
+                selected altitude.
+            </p>
+
+            <p>
+                A return-to-home setting should be suitable for the actual
+                launch location and operating environment. Do not assume
+                that the automatic return function will avoid every obstacle
+                or work in every navigation or communication failure.
+            </p>
+
+            <h3>Check calibration and system messages</h3>
+
+            <p>
+                Compass, IMU and other calibration procedures should be
+                performed according to the aircraft's instructions. A
+                calibration should not be treated as a routine step that
+                must be repeated without a reason. Follow the manufacturer's
+                procedure when the application or operating manual requires it.
+            </p>
+
+            <p>
+                Before proceeding, confirm that the aircraft is in the
+                intended flight mode and that no unresolved warning or
+                unexpected configuration remains.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>8. Complete the Final Take-off Check</h2>
+
+            <p>
+                Once the aircraft and control system have passed inspection,
+                move to the selected take-off position. Make sure the area
+                is clear and that the aircraft is placed on a suitable,
+                stable surface.
+            </p>
+
+            <p>
+                Follow the manufacturer's power-on and arming sequence.
+                Before take-off, confirm that the aircraft has completed
+                its startup checks and that its displayed status is
+                appropriate for flight.
+            </p>
+
+            <p>
+                After take-off, perform a controlled initial hover in a
+                clear area at a suitable low altitude. Observe the aircraft
+                before beginning the planned manoeuvres. Check that it
+                responds as expected to the control inputs and that there
+                is no unusual vibration, noise, drift or instability.
+            </p>
+
+            <p>
+                Monitor the battery status, communication signal and system
+                messages during this initial check. If the aircraft behaves
+                unexpectedly or displays a warning, land safely and
+                investigate the problem before continuing.
+            </p>
+
+            <p>
+                Do not use the initial hover as a substitute for the
+                mechanical inspection. It is the final operational check,
+                not a way to discover whether a visibly damaged aircraft
+                can still fly.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>When Should You Postpone a Flight?</h2>
+
+            <p>
+                A pre-flight inspection is useful only when the results
+                influence the decision to fly. Finding a fault and
+                continuing regardless defeats the purpose of the procedure.
+            </p>
+
+            <p>
+                Postpone the flight or remove the aircraft from service
+                when any of the following conditions are found:
+            </p>
+
+            <ul>
+                <li>A cracked, chipped, bent or incorrectly installed propeller.</li>
+                <li>Visible airframe damage or a loose structural component.</li>
+                <li>A motor that shows abnormal resistance, damage or unusual behaviour.</li>
+                <li>A swollen, damaged or fault-reporting battery.</li>
+                <li>A loose payload or an unapproved aircraft configuration.</li>
+                <li>An unresolved flight-critical system warning.</li>
+                <li>An unreliable control connection or unsuitable navigation status.</li>
+                <li>Weather or environmental conditions outside the aircraft's permitted limits.</li>
+                <li>An airspace restriction, missing permission or other regulatory obstacle.</li>
+            </ul>
+
+            <p>
+                Some faults can be corrected through an approved inspection
+                or maintenance procedure. Others require replacement parts
+                or professional servicing. The important point is that the
+                aircraft should not be operated until its safe condition
+                has been established.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>A Quick Pre-flight Checklist for Small Drones</h2>
+
+            <p>
+                The following summary can be used as a final reminder after
+                completing the detailed inspection. Adapt it to the
+                particular aircraft and the manufacturer's checklist.
+            </p>
+
+            <h3>Flight area and planning</h3>
+
+            <ul>
+                <li>Confirm the purpose, route and expected duration of the flight.</li>
+                <li>Review current weather and the manufacturer's operating limits.</li>
+                <li>Check the applicable airspace map, restrictions and permissions.</li>
+                <li>Identify ground hazards and select suitable take-off and landing areas.</li>
+            </ul>
+
+            <h3>Aircraft condition</h3>
+
+            <ul>
+                <li>Inspect the frame, arms, landing gear and fasteners.</li>
+                <li>Inspect every propeller and confirm correct installation.</li>
+                <li>Check motor housings and accessible electrical connections.</li>
+                <li>Inspect the battery and confirm that it is secured correctly.</li>
+                <li>Verify that the camera, payload and accessories are firmly attached.</li>
+            </ul>
+
+            <h3>Control and navigation</h3>
+
+            <ul>
+                <li>Check the controller and mobile device battery levels.</li>
+                <li>Confirm the control connection and review system warnings.</li>
+                <li>Verify navigation status and the recorded home point, where applicable.</li>
+                <li>Review the failsafe and return-to-home configuration.</li>
+                <li>Confirm the intended flight mode and control response.</li>
+            </ul>
+
+            <h3>Final readiness</h3>
+
+            <ul>
+                <li>Make sure the take-off area is clear.</li>
+                <li>Complete the manufacturer's startup and arming procedure.</li>
+                <li>Perform the controlled initial hover check.</li>
+                <li>Proceed only when the aircraft and operating conditions are suitable.</li>
+            </ul>
+        </section>
+
+
+        <section>
+            <h2>Make Inspection a Consistent Part of Drone Operations</h2>
+
+            <p>
+                A pre-flight inspection should be a repeatable process,
+                not a quick glance at the aircraft before take-off.
+                Checking the operating environment, airframe, propulsion
+                system, battery, payload, communication link and navigation
+                status gives the pilot a more complete picture of the
+                aircraft's readiness.
+            </p>
+
+            <p>
+                The inspection should also connect with the aircraft's
+                maintenance history. Record damage, unusual behaviour,
+                repairs, component replacements and recurring warnings.
+                Reviewing these records can help identify problems that
+                may not be obvious during a brief field inspection.
+            </p>
+
+            <p>
+                No generic checklist can cover every drone design or
+                operating situation. Use this procedure as a structured
+                reference, follow the manufacturer's instructions for the
+                specific aircraft, and comply with the rules that apply
+                to the location and operation. When an inspection reveals
+                a problem, resolve it before the next flight.
+            </p>
+        </section>
 
     </div>
 
 
     <!-- ================================================= -->
-    <!-- OPTIONAL REFERENCES                               -->
+    <!-- ARTICLE REFERENCES                                -->
     <!-- ================================================= -->
-
-    <!--
-        Include references when relevant to the article.
-        Do not add empty or placeholder references to
-        published pages.
-    -->
 
     <footer class="article-footer">
 
@@ -827,8 +1324,42 @@
             <ul>
 
                 <li>
-                    <a href="{{SOURCE_URL}}">
-                        {{SOURCE_TITLE}}
+                    <a
+                        href="https://www.dgca.gov.in/digigov-portal/qr/VDViMms2MUtHM3RDaXZoZ24rMEw4NXpNb3ZGVFhEb1hNQTgwNFVNelRpdkJweWM4cTl3YTQzckxlVmUzM2U1VWsya2lLMjA3T3NqYjdMZWpwMzdtMUZEem5DTVdNeXF1VHZEUSs5Um52NWZYaEVpN2hKYWR1c0E3SU9MemRrTlY%3D"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Directorate General of Civil Aviation — Do's and Don'ts for Holders of a Remote Pilot Certificate
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="https://digitalsky.dgca.gov.in/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        DGCA — DigitalSky Platform
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="https://repair.dji.com/help/content?customId=en-us03400006768&lang=en&re=BG&spaceId=34"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        DJI — Flight Safety Guidelines
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="https://www.faa.gov/regulations_policies/advisory_circulars/index.cfm/go/document.information/documentID/1038977"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Federal Aviation Administration — AC 107-2A: Small Unmanned Aircraft System
                     </a>
                 </li>
 
@@ -838,7 +1369,7 @@
 
     </footer>
 
-    <!-- ARTICLE:CONTENT:END -->
+        <!-- ARTICLE:CONTENT:END -->
 
 
     <!-- SHARED:ARTICLE-LAYOUT -->
