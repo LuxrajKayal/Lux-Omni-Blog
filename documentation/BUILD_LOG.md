@@ -263,3 +263,11 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Replaced the copy-link icon path with a clearer linked-chain outline and explicitly applied an unfilled SVG stroke using `currentColor`.
 - Styled the copy-link control with the semantic surface, text, border and action tokens so its contrast and hover state adapt to light and dark themes.
 - Left the byline layout, author handle, other social icons and article integration unchanged.
+
+## 2026-11-03 — Repair clipboard fallback and unify share-control theme styling
+
+- Updated the Copy Link handler to fall back to the legacy selection-copy attempt when the Clipboard API is present but rejects its write request, rather than only falling back when the API is absent.
+- Added a final manual-copy prompt when automatic clipboard methods are blocked. The CMS does not report a manual prompt as an automatic copy.
+- Added visible temporary feedback to the copy control for copied, manual-copy and failed states, while retaining the screen-reader status message.
+- Extended the author bar's semantic, theme-aware border, surface, text and hover styling consistently across X, Facebook, Instagram and Copy Link controls.
+- Kept X and Facebook as direct share-page links; Instagram continues to use the device share interface with a copy/manual fallback.

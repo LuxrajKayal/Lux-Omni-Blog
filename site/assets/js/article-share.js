@@ -1,9 +1,12 @@
 /*
  * Lux Omni Blog — article sharing controls
  *
- * Supports the reusable author bar and the older article-share attributes
- * during the gradual article migration.
+ * Supports the reusable author bar and older article-share attributes.
+ * Uses the Clipboard API first, then a legacy copy attempt, and finally
+ * a manual-copy prompt if the browser blocks both automatic methods.
  */
+
+const copyFeedbackTimers = new WeakMap();
 
 function getArticleShareData() {
     const title = document.querySelector(".article-entry-header h1")?.textContent?.trim()
@@ -28,36 +31,98 @@ function setShareStatus(message, trigger) {
     if (statusElement) statusElement.textContent = message;
 }
 
+function setCopyFeedback(trigger, state, message) {
+    if (!trigger) return;
+
+    const previousTimer = copyFeedbackTimers.get(trigger);
+    if (previousTimer) window.clearTimeout(previousTimer);
+
+    trigger.dataset.copyState = state;
+    trigger.setAttribute("aria-label", message);
+    trigger.title = message;
+
+    const timer = window.setTimeout(() => {
+        delete trigger.dataset.copyState;
+        trigger.setAttribute("aria-label", "Copy article link");
+        trigger.title = "Copy article link";
+        copyFeedbackTimers.delete(trigger);
+    }, 2200);
+
+    copyFeedbackTimers.set(trigger, timer);
+}
+
+function tryLegacyCopy(url) {
+    const temporaryField = document.createElement("textarea");
+    temporaryField.value = url;
+    temporaryField.setAttribute("readonly", "");
+    temporaryField.setAttribute("aria-hidden", "true");
+    temporaryField.style.position = "fixed";
+    temporaryField.style.top = "0";
+    temporaryField.style.left = "-9999px";
+    temporaryField.style.fontSize = "16px";
+    document.body.appendChild(temporaryField);
+
+    temporaryField.focus({ preventScroll: true });
+    temporaryField.select();
+    temporaryField.setSelectionRange(0, temporaryField.value.length);
+
+    let copied = false;
+    try {
+        copied = document.execCommand("copy");
+    } catch {
+        copied = false;
+    } finally {
+        temporaryField.remove();
+    }
+
+    return copied;
+}
+
 async function copyArticleUrl() {
     const url = window.location.href;
 
     if (navigator.clipboard?.writeText && window.isSecureContext) {
-        await navigator.clipboard.writeText(url);
-        return;
+        try {
+            await navigator.clipboard.writeText(url);
+            return "copied";
+        } catch (error) {
+            // Continue to the fallback when the browser exposes Clipboard API
+            // but rejects the write (for example, because permission is denied).
+            console.warn("Clipboard API write was rejected; trying a fallback.", error);
+        }
     }
 
-    const temporaryField = document.createElement("textarea");
-    temporaryField.value = url;
-    temporaryField.setAttribute("readonly", "");
-    temporaryField.style.position = "fixed";
-    temporaryField.style.opacity = "0";
-    document.body.appendChild(temporaryField);
-    temporaryField.select();
+    if (tryLegacyCopy(url)) return "copied";
 
-    const copied = document.execCommand("copy");
-    temporaryField.remove();
+    // execCommand is deprecated and may be unavailable. Give the visitor
+    // one final manual route rather than silently claiming the copy succeeded.
+    const manualValue = window.prompt(
+        "Automatic copying was blocked. Copy this article link:",
+        url
+    );
 
-    if (!copied) {
-        throw new Error("The browser could not copy the article URL.");
+    if (manualValue === null) {
+        throw new Error("The visitor cancelled the manual copy prompt.");
     }
+
+    return "manual";
 }
 
 async function handleCopy(trigger) {
     try {
-        await copyArticleUrl();
+        const result = await copyArticleUrl();
+
+        if (result === "manual") {
+            setShareStatus("Copy the article URL from the prompt.", trigger);
+            setCopyFeedback(trigger, "manual", "Copy the URL from the prompt");
+            return;
+        }
+
         setShareStatus("Link copied.", trigger);
+        setCopyFeedback(trigger, "copied", "Link copied");
     } catch {
         setShareStatus("Copy failed. You can copy the address from your browser.", trigger);
+        setCopyFeedback(trigger, "failed", "Copy failed");
     }
 }
 
@@ -66,19 +131,23 @@ async function handleDeviceShare(trigger, unavailableMessage) {
         try {
             await navigator.share(getArticleShareData());
             setShareStatus("Sharing completed.", trigger);
+            return;
         } catch (error) {
-            if (error?.name !== "AbortError") {
-                setShareStatus("Sharing could not be completed.", trigger);
-            }
+            if (error?.name === "AbortError") return;
+            // A rejected device share falls through to the copy route.
+            console.warn("Native sharing was unavailable; trying link copy.", error);
         }
-        return;
     }
 
     try {
-        await copyArticleUrl();
+        const result = await copyArticleUrl();
+        if (result === "manual") {
+            setShareStatus("Copy the article URL from the prompt.", trigger);
+            return;
+        }
         setShareStatus(unavailableMessage, trigger);
     } catch {
-        setShareStatus("Sharing is unavailable in this browser.", trigger);
+        setShareStatus("Sharing and automatic copying are unavailable in this browser.", trigger);
     }
 }
 
