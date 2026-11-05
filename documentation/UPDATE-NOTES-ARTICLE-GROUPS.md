@@ -2,8 +2,8 @@
 
 Updated documents:
 - `Luxraj-Blog-FileMap.md`
-- `Lux-Omni-Blog-Blueprint.md`
-- `Lux-Omni-Blog-Step-by-Step-Build-Plan.md`
+- `Luxraj-Blog-Blueprint.md`
+- `Luxraj-Blog-Step-by-Step-Build-Plan.md`
 - `Main-Navigation-Dropdowns.md`
 - `Reviews-and-Recommendations.md`
 - `Latest-Tech-News-and-Guides.md`
