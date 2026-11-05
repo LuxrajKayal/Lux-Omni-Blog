@@ -1,5 +1,5 @@
 /*
- * Lux Omni Blog — shared design tokens
+ * Luxraj Blog — shared design tokens
  * Approved baseline: 2026-10-25
  *
  * This file defines reusable values only.
@@ -208,7 +208,7 @@
    Brand primitives and non-color scales remain shared.
    -------------------------------------------------------------- */
 :root[data-theme="dark"] {
-  /* Lux Omni crimson surface with high-contrast white content. */
+  /* Luxraj crimson surface with high-contrast white content. */
   --topbar-background: var(--brand-crimson);
   --topbar-text: #FFFFFF;
   --topbar-link: #FFFFFF;
