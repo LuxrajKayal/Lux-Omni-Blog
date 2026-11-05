@@ -1,4 +1,4 @@
-# Lux Omni Blog — Other Planning Notes
+# Luxraj Blog — Other Planning Notes
 
 **Purpose:** Record the additional ideas discussed so far, separately from `Main-Navigation-Header.md` and `Main-Navigation-Dropdowns.md`.
 
@@ -6,7 +6,7 @@
 
 ## 1. Blog Concept and Content
 
-- Website/domain: `blog.luxomni.com`, part of the wider Lux Omni website.
+- Website/domain: `blog.luxraj.com`, part of the wider Luxraj website.
 - Overall direction: a self-coded, static-first technical blog with a CNET-inspired interface.
 - Planned content areas include technical product reviews, drone-related technical articles and engineering explanations, tutorials and teaching content, hardware, software, technology and buying advice.
 - The user intends to build and control the website's code rather than adopt a preselected framework or conventional CMS without deciding to do so.
