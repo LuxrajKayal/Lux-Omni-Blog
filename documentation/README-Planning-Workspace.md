@@ -1,6 +1,6 @@
 **Repository placement:** This planning material is stored under the repository-root `documentation/` directory. Public website source lives separately in `site/`; planning files are not public website components.
 
-# Lux Omni Blog — Planning Workspace
+# Luxraj Blog — Planning Workspace
 
 This package contains planning documents only, not website source code.
 
