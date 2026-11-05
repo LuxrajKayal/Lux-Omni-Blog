@@ -1,22 +1,22 @@
-> **Scope amendment — 2026-10-27:** This file is a historical consolidated planning export. Its old developer-control-panel, dashboard, upload-portal and related Supabase settings-panel requirements are superseded. The control panel has been removed from the repository and the Pages workflow now publishes only `site/`. Follow the current `Lux-Omni-Blog-FileMap.md`, `Lux-Omni-Blog-Blueprint.md`, and `Lux-Omni-Blog-Step-by-Step-Build-Plan.md` for the active static-site scope.
+> **Scope amendment — 2026-10-27:** This file is a historical consolidated planning export. Its old developer-control-panel, dashboard, upload-portal and related Supabase settings-panel requirements are superseded. The control panel has been removed from the repository and the Pages workflow now publishes only `site/`. Follow the current `Luxraj-Blog-FileMap.md`, `Luxraj-Blog-Blueprint.md`, and `Luxraj-Blog-Step-by-Step-Build-Plan.md` for the active static-site scope.
 
-# Lux Omni Blog Consolidated Plan Text Export
+# Luxraj Blog Consolidated Plan Text Export
 
 > Text extraction of the updated Word planning document for GitHub reference. Word-specific page layout and formatting are not preserved in this export.
 
-Lux Omni Blog — Updated Consolidated Planning Plan
+Luxraj Blog — Updated Consolidated Planning Plan
 Updated 2026-10-25 • Planning draft • No implementation authorization
 Important status note
 The initial authoring workflow excludes a separate backend/local Article Studio. The working direction is to write individual HTML articles directly in Visual Studio Code, preview and test locally, use Git/GitHub for checkpoints, and include SEO fundamentals from the beginning. These tool choices remain proposed pending owner confirmation; hosting, deployment, backend, and control-panel decisions remain open.
 Blueprint summary
-Lux Omni Blog — Website Blueprint
-**Project:** Lux Omni Blog
-**Target domain:** `blog.luxomni.com`
+Luxraj Blog — Website Blueprint
+**Project:** Luxraj Blog
+**Target domain:** `blog.luxraj.com`
 **Document type:** Product and functional blueprint
 **Status:** Planning draft — proposed details remain unapproved until explicitly confirmed.
 ---
 1. Product Vision
-Lux Omni Blog is planned as a hand-coded, static-first technology publication with a visual direction inspired by established technology editorial websites such as CNET. It will publish technical product reviews, drone engineering articles, tutorials, educational material, hardware/software coverage, buying advice and other technology writing.
+Luxraj Blog is planned as a hand-coded, static-first technology publication with a visual direction inspired by established technology editorial websites such as CNET. It will publish technical product reviews, drone engineering articles, tutorials, educational material, hardware/software coverage, buying advice and other technology writing.
 The site should be:
 Readable and uncluttered.
 Suitable for frequent publishing and small incremental updates.
@@ -149,7 +149,7 @@ About and Contact.
 Privacy Policy.
 Advertising information.
 Social links: Facebook, Instagram, X, YouTube and GitHub.
-Link to `luxomni.com`.
+Link to `luxraj.com`.
 Link to the separate personal portfolio/author website.
 Newsletter signup or newsletter link.
 Copyright notice.
@@ -335,9 +335,9 @@ Start small, test real workflows, and avoid premature complexity.
 Preserve article URLs and keep migration in mind from the beginning.
 Add features based on actual need and reader feedback rather than filling the homepage with every possible feature.
 Step-by-step build plan
-Lux Omni Blog — Step-by-Step Building Plan
+Luxraj Blog — Step-by-Step Building Plan
 **Status:** Draft proposal — not approved for implementation
-**Purpose:** Build Lux Omni Blog in small, testable fragments rather than generating the whole website at once.
+**Purpose:** Build Luxraj Blog in small, testable fragments rather than generating the whole website at once.
 **Project principle:** Plan first, change only the approved scope, test each fragment, and keep a known-good checkpoint before continuing.
 This is a build plan, not website source code. Hosting, frameworks, file structure, database design, deployment method, and other technical choices remain unapproved unless separately approved by the project owner.
 ---
@@ -667,14 +667,14 @@ Newsletter, analytics, advertising, and feedback integrations.
 The precise initial launch scope.
 These should be decided in the relevant planning documents before the corresponding implementation stage begins.
 Proposed file map
-Lux Omni Blog — File Map
-**Project:** `blog.luxomni.com`
+Luxraj Blog — File Map
+**Project:** `blog.luxraj.com`
 **Status:** Proposed planning map — not a commitment to a framework or final implementation.
 **Hosting direction:** Cloudflare Pages for the public site and published article HTML; Cloudflare R2 for large media; Supabase for structured metadata and developer-panel settings.
 This map separates the **public website** from any future developer control panel. The initial authoring workflow is deliberately simple: edit individual HTML article files directly in Visual Studio Code, preview and test locally, use Git/GitHub for version history, then publish through a deployment method that will be decided later. A separate article-writing tool is excluded from the initial scope.
 ---
 1. Public Website — Cloudflare Pages
-lux-omni-blog/
+luxraj-blog/
 ├── index.html                    # Homepage
 ├── 404.html                      # Custom not-found page; should return HTTP 404
 ├── robots.txt                    # Search-engine crawling rules
@@ -738,7 +738,7 @@ The file names above are a proposed starting point. Files should be created when
 ---
 2. Developer Control Panel — Separate Application
 Keep the control panel separate from the public site's ordinary frontend files. It may be deployed as its own application, for example on a separate subdomain, once the deployment arrangement is chosen.
-lux-omni-blog-control-panel/
+luxraj-blog-control-panel/
 ├── index.html                    # Dashboard entry point
 ├── login.html                    # Sign-in interface, if appropriate for chosen auth flow
 ├── assets/
