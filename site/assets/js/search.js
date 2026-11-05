@@ -98,7 +98,7 @@ export function initSearch() {
     const tagMode = mode === "tag";
     generalView.hidden = tagMode;
     tagView.hidden = !tagMode;
-    eyebrow.textContent = tagMode ? "TAG SEARCH" : "LUX OMNI LIBRARY";
+    eyebrow.textContent = tagMode ? "TAG SEARCH" : "LUXRAJ LIBRARY";
     title.textContent = tagMode ? tagState.tagName : "Search articles";
   }
 
@@ -154,7 +154,7 @@ export function initSearch() {
     renderTagSearch();
   });
 
-  document.addEventListener("luxomni:tag-select", event => {
+  document.addEventListener("luxraj:tag-select", event => {
     const detail = event.detail || {};
     if (!detail.tagId) return;
 
