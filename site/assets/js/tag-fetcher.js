@@ -61,7 +61,7 @@ export function initTagFetcher() {
     if (!trigger || !pouchList.contains(trigger)) return;
 
     const pouchElement = trigger.closest("[data-tag-pouch]");
-    document.dispatchEvent(new CustomEvent("luxomni:tag-select", {
+    document.dispatchEvent(new CustomEvent("luxraj:tag-select", {
       detail: {
         tagId: trigger.dataset.tagId,
         tagName: trigger.textContent,
