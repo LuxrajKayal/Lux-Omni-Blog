@@ -4,7 +4,7 @@
 
 This is a **pre-launch task**, not a current development task.
 
-After Lux Omni Blog's website structure, category landing pages, article pages, and features are complete—and **before the public launch**—review and standardize the public URLs.
+After Luxraj Blog's website structure, category landing pages, article pages, and features are complete—and **before the public launch**—review and standardize the public URLs.
 
 Do not start this cleanup while the website is still being built. Do not rename files or change the current folder structure as part of this task.
 
@@ -31,7 +31,7 @@ These are intended public paths. Confirm the exact extensionless and trailing-sl
 - Do not create duplicate `index.html` files in category or article folders.
 - Do not add a client-side routing framework just to hide file extensions.
 - Use one consistent public URL convention throughout navigation, metadata, and indexing files.
-- Pick and verify the final production canonical domain before updating absolute URLs. The current sitemap uses `https://blog.luxomni.com/`; confirm that this is still the intended launch domain rather than assuming it.
+- Pick and verify the final production canonical domain before updating absolute URLs. The current sitemap uses `https://blog.luxraj.com/`; confirm that this is still the intended launch domain rather than assuming it.
 
 ## Cleanup checklist
 
@@ -57,7 +57,7 @@ Review links across the whole `site/` source, including:
 - [ ] `site/assets/js/hero-showcase.js` — `FEATURED_ARTICLE_URLS` currently contains article paths ending in `.html`.
 - [ ] Any other JavaScript data/configuration that stores internal page URLs.
 
-Use the correct project-root token or relative path for the existing build architecture. Do not introduce root-relative paths that break the GitHub Pages project path `/Lux-Omni-Blog/` while that remains the active deployment.
+Use the correct project-root token or relative path for the existing build architecture. Do not introduce root-relative paths that break the GitHub Pages project path `/Luxraj-Blog/` while that remains the active deployment.
 
 ### 3. Update search-engine URL signals
 
