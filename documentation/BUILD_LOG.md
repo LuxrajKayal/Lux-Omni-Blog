@@ -290,4 +290,4 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Updated the article social-handle placeholder to `{{LUXRAJ_X_HANDLE}}`.
 - Removed the old Facebook profile link because its replacement Luxraj profile URL has not been supplied; no replacement account URL was guessed.
 - Left standalone `Lux` identifiers and all content under `Restore/` untouched.
-- The GitHub Pages build and deployment workflow completed successfully for commit `ab1776ab66495ea62ece309c7099be1dca05c648`.
+- The GitHub Pages build and deployment workflow completed successfully for the final site-code commit `dbc575641a71f226b46e8678b379ba7394b5e36f`.
