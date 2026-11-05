@@ -1,7 +1,7 @@
-# Lux Omni Blog — Color System
+# Luxraj Blog — Color System
 
 **Status:** Approved implementation baseline — 2026-10-25 (palette values remain subject to in-context contrast validation)  
-**Scope:** Lux Omni Blog website and its interface tokens  
+**Scope:** Luxraj Blog website and its interface tokens  
 **Design direction:** Editorial layout; balanced crimson/amber branding; light and dark themes  
 **Icon policy:** Preserve supplied SVG artwork and its existing colors unchanged
 
@@ -9,9 +9,9 @@
 
 ## 1. Purpose
 
-This document defines the color vocabulary for Lux Omni Blog so that pages, article components, navigation, and interactive states use colors consistently. It is a design specification, not a request to modify existing CSS or SVG assets.
+This document defines the color vocabulary for Luxraj Blog so that pages, article components, navigation, and interactive states use colors consistently. It is a design specification, not a request to modify existing CSS or SVG assets.
 
-The website takes its layout direction from the chosen CNET-style editorial reference. Lux Omni Blog retains its own crimson, burgundy, orange, and amber identity.
+The website takes its layout direction from the chosen CNET-style editorial reference. Luxraj Blog retains its own crimson, burgundy, orange, and amber identity.
 
 ### Approved baseline decisions
 
@@ -23,7 +23,7 @@ The website takes its layout direction from the chosen CNET-style editorial refe
 
 ## 2. Color-system principles
 
-1. **Separate brand from interface.** Brand tokens describe Lux Omni Blog's identity; semantic tokens describe how the interface behaves in each theme.
+1. **Separate brand from interface.** Brand tokens describe Luxraj Blog's identity; semantic tokens describe how the interface behaves in each theme.
 2. **Prefer semantic tokens in components.** Components should use tokens such as `--color-text-primary` rather than hard-coded color values.
 3. **Use accents deliberately.** Reserve crimson for brand emphasis, links, selected states, and primary actions. Use orange and amber mainly for decorative accents, small highlights, and artwork—not long text passages.
 4. **Keep reading surfaces calm.** Article text and content areas should remain neutral, high-contrast, and comfortable for long-form reading.
@@ -136,11 +136,11 @@ Functional colors should not be used as the sole way to communicate meaning. Pai
 
 The supplied icon archive contains these files:
 
-- `Lux-Omni-Blog-App-Icon.svg`
-- `lux-Omni-Blog-Loader.svg`
-- `lux-Omni-Blog-micro-icon.svg`
-- `lux-Omni-Blog-Subtle-Animation-For-Article.svg`
-- `lux-Omni-Blog-Transparent-Symbol.svg`
+- `Luxraj-App-Icon.svg`
+- `luxraj-Blog-Loader.svg`
+- `luxraj-Blog-micro-icon.svg`
+- `luxraj-Blog-Subtle-Animation-For-Article.svg`
+- `luxraj-Blog-Transparent-Symbol.svg`
 
 The App Icon, Loader, Subtle Article Animation, and Transparent Symbol contain the same 18 explicit hexadecimal color values listed in the brand palette. Their gradients, opacities, and animation details are part of the artwork and should be preserved. The micro icon uses `fill="currentColor"` rather than a hard-coded hex value. When used inline in the document, it can take its color from the surrounding CSS `color` value. When loaded as an external image (`<img src="...svg">`), the page's CSS color generally does not cross the image boundary; test the chosen embedding method and use inline SVG or another compatible approach if theme-controlled coloring is required. This can be handled without changing the SVG source.
 
@@ -297,7 +297,7 @@ This section defines the common token names and starting scales for the first CS
 
 Use three clear groups:
 
-- **Brand primitives:** `--brand-*` values documenting Lux Omni's artwork palette.
+- **Brand primitives:** `--brand-*` values documenting Luxraj Blog's artwork palette.
 - **Semantic interface tokens:** `--color-*` values describing backgrounds, text, borders, links, actions, focus, and functional states. The light and dark themes override these values while components keep the same token names.
 - **Non-color design tokens:** `--font-*`, `--font-size-*`, `--font-weight-*`, `--line-height-*`, `--letter-spacing-*`, `--space-*`, `--content-*`, `--radius-*`, `--border-width-*`, `--shadow-*`, and `--layer-*`.
 
