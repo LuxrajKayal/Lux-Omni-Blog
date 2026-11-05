@@ -1,4 +1,4 @@
-// Lux Omni Tag Library — Set 1
+// Luxraj Tag Library — Set 1
 // IDs identify library containers; names are editable tag labels.
 // Article-side assignments and indexer mappings are maintained separately.
 export const TAGS = Object.freeze([
