@@ -1,6 +1,6 @@
 # How to Edit the Topbar Links and Contact Details
 
-This guide explains how to change the destinations and labels shown in the **top information bar** at the top of the Lux Omni Blog. It covers the home/logo link, Newsletter, social profile links, email address, and About link.
+This guide explains how to change the destinations and labels shown in the **top information bar** at the top of the Luxraj Blog. It covers the home/logo link, Newsletter, social profile links, email address, and About link.
 
 ## 1. Open the shared topbar source
 
@@ -19,7 +19,7 @@ Do not edit a generated copy under `_site/`: that folder is rebuilt from the `si
 Find:
 
 ```html
-<a class="topbar__brand" href="{{ROOT}}index.html" aria-label="Lux Omni Blog home">
+<a class="topbar__brand" href="{{ROOT}}index.html" aria-label="Luxraj Blog home">
 ```
 
 - Keep `{{ROOT}}index.html` when the logo should return to the site homepage.
@@ -31,10 +31,10 @@ Find:
 Find:
 
 ```html
-<span class="topbar__slogan" data-config-key="topbarSlogan">Lux Omni</span>
+<span class="topbar__slogan" data-config-key="topbarSlogan">Luxraj</span>
 ```
 
-Change only the visible `Lux Omni` text to the wording you want. Keep the `class` and `data-config-key` attributes unless you are deliberately changing how the component is implemented.
+Change only the visible `Luxraj` text to the wording you want. Keep the `class` and `data-config-key` attributes unless you are deliberately changing how the component is implemented.
 
 ### Newsletter
 
@@ -97,7 +97,7 @@ For a page inside this same GitHub Pages website, use the build's root token for
 <a class="topbar__about" href="{{ROOT}}pages/about.html">About</a>
 ```
 
-Use that example only if `site/pages/about.html` actually exists. Do not use a leading slash for a same-site URL on the GitHub Pages project site, because the project is published beneath `/Lux-Omni-Blog/`.
+Use that example only if `site/pages/about.html` actually exists. Do not use a leading slash for a same-site URL on the GitHub Pages project site, because the project is published beneath `/Luxraj-Blog/`.
 
 ## 3. What not to change for a link-only edit
 
