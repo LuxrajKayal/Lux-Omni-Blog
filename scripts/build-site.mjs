@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Lux Omni Blog static-site build.
+ * Luxraj Blog static-site build.
  *
  * This builder stitches explicit shared-component markers into complete HTML.
  * It does not detect, replace, hide, or repair legacy inline components.
