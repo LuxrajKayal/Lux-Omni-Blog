@@ -10,8 +10,8 @@ Component 10 — Footer
 ## Footer Structure
 
 ### 1. Brand
-- Lux Omni logo or brand name.
-- Short description of Lux Omni Blog.
+- Luxraj logo or brand name.
+- Short description of Luxraj Blog.
 - Final brand description to be written later.
 
 ### 2. Topic Links
@@ -40,8 +40,8 @@ Include links/icons for:
 - YouTube
 - GitHub
 
-### 6. Other Lux Omni Links
-- Main Lux Omni website: `luxomni.com`
+### 6. Other Luxraj Links
+- Main Luxraj website: `luxraj.com`
 - Personal portfolio website (destination to be added later).
 
 ### 7. Newsletter
@@ -51,7 +51,7 @@ Include links/icons for:
 
 ### 8. Copyright
 Display a copyright notice, proposed format:
-`© [Year] Lux Omni. All rights reserved.`
+`© [Year] Luxraj. All rights reserved.`
 
 Decide later whether the year should update automatically or be entered manually.
 
