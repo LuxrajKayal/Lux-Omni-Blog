@@ -1,4 +1,4 @@
-# Lux Omni Blog — Main Navigation Dropdowns
+# Luxraj Blog — Main Navigation Dropdowns
 
 **Status:** Implemented for development on 2026-10-25.
 
