@@ -1,4 +1,4 @@
-# Lux Omni Blog — Planning Index
+# Luxraj Blog — Planning Index
 
 ## Current project scope — 2026-10-27
 
@@ -10,9 +10,9 @@
 
 ## Recommended reading order
 
-1. `Lux-Omni-Blog-Blueprint.md` — intended site experience and feature scope.
+1. `Luxraj-Blog-Blueprint.md` — intended site experience and feature scope.
 2. `Luxraj-Blog-FileMap.md` — repository layout and source-file conventions.
-3. `Lux-Omni-Blog-Step-by-Step-Build-Plan.md` — staged implementation and change-control rules.
+3. `Luxraj-Blog-Step-by-Step-Build-Plan.md` — staged implementation and change-control rules.
 4. `Article-Group-Pages.md` — homepage, group-page, and article hierarchy.
 5. `COLOR_SYSTEM.md` — approved color-system baseline.
 6. `Main-Navigation-Header.md` and `Main-Navigation-Dropdowns.md` — current navigation behavior.
