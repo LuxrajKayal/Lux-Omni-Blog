@@ -274,7 +274,7 @@ Append-only after implementation begins. Record real milestones only; do not pre
 
 ## 2026-11-05 — Rename FileMap for Luxraj Blog
 
-- Renamed `documentation/Lux-Omni-Blog-FileMap.md` to `documentation/Luxraj-Blog-FileMap.md` and updated its title, project-domain reference, and repository-root folder name.
+- Renamed `documentation/Luxraj-Blog-FileMap.md` to `documentation/Luxraj-Blog-FileMap.md` and updated its title, project-domain reference, and repository-root folder name.
 - Updated the FileMap reference in `PLAN_INDEX.md`, `UPDATE-NOTES-ARTICLE-GROUPS.md`, and this Build Log so each active reference resolves to the renamed file.
 - Updated the related Technical Pioneer article-brand wording and refreshed the historical GitHub Actions run URL to the renamed repository path.
 - Preserved standalone `Lux` design-token identifiers and the `Restore/` historical snapshot.
