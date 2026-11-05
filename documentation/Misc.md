@@ -1,4 +1,4 @@
-# Miscellaneous Notes — Lux Omni Blog
+# Miscellaneous Notes — Luxraj Blog
 
 ## Article Visibility Gate
 
