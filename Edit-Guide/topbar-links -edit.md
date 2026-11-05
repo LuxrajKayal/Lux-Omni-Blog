@@ -31,10 +31,10 @@ Find:
 Find:
 
 ```html
-<span class="topbar__slogan" data-config-key="topbarSlogan">Luxraj</span>
+<span class="topbar__slogan" data-config-key="topbarSlogan">Technology. Without the noise.</span>
 ```
 
-Change only the visible `Luxraj` text to the wording you want. Keep the `class` and `data-config-key` attributes unless you are deliberately changing how the component is implemented.
+The current brand motto is `Technology. Without the noise.` Change only the visible text when the motto is deliberately revised. Keep the `class` and `data-config-key` attributes unless you are deliberately changing how the component is implemented. Keep the `class` and `data-config-key` attributes unless you are deliberately changing how the component is implemented.
 
 ### Newsletter
 
