@@ -1,4 +1,4 @@
-const STORAGE_KEY = "lux-omni-blog-theme";
+const STORAGE_KEY = "luxraj-blog-theme";
 function readSavedTheme(){try{const value=localStorage.getItem(STORAGE_KEY);return value==="light"||value==="dark"?value:null;}catch{return null;}}
 function saveTheme(value){try{localStorage.setItem(STORAGE_KEY,value);}catch{/* Theme still works for the current page without storage. */}}
 function applyTheme(value,persist){
