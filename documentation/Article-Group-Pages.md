@@ -1,4 +1,4 @@
-# Lux Omni Blog — Article Group Pages
+# Luxraj Blog — Article Group Pages
 
 **Status:** Planning specification; implementation is not authorized by this document alone.  
 **Purpose:** Define the pages that readers open from navigation dropdowns and homepage “See All” links.

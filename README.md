@@ -1,4 +1,4 @@
-# Lux-Omni-Blog
+# Luxraj-Blog
 
 this is test commit from windows pc
 

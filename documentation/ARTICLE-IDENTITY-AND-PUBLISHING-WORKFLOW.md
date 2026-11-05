@@ -1,7 +1,7 @@
-# Lux Omni Blog — Article Identity, Metadata and Publishing Workflow
+# Luxraj Blog — Article Identity, Metadata and Publishing Workflow
 
 **Status:** Agreed workflow direction; implementation and several configuration details remain pending.  
-**Scope:** Lux Omni Blog website repository and its publishing pipeline.  
+**Scope:** Luxraj Blog website repository and its publishing pipeline.  
 **Last updated:** 2026-11-04
 
 ## 1. Purpose
@@ -48,7 +48,7 @@ A standalone **local ID Manager application**, maintained in a separate project/
 The owner will:
 
 1. Open the local ID Manager.
-2. Select the ID library file in the local Lux Omni Blog working copy.
+2. Select the ID library file in the local Luxraj Blog working copy.
 3. Inspect its existing patterns, prefixes, sequence ranges and counts.
 4. Choose a configured ID pattern and the number of new IDs to generate.
 5. Generate a new batch when needed.
@@ -84,7 +84,7 @@ The ID library is an inventory, not a consumable queue.
 - The same ID must never be assigned to two articles.
 - Releasing an ID from an article does not make it eligible for routine reassignment. Reassignment or identity correction is an exceptional, explicitly approved maintenance operation.
 
-For GitHub Actions to allocate IDs, the library must be available in the Lux Omni Blog repository or through a deliberately configured, authenticated source. The current proposal is to keep it in a repository-managed directory **outside \`site/\`**, for example:
+For GitHub Actions to allocate IDs, the library must be available in the Luxraj Blog repository or through a deliberately configured, authenticated source. The current proposal is to keep it in a repository-managed directory **outside \`site/\`**, for example:
 
 \`\`\`text
 article-id-data/
@@ -183,7 +183,7 @@ categories/engineering/drone-technology/articles/a-pre-flight-inspection-checkli
 
 will be combined with the configured production origin to produce its full public URL.
 
-The production origin must be configured once and confirmed before implementation. The current sitemap uses \`https://blog.luxomni.com\`; confirm that this remains the final canonical production origin before using it as the build configuration.
+The production origin must be configured once and confirmed before implementation. The current sitemap uses \`https://blog.luxraj.com\`; confirm that this remains the final canonical production origin before using it as the build configuration.
 
 ### 5.2 Fields generated from the canonical URL
 

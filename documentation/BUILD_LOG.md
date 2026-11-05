@@ -1,4 +1,4 @@
-# Lux Omni Blog — Build and Planning Log
+# Luxraj Blog — Build and Planning Log
 
 **Implementation status:** Initial shared navigation/search/theme implementation completed; broader homepage and editorial content build remains in progress.
 
@@ -28,7 +28,7 @@ Append-only after implementation begins. Record real milestones only; do not pre
 
 ## 2026-10-25 — Main header, category destinations, search and theme
 
-- Implemented the single-row CNET-inspired navigation with the supplied transparent-symbol SVG and a bold uppercase crimson LUX OMNI wordmark that remains crimson across themes.
+- Implemented the single-row CNET-inspired navigation with the supplied transparent-symbol SVG and a bold uppercase crimson LUXRAJ wordmark that remains crimson across themes.
 - Added direct parent links and separate click-operated dropdown controls for Tech, Reviews, How To, Hardware, Software and Buying Advice; hover does not open menus.
 - Added dedicated parent and dropdown-category landing pages and linkable sample article HTML pages for all current menu categories.
 - Implemented the search popup with text search, category filtering, a reading-time slider and sorting by date/category/article title.
