@@ -1,5 +1,5 @@
 /*
- * Lux Omni Blog — curated homepage hero.
+ * Luxraj Blog — curated homepage hero.
  * Maintain up to five same-origin article URLs in FEATURED_ARTICLE_URLS.
  * Each article must contain an image marked with data-hero-image.
  */
@@ -144,7 +144,7 @@ export function initHeroShowcase() {
 
   Promise.all(FEATURED_ARTICLE_URLS.slice(0, MAX_FEATURED_ARTICLES).map(async path => {
     try { return await readArticle(path, siteRoot); }
-    catch (error) { console.warn("[Lux Omni hero] Skipping featured article:", error); return null; }
+    catch (error) { console.warn("[Luxraj hero] Skipping featured article:", error); return null; }
   })).then(results => {
     articles = results.filter(Boolean);
     if (!articles.length) { unavailable(); return; }
