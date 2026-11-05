@@ -51,7 +51,7 @@ export function initAuthorCard() {
     const avatar = document.createElement("img");
     avatar.className = "author-card__avatar";
     avatar.src = `${siteRoot}${author.image}`;
-    avatar.alt = "Lux Omni Blog logo";
+    avatar.alt = "Luxraj Blog logo";
     avatar.width = 72;
     avatar.height = 72;
     avatar.loading = "lazy";
