@@ -1,5 +1,5 @@
 /*
- * Lux Omni Blog — article sharing controls
+ * Luxraj Blog — article sharing controls
  *
  * Supports the reusable author bar and older article-share attributes.
  * Uses the Clipboard API first, then a legacy copy attempt, and finally
