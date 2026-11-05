@@ -1,7 +1,7 @@
-# Lux Omni Blog — Website Blueprint
+# Luxraj Blog — Website Blueprint
 
-**Project:** Lux Omni Blog  
-**Target domain:** `blog.luxomni.com`  
+**Project:** Luxraj Blog  
+**Target domain:** `blog.luxraj.com`  
 **Document type:** Product and functional blueprint  
 **Status:** Planning draft — proposed details remain unapproved until explicitly confirmed.
 
@@ -11,7 +11,7 @@
 
 ## 1. Product Vision
 
-Lux Omni Blog is planned as a hand-coded, static-first technology publication with a visual direction inspired by established technology editorial websites such as CNET. It will publish technical product reviews, drone engineering articles, tutorials, educational material, hardware/software coverage, buying advice and other technology writing.
+Luxraj Blog is planned as a hand-coded, static-first technology publication with a visual direction inspired by established technology editorial websites such as CNET. It will publish technical product reviews, drone engineering articles, tutorials, educational material, hardware/software coverage, buying advice and other technology writing.
 
 The site should be:
 - Readable and uncluttered.
@@ -28,7 +28,7 @@ This blueprint describes the intended product. It is not source code and does no
 The GitHub repository separates public website source from planning references:
 
 ```text
-Lux-Omni-Blog/
+Luxraj-Blog/
 ├── README.md          # Existing root file; leave unchanged
 ├── documentation/     # Planning documents retained for development reference
 ├── site/              # Public website source and eventual deployment root
@@ -195,7 +195,7 @@ Planned contents:
 - Privacy Policy.
 - Advertising information.
 - Social links: Facebook, Instagram, X, YouTube and GitHub.
-- Link to `luxomni.com`.
+- Link to `luxraj.com`.
 - Link to the separate personal portfolio/author website.
 - Newsletter signup or newsletter link.
 - Copyright notice.
