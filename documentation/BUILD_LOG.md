@@ -299,3 +299,8 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Removed generic social-platform homepage links and placeholder newsletter, email, and About destinations from the topbar. The only external link retained is the confirmed Luxraj GitHub profile.
 - Preserved the shared topbar partial, build-safe `{{ROOT}}` homepage link, visual styling, and mobile horizontal layout.
 - Updated the topbar editing guide to describe the actual component and require confirmed destinations before adding links.
+
+
+## 2026-11-06 — Verify topbar build and deployment
+
+- GitHub Actions completed the site build, artifact upload, and GitHub Pages deployment successfully for the topbar source change in commit `7cb58da06a36c1da571c124c804f7bc9135d26ca`.
