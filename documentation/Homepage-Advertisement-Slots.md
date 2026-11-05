@@ -1,7 +1,7 @@
 # Homepage Advertisement Slots
 
 ## Purpose
-Plan a clean, CNET-inspired advertising system for the Lux Omni Blog homepage. Advertisements should generate revenue without overcrowding the interface or degrading the reading experience.
+Plan a clean, CNET-inspired advertising system for the Luxraj Blog homepage. Advertisements should generate revenue without overcrowding the interface or degrading the reading experience.
 
 ## Initial Homepage Slot Plan
 
@@ -36,7 +36,7 @@ Plan a clean, CNET-inspired advertising system for the Lux Omni Blog homepage. A
 - Do not assume that all networks use the same approval process, ad formats, or payment model.
 
 ### 3. Direct Company Advertisements
-- Support separately managed banner campaigns when a company approaches Lux Omni.
+- Support separately managed banner campaigns when a company approaches Luxraj.
 - Review and approve the creative before publishing.
 - Configure placement, dimensions, destination link and campaign dates as agreed with the advertiser.
 - Revenue comes from the agreement with the advertiser; it is not automatically based on impressions unless the agreement specifies that model.
