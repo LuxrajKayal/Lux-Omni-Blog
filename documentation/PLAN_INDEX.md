@@ -11,7 +11,7 @@
 ## Recommended reading order
 
 1. `Lux-Omni-Blog-Blueprint.md` — intended site experience and feature scope.
-2. `Lux-Omni-Blog-FileMap.md` — repository layout and source-file conventions.
+2. `Luxraj-Blog-FileMap.md` — repository layout and source-file conventions.
 3. `Lux-Omni-Blog-Step-by-Step-Build-Plan.md` — staged implementation and change-control rules.
 4. `Article-Group-Pages.md` — homepage, group-page, and article hierarchy.
 5. `COLOR_SYSTEM.md` — approved color-system baseline.

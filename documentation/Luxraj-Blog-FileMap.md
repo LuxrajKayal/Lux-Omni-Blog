@@ -1,6 +1,6 @@
-# Lux Omni Blog — File Map
+# Luxraj Blog — File Map
 
-**Project:** `blog.luxomni.com`  
+**Project:** `blog.luxraj.com`  
 **Status:** Updated to reflect the current repository structure. Any future structural change should be recorded here after it is implemented.  
 **Hosting direction:** The public-site source lives in `site/`; GitHub Actions builds it into `_site/` and deploys that generated output. External database and media services are not required or configured for the current scope.
 
@@ -12,16 +12,16 @@ This map separates public-site source (`site/`), build tooling (`scripts/`), and
 
 The repository separates public-site source, build tooling, and planning materials. `site/` contains authored HTML/CSS/JS and source-only partials; `scripts/build-site.mjs` produces `_site/`, which is the directory deployed to GitHub Pages. Source partials and planning documents are not published. The existing root `README.md` remains untouched.
 
-The shared footer includes the Lux Omni brand summary, author profile link, category navigation, article search trigger, copyright, and Back to Top. The author-page destination is a temporary `https://example.com` placeholder.
+The shared footer includes the Luxraj brand summary, author profile link, category navigation, article search trigger, copyright, and Back to Top. The author-page destination is a temporary `https://example.com` placeholder.
 
 ```text
-Lux-Omni-Blog/
+Luxraj-Blog/
 ├── README.md                    # Existing file; unchanged
 ├── scripts/                      # Node.js static-site build tooling
 │   └── build-site.mjs             # Expands shared component markers into _site/
 ├── documentation/               # Planning references for development only
 │   ├── PLAN_INDEX.md
-│   ├── Lux-Omni-Blog-FileMap.md
+│   ├── Luxraj-Blog-FileMap.md
 │   ├── Lux-Omni-Blog-Blueprint.md
 │   ├── Lux-Omni-Blog-Step-by-Step-Build-Plan.md
 │   ├── Article-Group-Pages.md

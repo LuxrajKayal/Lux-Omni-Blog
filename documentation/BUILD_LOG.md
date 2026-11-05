@@ -59,7 +59,7 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Removed the now-empty legacy folders; canonical category pages and articles remain under `site/categories/`.
 - Intentionally deleted the empty `site/templates/article-template.html` placeholder. No shared article-template file currently exists.
 - Kept the canonical sitemap unchanged at 112 URLs and preserved the existing CSS files.
-- Updated `documentation/Lux-Omni-Blog-FileMap.md` to describe the actual repository structure.
+- Updated `documentation/Luxraj-Blog-FileMap.md` to describe the actual repository structure.
 
 ## 2026-10-27 — Shared shell components and homepage-only build
 
@@ -163,7 +163,7 @@ Append-only after implementation begins. Record real milestones only; do not pre
 
 ## 2026-10-30 — Refine Technical Pioneer description
 
-- Replaced the Technical Pioneer section's introductory description with concise wording focused on a relevant theory, principle or original passage paired with a related Lux Omni article.
+- Replaced the Technical Pioneer section's introductory description with concise wording focused on a relevant theory, principle or original passage paired with a related Luxraj article.
 - Preserved the heading, empty content panel, section layout, dedicated stylesheet and all other homepage content.
 - No daily data, images, quotations, article content or fetching behavior was added.
 
@@ -179,7 +179,7 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Kept the breadcrumb, title, description, author/date row and share/copy controls in the full-width entry header. The featured image, article body and references occupy the left column. The right sidebar rail is empty; no ad slots, ad elements or ad data were added.
 - Added `site/assets/css/article-layout.css` for the shared frame geometry and `site/assets/js/article-share.js` for the header's share/copy controls. Existing article CSS files and other article HTML files were not changed.
 - At a 1,100px viewport, the 80rem maximum container with 1rem side gutters and a 12-column 8/4 grid with 3rem gaps produces a 696px article column, 48px gap and 324px sidebar rail. The two columns stack below 1,024px.
-- Updated the FileMap. GitHub Actions run [#125](https://github.com/LuxrajKayal/Lux-Omni-Blog/actions/runs/41497622839) completed successfully, including the public-site build and GitHub Pages deployment.
+- Updated the FileMap. GitHub Actions run [#125](https://github.com/LuxrajKayal/Luxraj-Blog/actions/runs/41497622839) completed successfully, including the public-site build and GitHub Pages deployment.
 
 
 ## 2026-11-03 — Unify page-title typography
@@ -271,3 +271,10 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Added visible temporary feedback to the copy control for copied, manual-copy and failed states, while retaining the screen-reader status message.
 - Extended the author bar's semantic, theme-aware border, surface, text and hover styling consistently across X, Facebook, Instagram and Copy Link controls.
 - Kept X and Facebook as direct share-page links; Instagram continues to use the device share interface with a copy/manual fallback.
+
+## 2026-11-05 — Rename FileMap for Luxraj Blog
+
+- Renamed `documentation/Lux-Omni-Blog-FileMap.md` to `documentation/Luxraj-Blog-FileMap.md` and updated its title, project-domain reference, and repository-root folder name.
+- Updated the FileMap reference in `PLAN_INDEX.md`, `UPDATE-NOTES-ARTICLE-GROUPS.md`, and this Build Log so each active reference resolves to the renamed file.
+- Updated the related Technical Pioneer article-brand wording and refreshed the historical GitHub Actions run URL to the renamed repository path.
+- Preserved standalone `Lux` design-token identifiers and the `Restore/` historical snapshot.

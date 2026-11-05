@@ -1,7 +1,7 @@
 # Planning package update summary — 2026-10-25
 
 Updated documents:
-- `Lux-Omni-Blog-FileMap.md`
+- `Luxraj-Blog-FileMap.md`
 - `Lux-Omni-Blog-Blueprint.md`
 - `Lux-Omni-Blog-Step-by-Step-Build-Plan.md`
 - `Main-Navigation-Dropdowns.md`
