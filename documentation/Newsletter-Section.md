@@ -18,7 +18,7 @@ Component 9 — Newsletter Section
 ## Intended Workflow
 1. Create a Brevo account.
 2. Create a newsletter signup form in Brevo.
-3. Embed the signup form into the custom-coded `blog.luxomni.com` website.
+3. Embed the signup form into the custom-coded `blog.luxraj.com` website.
 4. Visitors enter their email addresses and subscribe.
 5. Write and send newsletters through the Brevo dashboard.
 
