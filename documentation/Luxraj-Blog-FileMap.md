@@ -22,8 +22,8 @@ Luxraj-Blog/
 ├── documentation/               # Planning references for development only
 │   ├── PLAN_INDEX.md
 │   ├── Luxraj-Blog-FileMap.md
-│   ├── Lux-Omni-Blog-Blueprint.md
-│   ├── Lux-Omni-Blog-Step-by-Step-Build-Plan.md
+│   ├── Luxraj-Blog-Blueprint.md
+│   ├── Luxraj-Blog-Step-by-Step-Build-Plan.md
 │   ├── Article-Group-Pages.md
 │   └── ... other planning documents
 ├── site/                        # Public website source and build input
