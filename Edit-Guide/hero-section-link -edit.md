@@ -1,6 +1,6 @@
 # How to Edit the Homepage Hero Featured Articles
 
-This guide explains how to choose which articles appear in the rotating **Editor's Picks** card on the Lux Omni Blog homepage.
+This guide explains how to choose which articles appear in the rotating **Editor's Picks** card on the Luxraj Blog homepage.
 
 ## 1. Open the configuration file
 
@@ -28,7 +28,7 @@ Use the article's path relative to the website's published root. Do **not** incl
 
 For example, if the published article URL is:
 
-`https://luxrajkayal.github.io/Lux-Omni-Blog/categories/tech-news/ai/articles/my-new-ai-article.html`
+`https://luxrajkayal.github.io/Luxraj-Blog/categories/tech-news/ai/articles/my-new-ai-article.html`
 
 put this entry in the array:
 
