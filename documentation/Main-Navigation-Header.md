@@ -1,10 +1,10 @@
-# Lux Omni Blog — Main Navigation Header
+# Luxraj Blog — Main Navigation Header
 
 **Status:** Implemented for development on 2026-10-25.
 
 ## Confirmed visual direction
 - Use the supplied transparent-symbol SVG, not the app-icon SVG.
-- The visible **LUX OMNI** wordmark is bold, uppercase, and crimson in both themes.
+- The visible **LUXRAJ** wordmark is bold, uppercase, and crimson in both themes.
 - Keep the main navigation separate from the finalized copper top information bar.
 - Keep desktop navigation to a single row; expand it into a keyboard/touch-friendly menu on small screens.
 
@@ -15,7 +15,7 @@ The primary labels navigate directly to their parent landing pages: Tech, Review
 Search opens an accessible modal popup. It supports text search over article title, summary and tags; category filtering; a reading-time slider; and sorting by newest/oldest date, category, and article title A–Z/Z–A. The data index is a static JavaScript module at `site/assets/js/article-index.js`.
 
 ## Theme
-The theme toggle switches between the existing semantic light/dark token sets and persists the choice to localStorage under `lux-omni-blog-theme`. The page starts in the current dark preview theme unless a saved preference overrides it. The wordmark is crimson in both themes.
+The theme toggle switches between the existing semantic light/dark token sets and persists the choice to localStorage under `luxraj-blog-theme`. The page starts in the current dark preview theme unless a saved preference overrides it. The wordmark is crimson in both themes.
 
 ## Implementation destinations
 - `site/assets/css/header.css` — header structure, wordmark and controls.
