@@ -1,11 +1,11 @@
-> **Scope amendment — 2026-10-27:** This earlier architecture export contains historical control-panel ideas. The control panel has been removed from the repository and is not part of the current project. Use the static source-file workflow in the current File Map and Build Plan instead.\n\n# Lux Omni Blog Architecture Plan Text Export
+> **Scope amendment — 2026-10-27:** This earlier architecture export contains historical control-panel ideas. The control panel has been removed from the repository and is not part of the current project. Use the static source-file workflow in the current File Map and Build Plan instead.\n\n# Luxraj Blog Architecture Plan Text Export
 
 > Text extraction of the updated Word planning document for GitHub reference. Word-specific page layout and formatting are not preserved in this export.
 
-Lux Omni Blog — Updated Architecture and Workflow Plan
+Luxraj Blog — Updated Architecture and Workflow Plan
 Updated 2026-10-25 • Proposed architecture only • Not approved for implementation
 1. Current goal
-Build a CNET-inspired, static-first technology publication at blog.luxomni.com for technical product reviews, drone-related engineering writing, tutorials, teaching, hardware/software coverage, and buying advice.
+Build a CNET-inspired, static-first technology publication at blog.luxraj.com for technical product reviews, drone-related engineering writing, tutorials, teaching, hardware/software coverage, and buying advice.
 2. Initial authoring approach
 Do not build a separate backend/local Article Studio at the start. Write individual HTML articles directly in Visual Studio Code. Custom article-specific HTML, CSS, and JavaScript may be used when needed; do not force all articles into one rigid template.
 3. Proposed development tools
