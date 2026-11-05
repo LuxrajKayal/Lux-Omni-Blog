@@ -291,3 +291,11 @@ Append-only after implementation begins. Record real milestones only; do not pre
 - Removed the old Facebook profile link because its replacement Luxraj profile URL has not been supplied; no replacement account URL was guessed.
 - Left standalone `Lux` identifiers and all content under `Restore/` untouched.
 - The GitHub Pages build and deployment workflow completed successfully for the final site-code commit `dbc575641a71f226b46e8678b379ba7394b5e36f`.
+
+
+## 2026-11-06 — Finish the topbar brand identity
+
+- Applied the existing publication motto, “Technology. Without the noise.”, to the shared topbar so the message now matches the homepage title and footer tagline.
+- Removed generic social-platform homepage links and placeholder newsletter, email, and About destinations from the topbar. The only external link retained is the confirmed Luxraj GitHub profile.
+- Preserved the shared topbar partial, build-safe `{{ROOT}}` homepage link, visual styling, and mobile horizontal layout.
+- Updated the topbar editing guide to describe the actual component and require confirmed destinations before adding links.
