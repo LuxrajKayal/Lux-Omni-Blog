@@ -1,6 +1,6 @@
 # Tag System — Architecture, Decisions and Editing Guide
 
-This guide records the tag architecture currently implemented in Lux Omni Blog, the design arguments that shaped it, and the rules a future CMS must preserve. It covers the existing tag environment only. The dedicated Tag Search popup has **not** been built.
+This guide records the tag architecture currently implemented in Luxraj Blog, the design arguments that shaped it, and the rules a future CMS must preserve. It covers the existing tag environment only. The dedicated Tag Search popup has **not** been built.
 
 ## 1. The central idea
 
@@ -117,7 +117,7 @@ The Tag Fetcher runs on article pages through `site/assets/js/main.js`. Its curr
 
 If a Box ID has no matching library entry, that mapping produces no visible tag at that moment. The Indexer rule itself remains unchanged.
 
-When a reader clicks a displayed tag, the Tag Fetcher dispatches a `luxomni:tag-select` custom event. The event includes the tag/Box ID, current tag name, article ID and Pouch. This prepares an interaction point for the future dedicated Tag Search feature; it does not open a popup by itself.
+When a reader clicks a displayed tag, the Tag Fetcher dispatches a `luxraj:tag-select` custom event. The event includes the tag/Box ID, current tag name, article ID and Pouch. This prepares an interaction point for the future dedicated Tag Search feature; it does not open a popup by itself.
 
 Pouch 4 is currently added as a hidden, reserved element. It is not shown to readers.
 
@@ -196,7 +196,7 @@ Edit the Indexer rule explicitly. The connection is controlled by the destinatio
 | Shared Tag Library with stable Box IDs | Implemented |
 | Separate article-to-Pouch connection rules in the Indexer | Implemented |
 | Tag Fetcher on article pages | Implemented |
-| Clickable article tags and `luxomni:tag-select` event | Implemented |
+| Clickable article tags and `luxraj:tag-select` event | Implemented |
 | Common Search matching against current tag names | Implemented |
 | Pouch 1–3 | Active |
 | Pouch 4 | Reserved and hidden |
