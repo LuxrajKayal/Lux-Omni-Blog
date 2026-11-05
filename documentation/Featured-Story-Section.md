@@ -1,7 +1,7 @@
 # Featured Story Section
 
 ## Purpose
-Display selected articles prominently on the Lux Omni Blog homepage in a CNET-style featured-story layout.
+Display selected articles prominently on the Luxraj Blog homepage in a CNET-style featured-story layout.
 
 ## Layout
 - One large featured story.
