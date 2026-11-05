@@ -1,4 +1,4 @@
-name: Deploy Lux Omni Blog to GitHub Pages
+name: Deploy Luxraj Blog to GitHub Pages
 
 on:
   push:
