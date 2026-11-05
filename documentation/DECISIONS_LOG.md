@@ -1,4 +1,4 @@
-# Lux Omni Blog — Decisions Log
+# Luxraj Blog — Decisions Log
 
 **Status:** Open. Record a decision only after the owner explicitly approves it.
 
