@@ -274,7 +274,20 @@ Append-only after implementation begins. Record real milestones only; do not pre
 
 ## 2026-11-05 — Rename FileMap for Luxraj Blog
 
-- Renamed `documentation/Luxraj-Blog-FileMap.md` to `documentation/Luxraj-Blog-FileMap.md` and updated its title, project-domain reference, and repository-root folder name.
+- Renamed the active FileMap to `documentation/Luxraj-Blog-FileMap.md` and updated its title, project-domain reference, and repository-root folder name.
 - Updated the FileMap reference in `PLAN_INDEX.md`, `UPDATE-NOTES-ARTICLE-GROUPS.md`, and this Build Log so each active reference resolves to the renamed file.
 - Updated the related Technical Pioneer article-brand wording and refreshed the historical GitHub Actions run URL to the renamed repository path.
 - Preserved standalone `Lux` design-token identifiers and the `Restore/` historical snapshot.
+
+
+## 2026-11-05 — Rename Lux Omni project identity to Luxraj
+
+- Updated active project documentation, editing guides, planning references, site metadata, category headings, shared components, CSS/JavaScript comments, and the article-page metadata from Lux Omni to Luxraj.
+- Renamed the active planning-document filenames and the CMS planning guide to use Luxraj naming, then updated active links and FileMap references to the new filenames.
+- Updated the public blog domain references to `blog.luxraj.com` and the main-site references to `luxraj.com`; refreshed the sitemap URLs and GitHub Pages project-path references for the renamed `Luxraj-Blog` repository.
+- Renamed the active brand and UI image assets to Luxraj filenames and updated the source references to those assets.
+- Renamed the tag-selection custom event from `luxomni:tag-select` to `luxraj:tag-select` in both its dispatcher and listener, and renamed the theme preference key to `luxraj-blog-theme`.
+- Updated the article social-handle placeholder to `{{LUXRAJ_X_HANDLE}}`.
+- Removed the old Facebook profile link because its replacement Luxraj profile URL has not been supplied; no replacement account URL was guessed.
+- Left standalone `Lux` identifiers and all content under `Restore/` untouched.
+- The GitHub Pages build and deployment workflow completed successfully for commit `ab1776ab66495ea62ece309c7099be1dca05c648`.
