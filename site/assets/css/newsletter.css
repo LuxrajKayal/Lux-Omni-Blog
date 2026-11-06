@@ -1615,3 +1615,22 @@
 #luxraj-newsletter#luxraj-newsletter [class~="shadow-[0_6px_0_#2D232E]"] {
   box-shadow: 0 4px 11px var(--newsletter-shadow);
 }
+
+
+/* Finish the small, high-specificity mobile controls with the same soft timber treatment. */
+#luxraj-newsletter#luxraj-newsletter #sound-btn,
+#luxraj-newsletter#luxraj-newsletter #close-house-popup-btn {
+  border-color: var(--newsletter-outline-soft);
+  border-width: 1.5px !important;
+  box-shadow: 0 2px 7px var(--newsletter-shadow);
+}
+#luxraj-newsletter#luxraj-newsletter .newsletter-roof .wood-shelf {
+  border-color: var(--newsletter-outline);
+  border-width: 1.5px;
+  box-shadow: 0 3px 8px var(--newsletter-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+#luxraj-newsletter#luxraj-newsletter #submit-btn {
+  border-color: var(--newsletter-outline);
+  border-width: 1.5px;
+  box-shadow: 0 3px 8px var(--newsletter-shadow);
+}
