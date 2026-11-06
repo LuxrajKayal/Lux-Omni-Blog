@@ -1059,3 +1059,19 @@
     padding: 9px !important;
   }
 }
+
+
+/* Keep the accepted phone layout flow when desktop-only column wrappers exist. */
+@media (max-width: 639px) {
+  #luxraj-newsletter#luxraj-newsletter .newsletter-desktop-columns,
+  #luxraj-newsletter#luxraj-newsletter .newsletter-character-column,
+  #luxraj-newsletter#luxraj-newsletter .newsletter-signup-column {
+    display: contents;
+  }
+
+  #luxraj-newsletter#luxraj-newsletter .newsletter-desktop-columns > .newsletter-character-column > *,
+  #luxraj-newsletter#luxraj-newsletter .newsletter-desktop-columns > .newsletter-signup-column > * {
+    flex: 0 0 auto;
+    margin: 0 !important;
+  }
+}
