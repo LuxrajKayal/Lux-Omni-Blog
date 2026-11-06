@@ -23,6 +23,7 @@ const PARTIALS = {
   FOOTER: path.join(PARTIAL_DIR, 'footer.html'),
   'ARTICLE-LAYOUT': path.join(PARTIAL_DIR, 'article-layout.html')
 };
+const NEWSLETTER_POPUP_PARTIAL = path.join(PARTIAL_DIR, 'newsletter-popup.html');
 const REQUIRED_MARKER_NAMES = ['TOPBAR', 'MAIN-HEADER', 'FOOTER'];
 const MARKER_NAMES = Object.keys(PARTIALS);
 const markerFor = name => '<!-- SHARED:' + name + ' -->';
@@ -161,6 +162,20 @@ function injectFooterStylesheet(html, rootPrefix, relativeFile) {
   return html.slice(0, headEnd) + link + html.slice(headEnd);
 }
 
+function injectNewsletterStylesheet(html,rootPrefix,relativeFile){
+ if(/href\s*=\s*(['"])[^'"]*assets\/css\/newsletter\.css\1/i.test(html))return html;
+ const headEnd=html.toLowerCase().lastIndexOf('</head>');
+ if(headEnd<0)throw new Error(relativeFile+' uses newsletter popup but has no closing </head> tag.');
+ const link='  <link rel="stylesheet" href="'+rootPrefix+'assets/css/newsletter.css">\n';
+ return html.slice(0,headEnd)+link+html.slice(headEnd);
+}
+function injectNewsletterPopup(html,popupHtml,relativeFile){
+ if(/id\s*=\s*(['"])luxraj-newsletter\1/i.test(html))throw new Error(relativeFile+' already contains newsletter feature root.');
+ const bodyEnd=html.toLowerCase().lastIndexOf('</body>');
+ if(bodyEnd<0)throw new Error(relativeFile+' uses newsletter popup but has no closing </body> tag.');
+ return html.slice(0,bodyEnd)+'\n\n'+popupHtml.trim()+'\n\n'+html.slice(bodyEnd);
+}
+
 
 /*
  * The root 404 document is self-contained. Copy it without shared-component
@@ -188,7 +203,7 @@ function validateStandalone404(html, relativeFile) {
   return html;
 }
 
-function expandSharedComponents(sourceHtml, relativeFile, partialContents) {
+function expandSharedComponents(sourceHtml, relativeFile, partialContents, newsletterPopupHtml) {
   const usesArticleLayout = sourceHtml.includes(markerFor('ARTICLE-LAYOUT'));
   let html = expandArticleLayout(sourceHtml, relativeFile, partialContents);
 
@@ -207,6 +222,8 @@ function expandSharedComponents(sourceHtml, relativeFile, partialContents) {
     throw new Error(relativeFile + ' contains an unresolved shared marker or root token after assembly.');
   }
   html = injectFooterStylesheet(html, rootPrefix, relativeFile);
+  html = injectNewsletterStylesheet(html, rootPrefix, relativeFile);
+  html = injectNewsletterPopup(html, newsletterPopupHtml, relativeFile);
   validateBuiltPage(html, relativeFile, usesArticleLayout);
   return html;
 }
@@ -216,7 +233,9 @@ function validateBuiltPage(html, relativeFile, usesArticleLayout = false) {
     ['topbar', /<aside\b[^>]*class\s*=\s*(["'])[^"']*\btopbar\b[^"']*\1/gi],
     ['main header', /<header\b[^>]*class\s*=\s*(["'])[^"']*\bsite-header\b[^"']*\1/gi],
     ['search dialog', /<dialog\b[^>]*\bid\s*=\s*(["'])search-dialog\1/gi],
-    ['footer', /<footer\b[^>]*class\s*=\s*(["'])[^"']*\bsite-footer\b[^"']*\1/gi]
+    ['footer', /<footer\b[^>]*class\s*=\s*(["'])[^"']*\bsite-footer\b[^"']*\1/gi],
+    ['newsletter feature root', /<div\b[^>]*\bid\s*=\s*(['"])luxraj-newsletter\1/gi],
+    ['newsletter popup dialog', /<div\b[^>]*\bid\s*=\s*(['"])house-popup-backdrop\1/gi]
   ];
   for (const [name, expression] of required) {
     const count = countMatches(html, expression);
@@ -241,7 +260,7 @@ function validateBuiltPage(html, relativeFile, usesArticleLayout = false) {
   }
 }
 
-async function walkAndBuild(sourceDirectory, relativeDirectory, partialContents, stats) {
+async function walkAndBuild(sourceDirectory, relativeDirectory, partialContents, newsletterPopupHtml, stats) {
   const entries = await readdir(sourceDirectory, { withFileTypes: true });
 
   for (const entry of entries) {
@@ -258,7 +277,7 @@ async function walkAndBuild(sourceDirectory, relativeDirectory, partialContents,
 
     if (entry.isDirectory()) {
       await mkdir(outputPath, { recursive: true });
-      await walkAndBuild(sourcePath, relativePath, partialContents, stats);
+      await walkAndBuild(sourcePath, relativePath, partialContents, newsletterPopupHtml, stats);
       continue;
     }
 
@@ -291,7 +310,7 @@ async function walkAndBuild(sourceDirectory, relativeDirectory, partialContents,
       continue;
     }
 
-    const builtHtml = expandSharedComponents(sourceHtml, normalizedRelativePath, partialContents);
+    const builtHtml = expandSharedComponents(sourceHtml, normalizedRelativePath, partialContents, newsletterPopupHtml);
     await writeFile(outputPath, builtHtml, 'utf8');
     stats.builtPages += 1;
   }
@@ -305,11 +324,13 @@ async function main() {
     partialContents[name] = await readFile(partialPath, 'utf8');
   }
 
+  const newsletterPopupHtml = await readFile(NEWSLETTER_POPUP_PARTIAL, 'utf8');
+
   await rm(OUTPUT_DIR, { recursive: true, force: true });
   await mkdir(OUTPUT_DIR, { recursive: true });
 
   const stats = { builtPages: 0, emptyPlaceholders: 0, standalonePages: 0 };
-  await walkAndBuild(SITE_DIR, '', partialContents, stats);
+  await walkAndBuild(SITE_DIR, '', partialContents, newsletterPopupHtml, stats);
   await writeFile(path.join(OUTPUT_DIR, '.nojekyll'), '', 'utf8');
 
   console.log(

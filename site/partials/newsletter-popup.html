@@ -1,0 +1,539 @@
+<!-- SHARED NEWSLETTER POPUP: Luxy's Mail Cottage -->
+<div id="luxraj-newsletter" data-newsletter-root>
+  <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-[80]" aria-hidden="true"></canvas>
+<!-- ==================== 2. THE ARCHITECTURAL "COZY HOUSE" POPUP MODAL ==================== -->
+  <div
+    id="house-popup-backdrop"
+    class="fixed inset-0 bg-cocoa/60 backdrop-blur-xs z-50 flex items-center justify-center p-2 sm:p-4 overflow-y-auto hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="main-headline"
+  >
+    <!-- ARCHITECTURAL HOUSE CONTAINER -->
+    <div
+      id="house-modal-card"
+      class="house-modal-wrapper house-modal-hidden max-w-xl w-full my-auto relative pt-6"
+    >
+      <!-- ==================== A. BRICK CHIMNEY (TOP RIGHT OF ROOF) ==================== -->
+      <div class="absolute top-0 right-7 sm:right-12 z-0 flex flex-col items-center pointer-events-none">
+        <!-- Floating Heart & Letter Smoke Puffs -->
+        <div class="relative h-8 w-12 flex items-center justify-center">
+          <span class="absolute text-base sm:text-lg chimney-smoke-1">💖</span>
+          <span class="absolute text-sm sm:text-base chimney-smoke-2">💌</span>
+        </div>
+        <!-- Chimney Cap & Bricks -->
+        <div class="w-14 h-3.5 bg-roofDark border-3 border-cocoa rounded-t-md" style="border-width: 3px;"></div>
+        <div class="w-11 h-12 bg-roofRed border-x-3 border-cocoa flex flex-col justify-evenly px-1" style="border-left-width: 3px; border-right-width: 3px;">
+          <div class="h-1.5 w-5 bg-roofDark/70 rounded-xs"></div>
+          <div class="h-1.5 w-6 bg-roofDark/70 rounded-xs self-end"></div>
+        </div>
+      </div>
+
+      <!-- ==================== B. PITCHED COTTAGE ROOF HEADER ==================== -->
+      <div class="relative z-10">
+        <!-- Sloped Shingled Gable Roof -->
+        <div class="roof-shingles border-4 border-b-0 border-cocoa rounded-t-[2.75rem] pt-4 pb-3 px-4 sm:px-6 relative">
+          <!-- Roof Ridge Beam -->
+          <div class="w-24 h-2 bg-butter border-2 border-cocoa rounded-full mx-auto mb-2.5"></div>
+
+          <!-- Top Roof Controls Row: Sound Dormer + Attic Signboard + Close Shutter Button -->
+          <div class="flex items-center justify-between gap-2">
+            <!-- Left Dormer: Sound Toggle -->
+            <button
+              id="sound-btn"
+              type="button"
+              class="cozy-pill bg-cream hover:bg-butterLight px-3 py-1.5 rounded-xl font-display font-bold text-xs text-cocoa flex items-center gap-1.5 transition-transform active:scale-95"
+              title="Toggle Luxy's cute sound effects"
+            >
+              <span id="sound-emoji">🔊</span>
+              <span id="sound-text" class="hidden sm:inline">Sound On</span>
+            </button>
+
+            <!-- Center Attic Wooden Signboard -->
+            <div class="wood-shelf px-3.5 py-1.5 rounded-2xl text-center">
+              <div class="font-display font-bold text-xs sm:text-sm text-cocoa tracking-wide flex items-center gap-1.5 justify-center">
+                <span>🏡</span>
+                <span>LUXY'S MAIL COTTAGE</span>
+                <span class="hidden sm:inline text-[10px] bg-cream border border-cocoa px-1.5 py-0.2 rounded-full">LUXRAJ.COM</span>
+              </div>
+            </div>
+
+            <!-- Right Dormer: Wooden Shutter Close Button -->
+            <button
+              id="close-house-popup-btn"
+              type="button"
+              class="cozy-pill bg-butter hover:bg-pinkyLight w-9 h-9 rounded-xl font-display font-bold text-sm text-cocoa flex items-center justify-center transition-transform hover:rotate-6 active:scale-90"
+              title="Close Luxy's Cottage (Esc)"
+              aria-label="Close popup"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+
+        <!-- Scalloped Wooden Roof Eaves Overhang -->
+        <div class="scallop-eaves w-full relative z-20"></div>
+      </div>
+
+      <!-- ==================== C. COTTAGE TIMBER-FRAMED WALLS (SCROLLABLE INTERIOR) ==================== -->
+      <div class="cottage-walls px-5 sm:px-8 pt-3 pb-5 max-h-[78vh] overflow-y-auto house-scroll relative z-10">
+
+        <!-- 1. DYNAMIC HEADLINE -->
+        <div class="text-center mb-3">
+          <h2 id="main-headline" class="font-display font-bold text-xl sm:text-2xl text-cocoa leading-snug">
+            Welcome inside! Can we be inbox friends? 🥺
+          </h2>
+        </div>
+
+        <!-- 2. LUXY'S CHARM / FRIENDSHIP PROGRESS BAR -->
+        <div class="bg-creamDark border-2 border-cocoa rounded-2xl p-2 mb-3.5">
+          <div class="flex items-center justify-between text-xs font-display font-semibold px-1 mb-1">
+            <span class="flex items-center gap-1.5 text-cocoa">
+              <span id="charm-heart-icon" class="text-sm inline-block transition-transform">💖</span>
+              <span id="charm-status-label">Luxy's Charm Effort: Warming Up!</span>
+            </span>
+            <span id="charm-percent-badge" class="bg-white border border-cocoa px-2 py-0.5 rounded-full text-cocoa font-bold">
+              20%
+            </span>
+          </div>
+          <div class="w-full h-3.5 bg-white rounded-full border-2 border-cocoa overflow-hidden p-0.5">
+            <div
+              id="charm-bar-fill"
+              class="h-full bg-gradient-to-r from-pinky via-butter to-minty rounded-full transition-all duration-500"
+              style="width: 20%;"
+            ></div>
+          </div>
+        </div>
+
+        <!-- 3. ARCHED COTTAGE WINDOW STAGE ("LUXY THE MAIL BUDDY") -->
+        <div
+          id="character-stage"
+          class="relative bg-gradient-to-b from-skyLight/80 via-pinkyLight/35 to-butterLight/60 border-3 border-cocoa rounded-t-[2.5rem] rounded-b-2xl p-3.5 sm:p-4 mb-3.5 flex flex-col items-center justify-between min-h-[265px] sm:min-h-[280px] overflow-hidden cursor-pointer select-none shadow-[inset_0_4px_12px_rgba(45,35,46,0.08)]"
+          style="border-width: 3px;"
+          title="Click Luxy to pat & squish!"
+        >
+          <!-- Cozy Cottage Window Curtains (Top Left & Right) -->
+          <div class="absolute -top-2 -left-2 w-16 h-20 bg-pinky/40 border-r-2 border-b-2 border-cocoa/30 rounded-br-[2.5rem] pointer-events-none"></div>
+          <div class="absolute -top-2 -right-2 w-16 h-20 bg-pinky/40 border-l-2 border-b-2 border-cocoa/30 rounded-bl-[2.5rem] pointer-events-none"></div>
+
+          <!-- Window Pane Crossbars in Background -->
+          <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-20">
+            <div class="w-full h-1 bg-cocoa"></div>
+            <div class="h-full w-1 bg-cocoa absolute"></div>
+          </div>
+
+          <!-- Floating Emoji / Crumb / Note Spawner Layer -->
+          <div id="floating-fx-layer" class="absolute inset-0 pointer-events-none z-30 overflow-hidden"></div>
+
+          <!-- SPEECH BUBBLE -->
+          <div
+            id="speech-bubble"
+            class="relative z-20 bg-white border-2 border-cocoa rounded-2xl px-3.5 py-2 shadow-[0_4px_0_#2D232E] max-w-md w-full text-center transition-transform duration-200"
+          >
+            <p id="speech-text" class="font-display font-medium text-xs sm:text-sm text-cocoa leading-snug">
+              "Hi! I'm Luxy! Welcome to my Mail Cottage! Click the 3 toy buttons below to test my polite begging skills!"
+            </p>
+            <!-- Speech Bubble Tail -->
+            <div class="w-3 h-3 bg-white border-r-2 border-b-2 border-cocoa rotate-45 absolute -bottom-1.5 left-1/2 -translate-x-1/2"></div>
+          </div>
+
+          <!-- LUXY SVG + PROPS STAGE -->
+          <div class="relative w-full h-44 sm:h-48 flex items-center justify-center mt-1">
+
+            <!-- Animated Patting Hand (Appears when clicking "Pat Head") -->
+            <div id="pat-hand-el" class="hidden absolute -top-3 left-1/2 -translate-x-1/2 z-30 text-4xl pointer-events-none patting-hand">
+              🖐️
+            </div>
+
+            <!-- Flying Cookie Element (Appears when clicking "Give a Cookie") -->
+            <div id="flying-cookie-el" class="hidden absolute z-30 text-3xl pointer-events-none">
+              🍪
+            </div>
+
+            <!-- PROP 4: Barnaby The Polite Wizard Frog (Appears on Begging Stage 4+) -->
+            <div id="prop-frog" class="hidden absolute left-1 sm:left-4 bottom-1 z-20 flex flex-col items-center sticker-pop" title="Barnaby the Polite Frog">
+              <svg viewBox="0 0 90 90" class="w-14 h-14 sm:w-18 sm:h-18">
+                <!-- Wizard Hat -->
+                <polygon points="45,4 22,42 68,42" fill="#8B5CF6" stroke="#2D232E" stroke-width="3.5" stroke-linejoin="round"/>
+                <ellipse cx="45" cy="42" rx="28" ry="6" fill="#8B5CF6" stroke="#2D232E" stroke-width="3.5"/>
+                <polygon points="45,18 48,25 55,25 49,29 51,36 45,32 39,36 41,29 35,25 42,25" fill="#FFD166"/>
+                <!-- Frog Head & Body -->
+                <ellipse cx="45" cy="62" rx="24" ry="18" fill="#06D6A0" stroke="#2D232E" stroke-width="3.5"/>
+                <circle cx="31" cy="46" r="9" fill="#06D6A0" stroke="#2D232E" stroke-width="3.5"/>
+                <circle cx="59" cy="46" r="9" fill="#06D6A0" stroke="#2D232E" stroke-width="3.5"/>
+                <circle cx="31" cy="46" r="4.5" fill="#2D232E"/>
+                <circle cx="59" cy="46" r="4.5" fill="#2D232E"/>
+                <circle cx="29.5" cy="44" r="1.8" fill="#FFFFFF"/>
+                <circle cx="57.5" cy="44" r="1.8" fill="#FFFFFF"/>
+                <!-- Cute Blush & Smile -->
+                <ellipse cx="26" cy="58" rx="4.5" ry="2.5" fill="#FF7EB6"/>
+                <ellipse cx="64" cy="58" rx="4.5" ry="2.5" fill="#FF7EB6"/>
+                <path d="M 37 59 Q 45 65 53 59" fill="none" stroke="#2D232E" stroke-width="3" stroke-linecap="round"/>
+                <!-- Little Ribbit Tag -->
+                <rect x="14" y="72" width="62" height="15" rx="6" fill="#FFFFFF" stroke="#2D232E" stroke-width="2"/>
+                <text x="45" y="82.5" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="9.5" font-weight="600" fill="#2D232E">Barnaby 🐸</text>
+              </svg>
+            </div>
+
+            <!-- MAIN LUXY CHARACTER SVG -->
+            <svg id="luxy-svg" viewBox="0 0 260 220" class="w-52 h-44 sm:w-60 sm:h-48 relative z-10 luxy-idle">
+              <!-- Floor Shadow -->
+              <ellipse cx="130" cy="202" rx="68" ry="11" fill="rgba(45, 35, 46, 0.12)" />
+
+              <!-- Squishy Luxy Body (Warm Cream Puff with Cute Ears) -->
+              <g id="luxy-body-group">
+                <!-- Cute Little Side Puff Ears -->
+                <circle cx="66" cy="96" r="16" fill="#FFE5F1" stroke="#2D232E" stroke-width="4.5" />
+                <circle cx="194" cy="96" r="16" fill="#FFE5F1" stroke="#2D232E" stroke-width="4.5" />
+
+                <path
+                  d="M 55 148 C 50 92, 82 55, 130 55 C 178 55, 210 92, 205 148 C 202 184, 182 196, 130 196 C 78 196, 58 184, 55 148 Z"
+                  fill="#FFFDF9"
+                  stroke="#2D232E"
+                  stroke-width="5"
+                  stroke-linejoin="round"
+                />
+                <!-- Soft Bottom Shading -->
+                <path
+                  d="M 65 168 C 78 190, 182 190, 195 168 C 190 188, 172 193, 130 193 C 88 193, 70 188, 65 168 Z"
+                  fill="#F7F1E5"
+                />
+
+                <!-- Cute Little Postman Cap with "LUXY" Badge -->
+                <g id="luxy-hat" transform="translate(0, -3)">
+                  <!-- Cap Dome -->
+                  <path d="M 88 64 C 88 36, 172 36, 172 64 Z" fill="#38BDF8" stroke="#2D232E" stroke-width="4.5" stroke-linejoin="round"/>
+                  <!-- Cap Visor -->
+                  <path d="M 80 63 Q 130 74 180 63 Q 186 56 172 58 L 88 58 Q 74 56 80 63 Z" fill="#2D232E"/>
+                  <!-- GoldLUXY Mail Badge on Cap -->
+                  <rect x="108" y="41" width="44" height="15" rx="7.5" fill="#FFD166" stroke="#2D232E" stroke-width="2.5"/>
+                  <text x="130" y="51.5" text-anchor="middle" font-size="8.5" font-family="Fredoka, sans-serif" font-weight="700" fill="#2D232E">LUXY</text>
+                </g>
+
+                <!-- Rosy Pink Cheeks -->
+                <ellipse id="cheek-left" cx="82" cy="128" rx="12" ry="7" fill="#FF7EB6" opacity="0.65" />
+                <ellipse id="cheek-right" cx="178" cy="128" rx="12" ry="7" fill="#FF7EB6" opacity="0.65" />
+
+                <!-- EYES CONTAINER (Follows Cursor Smoothly) -->
+                <g id="luxy-eyes-track">
+                  <!-- Left Eye -->
+                  <g transform="translate(98, 112)">
+                    <circle cx="0" cy="0" r="13.5" fill="#2D232E" />
+                    <!-- Normal Eye Highlights -->
+                    <circle cx="-4.5" cy="-4.5" r="4.8" fill="#FFFFFF" />
+                    <circle cx="4.5" cy="4.5" r="2.2" fill="#FFFFFF" />
+                    <!-- Stage 1 Prop: Giant Shimmering Puppy-Eye Teardrops -->
+                    <g id="puppy-eye-left" opacity="0" class="transition-opacity duration-300">
+                      <circle cx="-3" cy="-4" r="6.5" fill="#FFFFFF" />
+                      <circle cx="5" cy="3" r="3.8" fill="#FFFFFF" />
+                      <path d="M -11 8 Q 0 18 11 8" fill="#38BDF8" opacity="0.85" />
+                    </g>
+                    <!-- Starry Excited Eye (When Valid Email Typed) -->
+                    <polygon id="star-eye-left" opacity="0" points="0,-11 3,-3 11,-3 5,2 7,10 0,5 -7,10 -5,2 -11,-3 -3,-3" fill="#FFD166" />
+                  </g>
+
+                  <!-- Right Eye -->
+                  <g transform="translate(162, 112)">
+                    <circle cx="0" cy="0" r="13.5" fill="#2D232E" />
+                    <!-- Normal Eye Highlights -->
+                    <circle cx="-4.5" cy="-4.5" r="4.8" fill="#FFFFFF" />
+                    <circle cx="4.5" cy="4.5" r="2.2" fill="#FFFFFF" />
+                    <!-- Stage 1 Prop: Giant Shimmering Puppy-Eye Teardrops -->
+                    <g id="puppy-eye-right" opacity="0" class="transition-opacity duration-300">
+                      <circle cx="-3" cy="-4" r="6.5" fill="#FFFFFF" />
+                      <circle cx="5" cy="3" r="3.8" fill="#FFFFFF" />
+                      <path d="M -11 8 Q 0 18 11 8" fill="#38BDF8" opacity="0.85" />
+                    </g>
+                    <!-- Starry Excited Eye -->
+                    <polygon id="star-eye-right" opacity="0" points="0,-11 3,-3 11,-3 5,2 7,10 0,5 -7,10 -5,2 -11,-3 -3,-3" fill="#FFD166" />
+                  </g>
+                </g>
+
+                <!-- MOUTH (Changes between happy cat-smile, munching O, wobbly plea, and big cheer) -->
+                <path
+                  id="luxy-mouth"
+                  d="M 118 124 Q 124 132 130 124 Q 136 132 142 124"
+                  fill="none"
+                  stroke="#2D232E"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+
+                <!-- DEFAULT PROP: Cute Love-Letter Envelope Held by Luxy's Paws -->
+                <g id="prop-envelope" transform="translate(96, 142)">
+                  <rect x="0" y="0" width="68" height="44" rx="7" fill="#FFFFFF" stroke="#2D232E" stroke-width="3.5" />
+                  <path d="M 3 3 L 34 25 L 65 3" fill="none" stroke="#2D232E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                  <!-- Heart Wax Seal -->
+                  <circle cx="34" cy="23" r="8.5" fill="#FF7EB6" stroke="#2D232E" stroke-width="2.5" />
+                  <text x="34" y="26.5" text-anchor="middle" font-size="9" fill="#FFFFFF">♥</text>
+                </g>
+
+                <!-- Little Round Luxy Hands -->
+                <circle cx="94" cy="162" r="11" fill="#FFFDF9" stroke="#2D232E" stroke-width="4" />
+                <circle cx="166" cy="162" r="11" fill="#FFFDF9" stroke="#2D232E" stroke-width="4" />
+
+                <!-- PROP 2: Taped Cardboard Begging Sign (Stage 2) -->
+                <g id="prop-cardboard-sign" opacity="0" transform="translate(48, 132)" class="transition-opacity duration-300 pointer-events-none">
+                  <rect x="0" y="0" width="164" height="58" rx="6" fill="#E6B88A" stroke="#2D232E" stroke-width="3.5" />
+                  <!-- Masking Tape Corners -->
+                  <rect x="-4" y="4" width="22" height="9" transform="rotate(-25 6 8)" fill="#FFF5D6" stroke="#2D232E" stroke-width="1.5" />
+                  <rect x="146" y="4" width="22" height="9" transform="rotate(25 156 8)" fill="#FFF5D6" stroke="#2D232E" stroke-width="1.5" />
+                  <text x="82" y="24" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="11" font-weight="700" fill="#2D232E">WILL SEND COOL TECH</text>
+                  <text x="82" y="39" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="11" font-weight="700" fill="#2D232E">STORIES FOR 1 EMAIL</text>
+                  <text x="82" y="52" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="9.5" font-weight="600" fill="#6E5D70">(zero spam, pinky swear!)</text>
+                </g>
+
+                <!-- PROP 3: World's Smallest Violin (Stage 3) -->
+                <g id="prop-violin" opacity="0" transform="translate(154, 125)" class="transition-opacity duration-300 pointer-events-none">
+                  <ellipse cx="22" cy="30" rx="12" ry="16" fill="#D97706" stroke="#2D232E" stroke-width="3" transform="rotate(-20 22 30)" />
+                  <rect x="24" y="2" width="5" height="22" fill="#78350F" stroke="#2D232E" stroke-width="2.5" transform="rotate(15 26 12)" />
+                  <line id="violin-bow" x1="2" y1="22" x2="46" y2="32" stroke="#2D232E" stroke-width="3" stroke-linecap="round" />
+                </g>
+
+                <!-- PROP 6: Little White Surrender Flag (Stage 6 Flop) -->
+                <g id="prop-white-flag" opacity="0" transform="translate(182, 92)" class="transition-opacity duration-300 pointer-events-none">
+                  <line x1="0" y1="70" x2="12" y2="5" stroke="#2D232E" stroke-width="4" stroke-linecap="round" />
+                  <path d="M 12 7 Q 34 2 46 14 Q 34 32 10 28 Z" fill="#FFFFFF" stroke="#2D232E" stroke-width="3" stroke-linejoin="round" />
+                  <text x="27" y="21" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="9" font-weight="700" fill="#FF7EB6">PLS</text>
+                </g>
+
+                <!-- HOVER SAD SIGN (When hovering over "No thanks" link) -->
+                <g id="prop-sad-sign" opacity="0" transform="translate(46, 134)" class="transition-opacity duration-200 pointer-events-none">
+                  <rect x="0" y="0" width="168" height="50" rx="10" fill="#FFE5F1" stroke="#2D232E" stroke-width="3.5" />
+                  <text x="84" y="23" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="11.5" font-weight="700" fill="#2D232E">404: CHILL NOT FOUND</text>
+                  <text x="84" y="40" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="10.5" font-weight="600" fill="#6E5D70">pls don't leave Luxy 🥺💔</text>
+                </g>
+
+                <!-- CELEBRATION BANNER (Shown when Subscribed!) -->
+                <g id="prop-besties-banner" opacity="0" transform="translate(42, 134)" class="transition-opacity duration-300 pointer-events-none">
+                  <rect x="0" y="0" width="176" height="48" rx="14" fill="#FFD166" stroke="#2D232E" stroke-width="3.5" />
+                  <text x="88" y="30" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="17" font-weight="700" fill="#2D232E">🎉 YAY! HOUSEMATES! 💌</text>
+                </g>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Window Sill Hint -->
+          <div class="text-[11px] font-display font-medium text-cocoaLight flex items-center gap-1.5 z-10">
+            <span>👆 Click Luxy in the window or play with the 3 buttons below!</span>
+          </div>
+        </div>
+
+        <!-- 4. THREE BIG PLAYFUL ACTION BUTTONS (THE BEGGING MINI-GAME) -->
+        <div class="grid grid-cols-3 gap-2 sm:gap-3 mb-4">
+          <!-- Button 1: Convince Me Harder -->
+          <button
+            id="btn-beg-harder"
+            type="button"
+            class="toy-btn bg-pinky hover:bg-pinky/90 text-cocoa rounded-2xl p-2 sm:p-3 flex flex-col items-center justify-center text-center group"
+          >
+            <span class="text-xl sm:text-2xl mb-0.5 group-hover:scale-110 transition-transform">🥺</span>
+            <span class="font-display font-bold text-xs sm:text-sm leading-tight">Convince Me Harder</span>
+            <span id="beg-step-counter" class="text-[10px] font-semibold bg-white/85 border border-cocoa px-2 py-0.5 rounded-full mt-1">
+              Move 0/6
+            </span>
+          </button>
+
+          <!-- Button 2: Give Luxy a Cookie -->
+          <button
+            id="btn-cookie"
+            type="button"
+            class="toy-btn bg-butter hover:bg-butter/90 text-cocoa rounded-2xl p-2 sm:p-3 flex flex-col items-center justify-center text-center group"
+          >
+            <span class="text-xl sm:text-2xl mb-0.5 group-hover:scale-110 transition-transform">🍪</span>
+            <span class="font-display font-bold text-xs sm:text-sm leading-tight">Give Luxy a Cookie</span>
+            <span id="cookie-counter" class="text-[10px] font-semibold bg-white/85 border border-cocoa px-2 py-0.5 rounded-full mt-1">
+              0 Fed
+            </span>
+          </button>
+
+          <!-- Button 3: Pat Luxy's Head -->
+          <button
+            id="btn-pat"
+            type="button"
+            class="toy-btn bg-minty hover:bg-minty/90 text-cocoa rounded-2xl p-2 sm:p-3 flex flex-col items-center justify-center text-center group"
+          >
+            <span class="text-xl sm:text-2xl mb-0.5 group-hover:scale-110 transition-transform">🖐️</span>
+            <span class="font-display font-bold text-xs sm:text-sm leading-tight">Pat Luxy's Head</span>
+            <span id="pat-counter" class="text-[10px] font-semibold bg-white/85 border border-cocoa px-2 py-0.5 rounded-full mt-1">
+              0 Pats
+            </span>
+          </button>
+        </div>
+
+        <!-- 5. COTTAGE MANTLEPIECE STICKER SHELF (GAMIFICATION REWARD) -->
+        <div class="wood-shelf rounded-2xl p-2.5 mb-4">
+          <div class="flex items-center justify-between text-[11px] font-display font-bold text-cocoa mb-1.5 px-1">
+            <span>🪵 LUXY'S MANTLEPIECE STICKER SHELF</span>
+            <span id="sticker-count-label" class="bg-cream border border-cocoa px-2 py-0.2 rounded-full">0 / 6 Unlocked</span>
+          </div>
+          <div class="grid grid-cols-6 gap-1.5 sm:gap-2">
+            <div id="sticker-puppy" class="aspect-square rounded-xl border-2 border-cocoa/30 bg-cream/70 flex flex-col items-center justify-center p-1 opacity-45 transition-all" title="Unlock by clicking 'Convince Me Harder'">
+              <span class="text-lg sm:text-xl">🥺</span>
+              <span class="text-[8px] sm:text-[9px] font-display font-semibold text-cocoa truncate w-full text-center">Puppy Eyes</span>
+            </div>
+            <div id="sticker-cookie" class="aspect-square rounded-xl border-2 border-cocoa/30 bg-cream/70 flex flex-col items-center justify-center p-1 opacity-45 transition-all" title="Unlock by giving Luxy a cookie">
+              <span class="text-lg sm:text-xl">🍪</span>
+              <span class="text-[8px] sm:text-[9px] font-display font-semibold text-cocoa truncate w-full text-center">Snack Pal</span>
+            </div>
+            <div id="sticker-pat" class="aspect-square rounded-xl border-2 border-cocoa/30 bg-cream/70 flex flex-col items-center justify-center p-1 opacity-45 transition-all" title="Unlock by patting Luxy's head">
+              <span class="text-lg sm:text-xl">🖐️</span>
+              <span class="text-[8px] sm:text-[9px] font-display font-semibold text-cocoa truncate w-full text-center">Head Patter</span>
+            </div>
+            <div id="sticker-frog" class="aspect-square rounded-xl border-2 border-cocoa/30 bg-cream/70 flex flex-col items-center justify-center p-1 opacity-45 transition-all" title="Unlock by reaching Begging Move #4 (Barnaby the Frog)">
+              <span class="text-lg sm:text-xl">🐸</span>
+              <span class="text-[8px] sm:text-[9px] font-display font-semibold text-cocoa truncate w-full text-center">Barnaby</span>
+            </div>
+            <div id="sticker-crown" class="aspect-square rounded-xl border-2 border-cocoa/30 bg-cream/70 flex flex-col items-center justify-center p-1 opacity-45 transition-all" title="Unlock by reaching Begging Move #5 (Royal VIP)">
+              <span class="text-lg sm:text-xl">👑</span>
+              <span class="text-[8px] sm:text-[9px] font-display font-semibold text-cocoa truncate w-full text-center">VIP Crown</span>
+            </div>
+            <div id="sticker-bestie" class="aspect-square rounded-xl border-2 border-cocoa/30 bg-cream/70 flex flex-col items-center justify-center p-1 opacity-45 transition-all" title="Unlock by joining the Pen-Pal Club!">
+              <span class="text-lg sm:text-xl">💖</span>
+              <span class="text-[8px] sm:text-[9px] font-display font-semibold text-cocoa truncate w-full text-center">Besties!</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. OUR HEARTFELT PROMISE & BRASS FRONT-DOOR MAIL SLOT (BREVO FORM) -->
+        <div class="brass-mail-slot rounded-3xl p-4 relative">
+          <!-- Decorative Brass Screws on Left & Right -->
+          <div class="w-3 h-3 rounded-full bg-cream border-2 border-cocoa absolute top-3 left-3 flex items-center justify-center"><div class="w-2 h-0.5 bg-cocoa rotate-45"></div></div>
+          <div class="w-3 h-3 rounded-full bg-cream border-2 border-cocoa absolute top-3 right-3 flex items-center justify-center"><div class="w-2 h-0.5 bg-cocoa -rotate-45"></div></div>
+
+          <!-- Stage 5 Prop: Golden VIP Crown on the Mail Slot! -->
+          <div id="input-vip-crown" class="hidden absolute -top-6 left-6 z-20 text-3xl crown-bob pointer-events-none" title="Royal VIP Inbox Treatment!">
+            👑
+          </div>
+
+          <div class="text-center mb-2 px-3">
+            <span class="inline-flex items-center gap-1 font-display font-bold text-[11px] bg-cream border-2 border-cocoa px-2.5 py-0.5 rounded-full text-cocoa">
+              📬 FRONT DOOR BRASS MAIL SLOT • DEMO MODE
+            </span>
+            <div id="vip-carpet-badge" class="hidden mt-1 inline-flex items-center gap-1 bg-pinky text-cocoa font-display font-bold text-[11px] px-2.5 py-0.5 rounded-full border-2 border-cocoa">
+              <span>👑 Royal Red-Carpet Inbox Protection Active</span>
+            </div>
+          </div>
+
+          <!-- Required Promise Quote -->
+          <div class="bg-cream/95 border-2 border-cocoa rounded-2xl p-3 mb-3 text-center">
+            <p class="text-xs sm:text-sm text-cocoa leading-relaxed font-medium">
+              "We promise to bring along interesting engineering discoveries, visual explanations and technology worth understanding. <strong class="underline decoration-pinky decoration-2 underline-offset-2">Only when we have something worth sharing.</strong>"
+            </p>
+          </div>
+
+          <!-- BREVO (SENDINBLUE) COMPATIBLE STATIC FORM -->
+          <form
+            id="subscribe-form"
+            action="#house-popup-backdrop" data-newsletter-demo="true"
+            method="POST"
+            class="space-y-2.5"
+            novalidate
+          >
+            <!-- Standard Brevo Anti-Bot Honeypot & Locale Hidden Fields -->
+            <input type="text" name="email_address_check" value="" class="hidden" tabindex="-1" autocomplete="off" />
+            <input type="hidden" name="locale" value="en" />
+
+            <div class="flex flex-col sm:flex-row gap-2.5">
+              <div class="relative flex-grow">
+                <input
+                  id="email-input"
+                  type="email"
+                  name="EMAIL"
+                  required
+                  autocomplete="email"
+                  placeholder="your.cozy.email@example.com"
+                  class="w-full px-4 py-3.5 rounded-2xl bg-white border-3 border-cocoa font-sans font-semibold text-cocoa placeholder:text-cocoaLight/60 focus:outline-none focus:ring-4 focus:ring-pinky/40 text-sm sm:text-base transition-all shadow-[inset_0_3px_5px_rgba(0,0,0,0.08)]"
+                  style="border-width: 3px;"
+                />
+                <span id="email-emoji-status" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-lg pointer-events-none">
+                  ✉️
+                </span>
+              </div>
+
+              <button
+                id="submit-btn"
+                type="submit"
+                class="toy-btn bg-minty hover:bg-minty/95 text-cocoa font-display font-bold text-sm sm:text-base px-5 py-3.5 rounded-2xl whitespace-nowrap flex items-center justify-center gap-1.5"
+              >
+                <span id="submit-btn-label">Okay, You Charmed Me!</span>
+                <span>💌</span>
+              </button>
+            </div>
+
+            <!-- Friendly Error Hint -->
+            <p id="email-error-msg" class="hidden bg-white border-2 border-cocoa rounded-xl px-3 py-1.5 font-display font-semibold text-xs text-roofDark"></p>
+          </form>
+        </div>
+
+        <!-- Gentle RSS Fallback Box (If user clicks "No thanks") -->
+        <div id="rss-box" class="hidden mt-3.5 bg-pinkyLight/80 border-2 border-cocoa rounded-2xl p-3 text-xs text-cocoa">
+          <p class="font-display font-semibold mb-1.5">
+            😿 *Luxy sniffles politely in the cottage doorway, but respects your boundaries!*
+          </p>
+          <p class="mb-2">
+            Prefer no emails? You can still grab our static RSS feed from the porch:
+          </p>
+          <div class="flex flex-wrap items-center gap-2">
+            <code class="bg-white px-2.5 py-1 rounded-lg border border-cocoa font-mono text-xs">https://luxraj.com/rss.xml</code>
+            <button id="copy-rss-btn" type="button" class="cozy-pill bg-butter px-3 py-1 rounded-lg font-display font-bold text-xs">
+              Copy RSS Link 📋
+            </button>
+          </div>
+        </div>
+
+        <!-- 7. CELEBRATION VIP PEN-PAL PASS (Revealed on Subscribe!) -->
+        <div id="vip-membership-card" class="hidden mt-4 bg-gradient-to-br from-butterLight via-white to-pinkyLight border-3 border-cocoa rounded-3xl p-4 shadow-[0_6px_0_#2D232E]" style="border-width: 3px;">
+          <div class="flex items-center justify-between border-b-2 border-dashed border-cocoa/25 pb-2.5 mb-2.5">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🏡</span>
+              <div>
+                <div class="font-display font-bold text-sm text-cocoa leading-none">LUXY'S PREVIEW HOUSE KEY & VIP PASS</div>
+                <div class="text-[10px] font-semibold text-cocoaLight">Interactive preview • No subscription created</div>
+              </div>
+            </div>
+            <span id="vip-card-number" class="bg-white border-2 border-cocoa px-2.5 py-0.5 rounded-full font-display font-bold text-xs text-cocoa">
+              #0042
+            </span>
+          </div>
+
+          <p class="text-xs sm:text-sm text-cocoa mb-2.5 leading-relaxed">
+            Woohoo!! Luxy is doing happy backflips inside the cottage! This is a demo preview. <strong id="vip-member-email" class="bg-white px-2 py-0.5 rounded border border-cocoa">friend@example.com</strong> was not sent to Brevo or saved.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-display font-semibold text-cocoaLight">
+            <span id="vip-stats-line">Unlocked with 3 cookies & 2 head pats!</span>
+            <button id="reset-game-btn" type="button" class="underline text-cocoa hover:text-pinky">
+              ↻ Play again
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==================== D. WOODEN FRONT PORCH & FLOWER BOX FOOTER ==================== -->
+      <div class="porch-footer rounded-b-3xl px-5 py-3 text-cream flex flex-wrap items-center justify-between gap-2 relative z-10">
+        <div class="flex items-center gap-1.5 text-xs font-display font-medium">
+          <span>🌷🌻🌷</span>
+          <span>Demo only • No email is sent or stored</span>
+        </div>
+
+        <button
+          id="no-thanks-link"
+          type="button"
+          class="text-xs font-display underline decoration-dotted text-butterLight hover:text-white transition-transform duration-200"
+        >
+          No thanks, I hate cute things (make Luxy cry 😢)
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { important:'#luxraj-newsletter', corePlugins:{preflight:false}, theme:{extend:{
+colors:{cream:'#FFFDF9',creamDark:'#F7F1E5',cocoa:'#2D232E',cocoaLight:'#6E5D70',pinky:'#FF7EB6',pinkyLight:'#FFE5F1',butter:'#FFD166',butterLight:'#FFF5D6',minty:'#06D6A0',mintyLight:'#DCFCE7',skyLight:'#E0F2FE',lavender:'#E9D5FF',roofRed:'#E05A47',roofDark:'#B83D2B',woodLight:'#D9A066',woodDark:'#8F563B',brass:'#F4B41A'},
+fontFamily:{display:['Fredoka','cursive','sans-serif'],sans:['Plus Jakarta Sans','system-ui','sans-serif']}
+} } };
+</script>
