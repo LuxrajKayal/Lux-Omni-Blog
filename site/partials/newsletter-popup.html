@@ -142,6 +142,7 @@
 
           <!-- LUXY SVG + PROPS STAGE -->
           <div class="character-mascot relative w-full h-44 sm:h-48 flex items-center justify-center mt-1">
+            <div class="mascot-interaction-wrap">
 
             <!-- Animated Patting Hand (Appears when clicking "Pat Head") -->
             <div id="pat-hand-el" class="hidden absolute -top-3 left-1/2 -translate-x-1/2 z-30 text-4xl pointer-events-none patting-hand">
@@ -276,17 +277,6 @@
                 <circle cx="94" cy="162" r="11" fill="#FFFDF9" stroke="#2D232E" stroke-width="4" />
                 <circle cx="166" cy="162" r="11" fill="#FFFDF9" stroke="#2D232E" stroke-width="4" />
 
-                <!-- PROP 2: Taped Cardboard Begging Sign (Stage 2) -->
-                <g id="prop-cardboard-sign" opacity="0" transform="translate(48, 132)" class="transition-opacity duration-300 pointer-events-none">
-                  <rect x="0" y="0" width="164" height="58" rx="6" fill="#E6B88A" stroke="#2D232E" stroke-width="3.5" />
-                  <!-- Masking Tape Corners -->
-                  <rect x="-4" y="4" width="22" height="9" transform="rotate(-25 6 8)" fill="#FFF5D6" stroke="#2D232E" stroke-width="1.5" />
-                  <rect x="146" y="4" width="22" height="9" transform="rotate(25 156 8)" fill="#FFF5D6" stroke="#2D232E" stroke-width="1.5" />
-                  <text x="82" y="24" text-anchor="middle" font-size="var(--font-size-sm)" font-weight="var(--font-weight-bold)" fill="#2D232E">WILL SEND COOL TECH</text>
-                  <text x="82" y="39" text-anchor="middle" font-size="var(--font-size-sm)" font-weight="var(--font-weight-bold)" fill="#2D232E">STORIES FOR 1 EMAIL</text>
-                  <text x="82" y="52" text-anchor="middle" font-size="var(--font-size-xs)" font-weight="var(--font-weight-semibold)" fill="#6E5D70">(zero spam, pinky swear!)</text>
-                </g>
-
                 <!-- PROP 3: World's Smallest Violin (Stage 3) -->
                 <g id="prop-violin" opacity="0" transform="translate(154, 125)" class="transition-opacity duration-300 pointer-events-none">
                   <ellipse cx="22" cy="30" rx="12" ry="16" fill="#D97706" stroke="#2D232E" stroke-width="3" transform="rotate(-20 22 30)" />
@@ -314,6 +304,26 @@
                   <text x="88" y="30" text-anchor="middle" font-size="var(--font-size-xl)" font-weight="var(--font-weight-bold)" fill="#2D232E">🎉 YAY! HOUSEMATES! 💌</text>
                 </g>
               </g>
+            </svg>
+            </div>
+
+            <!-- Independent cereal-box message: revealed at game stage 2. -->
+            <svg
+              class="cereal-box-sign"
+              viewBox="0 0 180 82"
+              role="img"
+              aria-label="Luxy's cardboard sign: Will send cool tech stories for one email"
+              focusable="false"
+            >
+              <g id="prop-cardboard-sign" opacity="0" transform="translate(8, 12)" class="transition-opacity duration-300 pointer-events-none">
+                  <rect x="0" y="0" width="164" height="58" rx="6" fill="#E6B88A" stroke="#2D232E" stroke-width="3.5" />
+                  <!-- Masking Tape Corners -->
+                  <rect x="-4" y="4" width="22" height="9" transform="rotate(-25 6 8)" fill="#FFF5D6" stroke="#2D232E" stroke-width="1.5" />
+                  <rect x="146" y="4" width="22" height="9" transform="rotate(25 156 8)" fill="#FFF5D6" stroke="#2D232E" stroke-width="1.5" />
+                  <text x="82" y="24" text-anchor="middle" font-size="var(--font-size-sm)" font-weight="var(--font-weight-bold)" fill="#2D232E">WILL SEND COOL TECH</text>
+                  <text x="82" y="39" text-anchor="middle" font-size="var(--font-size-sm)" font-weight="var(--font-weight-bold)" fill="#2D232E">STORIES FOR 1 EMAIL</text>
+                  <text x="82" y="52" text-anchor="middle" font-size="var(--font-size-xs)" font-weight="var(--font-weight-semibold)" fill="#6E5D70">(zero spam, pinky swear!)</text>
+                </g>
             </svg>
           </div>
 

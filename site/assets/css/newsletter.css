@@ -1075,3 +1075,85 @@
     margin: 0 !important;
   }
 }
+
+
+/* --------------------------------------------------------------------------
+   Independent cereal-box sign beside Luxy.
+   The sign is now separate from the mascot SVG, so its lettering does not
+   shrink when Luxy's body artwork is scaled down.
+   -------------------------------------------------------------------------- */
+#luxraj-newsletter#luxraj-newsletter .mascot-interaction-wrap {
+  position: relative;
+  display: flex;
+  flex: 0 1 38%;
+  width: 38%;
+  max-width: 180px;
+  height: 100%;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+#luxraj-newsletter#luxraj-newsletter .mascot-interaction-wrap #luxy-svg {
+  display: block;
+  width: 100%;
+  max-width: 176px;
+  height: auto;
+  max-height: 100%;
+}
+
+#luxraj-newsletter#luxraj-newsletter .cereal-box-sign {
+  display: block;
+  flex: 0 1 56%;
+  width: 56%;
+  max-width: 250px;
+  height: auto;
+  max-height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* Side-by-side treatment on phones, retaining the accepted one-screen layout. */
+@media (max-width: 639px) {
+  #luxraj-newsletter#luxraj-newsletter .character-mascot {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+    overflow: visible;
+  }
+
+  #luxraj-newsletter#luxraj-newsletter .mascot-interaction-wrap {
+    flex: 0 1 38%;
+    width: 38%;
+    max-width: none;
+    height: 100%;
+  }
+
+  #luxraj-newsletter#luxraj-newsletter .mascot-interaction-wrap #luxy-svg {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    max-height: 100%;
+  }
+
+  #luxraj-newsletter#luxraj-newsletter .cereal-box-sign {
+    flex: 0 1 56%;
+    width: 56%;
+    max-width: none;
+    max-height: 96%;
+  }
+}
+
+/* Desktop and tablet keep both items horizontally aligned. */
+@media (min-width: 640px) {
+  #luxraj-newsletter#luxraj-newsletter .character-mascot {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+    overflow: visible;
+  }
+}
