@@ -12,7 +12,7 @@
     <!-- ARCHITECTURAL HOUSE CONTAINER -->
     <div
       id="house-modal-card"
-      class="house-modal-wrapper house-modal-hidden max-w-xl w-full my-auto relative pt-6"
+      class="house-modal-wrapper newsletter-card house-modal-hidden max-w-xl w-full my-auto relative pt-6"
     >
       <!-- ==================== A. BRICK CHIMNEY (TOP RIGHT OF ROOF) ==================== -->
       <div class="absolute top-0 right-7 sm:right-12 z-0 flex flex-col items-center pointer-events-none">
@@ -30,7 +30,7 @@
       </div>
 
       <!-- ==================== B. PITCHED COTTAGE ROOF HEADER ==================== -->
-      <div class="relative z-10">
+      <div class="relative z-10 newsletter-roof">
         <!-- Sloped Shingled Gable Roof -->
         <div class="roof-shingles border-4 border-b-0 border-cocoa rounded-t-[2.75rem] pt-4 pb-3 px-4 sm:px-6 relative">
           <!-- Roof Ridge Beam -->
@@ -76,7 +76,7 @@
       </div>
 
       <!-- ==================== C. COTTAGE TIMBER-FRAMED WALLS (SCROLLABLE INTERIOR) ==================== -->
-      <div class="cottage-walls px-5 sm:px-8 pt-3 pb-5 max-h-[78vh] overflow-y-auto house-scroll relative z-10">
+      <div class="cottage-walls newsletter-interior px-5 sm:px-8 pt-3 pb-5 max-h-[78vh] overflow-y-auto house-scroll relative z-10">
 
         <!-- 1. DYNAMIC HEADLINE -->
         <div class="text-center mb-3">
@@ -86,7 +86,7 @@
         </div>
 
         <!-- 2. LUXY'S CHARM / FRIENDSHIP PROGRESS BAR -->
-        <div class="bg-creamDark border-2 border-cocoa rounded-2xl p-2 mb-3.5">
+        <div class="charm-meter bg-creamDark border-2 border-cocoa rounded-2xl p-2 mb-3.5">
           <div class="flex items-center justify-between text-xs font-display font-semibold px-1 mb-1">
             <span class="flex items-center gap-1.5 text-cocoa">
               <span id="charm-heart-icon" class="text-sm inline-block transition-transform">💖</span>
@@ -108,7 +108,7 @@
         <!-- 3. ARCHED COTTAGE WINDOW STAGE ("LUXY THE MAIL BUDDY") -->
         <div
           id="character-stage"
-          class="relative bg-gradient-to-b from-skyLight/80 via-pinkyLight/35 to-butterLight/60 border-3 border-cocoa rounded-t-[2.5rem] rounded-b-2xl p-3.5 sm:p-4 mb-3.5 flex flex-col items-center justify-between min-h-[265px] sm:min-h-[280px] overflow-hidden cursor-pointer select-none shadow-[inset_0_4px_12px_rgba(45,35,46,0.08)]"
+          class="character-stage relative bg-gradient-to-b from-skyLight/80 via-pinkyLight/35 to-butterLight/60 border-3 border-cocoa rounded-t-[2.5rem] rounded-b-2xl p-3.5 sm:p-4 mb-3.5 flex flex-col items-center justify-between min-h-[265px] sm:min-h-[280px] overflow-hidden cursor-pointer select-none shadow-[inset_0_4px_12px_rgba(45,35,46,0.08)]"
           style="border-width: 3px;"
           title="Click Luxy to pat & squish!"
         >
@@ -128,7 +128,7 @@
           <!-- SPEECH BUBBLE -->
           <div
             id="speech-bubble"
-            class="relative z-20 bg-white border-2 border-cocoa rounded-2xl px-3.5 py-2 shadow-[0_4px_0_#2D232E] max-w-md w-full text-center transition-transform duration-200"
+            class="character-speech relative z-20 bg-white border-2 border-cocoa rounded-2xl px-3.5 py-2 shadow-[0_4px_0_#2D232E] max-w-md w-full text-center transition-transform duration-200"
           >
             <p id="speech-text" class="font-display font-medium text-xs sm:text-sm text-cocoa leading-snug">
               "Hi! I'm Luxy! Welcome to my Mail Cottage! Click the 3 toy buttons below to test my polite begging skills!"
@@ -138,7 +138,7 @@
           </div>
 
           <!-- LUXY SVG + PROPS STAGE -->
-          <div class="relative w-full h-44 sm:h-48 flex items-center justify-center mt-1">
+          <div class="character-mascot relative w-full h-44 sm:h-48 flex items-center justify-center mt-1">
 
             <!-- Animated Patting Hand (Appears when clicking "Pat Head") -->
             <div id="pat-hand-el" class="hidden absolute -top-3 left-1/2 -translate-x-1/2 z-30 text-4xl pointer-events-none patting-hand">
@@ -315,13 +315,13 @@
           </div>
 
           <!-- Window Sill Hint -->
-          <div class="text-[11px] font-display font-medium text-cocoaLight flex items-center gap-1.5 z-10">
+          <div class="character-hint text-[11px] font-display font-medium text-cocoaLight flex items-center gap-1.5 z-10">
             <span>👆 Click Luxy in the window or play with the 3 buttons below!</span>
           </div>
         </div>
 
         <!-- 4. THREE BIG PLAYFUL ACTION BUTTONS (THE BEGGING MINI-GAME) -->
-        <div class="grid grid-cols-3 gap-2 sm:gap-3 mb-4">
+        <div class="game-controls grid grid-cols-3 gap-2 sm:gap-3 mb-4">
           <!-- Button 1: Convince Me Harder -->
           <button
             id="btn-beg-harder"
@@ -363,7 +363,7 @@
         </div>
 
         <!-- 5. COTTAGE MANTLEPIECE STICKER SHELF (GAMIFICATION REWARD) -->
-        <div class="wood-shelf rounded-2xl p-2.5 mb-4">
+        <div class="sticker-shelf wood-shelf rounded-2xl p-2.5 mb-4">
           <div class="flex items-center justify-between text-[11px] font-display font-bold text-cocoa mb-1.5 px-1">
             <span>🪵 LUXY'S MANTLEPIECE STICKER SHELF</span>
             <span id="sticker-count-label" class="bg-cream border border-cocoa px-2 py-0.2 rounded-full">0 / 6 Unlocked</span>
@@ -397,7 +397,7 @@
         </div>
 
         <!-- 6. OUR HEARTFELT PROMISE & BRASS FRONT-DOOR MAIL SLOT (BREVO FORM) -->
-        <div class="brass-mail-slot rounded-3xl p-4 relative">
+        <div class="subscription-panel brass-mail-slot rounded-3xl p-4 relative">
           <!-- Decorative Brass Screws on Left & Right -->
           <div class="w-3 h-3 rounded-full bg-cream border-2 border-cocoa absolute top-3 left-3 flex items-center justify-center"><div class="w-2 h-0.5 bg-cocoa rotate-45"></div></div>
           <div class="w-3 h-3 rounded-full bg-cream border-2 border-cocoa absolute top-3 right-3 flex items-center justify-center"><div class="w-2 h-0.5 bg-cocoa -rotate-45"></div></div>
@@ -417,7 +417,7 @@
           </div>
 
           <!-- Required Promise Quote -->
-          <div class="bg-cream/95 border-2 border-cocoa rounded-2xl p-3 mb-3 text-center">
+          <div class="subscription-promise bg-cream/95 border-2 border-cocoa rounded-2xl p-3 mb-3 text-center">
             <p class="text-xs sm:text-sm text-cocoa leading-relaxed font-medium">
               "We promise to bring along interesting engineering discoveries, visual explanations and technology worth understanding. <strong class="underline decoration-pinky decoration-2 underline-offset-2">Only when we have something worth sharing.</strong>"
             </p>
@@ -435,7 +435,7 @@
             <input type="text" name="email_address_check" value="" class="hidden" tabindex="-1" autocomplete="off" />
             <input type="hidden" name="locale" value="en" />
 
-            <div class="flex flex-col sm:flex-row gap-2.5">
+            <div class="subscription-form-row flex flex-col sm:flex-row gap-2.5">
               <div class="relative flex-grow">
                 <input
                   id="email-input"
@@ -513,7 +513,7 @@
       </div>
 
       <!-- ==================== D. WOODEN FRONT PORCH & FLOWER BOX FOOTER ==================== -->
-      <div class="porch-footer rounded-b-3xl px-5 py-3 text-cream flex flex-wrap items-center justify-between gap-2 relative z-10">
+      <div class="newsletter-footer porch-footer rounded-b-3xl px-5 py-3 text-cream flex flex-wrap items-center justify-between gap-2 relative z-10">
         <div class="flex items-center gap-1.5 text-xs font-display font-medium">
           <span>🌷🌻🌷</span>
           <span>Demo only • No email is sent or stored</span>
