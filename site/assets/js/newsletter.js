@@ -321,7 +321,7 @@ export function initNewsletterPopup(){
       for (let i = 0; i < count; i++) {
         const el = document.createElement('div');
         el.textContent = emojis[i % emojis.length];
-        el.className = 'absolute text-xl sm:text-2xl pointer-events-none select-none';
+        el.className = 'newsletter-floating-emoji';
         const leftPct = 28 + Math.random() * 44;
         const topPct = 35 + Math.random() * 25;
         el.style.left = `${leftPct}%`;
@@ -377,8 +377,8 @@ export function initNewsletterPopup(){
       unlockedStickers.add(id);
       const el = get(id);
       if (el) {
-        el.classList.remove('opacity-45', 'bg-cream/70', 'border-cocoa/30');
-        el.classList.add('opacity-100', 'bg-butterLight', 'border-cocoa', 'shadow-[0_3px_0_#2D232E]', 'sticker-pop');
+        el.classList.remove('sticker-locked');
+        el.classList.add('sticker-unlocked', 'sticker-pop');
       }
       get('sticker-count-label').textContent = `${unlockedStickers.size} / 6 Unlocked`;
     }
