@@ -1810,39 +1810,23 @@
 }
 
 
-/* Component-scoped desktop tokens for Luxy's oath panel. These do not affect mobile. */
-#luxraj-newsletter {
-  --newsletter-desktop-oath-height: 330px;
-  --newsletter-desktop-oath-font-size: 22px;
-  --newsletter-desktop-oath-line-height: 1.36;
-  --newsletter-desktop-oath-padding-top: 16px;
-  --newsletter-desktop-oath-padding-right: 18px;
-  --newsletter-desktop-oath-padding-bottom: 16px;
-  --newsletter-desktop-oath-padding-left: 76px;
-  --newsletter-desktop-crown-top: 60px;
-  --newsletter-desktop-crown-start: -7px;
-  --newsletter-desktop-crown-box-size: 60px;
-  --newsletter-desktop-crown-font-size: 52px;
-  --newsletter-desktop-form-control-height: 48px;
-  --newsletter-desktop-form-control-gap: 6px;
-}
-
+/* Desktop signup panel refinement: top-left crown, larger oath, and compact stacked form. */
 @media (min-width: 768px) {
   #luxraj-newsletter#luxraj-newsletter .subscription-panel {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 2px;
-    padding: 4px 18px 6px !important;
+    gap: 7px;
+    padding: 10px 18px 18px !important;
     position: relative;
   }
 
-  /* Larger pinky-promise badge, aligned centrally above the oath. */
+  /* Center the promise badge and VIP status along the top edge. */
   #luxraj-newsletter#luxraj-newsletter .subscription-panel > .text-center {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0;
+    gap: 3px;
     margin: 0 !important;
     padding: 0 !important;
     text-align: center;
@@ -1855,7 +1839,7 @@
     gap: 9px;
     width: fit-content;
     max-width: 100%;
-    padding: 4px 15px !important;
+    padding: 6px 16px !important;
     border-width: 2.5px !important;
     font-size: 15px !important;
     line-height: 1.12 !important;
@@ -1871,72 +1855,62 @@
 
   #luxraj-newsletter#luxraj-newsletter #vip-carpet-badge {
     margin: 0 !important;
-    padding: 1px 8px !important;
     justify-content: center;
     text-align: center;
   }
 
-  /* Crown is positioned at the oath card's upper-left, not at the panel bottom. */
+  /* Crown sits beside the badge at the oath card's upper-left corner.
+     Its position is independent of the email and subscribe form flow. */
   #luxraj-newsletter#luxraj-newsletter #input-vip-crown {
-    top: var(--newsletter-desktop-crown-top) !important;
+    top: 39px !important;
     right: auto !important;
     bottom: auto !important;
-    left: var(--newsletter-desktop-crown-start) !important;
-    width: var(--newsletter-desktop-crown-box-size);
-    height: 58px;
+    left: -8px !important;
+    width: 68px;
+    height: 60px;
     margin: 0 !important;
-    font-size: var(--newsletter-desktop-crown-font-size) !important;
+    font-size: 54px !important;
     line-height: 1 !important;
     text-align: center;
     z-index: 5 !important;
-    filter: drop-shadow(0 3px 2px rgb(91 61 45 / 0.2));
   }
 
-  /* Expanded oath card: the text starts after a clear crown-safe left gutter. */
-  #luxraj-newsletter#luxraj-newsletter .subscription-panel .subscription-promise {
+  /* Enlarge the oath, while reserving a clear left gutter for the crown. */
+  #luxraj-newsletter#luxraj-newsletter .subscription-promise {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
     width: 100%;
-    min-height: var(--newsletter-desktop-oath-height);
-    height: var(--newsletter-desktop-oath-height);
-    flex: 0 0 var(--newsletter-desktop-oath-height);
+    min-height: 145px;
+    flex: 0 0 auto;
     margin: 0 !important;
-    padding-top: var(--newsletter-desktop-oath-padding-top) !important;
-    padding-right: var(--newsletter-desktop-oath-padding-right) !important;
-    padding-bottom: var(--newsletter-desktop-oath-padding-bottom) !important;
-    padding-left: var(--newsletter-desktop-oath-padding-left) !important;
+    padding: 17px 18px 16px 70px !important;
   }
 
   #luxraj-newsletter#luxraj-newsletter .subscription-promise p {
-    max-width: 100%;
     margin: 0 !important;
-    font-size: var(--newsletter-desktop-oath-font-size) !important;
+    font-size: 16px !important;
     font-weight: 700 !important;
     font-style: italic !important;
-    line-height: var(--newsletter-desktop-oath-line-height) !important;
+    line-height: 1.43 !important;
     text-align: center;
-    overflow-wrap: normal;
-    word-break: normal;
   }
 
-  /* Email and subscription remain full-width stacked controls. */
+  /* Keep the established stacked controls in place instead of enlarging them. */
   #luxraj-newsletter#luxraj-newsletter #subscribe-form {
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 0;
+    gap: 8px;
     margin: 0 !important;
   }
 
-  #luxraj-newsletter#luxraj-newsletter #subscribe-form > .subscription-form-row {
+  #luxraj-newsletter#luxraj-newsletter .subscription-form-row {
     display: flex;
     flex-direction: column !important;
     align-items: stretch;
     width: 100%;
-    gap: var(--newsletter-desktop-form-control-gap) !important;
-    margin: 0 !important;
+    gap: 8px !important;
   }
 
   #luxraj-newsletter#luxraj-newsletter .subscription-form-row > div {
@@ -1948,9 +1922,8 @@
   #luxraj-newsletter#luxraj-newsletter #email-input {
     display: block;
     width: 100%;
-    height: var(--newsletter-desktop-form-control-height);
-    min-height: var(--newsletter-desktop-form-control-height);
-    box-sizing: border-box;
+    height: 49px;
+    min-height: 49px;
     padding: 10px 44px 10px 15px !important;
     font-size: 15px !important;
     line-height: 1.2 !important;
@@ -1966,9 +1939,8 @@
     flex: 0 0 auto;
     align-self: stretch;
     width: 100%;
-    height: var(--newsletter-desktop-form-control-height);
-    min-height: var(--newsletter-desktop-form-control-height);
-    box-sizing: border-box;
+    height: 49px;
+    min-height: 49px;
     padding: 9px 18px !important;
     justify-content: center;
     font-size: 16px !important;
@@ -1981,47 +1953,61 @@
   }
 }
 
-/* Narrow desktop panels reserve the left edge for the crown and keep the VIP pill on one line. */
-@media (min-width: 768px) and (max-width: 1023px) {
-  #luxraj-newsletter {
-    --newsletter-desktop-oath-height: 330px;
-    --newsletter-desktop-oath-font-size: 19px;
-    --newsletter-desktop-oath-line-height: 1.35;
-    --newsletter-desktop-oath-padding-top: 8px;
-    --newsletter-desktop-oath-padding-right: 18px;
-    --newsletter-desktop-oath-padding-bottom: 8px;
-    --newsletter-desktop-oath-padding-left: 56px;
-    --newsletter-desktop-crown-box-size: 58px;
-    --newsletter-desktop-crown-font-size: 50px;
-  }
-
-  #luxraj-newsletter#luxraj-newsletter #vip-carpet-badge {
-    align-self: flex-end;
-    flex: 0 0 auto;
-    width: calc(100% - 74px);
-    max-width: calc(100% - 74px);
-    padding: 2px 4px !important;
-    font-size: 9px !important;
-    line-height: 1.1 !important;
-    white-space: nowrap !important;
-    flex-wrap: nowrap !important;
-    overflow: hidden;
-  }
-
-  #luxraj-newsletter#luxraj-newsletter #vip-carpet-badge > span {
-    white-space: nowrap !important;
-    font-size: inherit !important;
-    line-height: inherit !important;
-  }
-}
-
-/* Short desktop viewports keep the enlarged oath; only exterior gaps tighten. */
+/* Compact desktop/laptop screens: preserve the same crown position and prevent
+   the oath's extra height from pushing the email and subscribe controls down. */
 @media (min-width: 768px) and (max-height: 720px) {
   #luxraj-newsletter#luxraj-newsletter .subscription-panel {
-    gap: 2px;
-    padding: 4px 16px 6px !important;
+    gap: 5px;
+    padding: 9px 16px 16px !important;
   }
+
   #luxraj-newsletter#luxraj-newsletter .subscription-panel > .text-center {
-    gap: 0;
+    gap: 2px;
+  }
+
+  #luxraj-newsletter#luxraj-newsletter .subscription-panel > .text-center > span:first-child {
+    padding: 5px 13px !important;
+    font-size: 14px !important;
+  }
+
+  #luxraj-newsletter#luxraj-newsletter .subscription-panel > .text-center > span:first-child .pinky-promise-icon {
+    width: 60px !important;
+    height: 27px !important;
+  }
+
+  #luxraj-newsletter#luxraj-newsletter #input-vip-crown {
+    top: 36px !important;
+    left: -7px !important;
+    width: 64px;
+    height: 56px;
+    font-size: 50px !important;
+  }
+
+  #luxraj-newsletter#luxraj-newsletter .subscription-promise {
+    min-height: 136px;
+    padding: 13px 15px 13px 66px !important;
+  }
+
+  #luxraj-newsletter#luxraj-newsletter .subscription-promise p {
+    font-size: 15px !important;
+    line-height: 1.4 !important;
+  }
+
+  #luxraj-newsletter#luxraj-newsletter #subscribe-form {
+    gap: 6px;
+  }
+
+  #luxraj-newsletter#luxraj-newsletter .subscription-form-row {
+    gap: 7px !important;
+  }
+
+  #luxraj-newsletter#luxraj-newsletter #email-input,
+  #luxraj-newsletter#luxraj-newsletter #submit-btn {
+    height: 48px;
+    min-height: 48px;
+  }
+
+  #luxraj-newsletter#luxraj-newsletter #submit-btn-label {
+    font-size: 15px !important;
   }
 }
