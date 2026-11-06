@@ -477,7 +477,7 @@
     height: 144px;
     min-height: 144px !important;
     max-height: 144px;
-    gap: 3px;
+    gap: 2px;
     padding: 6px !important;
     border-width: 2px !important;
     border-radius: 20px 20px 12px 12px;
@@ -499,6 +499,7 @@
     overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    margin: 0 !important;
     font-size: 10px !important;
     line-height: 1.12 !important;
   }
@@ -773,6 +774,8 @@
     height: 124px;
     min-height: 124px !important;
     max-height: 124px;
+    gap: 1px;
+    padding: 5px 6px !important;
   }
 
   #luxraj-newsletter#luxraj-newsletter .character-mascot { height: 74px; }
@@ -818,6 +821,8 @@
     height: 108px;
     min-height: 108px !important;
     max-height: 108px;
+    gap: 1px;
+    padding: 3px 6px !important;
   }
 
   #luxraj-newsletter#luxraj-newsletter .character-mascot { height: 62px; }
