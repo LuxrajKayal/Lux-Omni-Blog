@@ -505,13 +505,17 @@ export function initNewsletterPopup(){
     characterStage.addEventListener('click', performHeadPat);
 
     /******************************************************************
-     * 9. SMOOTH EYE TRACKING & EMAIL INPUT LIVE REACTIONS
+     * 9. RESPONSIVE EYE TRACKING & EMAIL INPUT LIVE REACTIONS
      ******************************************************************/
     let eyeTargetX = 0;
     let eyeTargetY = 0;
     let eyeCurrentX = 0;
     let eyeCurrentY = 0;
     let eyeAnimationFrame = 0;
+    let activeTouchPointerId = null;
+
+    const coarsePointerQuery = window.matchMedia('(pointer: coarse)');
+    const houseScroll = root.querySelector('.house-scroll');
 
     function animateEyeTracking() {
       eyeCurrentX += (eyeTargetX - eyeCurrentX) * 0.28;
@@ -535,48 +539,187 @@ export function initNewsletterPopup(){
       }
     }
 
+    function setEyeTarget(x, y) {
+      eyeTargetX = x;
+      eyeTargetY = y;
+
+      if (!eyeAnimationFrame) {
+        eyeAnimationFrame = window.requestAnimationFrame(animateEyeTracking);
+      }
+    }
+
+    function getEyeVector(clientX, clientY) {
+      const rect = luxySvg.getBoundingClientRect();
+      if (!rect.width || !rect.height) return null;
+
+      return {
+        x: (clientX - (rect.left + rect.width / 2)) * (260 / rect.width),
+        y: (clientY - (rect.top + rect.height / 2)) * (220 / rect.height)
+      };
+    }
+
+    /*
+     * Phone gaze: Luxy looks towards the centre of the visible screen.
+     * As the reader scrolls the cottage interior, the screen centre stays
+     * fixed while Luxy's position changes, so its gaze follows the reader.
+     */
+    function updateReaderAwareGaze() {
+      if (!isHouseOpen || !coarsePointerQuery.matches || !luxySvg || !luxyEyesTrack) return;
+
+      const viewport = window.visualViewport;
+      const screenCenterX = viewport
+        ? viewport.offsetLeft + viewport.width / 2
+        : window.innerWidth / 2;
+      const screenCenterY = viewport
+        ? viewport.offsetTop + viewport.height / 2
+        : window.innerHeight / 2;
+
+      const vector = getEyeVector(screenCenterX, screenCenterY);
+      if (!vector) return;
+
+      const distance = Math.hypot(vector.x, vector.y);
+      const deadZone = 7;
+      if (distance <= deadZone) {
+        setEyeTarget(0, 0);
+        return;
+      }
+
+      // Gradually strengthen the gaze as Luxy moves farther from screen centre.
+      const strength = Math.min(6, (distance - deadZone) / 22);
+      setEyeTarget(
+        (vector.x / distance) * strength,
+        (vector.y / distance) * strength
+      );
+    }
+
+    /*
+     * Other touch targets can draw Luxy's attention fully in their direction.
+     * The three game buttons and Luxy's own interaction stage are excluded:
+     * during those moments Luxy keeps looking towards the reader.
+     */
+    function moveTouchGaze(event) {
+      if (activeTouchPointerId !== event.pointerId) return;
+
+      const vector = getEyeVector(event.clientX, event.clientY);
+      if (!vector) return;
+
+      const distance = Math.hypot(vector.x, vector.y);
+      if (distance < 7) {
+        updateReaderAwareGaze();
+        return;
+      }
+
+      const fullMovement = 6;
+      setEyeTarget(
+        (vector.x / distance) * fullMovement,
+        (vector.y / distance) * fullMovement
+      );
+    }
+
+    function startTouchGaze(event) {
+      if (event.pointerType !== 'touch' || !event.isPrimary || !isHouseOpen) return;
+
+      const target = event.target instanceof Element ? event.target : null;
+      const readerFocusTarget = target?.closest(
+        '#btn-beg-harder, #btn-cookie, #btn-pat, #character-stage'
+      );
+
+      if (readerFocusTarget) {
+        activeTouchPointerId = null;
+        updateReaderAwareGaze();
+        return;
+      }
+
+      activeTouchPointerId = event.pointerId;
+      moveTouchGaze(event);
+    }
+
+    function endTouchGaze(event) {
+      if (event.pointerType !== 'touch') return;
+      if (activeTouchPointerId !== null && activeTouchPointerId !== event.pointerId) return;
+
+      activeTouchPointerId = null;
+
+      // Return to reader-aware gaze, never to an arbitrary fixed resting point.
+      if (isHouseOpen) updateReaderAwareGaze();
+      else setEyeTarget(0, 0);
+    }
+
     function moveLuxyEyes(event) {
       if (!isHouseOpen || !luxySvg || !luxyEyesTrack) return;
       if (event.pointerType === 'touch' && !event.isPrimary) return;
 
-      const rect = luxySvg.getBoundingClientRect();
-      if (!rect.width || !rect.height) return;
+      if (event.pointerType === 'touch') {
+        if (activeTouchPointerId === event.pointerId) {
+          moveTouchGaze(event);
+        } else {
+          updateReaderAwareGaze();
+        }
+        return;
+      }
 
-      // Convert viewport pixels into the mascot SVG's 260 × 220 viewBox units.
-      const dx = (event.clientX - (rect.left + rect.width / 2)) * (260 / rect.width);
-      const dy = (event.clientY - (rect.top + rect.height / 2)) * (220 / rect.height);
-      const angle = Math.atan2(dy, dx);
-      const distance = Math.min(6, Math.hypot(dx, dy) / 40);
+      // Coarse-pointer devices use screen-centre gaze, not desktop cursor tracking.
+      if (coarsePointerQuery.matches) {
+        updateReaderAwareGaze();
+        return;
+      }
 
-      eyeTargetX = Math.cos(angle) * distance;
-      eyeTargetY = Math.sin(angle) * distance;
+      // Desktop behaviour remains distance-based mouse tracking.
+      const vector = getEyeVector(event.clientX, event.clientY);
+      if (!vector) return;
+      const angle = Math.atan2(vector.y, vector.x);
+      const distance = Math.min(6, Math.hypot(vector.x, vector.y) / 40);
+      setEyeTarget(Math.cos(angle) * distance, Math.sin(angle) * distance);
+    }
 
-      if (!eyeAnimationFrame) {
-        eyeAnimationFrame = window.requestAnimationFrame(animateEyeTracking);
+    function handlePointerDown(event) {
+      if (event.pointerType === 'touch') {
+        startTouchGaze(event);
+      } else {
+        moveLuxyEyes(event);
       }
     }
 
     function resetLuxyEyes(event) {
-      // A touch ending should relax the eyes; mouse movement should keep tracking.
       if (event?.pointerType && event.pointerType !== 'touch') return;
 
-      eyeTargetX = 0;
-      eyeTargetY = 0;
-
-      if (!eyeAnimationFrame) {
-        eyeAnimationFrame = window.requestAnimationFrame(animateEyeTracking);
+      activeTouchPointerId = null;
+      if (isHouseOpen && coarsePointerQuery.matches) {
+        updateReaderAwareGaze();
+      } else {
+        setEyeTarget(0, 0);
       }
     }
 
-    // Pointer Events cover mouse, pen and touch without a separate mobile code path.
+    function handleHouseScroll() {
+      // A real scroll gesture switches from finger attention to reader attention.
+      if (activeTouchPointerId !== null) activeTouchPointerId = null;
+      updateReaderAwareGaze();
+    }
+
     window.addEventListener('pointermove', moveLuxyEyes, { passive: true });
-    window.addEventListener('pointerdown', moveLuxyEyes, { passive: true });
-    window.addEventListener('pointerup', resetLuxyEyes, { passive: true });
-    window.addEventListener('pointercancel', resetLuxyEyes, { passive: true });
+    window.addEventListener('pointerdown', handlePointerDown, { passive: true });
+    window.addEventListener('pointerup', endTouchGaze, { passive: true });
+    window.addEventListener('pointercancel', endTouchGaze, { passive: true });
     window.addEventListener('pointerleave', (event) => {
       if (event.pointerType !== 'touch') resetLuxyEyes();
     }, { passive: true });
     window.addEventListener('blur', resetLuxyEyes);
+    window.addEventListener('resize', updateReaderAwareGaze, { passive: true });
+
+    if (houseScroll) {
+      houseScroll.addEventListener('scroll', handleHouseScroll, { passive: true });
+    }
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', updateReaderAwareGaze, { passive: true });
+      window.visualViewport.addEventListener('scroll', updateReaderAwareGaze, { passive: true });
+    }
+
+    houseModalCard.addEventListener('transitionend', (event) => {
+      if (event.propertyName === 'transform') updateReaderAwareGaze();
+    });
+
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) resetLuxyEyes();
     });
