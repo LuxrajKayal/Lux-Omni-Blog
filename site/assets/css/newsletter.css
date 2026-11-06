@@ -1228,7 +1228,7 @@
 
 
 /* --------------------------------------------------------------------------
-   Newsletter-native CSS utilities replacing the former Tailwind CDN runtime.
+   Newsletter-native CSS utilities maintained locally without a framework.
    -------------------------------------------------------------------------- */
 #luxraj-newsletter [class~="-bottom-1.5"]{bottom:-0.375rem;}
 #luxraj-newsletter [class~="-left-2"]{left:-0.5rem;}
