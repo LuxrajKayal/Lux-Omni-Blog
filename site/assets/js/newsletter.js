@@ -153,37 +153,37 @@ export function initNewsletterPopup(){
 
     const BEGGING_MOVES = [
       {
-        headline: "Move #1: Luxy's Giant Shimmering Puppy Eyes! 🥺",
+        headline: "Move 1: Luxy's Giant Shimmering Puppy Eyes",
         speech: '"Look at these giant watery eyes in my cottage window! I practiced in the mirror for 3 hours just for you!"',
         btnLabel: "Okay, Those Eyes Worked!",
         charmBonus: 15
       },
       {
-        headline: "Move #2: The Hand-Drawn Cardboard Sign! 📦",
+        headline: "Move 2: The Hand-Drawn Cardboard Sign",
         speech: '"I made this sign out of a cereal box! Will trade our best visual explanations for 1 cozy email!"',
         btnLabel: "Accept Luxy's Trade!",
         charmBonus: 15
       },
       {
-        headline: "Move #3: A Little Cottage Serenade! 🎶",
+        headline: "Move 3: A Little Cottage Serenade",
         speech: "“♪ ♫ Playing a tiny, sweet serenade from my cottage window... can you hear my dedication? ♪”",
         btnLabel: "Bravo! Sign Me Up!",
         charmBonus: 15
       },
       {
-        headline: "Move #4: Bribing You With Barnaby the Frog! 🐸",
+        headline: "Move 4: Bribing You With Barnaby the Frog",
         speech: '"Okay, what if I invite my roommate Barnaby the polite wizard frog? He loves engineering discoveries!"',
         btnLabel: "Do It For Barnaby!",
         charmBonus: 15
       },
       {
-        headline: "Move #5: The Royal Oath Form! 👑",
+        headline: "Move 5: The Royal Oath Form",
         speech: "“The Royal Oath Form is ready! This way, please! 👑”",
         btnLabel: "Claim My Royal Spot!",
         charmBonus: 15
       },
       {
-        headline: "Move #6: The Dramatic Flop! 🥺",
+        headline: "Move 6: The Dramatic Flop",
         speech: "“*FLOP* Okay, I am officially out of moves on my cottage floor... please just one tiny click? 🥺👉👈”",
         btnLabel: "Cheer Luxy Up & Join!",
         charmBonus: 20
@@ -215,7 +215,6 @@ export function initNewsletterPopup(){
     const charmStatusLabel = get('charm-status-label');
     const charmPercentBadge = get('charm-percent-badge');
     const charmBarFill = get('charm-bar-fill');
-    const charmHeartIcon = get('charm-heart-icon');
 
     const characterStage = get('character-stage');
     const floatingFxLayer = get('floating-fx-layer');
@@ -358,9 +357,6 @@ export function initNewsletterPopup(){
       charmPercentBadge.textContent = `${charmScore}%`;
       charmBarFill.style.width = `${charmScore}%`;
 
-      charmHeartIcon.style.transform = 'scale(1.35)';
-      setTimeout(() => { charmHeartIcon.style.transform = 'scale(1)'; }, 220);
-
       if (charmScore < 45) {
         charmStatusLabel.textContent = "Luxy's Charm Effort: Trying Hard!";
       } else if (charmScore < 75) {
@@ -368,7 +364,7 @@ export function initNewsletterPopup(){
       } else if (charmScore < 100) {
         charmStatusLabel.textContent = "Luxy's Charm Effort: Irresistible!!";
       } else {
-        charmStatusLabel.textContent = "MAX CHARM REACHED! Official Housemates! 💖";
+        charmStatusLabel.textContent = "MAX CHARM REACHED! Official Housemates!";
       }
     }
 
@@ -805,7 +801,7 @@ export function initNewsletterPopup(){
       isSubscribed=true;sound.playVictory();addCharm(100);unlockSticker('sticker-bestie');launchConfetti();
       luxySvg.classList.remove('luxy-idle','luxy-squish','luxy-flop');luxySvg.classList.add('luxy-happy');
       showCompanion(null);propSadSign.setAttribute('opacity','0');propBestiesBanner.setAttribute('opacity','1');starEyeLeft.setAttribute('opacity','1');starEyeRight.setAttribute('opacity','1');
-      mainHeadline.textContent='YAY!! Luxy has a demo celebration! 🎉';
+      mainHeadline.textContent='YAY!! Luxy has a demo celebration!';
       updateSpeech('That was only a preview, '+val.split('@')[0]+'! No address was sent or saved. 💖');
       submitBtnLabel.textContent='Demo Celebration!';get('vip-member-email').textContent=val;get('vip-card-number').textContent='#PREVIEW';
       get('vip-stats-line').textContent='Preview played with '+cookiesFed+' cookies, '+headPats+' head pats & '+unlockedStickers.size+'/6 stickers!';
@@ -824,7 +820,7 @@ export function initNewsletterPopup(){
       luxySvg.classList.remove('luxy-happy', 'luxy-flop');
       luxySvg.classList.add('luxy-idle');
       get('vip-membership-card').classList.add('hidden');
-      mainHeadline.textContent = "Welcome inside! Can we be inbox friends? 🥺";
+      mainHeadline.textContent = "Welcome inside! Can we be inbox friends?";
       updateSpeech('"Ready for round two! Click any button below to play with Luxy!"');
       submitBtnLabel.textContent = "Shubshribe!";
       get('submit-btn').disabled = false;
