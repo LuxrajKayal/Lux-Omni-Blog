@@ -1471,3 +1471,149 @@
 #luxraj-newsletter .sticker-unlocked { opacity:1; background:#FFF5D6; border-color:#2D232E; box-shadow:0 3px 0 #2D232E; }
 #luxraj-newsletter .newsletter-floating-emoji { position:absolute; pointer-events:none; user-select:none; font-size:1.25rem; line-height:1.5rem; }
 @media (min-width:640px) { #luxraj-newsletter .newsletter-floating-emoji { font-size:1.5rem; line-height:2rem; } }
+
+
+/* Refined warm-timber edge system: lighter outlines, softer depth. */
+#luxraj-newsletter#luxraj-newsletter {
+  --newsletter-outline: #987563;
+  --newsletter-outline-soft: #BFA18D;
+  --newsletter-outline-deep: #80604F;
+  --newsletter-shadow: rgba(91, 61, 45, 0.14);
+  --newsletter-shadow-hover: rgba(91, 61, 45, 0.2);
+}
+
+/* Keep ink-dark typography, but move all utility borders into the warm wood palette. */
+#luxraj-newsletter#luxraj-newsletter [class~="border-cocoa"],
+#luxraj-newsletter#luxraj-newsletter [class~="border-cocoa/25"],
+#luxraj-newsletter#luxraj-newsletter [class~="border-cocoa/30"] {
+  border-color: var(--newsletter-outline) !important;
+}
+
+#luxraj-newsletter#luxraj-newsletter [class~="border-4"] { border-width: 2px !important; }
+#luxraj-newsletter#luxraj-newsletter [class~="border-3"] { border-width: 1.75px !important; }
+#luxraj-newsletter#luxraj-newsletter [class~="border-2"] { border-width: 1.5px !important; }
+#luxraj-newsletter#luxraj-newsletter [class~="border"] { border-width: 1px !important; }
+#luxraj-newsletter#luxraj-newsletter [class~="border-x-3"] {
+  border-left-width: 1.75px !important;
+  border-right-width: 1.75px !important;
+}
+#luxraj-newsletter#luxraj-newsletter [class~="border-l-2"],
+#luxraj-newsletter#luxraj-newsletter [class~="border-r-2"],
+#luxraj-newsletter#luxraj-newsletter [class~="border-b-2"] {
+  border-width: 1px !important;
+}
+
+#luxraj-newsletter#luxraj-newsletter .cozy-card {
+  border: 1.75px solid var(--newsletter-outline);
+  box-shadow: 0 10px 28px var(--newsletter-shadow);
+}
+#luxraj-newsletter#luxraj-newsletter .cozy-pill {
+  border: 1.25px solid var(--newsletter-outline-soft);
+  box-shadow: 0 2px 7px var(--newsletter-shadow);
+}
+#luxraj-newsletter#luxraj-newsletter .toy-btn {
+  border: 1.75px solid var(--newsletter-outline);
+  box-shadow: 0 3px 9px var(--newsletter-shadow);
+}
+#luxraj-newsletter#luxraj-newsletter .toy-btn:hover:not(:disabled) {
+  box-shadow: 0 6px 14px var(--newsletter-shadow-hover);
+}
+#luxraj-newsletter#luxraj-newsletter .toy-btn:active:not(:disabled) {
+  box-shadow: 0 1px 4px var(--newsletter-shadow);
+}
+
+#luxraj-newsletter#luxraj-newsletter .house-modal-wrapper {
+  filter: drop-shadow(0 18px 34px rgba(91, 61, 45, 0.2));
+}
+#luxraj-newsletter#luxraj-newsletter .roof-shingles {
+  border-width: 2px !important;
+  border-bottom-width: 0 !important;
+}
+#luxraj-newsletter#luxraj-newsletter .scallop-eaves {
+  background: radial-gradient(circle at 50% 0%, #B83D2B 9px, #987563 10px, #987563 11.5px, transparent 12px);
+  background-size: 26px 16px;
+  background-repeat: repeat-x;
+}
+#luxraj-newsletter#luxraj-newsletter .cottage-walls {
+  border-left: 4px solid var(--newsletter-outline-soft);
+  border-right: 4px solid var(--newsletter-outline-soft);
+  box-shadow:
+    inset 7px 0 0 #D9A066,
+    inset -7px 0 0 #D9A066,
+    inset 9px 0 0 #E8C8A9,
+    inset -9px 0 0 #E8C8A9;
+}
+#luxraj-newsletter#luxraj-newsletter .brass-mail-slot {
+  border: 2px solid var(--newsletter-outline);
+  box-shadow: 0 5px 14px var(--newsletter-shadow), inset 0 2px 0 rgba(255, 255, 255, 0.65);
+}
+#luxraj-newsletter#luxraj-newsletter .wood-shelf {
+  border: 1.75px solid var(--newsletter-outline);
+  box-shadow: 0 4px 10px var(--newsletter-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+#luxraj-newsletter#luxraj-newsletter .porch-footer {
+  border: 2px solid var(--newsletter-outline-deep);
+  box-shadow: 0 6px 14px rgba(91, 61, 45, 0.18);
+}
+#luxraj-newsletter#luxraj-newsletter .house-scroll::-webkit-scrollbar-thumb {
+  border-color: var(--newsletter-outline-soft);
+}
+
+/* Give the content surfaces a quiet outline and diffuse lift instead of a hard shadow ledge. */
+#luxraj-newsletter#luxraj-newsletter .charm-meter {
+  border-color: var(--newsletter-outline-soft);
+  border-width: 1.5px;
+}
+#luxraj-newsletter#luxraj-newsletter .character-stage {
+  border-color: var(--newsletter-outline);
+  border-width: 1.75px !important;
+  box-shadow: inset 0 3px 12px rgba(91, 61, 45, 0.06);
+}
+#luxraj-newsletter#luxraj-newsletter .character-speech {
+  border-color: var(--newsletter-outline);
+  border-width: 1.5px;
+  box-shadow: 0 3px 9px var(--newsletter-shadow);
+}
+#luxraj-newsletter#luxraj-newsletter .game-controls > button {
+  border-color: var(--newsletter-outline);
+  border-width: 1.5px;
+  box-shadow: 0 3px 9px var(--newsletter-shadow);
+}
+#luxraj-newsletter#luxraj-newsletter .sticker-shelf {
+  border-color: var(--newsletter-outline);
+  border-width: 1.75px;
+  box-shadow: 0 4px 10px var(--newsletter-shadow);
+}
+#luxraj-newsletter#luxraj-newsletter .subscription-panel {
+  border-color: var(--newsletter-outline);
+  border-width: 1.75px;
+  box-shadow: 0 5px 14px var(--newsletter-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+#luxraj-newsletter#luxraj-newsletter .subscription-promise {
+  border-color: var(--newsletter-outline-soft);
+  border-width: 1.5px;
+}
+#luxraj-newsletter#luxraj-newsletter #email-input {
+  border-color: var(--newsletter-outline) !important;
+  border-width: 1.5px !important;
+  box-shadow: inset 0 2px 4px rgba(91, 61, 45, 0.06);
+}
+#luxraj-newsletter#luxraj-newsletter .newsletter-footer {
+  border-color: var(--newsletter-outline-deep);
+  border-width: 2px;
+}
+#luxraj-newsletter#luxraj-newsletter .sticker-locked {
+  border-color: var(--newsletter-outline-soft);
+}
+#luxraj-newsletter#luxraj-newsletter .sticker-unlocked {
+  border-color: var(--newsletter-outline);
+  box-shadow: 0 2px 7px var(--newsletter-shadow);
+}
+
+/* Retain the pressed-card affordance without the heavy dark stripe. */
+#luxraj-newsletter#luxraj-newsletter [class~="shadow-[0_4px_0_#2D232E]"] {
+  box-shadow: 0 3px 9px var(--newsletter-shadow);
+}
+#luxraj-newsletter#luxraj-newsletter [class~="shadow-[0_6px_0_#2D232E]"] {
+  box-shadow: 0 4px 11px var(--newsletter-shadow);
+}
