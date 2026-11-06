@@ -174,11 +174,11 @@
 
     /* Shingled Roof Texture */
     #luxraj-newsletter .roof-shingles {
-      background-color: #E05A47;
+      background-color: var(--topbar-background);
       background-image:
-        radial-gradient(circle at 50% 100%, transparent 14px, #B83D2B 15px, #B83D2B 17px, transparent 18px),
-        radial-gradient(circle at 0% 100%, transparent 14px, #B83D2B 15px, #B83D2B 17px, transparent 18px),
-        radial-gradient(circle at 100% 100%, transparent 14px, #B83D2B 15px, #B83D2B 17px, transparent 18px);
+        radial-gradient(circle at 50% 100%, transparent 14px, var(--topbar-border) 15px, var(--topbar-border) 17px, transparent 18px),
+        radial-gradient(circle at 0% 100%, transparent 14px, var(--topbar-border) 15px, var(--topbar-border) 17px, transparent 18px),
+        radial-gradient(circle at 100% 100%, transparent 14px, var(--topbar-border) 15px, var(--topbar-border) 17px, transparent 18px);
       background-size: 36px 22px;
       background-position: 0 0, 18px 11px, 18px 11px;
     }
@@ -186,7 +186,7 @@
     /* Scalloped Roof Eaves Overhang */
     #luxraj-newsletter .scallop-eaves {
       height: 16px;
-      background: radial-gradient(circle at 50% 0%, #B83D2B 9px, #2D232E 10px, #2D232E 12.5px, transparent 13px);
+      background: radial-gradient(circle at 50% 0%, var(--topbar-background) 9px, var(--topbar-border) 10px, var(--topbar-border) 12.5px, transparent 13px);
       background-size: 26px 16px;
       background-repeat: repeat-x;
     }
@@ -1528,7 +1528,7 @@
   border-bottom-width: 0 !important;
 }
 #luxraj-newsletter#luxraj-newsletter .scallop-eaves {
-  background: radial-gradient(circle at 50% 0%, #B83D2B 9px, #987563 10px, #987563 11.5px, transparent 12px);
+  background: radial-gradient(circle at 50% 0%, var(--topbar-background) 9px, var(--topbar-border) 10px, var(--topbar-border) 11.5px, transparent 12px);
   background-size: 26px 16px;
   background-repeat: repeat-x;
 }
