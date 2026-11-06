@@ -231,7 +231,6 @@ export function initNewsletterPopup(){
     const starEyeRight = get('star-eye-right');
 
     // Right-side companion area: one companion is visible for each move.
-    const companionName = get('companion-stage-name');
     const companionProps = [
       'prop-mirror',
       'prop-cardboard-sign',
@@ -384,7 +383,7 @@ export function initNewsletterPopup(){
       get('sticker-count-label').textContent = `${unlockedStickers.size} / 6 Unlocked`;
     }
 
-    function showCompanion(propId, label = '') {
+    function showCompanion(propId) {
       companionProps.forEach((prop) => {
         prop.classList.remove('active');
         prop.setAttribute('aria-hidden', 'true');
@@ -396,7 +395,6 @@ export function initNewsletterPopup(){
         nextProp.classList.add('active');
       }
 
-      companionName.textContent = label;
     }
 
     /******************************************************************
@@ -424,7 +422,7 @@ export function initNewsletterPopup(){
 
       if (begStage === 1) {
         sound.playPop(480, 880);
-        showCompanion('prop-mirror', 'Mirror');
+        showCompanion('prop-mirror');
         puppyEyeLeft.setAttribute('opacity', '1');
         puppyEyeRight.setAttribute('opacity', '1');
         luxyMouth.setAttribute('d', 'M 122 128 Q 130 122 138 128');
@@ -432,25 +430,25 @@ export function initNewsletterPopup(){
         spawnFloatingEmojis(['🥺', '💧', '✨'], 5);
       } else if (begStage === 2) {
         sound.playPop(520, 760);
-        showCompanion('prop-cardboard-sign', 'Cereal sign');
+        showCompanion('prop-cardboard-sign');
         triggerSquishAnimation();
         spawnFloatingEmojis(['📦', '💌', '✨'], 5);
       } else if (begStage === 3) {
         sound.playFlute();
-        showCompanion('prop-flute', 'Flute');
+        showCompanion('prop-flute');
         luxyMouth.setAttribute('d', 'M 122 129 Q 130 120 138 129');
         triggerSquishAnimation();
         spawnFloatingEmojis(['🎶', '🎵', '✨'], 6);
       } else if (begStage === 4) {
         sound.playPop(350, 690);
-        showCompanion('prop-frog', 'Barnaby');
+        showCompanion('prop-frog');
         unlockSticker('sticker-frog');
         luxyMouth.setAttribute('d', 'M 118 124 Q 124 132 130 124 Q 136 132 142 124');
         triggerSquishAnimation();
         spawnFloatingEmojis(['🐸', '🪄', '✨'], 6);
       } else if (begStage === 5) {
         sound.playVictory();
-        showCompanion('prop-arrow', 'This way →');
+        showCompanion('prop-arrow');
         inputVipCrown.classList.remove('hidden');
         vipCarpetBadge.classList.remove('hidden');
         unlockSticker('sticker-crown');
@@ -458,7 +456,7 @@ export function initNewsletterPopup(){
         spawnFloatingEmojis(['👑', '✨', '💎'], 6);
       } else if (begStage === 6) {
         sound.playPop(600, 240);
-        showCompanion('prop-anvil', 'Anvil');
+        showCompanion('prop-anvil');
         luxySvg.classList.remove('luxy-idle', 'luxy-squish');
         luxySvg.classList.add('luxy-flop');
         spawnFloatingEmojis(['⚒️', '🥺', '👉👈'], 6);
