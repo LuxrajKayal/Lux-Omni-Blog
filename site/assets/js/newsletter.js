@@ -518,8 +518,10 @@ export function initNewsletterPopup(){
     const houseScroll = root.querySelector('.house-scroll');
 
     function animateEyeTracking() {
-      eyeCurrentX += (eyeTargetX - eyeCurrentX) * 0.28;
-      eyeCurrentY += (eyeTargetY - eyeCurrentY) * 0.28;
+      // Faster easing is limited to coarse-pointer devices; desktop stays at 0.28.
+      const easing = coarsePointerQuery.matches ? 0.42 : 0.28;
+      eyeCurrentX += (eyeTargetX - eyeCurrentX) * easing;
+      eyeCurrentY += (eyeTargetY - eyeCurrentY) * easing;
 
       luxyEyesTrack.setAttribute(
         'transform',
@@ -578,14 +580,14 @@ export function initNewsletterPopup(){
       if (!vector) return;
 
       const distance = Math.hypot(vector.x, vector.y);
-      const deadZone = 7;
+      const deadZone = 2;
       if (distance <= deadZone) {
         setEyeTarget(0, 0);
         return;
       }
 
       // Gradually strengthen the gaze as Luxy moves farther from screen centre.
-      const strength = Math.min(6, (distance - deadZone) / 22);
+      const strength = Math.min(6, (distance - deadZone) / 8);
       setEyeTarget(
         (vector.x / distance) * strength,
         (vector.y / distance) * strength
