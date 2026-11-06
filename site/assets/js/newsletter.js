@@ -275,6 +275,7 @@ export function initNewsletterPopup(){
     function closeHousePopup() {
       if (!isHouseOpen) return;
       isHouseOpen = false;
+      resetLuxyEyes();
       sound.playPop(520,300);
       houseModalCard.classList.remove('house-modal-visible'); houseModalCard.classList.add('house-modal-hidden');
       window.clearTimeout(closeTimer);
@@ -506,16 +507,78 @@ export function initNewsletterPopup(){
     /******************************************************************
      * 9. SMOOTH EYE TRACKING & EMAIL INPUT LIVE REACTIONS
      ******************************************************************/
-    window.addEventListener('mousemove', (e) => {
-      if (!isHouseOpen) return;
+    let eyeTargetX = 0;
+    let eyeTargetY = 0;
+    let eyeCurrentX = 0;
+    let eyeCurrentY = 0;
+    let eyeAnimationFrame = 0;
+
+    function animateEyeTracking() {
+      eyeCurrentX += (eyeTargetX - eyeCurrentX) * 0.28;
+      eyeCurrentY += (eyeTargetY - eyeCurrentY) * 0.28;
+
+      luxyEyesTrack.setAttribute(
+        'transform',
+        `translate(${eyeCurrentX.toFixed(2)}, ${eyeCurrentY.toFixed(2)})`
+      );
+
+      if (Math.abs(eyeTargetX - eyeCurrentX) > 0.03 || Math.abs(eyeTargetY - eyeCurrentY) > 0.03) {
+        eyeAnimationFrame = window.requestAnimationFrame(animateEyeTracking);
+      } else {
+        eyeCurrentX = eyeTargetX;
+        eyeCurrentY = eyeTargetY;
+        luxyEyesTrack.setAttribute(
+          'transform',
+          `translate(${eyeCurrentX.toFixed(2)}, ${eyeCurrentY.toFixed(2)})`
+        );
+        eyeAnimationFrame = 0;
+      }
+    }
+
+    function moveLuxyEyes(event) {
+      if (!isHouseOpen || !luxySvg || !luxyEyesTrack) return;
+      if (event.pointerType === 'touch' && !event.isPrimary) return;
+
       const rect = luxySvg.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      const angle = Math.atan2(e.clientY - cy, e.clientX - cx);
-      const dist = Math.min(6, Math.hypot(e.clientX - cx, e.clientY - cy) / 40);
-      const ox = Math.cos(angle) * dist;
-      const oy = Math.sin(angle) * dist;
-      luxyEyesTrack.setAttribute('transform', `translate(${ox.toFixed(1)}, ${oy.toFixed(1)})`);
+      if (!rect.width || !rect.height) return;
+
+      // Convert viewport pixels into the mascot SVG's 260 × 220 viewBox units.
+      const dx = (event.clientX - (rect.left + rect.width / 2)) * (260 / rect.width);
+      const dy = (event.clientY - (rect.top + rect.height / 2)) * (220 / rect.height);
+      const angle = Math.atan2(dy, dx);
+      const distance = Math.min(6, Math.hypot(dx, dy) / 40);
+
+      eyeTargetX = Math.cos(angle) * distance;
+      eyeTargetY = Math.sin(angle) * distance;
+
+      if (!eyeAnimationFrame) {
+        eyeAnimationFrame = window.requestAnimationFrame(animateEyeTracking);
+      }
+    }
+
+    function resetLuxyEyes(event) {
+      // A touch ending should relax the eyes; mouse movement should keep tracking.
+      if (event?.pointerType && event.pointerType !== 'touch') return;
+
+      eyeTargetX = 0;
+      eyeTargetY = 0;
+
+      if (!eyeAnimationFrame) {
+        eyeAnimationFrame = window.requestAnimationFrame(animateEyeTracking);
+      }
+    }
+
+    // Pointer Events cover mouse, pen and touch without a separate mobile code path.
+    window.addEventListener('pointermove', moveLuxyEyes, { passive: true });
+    window.addEventListener('pointerdown', moveLuxyEyes, { passive: true });
+    window.addEventListener('pointerup', resetLuxyEyes, { passive: true });
+    window.addEventListener('pointercancel', resetLuxyEyes, { passive: true });
+    window.addEventListener('pointerleave', (event) => {
+      if (event.pointerType !== 'touch') resetLuxyEyes();
+    }, { passive: true });
+    window.addEventListener('blur', resetLuxyEyes);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) resetLuxyEyes();
     });
 
     emailInput.addEventListener('focus', () => {

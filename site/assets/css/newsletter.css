@@ -1,6 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+/* Newsletter typography inherits Luxraj's shared design tokens. */
+#luxraj-newsletter {
+  color: #2D232E;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+}
 
-#luxraj-newsletter { color:#2D232E; font-family:'Plus Jakarta Sans',system-ui,sans-serif; }
+#luxraj-newsletter .font-display,
+#luxraj-newsletter .font-sans {
+  font-family: var(--font-ui) !important;
+}
+
+#luxraj-newsletter .font-mono {
+  font-family: var(--font-code) !important;
+}
+
+/* Tailwind's visual size utilities now resolve through the site type scale. */
+#luxraj-newsletter .text-xs,
+#luxraj-newsletter [class~="text-[8px]"],
+#luxraj-newsletter [class~="text-[9px]"],
+#luxraj-newsletter [class~="text-[10px]"],
+#luxraj-newsletter [class~="text-[11px]"] {
+  font-size: var(--font-size-xs) !important;
+}
+
+#luxraj-newsletter .text-sm { font-size: var(--font-size-sm) !important; }
+#luxraj-newsletter .text-base { font-size: var(--font-size-base) !important; }
+#luxraj-newsletter .text-lg { font-size: var(--font-size-lg) !important; }
+#luxraj-newsletter .text-xl { font-size: var(--font-size-xl) !important; }
+#luxraj-newsletter .text-2xl { font-size: var(--font-size-2xl) !important; }
+#luxraj-newsletter .text-3xl { font-size: var(--font-size-3xl) !important; }
+#luxraj-newsletter .text-4xl { font-size: var(--font-size-4xl) !important; }
+
+/* Keep the prototype's responsive size changes, using Luxraj's scale. */
+@media (min-width: 640px) {
+  #luxraj-newsletter [class~="sm:text-sm"] { font-size: var(--font-size-sm) !important; }
+  #luxraj-newsletter [class~="sm:text-base"] { font-size: var(--font-size-base) !important; }
+  #luxraj-newsletter [class~="sm:text-lg"] { font-size: var(--font-size-lg) !important; }
+  #luxraj-newsletter [class~="sm:text-xl"] { font-size: var(--font-size-xl) !important; }
+  #luxraj-newsletter [class~="sm:text-2xl"] { font-size: var(--font-size-2xl) !important; }
+  #luxraj-newsletter [class~="sm:text-[9px]"] { font-size: var(--font-size-xs) !important; }
+}
+
+#luxraj-newsletter .font-normal { font-weight: var(--font-weight-regular) !important; }
+#luxraj-newsletter .font-medium { font-weight: var(--font-weight-medium) !important; }
+#luxraj-newsletter .font-semibold { font-weight: var(--font-weight-semibold) !important; }
+#luxraj-newsletter .font-bold { font-weight: var(--font-weight-bold) !important; }
+
+#luxraj-newsletter .leading-none,
+#luxraj-newsletter .leading-tight { line-height: var(--line-height-tight) !important; }
+#luxraj-newsletter .leading-snug { line-height: var(--line-height-heading) !important; }
+#luxraj-newsletter .leading-relaxed { line-height: var(--line-height-body) !important; }
+#luxraj-newsletter .tracking-wide { letter-spacing: var(--letter-spacing-wide) !important; }
+
+/* Let visitors drag on Luxy without the browser interpreting it as page scroll. */
+#luxraj-newsletter #luxy-svg {
+  touch-action: none;
+}
 
 /* Cozy Toy-Like Chunky Borders & Shadows */
     #luxraj-newsletter .cozy-card {
