@@ -131,10 +131,14 @@
           <!-- SPEECH BUBBLE -->
           <div
             id="speech-bubble"
-            class="character-speech relative z-20 bg-white border-2 border-cocoa rounded-2xl px-3.5 py-2 shadow-[0_4px_0_#2D232E] max-w-md w-full text-center transition-transform duration-200"
+            class="character-speech relative z-20 bg-white border-2 border-cocoa rounded-2xl px-3.5 py-2 shadow-[0_4px_0_#2D232E] max-w-md w-full text-center transition-transform duration-200 cursor-pointer focus:outline-none focus-visible:ring-4 focus-visible:ring-pinky/40"
+            role="button"
+            tabindex="0"
+            aria-label="Advance Luxy's Mail Cottage messages"
+            title="Click to continue Luxy's story"
           >
             <p id="speech-text" class="font-display font-medium text-xs sm:text-sm text-cocoa leading-snug">
-              "Hi! I'm Luxy! Welcome to my Mail Cottage! Click the 3 toy buttons below to test my polite begging skills!"
+              “Hi! I’m Luxy! Welcome to my Mail Cottage!”
             </p>
             <!-- Speech Bubble Tail -->
             <div class="w-3 h-3 bg-white border-r-2 border-b-2 border-cocoa rotate-45 absolute -bottom-1.5 left-1/2 -translate-x-1/2"></div>
@@ -152,31 +156,6 @@
             <!-- Flying Cookie Element (Appears when clicking "Give a Cookie") -->
             <div id="flying-cookie-el" class="hidden absolute z-30 text-3xl pointer-events-none">
               🍪
-            </div>
-
-            <!-- PROP 4: Barnaby The Polite Wizard Frog (Appears on Begging Stage 4+) -->
-            <div id="prop-frog" class="hidden absolute left-1 sm:left-4 bottom-1 z-20 flex flex-col items-center sticker-pop" title="Barnaby the Polite Frog">
-              <svg viewBox="0 0 90 90" class="w-14 h-14 sm:w-18 sm:h-18">
-                <!-- Wizard Hat -->
-                <polygon points="45,4 22,42 68,42" fill="#8B5CF6" stroke="#2D232E" stroke-width="3.5" stroke-linejoin="round"/>
-                <ellipse cx="45" cy="42" rx="28" ry="6" fill="#8B5CF6" stroke="#2D232E" stroke-width="3.5"/>
-                <polygon points="45,18 48,25 55,25 49,29 51,36 45,32 39,36 41,29 35,25 42,25" fill="#FFD166"/>
-                <!-- Frog Head & Body -->
-                <ellipse cx="45" cy="62" rx="24" ry="18" fill="#06D6A0" stroke="#2D232E" stroke-width="3.5"/>
-                <circle cx="31" cy="46" r="9" fill="#06D6A0" stroke="#2D232E" stroke-width="3.5"/>
-                <circle cx="59" cy="46" r="9" fill="#06D6A0" stroke="#2D232E" stroke-width="3.5"/>
-                <circle cx="31" cy="46" r="4.5" fill="#2D232E"/>
-                <circle cx="59" cy="46" r="4.5" fill="#2D232E"/>
-                <circle cx="29.5" cy="44" r="1.8" fill="#FFFFFF"/>
-                <circle cx="57.5" cy="44" r="1.8" fill="#FFFFFF"/>
-                <!-- Cute Blush & Smile -->
-                <ellipse cx="26" cy="58" rx="4.5" ry="2.5" fill="#FF7EB6"/>
-                <ellipse cx="64" cy="58" rx="4.5" ry="2.5" fill="#FF7EB6"/>
-                <path d="M 37 59 Q 45 65 53 59" fill="none" stroke="#2D232E" stroke-width="3" stroke-linecap="round"/>
-                <!-- Little Ribbit Tag -->
-                <rect x="14" y="72" width="62" height="15" rx="6" fill="#FFFFFF" stroke="#2D232E" stroke-width="2"/>
-                <text x="45" y="82.5" text-anchor="middle" font-size="var(--font-size-xs)" font-weight="var(--font-weight-semibold)" fill="#2D232E">Barnaby 🐸</text>
-              </svg>
             </div>
 
             <!-- MAIN LUXY CHARACTER SVG -->
@@ -277,20 +256,6 @@
                 <circle cx="94" cy="162" r="11" fill="#FFFDF9" stroke="#2D232E" stroke-width="4" />
                 <circle cx="166" cy="162" r="11" fill="#FFFDF9" stroke="#2D232E" stroke-width="4" />
 
-                <!-- PROP 3: World's Smallest Violin (Stage 3) -->
-                <g id="prop-violin" opacity="0" transform="translate(154, 125)" class="transition-opacity duration-300 pointer-events-none">
-                  <ellipse cx="22" cy="30" rx="12" ry="16" fill="#D97706" stroke="#2D232E" stroke-width="3" transform="rotate(-20 22 30)" />
-                  <rect x="24" y="2" width="5" height="22" fill="#78350F" stroke="#2D232E" stroke-width="2.5" transform="rotate(15 26 12)" />
-                  <line id="violin-bow" x1="2" y1="22" x2="46" y2="32" stroke="#2D232E" stroke-width="3" stroke-linecap="round" />
-                </g>
-
-                <!-- PROP 6: Little White Surrender Flag (Stage 6 Flop) -->
-                <g id="prop-white-flag" opacity="0" transform="translate(182, 92)" class="transition-opacity duration-300 pointer-events-none">
-                  <line x1="0" y1="70" x2="12" y2="5" stroke="#2D232E" stroke-width="4" stroke-linecap="round" />
-                  <path d="M 12 7 Q 34 2 46 14 Q 34 32 10 28 Z" fill="#FFFFFF" stroke="#2D232E" stroke-width="3" stroke-linejoin="round" />
-                  <text x="27" y="21" text-anchor="middle" font-size="var(--font-size-xs)" font-weight="var(--font-weight-bold)" fill="#FF7EB6">PLS</text>
-                </g>
-
                 <!-- HOVER SAD SIGN (When hovering over "No thanks" link) -->
                 <g id="prop-sad-sign" opacity="0" transform="translate(46, 134)" class="transition-opacity duration-200 pointer-events-none">
                   <rect x="0" y="0" width="168" height="50" rx="10" fill="#FFE5F1" stroke="#2D232E" stroke-width="3.5" />
@@ -307,29 +272,110 @@
             </svg>
             </div>
 
-            <!-- Independent cereal-box message: revealed at game stage 2. -->
-            <svg
-              class="cereal-box-sign"
-              viewBox="0 0 180 82"
-              role="img"
-              aria-label="Luxy's cardboard sign: Will send cool tech stories for one email"
-              focusable="false"
-            >
-              <g id="prop-cardboard-sign" opacity="0" transform="translate(8, 12)" class="transition-opacity duration-300 pointer-events-none">
-                  <rect x="0" y="0" width="164" height="58" rx="6" fill="#E6B88A" stroke="#2D232E" stroke-width="3.5" />
-                  <!-- Masking Tape Corners -->
-                  <rect x="-4" y="4" width="22" height="9" transform="rotate(-25 6 8)" fill="#FFF5D6" stroke="#2D232E" stroke-width="1.5" />
-                  <rect x="146" y="4" width="22" height="9" transform="rotate(25 156 8)" fill="#FFF5D6" stroke="#2D232E" stroke-width="1.5" />
-                  <text x="82" y="24" text-anchor="middle" font-size="var(--font-size-sm)" font-weight="var(--font-weight-bold)" fill="#2D232E">WILL SEND COOL TECH</text>
-                  <text x="82" y="39" text-anchor="middle" font-size="var(--font-size-sm)" font-weight="var(--font-weight-bold)" fill="#2D232E">STORIES FOR 1 EMAIL</text>
-                  <text x="82" y="52" text-anchor="middle" font-size="var(--font-size-xs)" font-weight="var(--font-weight-semibold)" fill="#6E5D70">(zero spam, pinky swear!)</text>
-                </g>
-            </svg>
+            <div class="companion-stage" aria-label="Luxy's companion area" aria-live="polite">
+              <span class="companion-stage__label" aria-hidden="true">Companion area</span>
+              <div class="companion-stage__slot">
+                <!-- Move 1: the mirror -->
+                <svg class="companion-prop" id="prop-mirror" viewBox="0 0 220 220" role="img" aria-label="An oval standing mirror" aria-hidden="true">
+                  <ellipse cx="111" cy="202" rx="56" ry="8" fill="#2D232E" opacity=".10"/>
+                  <path d="M110 30 C57 30 39 68 43 113 C46 151 70 174 110 176 C150 174 174 151 177 113 C181 68 163 30 110 30Z" fill="#FFD166" stroke="#2D232E" stroke-width="5"/>
+                  <path d="M110 41 C66 41 51 73 54 111 C57 142 77 163 110 165 C143 163 163 142 166 111 C169 73 154 41 110 41Z" fill="#DFF6FF" stroke="#9A6D42" stroke-width="3"/>
+                  <path d="M72 67 C83 51 104 47 122 51" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" opacity=".85"/>
+                  <path d="M71 91 C76 76 87 66 98 61" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity=".65"/>
+                  <path d="M93 176 L84 199 Q110 207 136 199 L127 176" fill="#D99C55" stroke="#2D232E" stroke-width="4" stroke-linejoin="round"/>
+                  <path d="M78 201 Q110 194 142 201" fill="none" stroke="#2D232E" stroke-width="5" stroke-linecap="round"/>
+                  <g class="mirror-glint" fill="#FFFFFF">
+                    <path d="M28 56 L33 68 L45 73 L33 78 L28 90 L23 78 L11 73 L23 68Z"/>
+                    <path d="M186 120 L190 129 L199 133 L190 137 L186 146 L182 137 L173 133 L182 129Z"/>
+                  </g>
+                  <circle cx="142" cy="65" r="4" fill="#FFFFFF" opacity=".9"/>
+                </svg>
+
+                <!-- Move 2: the cereal-box sign -->
+                <svg class="companion-prop" id="prop-cardboard-sign" viewBox="0 0 230 190" role="img" aria-label="A handwritten cereal-box sign" aria-hidden="true">
+                  <ellipse cx="115" cy="174" rx="76" ry="8" fill="#2D232E" opacity=".10"/>
+                  <g transform="rotate(-3 115 92)">
+                    <rect x="28" y="33" width="174" height="120" rx="9" fill="#DBA979" stroke="#2D232E" stroke-width="5"/>
+                    <rect x="35" y="40" width="160" height="106" rx="5" fill="#F3D2A9" stroke="#9B6B49" stroke-width="2" stroke-dasharray="4 4"/>
+                    <path d="M24 47 L55 41 L51 54 L22 60Z M174 29 L207 37 L199 51 L170 42Z" fill="#FFF2D4" stroke="#2D232E" stroke-width="2"/>
+                    <text x="115" y="70" text-anchor="middle" font-size="15" font-weight="900" fill="#2D232E">WILL SEND COOL</text>
+                    <text x="115" y="91" text-anchor="middle" font-size="15" font-weight="900" fill="#2D232E">TECH STORIES</text>
+                    <text x="115" y="112" text-anchor="middle" font-size="14" font-weight="900" fill="#2D232E">FOR 1 EMAIL</text>
+                    <text x="115" y="132" text-anchor="middle" font-size="10" font-weight="700" fill="#795D56">(zero spam, pinky swear!)</text>
+                  </g>
+                  <path d="M93 157 L87 174 M137 157 L143 174" stroke="#2D232E" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+
+                <!-- Move 3: the flute -->
+                <svg class="companion-prop" id="prop-flute" viewBox="0 0 240 190" role="img" aria-label="A little wooden flute" aria-hidden="true">
+                  <ellipse cx="119" cy="160" rx="84" ry="7" fill="#2D232E" opacity=".10"/>
+                  <g transform="rotate(-17 120 100)">
+                    <rect x="24" y="82" width="190" height="31" rx="14" fill="#D98B45" stroke="#2D232E" stroke-width="5"/>
+                    <rect x="29" y="87" width="181" height="7" rx="3.5" fill="#F4C27E" opacity=".9"/>
+                    <path d="M42 82 L42 113 M198 82 L198 113" stroke="#78451F" stroke-width="3"/>
+                    <g fill="#FFF1CF" stroke="#2D232E" stroke-width="2.5">
+                      <circle cx="75" cy="97" r="5.5"/><circle cx="101" cy="97" r="5.5"/><circle cx="127" cy="97" r="5.5"/><circle cx="153" cy="97" r="5.5"/><circle cx="179" cy="97" r="5.5"/>
+                    </g>
+                    <path d="M23 91 L13 97 L23 104" fill="#B96E36" stroke="#2D232E" stroke-width="3" stroke-linejoin="round"/>
+                    <path d="M214 90 L225 97 L214 105" fill="#B96E36" stroke="#2D232E" stroke-width="3" stroke-linejoin="round"/>
+                  </g>
+                  <g class="flute-note" fill="#FF7EB6" stroke="#2D232E" stroke-width="2">
+                    <path d="M55 39 L55 17 Q55 13 61 13 Q67 13 67 18 L67 35 Q67 49 53 49 Q42 49 42 40 Q42 32 50 30"/>
+                    <path d="M177 49 L177 27 Q177 23 183 23 Q189 23 189 28 L189 45 Q189 59 175 59 Q164 59 164 50 Q164 42 172 40"/>
+                  </g>
+                  <path d="M91 51 Q105 39 118 49" fill="none" stroke="#FFD166" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+
+                <!-- Move 4: Barnaby the polite wizard frog -->
+                <svg class="companion-prop" id="prop-frog" viewBox="0 0 150 180" role="img" aria-label="Barnaby, the polite wizard frog" aria-hidden="true">
+                  <ellipse cx="75" cy="166" rx="48" ry="7" fill="#2D232E" opacity=".10"/>
+                  <polygon points="75,8 44,60 106,60" fill="#8B5CF6" stroke="#2D232E" stroke-width="4" stroke-linejoin="round"/>
+                  <ellipse cx="75" cy="60" rx="39" ry="8" fill="#8B5CF6" stroke="#2D232E" stroke-width="4"/>
+                  <polygon points="75,25 80,36 92,37 83,45 86,57 75,50 64,57 67,45 58,37 70,36" fill="#FFD166"/>
+                  <ellipse cx="75" cy="115" rx="37" ry="37" fill="#06D6A0" stroke="#2D232E" stroke-width="4"/>
+                  <circle cx="52" cy="91" r="15" fill="#06D6A0" stroke="#2D232E" stroke-width="4"/>
+                  <circle cx="98" cy="91" r="15" fill="#06D6A0" stroke="#2D232E" stroke-width="4"/>
+                  <circle cx="52" cy="91" r="7" fill="#2D232E"/><circle cx="98" cy="91" r="7" fill="#2D232E"/>
+                  <circle cx="49" cy="88" r="2.5" fill="#FFFFFF"/><circle cx="95" cy="88" r="2.5" fill="#FFFFFF"/>
+                  <ellipse cx="45" cy="117" rx="7" ry="4" fill="#FF7EB6"/><ellipse cx="105" cy="117" rx="7" ry="4" fill="#FF7EB6"/>
+                  <path d="M62 119 Q75 131 88 119" fill="none" stroke="#2D232E" stroke-width="4" stroke-linecap="round"/>
+                  <rect x="39" y="146" width="72" height="19" rx="8" fill="#FFFFFF" stroke="#2D232E" stroke-width="2.5"/>
+                  <text x="75" y="159" text-anchor="middle" font-size="11" font-weight="900" fill="#2D232E">BARNABY</text>
+                </svg>
+
+                <!-- Move 5: an arrow pointing right -->
+                <svg class="companion-prop" id="prop-arrow" viewBox="0 0 240 180" role="img" aria-label="An arrow pointing to the right" aria-hidden="true">
+                  <g class="arrow-bounce">
+                    <path d="M28 70 H155 V37 L218 91 L155 145 V112 H28 Q17 112 17 101 V81 Q17 70 28 70Z" fill="#FFD166" stroke="#2D232E" stroke-width="7" stroke-linejoin="round"/>
+                    <path d="M40 82 H147" stroke="#FFF3C7" stroke-width="7" stroke-linecap="round"/>
+                    <path d="M39 101 H120" stroke="#E7AD43" stroke-width="4" stroke-linecap="round"/>
+                  </g>
+                  <g fill="#FF7EB6" stroke="#2D232E" stroke-width="2">
+                    <path d="M42 34 L47 45 L58 50 L47 55 L42 66 L37 55 L26 50 L37 45Z"/>
+                    <path d="M193 22 L197 31 L206 35 L197 39 L193 48 L189 39 L180 35 L189 31Z"/>
+                  </g>
+                </svg>
+
+                <!-- Move 6: the anvil -->
+                <svg class="companion-prop" id="prop-anvil" viewBox="0 0 240 190" role="img" aria-label="A heavy grey anvil" aria-hidden="true">
+                  <ellipse cx="120" cy="166" rx="80" ry="9" fill="#2D232E" opacity=".11"/>
+                  <path d="M51 61 Q67 43 93 44 L154 44 Q171 44 181 57 L207 72 Q215 78 207 87 L179 96 L164 130 L176 149 Q180 157 170 160 L68 160 Q57 157 64 146 L78 126 L69 101 L38 92 Q29 89 32 80 L42 69 Q45 64 51 61Z" fill="#9AA4B1" stroke="#2D232E" stroke-width="6" stroke-linejoin="round"/>
+                  <path d="M91 44 L154 44 Q171 44 181 57 L207 72 Q215 78 207 87 L177 94 L67 94 L38 92 Q29 89 32 80 L42 69 Q45 64 51 61 Q67 43 91 44Z" fill="#C4CCD5" stroke="#2D232E" stroke-width="5" stroke-linejoin="round"/>
+                  <path d="M84 103 L166 103 L158 129 L93 129Z" fill="#788593" opacity=".75"/>
+                  <path d="M76 146 L169 146" stroke="#E6EBF0" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+                  <g class="mirror-glint" fill="#FFD166" stroke="#2D232E" stroke-width="2">
+                    <path d="M33 34 L38 45 L49 50 L38 55 L33 66 L28 55 L17 50 L28 45Z"/>
+                    <path d="M201 26 L205 35 L214 39 L205 43 L201 52 L197 43 L188 39 L197 35Z"/>
+                  </g>
+                </svg>
+              </div>
+              <span class="companion-stage__name" id="companion-stage-name"></span>
+            </div>
           </div>
 
           <!-- Window Sill Hint -->
           <div class="character-hint text-[11px] font-display font-medium text-cocoaLight flex items-center gap-1.5 z-10">
-            <span>👆 Click Luxy in the window or play with the 3 buttons below!</span>
+            <span>👆 Click Luxy's message to continue, or use the three toy buttons below!</span>
           </div>
         </div>
 

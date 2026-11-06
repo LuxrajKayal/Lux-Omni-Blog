@@ -91,24 +91,24 @@ export function initNewsletterPopup(){
         } catch (e) {}
       }
 
-      // Tiny sad violin melody
-      playTinyViolin() {
+      // A soft, flute-like cottage serenade
+      playFlute() {
         if (!this.enabled) return;
         try {
           this.init();
-          const notes = [659.25, 622.25, 587.33, 523.25];
+          const notes = [659.25, 783.99, 880, 783.99];
           notes.forEach((freq, i) => {
-            const now = this.ctx.currentTime + i * 0.14;
+            const now = this.ctx.currentTime + i * 0.16;
             const osc = this.ctx.createOscillator();
             const gain = this.ctx.createGain();
-            osc.type = 'sawtooth';
+            osc.type = 'sine';
             osc.frequency.setValueAtTime(freq, now);
-            gain.gain.setValueAtTime(0.04, now);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.13);
+            gain.gain.setValueAtTime(0.045, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
             osc.connect(gain);
             gain.connect(this.ctx.destination);
             osc.start(now);
-            osc.stop(now + 0.135);
+            osc.stop(now + 0.155);
           });
         } catch (e) {}
       }
@@ -165,8 +165,8 @@ export function initNewsletterPopup(){
         charmBonus: 15
       },
       {
-        headline: "Move #3: The World's Smallest Violin! 🎻",
-        speech: '"♪ ♫ Playing a tiny, squeaky serenade from my cottage window... can you hear my dedication? ♪"',
+        headline: "Move #3: A Little Cottage Serenade! 🎶",
+        speech: "“♪ ♫ Playing a tiny, sweet serenade from my cottage window... can you hear my dedication? ♪”",
         btnLabel: "Bravo! Sign Me Up!",
         charmBonus: 15
       },
@@ -177,14 +177,14 @@ export function initNewsletterPopup(){
         charmBonus: 15
       },
       {
-        headline: "Move #5: Royal VIP Mail Slot Treatment! 👑",
-        speech: '"Look! I just crowned our Royal Oath Form! 👑 Now shubshribe! Pretty pwese? 🥺💌"',
+        headline: "Move #5: The Royal Oath Form! 👑",
+        speech: "“The Royal Oath Form is ready! This way, please! 👑”",
         btnLabel: "Claim My Royal Spot!",
         charmBonus: 15
       },
       {
-        headline: "Move #6: The Full Dramatic Pancake Flop! 🏳️",
-        speech: '"*FLOP* Okay I am officially out of moves on my cottage floor... please just one tiny click? 🥺👉👈"',
+        headline: "Move #6: The Dramatic Flop! 🥺",
+        speech: "“*FLOP* Okay, I am officially out of moves on my cottage floor... please just one tiny click? 🥺👉👈”",
         btnLabel: "Cheer Luxy Up & Join!",
         charmBonus: 20
       }
@@ -230,11 +230,16 @@ export function initNewsletterPopup(){
     const starEyeLeft = get('star-eye-left');
     const starEyeRight = get('star-eye-right');
 
-    // Stage Props
-    const propCardboardSign = get('prop-cardboard-sign');
-    const propViolin = get('prop-violin');
-    const propFrog = get('prop-frog');
-    const propWhiteFlag = get('prop-white-flag');
+    // Right-side companion area: one companion is visible for each move.
+    const companionName = get('companion-stage-name');
+    const companionProps = [
+      'prop-mirror',
+      'prop-cardboard-sign',
+      'prop-flute',
+      'prop-frog',
+      'prop-arrow',
+      'prop-anvil'
+    ].map(get).filter(Boolean);
     const propSadSign = get('prop-sad-sign');
     const propBestiesBanner = get('prop-besties-banner');
     const inputVipCrown = get('input-vip-crown');
@@ -379,10 +384,25 @@ export function initNewsletterPopup(){
       get('sticker-count-label').textContent = `${unlockedStickers.size} / 6 Unlocked`;
     }
 
+    function showCompanion(propId, label = '') {
+      companionProps.forEach((prop) => {
+        prop.classList.remove('active');
+        prop.setAttribute('aria-hidden', 'true');
+      });
+
+      const nextProp = propId ? get(propId) : null;
+      if (nextProp) {
+        nextProp.setAttribute('aria-hidden', 'false');
+        nextProp.classList.add('active');
+      }
+
+      companionName.textContent = label;
+    }
+
     /******************************************************************
      * 6. BUTTON 1: "CONVINCE ME HARDER" (6 ESCALATING CUTE STAGES)
      ******************************************************************/
-    btnBegHarder.addEventListener('click', () => {
+    function advanceBeggingMove() {
       const moveIndex = begStage % BEGGING_MOVES.length;
       begStage = moveIndex + 1;
       const move = BEGGING_MOVES[moveIndex];
@@ -397,15 +417,14 @@ export function initNewsletterPopup(){
       addCharm(move.charmBonus);
       unlockSticker('sticker-puppy');
 
-      // Reset temporary stage props before applying current stage
-      propCardboardSign.setAttribute('opacity', '0');
-      propViolin.setAttribute('opacity', '0');
-      propWhiteFlag.setAttribute('opacity', '0');
+      // Replace the current companion; Move 0 remains empty until this is clicked.
+      showCompanion(null);
       propSadSign.setAttribute('opacity', '0');
       luxySvg.classList.remove('luxy-flop');
 
       if (begStage === 1) {
         sound.playPop(480, 880);
+        showCompanion('prop-mirror', 'Mirror');
         puppyEyeLeft.setAttribute('opacity', '1');
         puppyEyeRight.setAttribute('opacity', '1');
         luxyMouth.setAttribute('d', 'M 122 128 Q 130 122 138 128');
@@ -413,24 +432,25 @@ export function initNewsletterPopup(){
         spawnFloatingEmojis(['🥺', '💧', '✨'], 5);
       } else if (begStage === 2) {
         sound.playPop(520, 760);
-        propCardboardSign.setAttribute('opacity', '1');
+        showCompanion('prop-cardboard-sign', 'Cereal sign');
         triggerSquishAnimation();
         spawnFloatingEmojis(['📦', '💌', '✨'], 5);
       } else if (begStage === 3) {
-        sound.playTinyViolin();
-        propViolin.setAttribute('opacity', '1');
+        sound.playFlute();
+        showCompanion('prop-flute', 'Flute');
         luxyMouth.setAttribute('d', 'M 122 129 Q 130 120 138 129');
         triggerSquishAnimation();
-        spawnFloatingEmojis(['🎻', '♪', '♫', '🎶'], 6);
+        spawnFloatingEmojis(['🎶', '🎵', '✨'], 6);
       } else if (begStage === 4) {
         sound.playPop(350, 690);
-        propFrog.classList.remove('hidden');
+        showCompanion('prop-frog', 'Barnaby');
         unlockSticker('sticker-frog');
         luxyMouth.setAttribute('d', 'M 118 124 Q 124 132 130 124 Q 136 132 142 124');
         triggerSquishAnimation();
         spawnFloatingEmojis(['🐸', '🪄', '✨'], 6);
       } else if (begStage === 5) {
         sound.playVictory();
+        showCompanion('prop-arrow', 'This way →');
         inputVipCrown.classList.remove('hidden');
         vipCarpetBadge.classList.remove('hidden');
         unlockSticker('sticker-crown');
@@ -438,13 +458,28 @@ export function initNewsletterPopup(){
         spawnFloatingEmojis(['👑', '✨', '💎'], 6);
       } else if (begStage === 6) {
         sound.playPop(600, 240);
-        propWhiteFlag.setAttribute('opacity', '1');
+        showCompanion('prop-anvil', 'Anvil');
         luxySvg.classList.remove('luxy-idle', 'luxy-squish');
         luxySvg.classList.add('luxy-flop');
-        spawnFloatingEmojis(['🏳️', '🥺', '👉👈'], 6);
+        spawnFloatingEmojis(['⚒️', '🥺', '👉👈'], 6);
       }
+    }
+
+    btnBegHarder.addEventListener('click', advanceBeggingMove);
+
+    // The speech message advances the same sequence; prevent a click-through head-pat.
+    speechBubble.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      advanceBeggingMove();
     });
 
+    speechBubble.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      event.stopPropagation();
+      advanceBeggingMove();
+    });
     /******************************************************************
      * 7. BUTTON 2: "GIVE LUXY A COOKIE"
      ******************************************************************/
@@ -457,7 +492,6 @@ export function initNewsletterPopup(){
 
       if (begStage === 6 && !isSubscribed) {
         luxySvg.classList.remove('luxy-flop');
-        propWhiteFlag.setAttribute('opacity', '0');
       }
 
       flyingCookieEl.classList.remove('hidden');
@@ -486,7 +520,6 @@ export function initNewsletterPopup(){
 
       if (begStage === 6 && !isSubscribed) {
         luxySvg.classList.remove('luxy-flop');
-        propWhiteFlag.setAttribute('opacity', '0');
       }
 
       patHandEl.classList.remove('hidden');
@@ -773,7 +806,7 @@ export function initNewsletterPopup(){
       await new Promise(resolve=>window.setTimeout(resolve,380));
       isSubscribed=true;sound.playVictory();addCharm(100);unlockSticker('sticker-bestie');launchConfetti();
       luxySvg.classList.remove('luxy-idle','luxy-squish','luxy-flop');luxySvg.classList.add('luxy-happy');
-      propCardboardSign.setAttribute('opacity','0');propViolin.setAttribute('opacity','0');propWhiteFlag.setAttribute('opacity','0');propSadSign.setAttribute('opacity','0');propBestiesBanner.setAttribute('opacity','1');starEyeLeft.setAttribute('opacity','1');starEyeRight.setAttribute('opacity','1');
+      showCompanion(null);propSadSign.setAttribute('opacity','0');propBestiesBanner.setAttribute('opacity','1');starEyeLeft.setAttribute('opacity','1');starEyeRight.setAttribute('opacity','1');
       mainHeadline.textContent='YAY!! Luxy has a demo celebration! 🎉';
       updateSpeech('That was only a preview, '+val.split('@')[0]+'! No address was sent or saved. 💖');
       submitBtnLabel.textContent='Demo Celebration!';get('vip-member-email').textContent=val;get('vip-card-number').textContent='#PREVIEW';
@@ -784,6 +817,7 @@ export function initNewsletterPopup(){
     get('reset-game-btn').addEventListener('click', () => {
       isSubscribed = false;
       begStage = 0;
+      showCompanion(null);
       emailInput.value = '';
       emailEmojiStatus.textContent = '✉️';
       propBestiesBanner.setAttribute('opacity', '0');
