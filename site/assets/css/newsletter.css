@@ -1634,3 +1634,25 @@
   border-width: 1.5px;
   box-shadow: 0 3px 8px var(--newsletter-shadow);
 }
+
+
+/* Keep the character column's meter aligned to its window, not the full cottage. */
+#luxraj-newsletter#luxraj-newsletter .newsletter-headline {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+#luxraj-newsletter#luxraj-newsletter .newsletter-headline h2 {
+  width: 100%;
+  margin-inline: auto;
+  text-align: center !important;
+  text-wrap: balance;
+}
+#luxraj-newsletter#luxraj-newsletter .newsletter-character-column > .charm-meter {
+  width: 100%;
+  align-self: stretch;
+  margin: 0 !important;
+}
+#luxraj-newsletter#luxraj-newsletter #charm-status-label {
+  min-width: 0;
+}
