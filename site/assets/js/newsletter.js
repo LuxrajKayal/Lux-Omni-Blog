@@ -178,7 +178,7 @@ export function initNewsletterPopup(){
       },
       {
         headline: "Move #5: Royal VIP Mail Slot Treatment! 👑",
-        speech: '"Look! I just crowned the brass mail slot! Luxy will give your inbox the royal cottage treatment!"',
+        speech: '"Look! I just crowned our Royal Oath Form! 👑 Now shubshribe! Pretty pwese? 🥺💌"',
         btnLabel: "Claim My Royal Spot!",
         charmBonus: 15
       },
@@ -794,7 +794,7 @@ export function initNewsletterPopup(){
       get('vip-membership-card').classList.add('hidden');
       mainHeadline.textContent = "Welcome inside! Can we be inbox friends? 🥺";
       updateSpeech('"Ready for round two! Click any button below to play with Luxy!"');
-      submitBtnLabel.textContent = "Okay, You Charmed Me!";
+      submitBtnLabel.textContent = "Shubshribe!";
       get('submit-btn').disabled = false;
     });
 
