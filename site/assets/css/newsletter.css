@@ -1127,6 +1127,38 @@
   transform-origin: 50% 75%;
 }
 
+
+/* Move 2 restores the earlier wide cereal signboard and its original proportions.
+   The other five props retain the equal-to-Luxy companion sizing. */
+#luxraj-newsletter#luxraj-newsletter .companion-stage:has(#prop-cardboard-sign.active) {
+  flex: 0 1 56%;
+  width: 56%;
+  max-width: 250px;
+}
+
+#luxraj-newsletter#luxraj-newsletter .companion-prop--sign {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  max-height: 96%;
+  object-fit: contain;
+}
+
+@media (max-width: 639px) {
+  #luxraj-newsletter#luxraj-newsletter .companion-stage:has(#prop-cardboard-sign.active) {
+    flex: 0 1 56%;
+    width: 56%;
+    max-width: none;
+  }
+
+  #luxraj-newsletter#luxraj-newsletter .companion-prop--sign {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    max-height: 96%;
+  }
+}
+
 #luxraj-newsletter#luxraj-newsletter .companion-prop.active {
   display: block;
   animation: companion-pop 420ms cubic-bezier(.18,.82,.24,1.2) both;
