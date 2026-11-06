@@ -4,6 +4,7 @@ export function initNewsletterPopup(){
   root.dataset.initialized='true';
   const get=(id)=>root.querySelector('#'+id);
   let returnFocusTarget=null,previousBodyOverflow='',closeTimer=null,patHandTimeout=null;
+  let introTimer=null,introSequenceActive=false;
 
 /******************************************************************
      * 1. CUTE SYNTHESIZED SOUND ENGINE (Web Audio API - No External Files)
@@ -190,6 +191,15 @@ export function initNewsletterPopup(){
       }
     ];
 
+    // Friendly idle tour. Any real visitor interaction hands the bubble back to the game.
+    const INTRO_MESSAGES = [
+      "Hiii! I'm Luxy! Welcome to my wittle Mail Cottage! 🥰",
+      "Not convinced by my cuteness? Tap 'Convince Me Harder'! I dare ya! 🥺",
+      "Feed me a cookie, pwees! 🍪 Technology blessings coming right up!",
+      "Pwees pat my wittle head! It makes this mail buddy super-duper happy! 🥹",
+      "Pssst... I saw you sneaky-peeking at that Shubscribe button! 👀💌"
+    ];
+
     const COOKIE_QUIPS = [
       '"NOM NOM NOM! 🍪 Oh!! Warm chocolate chip! Welcome to my cottage forever!"',
       '"CRUNCH CRUNCH! 🍪 That was delicious! Wait until you see the visual explanations we’re baking!"',
@@ -271,6 +281,7 @@ export function initNewsletterPopup(){
       previousBodyOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
       housePopupBackdrop.classList.remove('hidden');
+      startIntroSequence();
       requestAnimationFrame(() => { houseModalCard.classList.remove('house-modal-hidden'); houseModalCard.classList.add('house-modal-visible'); });
       sound.playDoorKnock();
       window.setTimeout(() => { triggerSquishAnimation(); spawnFloatingEmojis(['🏠','💖','✨'],4); closeHousePopupBtn.focus(); },220);
@@ -278,6 +289,7 @@ export function initNewsletterPopup(){
     function closeHousePopup() {
       if (!isHouseOpen) return;
       isHouseOpen = false;
+      stopIntroSequence();
       resetLuxyEyes();
       sound.playPop(520,300);
       houseModalCard.classList.remove('house-modal-visible'); houseModalCard.classList.add('house-modal-hidden');
@@ -296,6 +308,12 @@ export function initNewsletterPopup(){
       event.preventDefault(); openHousePopup(trigger);
     });
     closeHousePopupBtn.addEventListener('click',closeHousePopup);
+
+    // The first visitor input stops the idle tour before any feature dialogue can update the bubble.
+    houseModalCard.addEventListener('pointerdown', stopIntroSequence, true);
+    houseModalCard.addEventListener('click', stopIntroSequence, true);
+    houseModalCard.addEventListener('keydown', stopIntroSequence, true);
+
     // Close when clicking backdrop outside the house
     housePopupBackdrop.addEventListener('click', (e) => {
       if (e.target === housePopupBackdrop) {
@@ -350,6 +368,39 @@ export function initNewsletterPopup(){
       setTimeout(() => {
         speechBubble.style.transform = 'scale(1)';
       }, 160);
+    }
+
+    function stopIntroSequence() {
+      introSequenceActive = false;
+      if (introTimer !== null) {
+        window.clearTimeout(introTimer);
+        introTimer = null;
+      }
+    }
+
+    function startIntroSequence() {
+      stopIntroSequence();
+      if (!isHouseOpen) return;
+
+      introSequenceActive = true;
+      let messageIndex = 0;
+      updateSpeech(INTRO_MESSAGES[messageIndex]);
+
+      const showNextMessage = () => {
+        if (!introSequenceActive || !isHouseOpen) return;
+
+        messageIndex += 1;
+        if (messageIndex >= INTRO_MESSAGES.length) {
+          introSequenceActive = false;
+          introTimer = null;
+          return;
+        }
+
+        updateSpeech(INTRO_MESSAGES[messageIndex]);
+        introTimer = window.setTimeout(showNextMessage, 4000);
+      };
+
+      introTimer = window.setTimeout(showNextMessage, 4000);
     }
 
     function addCharm(amount) {
@@ -762,6 +813,7 @@ export function initNewsletterPopup(){
     });
 
     emailInput.addEventListener('input', (e) => {
+      stopIntroSequence();
       const val = e.target.value.trim();
       emailErrorMsg.classList.add('hidden');
       sound.playPop(700, 860);
@@ -831,6 +883,7 @@ export function initNewsletterPopup(){
     const rssBox = get('rss-box');
 
     noThanksLink.addEventListener('mouseenter', () => {
+      stopIntroSequence();
       if (isSubscribed) return;
       sound.playPop(500, 320);
       puppyEyeLeft.setAttribute('opacity', '1');
