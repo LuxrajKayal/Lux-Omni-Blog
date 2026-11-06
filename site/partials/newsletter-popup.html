@@ -52,7 +52,6 @@
             <!-- Center Attic Wooden Signboard -->
             <div class="wood-shelf px-3.5 py-1.5 rounded-2xl text-center">
               <div class="font-display font-bold text-xs sm:text-sm text-cocoa tracking-wide flex items-center gap-1.5 justify-center">
-                <span>🏡</span>
                 <span>LUXY'S MAIL COTTAGE</span>
                 <span class="hidden sm:inline text-[10px] bg-cream border border-cocoa px-1.5 py-0.2 rounded-full">LUXRAJ.COM</span>
               </div>
@@ -83,26 +82,6 @@
           <h2 id="main-headline" class="font-display font-bold text-xl sm:text-2xl text-cocoa leading-snug">
             Welcome inside! Can we be inbox friends? 🥺
           </h2>
-        </div>
-
-        <!-- 2. LUXY'S CHARM / FRIENDSHIP PROGRESS BAR -->
-        <div class="charm-meter bg-creamDark border-2 border-cocoa rounded-2xl p-2 mb-3.5">
-          <div class="flex items-center justify-between text-xs font-display font-semibold px-1 mb-1">
-            <span class="flex items-center gap-1.5 text-cocoa">
-              <span id="charm-heart-icon" class="text-sm inline-block transition-transform">💖</span>
-              <span id="charm-status-label">Luxy's Charm Effort: Warming Up!</span>
-            </span>
-            <span id="charm-percent-badge" class="bg-white border border-cocoa px-2 py-0.5 rounded-full text-cocoa font-bold">
-              20%
-            </span>
-          </div>
-          <div class="w-full h-3.5 bg-white rounded-full border-2 border-cocoa overflow-hidden p-0.5">
-            <div
-              id="charm-bar-fill"
-              class="h-full bg-gradient-to-r from-pinky via-butter to-minty rounded-full transition-all duration-500"
-              style="width: 20%;"
-            ></div>
-          </div>
         </div>
 
         <!-- Desktop columns; display:contents restores the original phone sequence. -->
@@ -391,7 +370,24 @@
 
         </div>
 
-        <!-- 4. THREE BIG PLAYFUL ACTION BUTTONS (THE BEGGING MINI-GAME) -->
+<!-- Charm meter sits directly beneath the window within Luxy's column. -->
+        <div class="charm-meter w-full bg-creamDark border-2 border-cocoa rounded-2xl p-2">
+          <div class="flex items-center justify-between gap-2 text-xs font-display font-semibold px-1 mb-1">
+            <span id="charm-status-label" class="text-cocoa">Luxy's Charm Effort: Warming Up!</span>
+            <span id="charm-percent-badge" class="bg-white border border-cocoa px-2 py-0.5 rounded-full text-cocoa font-bold">
+              20%
+            </span>
+          </div>
+          <div class="w-full h-3.5 bg-white rounded-full border-2 border-cocoa overflow-hidden p-0.5">
+            <div
+              id="charm-bar-fill"
+              class="h-full bg-gradient-to-r from-pinky via-butter to-minty rounded-full transition-all duration-500"
+              style="width: 20%;"
+            ></div>
+          </div>
+        </div>
+
+                <!-- 4. THREE BIG PLAYFUL ACTION BUTTONS (THE BEGGING MINI-GAME) -->
         <div class="game-controls grid grid-cols-3 gap-2 sm:gap-3 mb-4">
           <!-- Button 1: Convince Me Harder -->
           <button
