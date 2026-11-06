@@ -5,6 +5,7 @@ export function initNewsletterPopup(){
   const get=(id)=>root.querySelector('#'+id);
   let returnFocusTarget=null,previousBodyOverflow='',closeTimer=null,patHandTimeout=null;
   let introTimer=null,introSequenceActive=false;
+  let ctaHighlightTimer=null,ctaHighlightActive=false,ctaHighlightIndex=0;
 
 /******************************************************************
      * 1. CUTE SYNTHESIZED SOUND ENGINE (Web Audio API - No External Files)
@@ -196,8 +197,8 @@ export function initNewsletterPopup(){
       "Hiii! I'm Luxy! Welcome to my wittle Mail Cottage! 🥰",
       "Not convinced by my cuteness? Tap 'Convince Me Harder'! I dare ya! 🥺",
       "Feed me a cookie, pwees! 🍪 Technology blessings coming right up!",
-      "Pwees pat my wittle head! It makes this mail buddy super-duper happy! 🥹",
-      "Pssst... I saw you sneaky-peeking at that Shubscribe button! 👀💌"
+      "Pwees pat my wittle head! It makes this mail buddy super-duper happy!",
+      "Pssst... I saw you sneaky-peeking at the Shubshribe! button! 👀💌"
     ];
 
     const COOKIE_QUIPS = [
@@ -260,6 +261,7 @@ export function initNewsletterPopup(){
     const btnBegHarder = get('btn-beg-harder');
     const btnCookie = get('btn-cookie');
     const btnPat = get('btn-pat');
+    const submitButton = get('submit-btn');
     const begStepCounter = get('beg-step-counter');
     const cookieCounter = get('cookie-counter');
     const patCounter = get('pat-counter');
@@ -277,6 +279,7 @@ export function initNewsletterPopup(){
     function openHousePopup(trigger = document.activeElement) {
       if (isHouseOpen) return;
       isHouseOpen = true;
+      stopCtaHighlightCycle();
       returnFocusTarget = trigger instanceof HTMLElement ? trigger : document.activeElement;
       previousBodyOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
@@ -290,6 +293,7 @@ export function initNewsletterPopup(){
       if (!isHouseOpen) return;
       isHouseOpen = false;
       stopIntroSequence();
+      stopCtaHighlightCycle();
       resetLuxyEyes();
       sound.playPop(520,300);
       houseModalCard.classList.remove('house-modal-visible'); houseModalCard.classList.add('house-modal-hidden');
@@ -378,8 +382,39 @@ export function initNewsletterPopup(){
       }
     }
 
+    function stopCtaHighlightCycle() {
+      ctaHighlightActive = false;
+      if (ctaHighlightTimer !== null) {
+        window.clearTimeout(ctaHighlightTimer);
+        ctaHighlightTimer = null;
+      }
+      btnBegHarder.classList.remove('newsletter-cta-attention');
+      submitButton.classList.remove('newsletter-cta-attention');
+    }
+
+    function showNextCtaHighlight() {
+      if (!ctaHighlightActive || !isHouseOpen) return;
+
+      btnBegHarder.classList.remove('newsletter-cta-attention');
+      submitButton.classList.remove('newsletter-cta-attention');
+
+      const target = ctaHighlightIndex === 0 ? btnBegHarder : submitButton;
+      target.classList.add('newsletter-cta-attention');
+      ctaHighlightIndex = (ctaHighlightIndex + 1) % 2;
+      ctaHighlightTimer = window.setTimeout(showNextCtaHighlight, 2400);
+    }
+
+    function startCtaHighlightCycle() {
+      stopCtaHighlightCycle();
+      if (!isHouseOpen) return;
+      ctaHighlightActive = true;
+      ctaHighlightIndex = 0;
+      showNextCtaHighlight();
+    }
+
     function startIntroSequence() {
       stopIntroSequence();
+      stopCtaHighlightCycle();
       if (!isHouseOpen) return;
 
       introSequenceActive = true;
@@ -393,6 +428,7 @@ export function initNewsletterPopup(){
         if (messageIndex >= INTRO_MESSAGES.length) {
           introSequenceActive = false;
           introTimer = null;
+          startCtaHighlightCycle();
           return;
         }
 
@@ -509,6 +545,16 @@ export function initNewsletterPopup(){
         spawnFloatingEmojis(['⚒️', '🥺', '👉👈'], 6);
       }
     }
+
+    // Either highlighted CTA being used ends the attention cycle for this popup visit.
+    [btnBegHarder, submitButton].forEach((button) => {
+      button.addEventListener('pointerdown', stopCtaHighlightCycle);
+      button.addEventListener('click', stopCtaHighlightCycle);
+      button.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') stopCtaHighlightCycle();
+      });
+      button.addEventListener('focus', stopCtaHighlightCycle);
+    });
 
     btnBegHarder.addEventListener('click', advanceBeggingMove);
 
