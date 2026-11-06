@@ -408,7 +408,8 @@ export function initNewsletterPopup(){
       stopCtaHighlightCycle();
       if (!isHouseOpen) return;
       ctaHighlightActive = true;
-      ctaHighlightIndex = 0;
+      // The final intro line points to Shubshribe!, so spotlight it first.
+      ctaHighlightIndex = 1;
       showNextCtaHighlight();
     }
 
@@ -428,11 +429,19 @@ export function initNewsletterPopup(){
         if (messageIndex >= INTRO_MESSAGES.length) {
           introSequenceActive = false;
           introTimer = null;
-          startCtaHighlightCycle();
           return;
         }
 
         updateSpeech(INTRO_MESSAGES[messageIndex]);
+
+        // Spotlight Shubshribe! as soon as Luxy says the final intro line.
+        if (messageIndex === INTRO_MESSAGES.length - 1) {
+          introSequenceActive = false;
+          introTimer = null;
+          startCtaHighlightCycle();
+          return;
+        }
+
         introTimer = window.setTimeout(showNextMessage, 4000);
       };
 
