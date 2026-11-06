@@ -1640,6 +1640,37 @@
   box-shadow: 0 3px 8px var(--newsletter-shadow);
 }
 
+/* Alternating attention cue after Luxy's welcome tour; no layout movement. */
+#luxraj-newsletter#luxraj-newsletter .newsletter-cta-attention {
+  position: relative;
+  z-index: 1;
+  outline: 3px solid rgba(255, 209, 102, 0.82);
+  outline-offset: 3px;
+  animation: newsletter-cta-attention-pulse 1.15s ease-in-out infinite;
+}
+
+@keyframes newsletter-cta-attention-pulse {
+  0%, 100% {
+    outline-color: rgba(255, 209, 102, 0.52);
+    outline-offset: 2px;
+    filter: drop-shadow(0 2px 3px rgba(145, 91, 35, 0.12));
+  }
+  50% {
+    outline-color: rgba(255, 209, 102, 1);
+    outline-offset: 4px;
+    filter: drop-shadow(0 4px 8px rgba(145, 91, 35, 0.28));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #luxraj-newsletter#luxraj-newsletter .newsletter-cta-attention {
+    animation: none;
+    outline: 3px solid rgba(255, 209, 102, 0.9);
+    outline-offset: 3px;
+    filter: none;
+  }
+}
+
 
 /* Keep the character column's meter aligned to its window, not the full cottage. */
 #luxraj-newsletter#luxraj-newsletter .newsletter-headline {
