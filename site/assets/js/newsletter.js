@@ -143,13 +143,16 @@ export function initNewsletterPopup(){
     /******************************************************************
      * 2. BREVO CONFIGURATION & GAME STATE ("LUXY")
      ******************************************************************/
-    // Demo preview only. No subscriber data is transmitted or stored.
+    // Brevo's hosted HTML-form runtime processes the subscription and exposes its
+    // official success/error panels. Luxy only controls the visitor-facing experience.
 
     let charmScore = 20;
     let begStage = 0;
     let cookiesFed = 0;
     let headPats = 0;
     let isSubscribed = false;
+    let isSubmitting = false;
+    let lastSubmittedEmail = '';
     let isHouseOpen = false;
     const unlockedStickers = new Set();
 
@@ -270,8 +273,13 @@ export function initNewsletterPopup(){
     const emailInput = get('email-input');
     const emailEmojiStatus = get('email-emoji-status');
     const submitBtnLabel = get('submit-btn-label');
-    const subscribeForm = get('subscribe-form');
+    const subscribeForm = get('sib-form');
     const emailErrorMsg = get('email-error-msg');
+    const brevoSuccessPanel = get('success-message');
+    const brevoErrorPanel = get('error-message');
+    const brevoSuccessText = get('success-message-text');
+    const brevoErrorText = get('error-message-text');
+    const brevoRuntimeScript = document.getElementById('luxraj-brevo-runtime');
 
     /******************************************************************
      * 4. HOUSE POPUP OPEN / CLOSE LOGIC
@@ -895,28 +903,124 @@ export function initNewsletterPopup(){
     });
 
     /******************************************************************
-     * 10. BREVO (SENDINBLUE) SUBMISSION & VIP HOUSE KEY REWARD
+     * 10. BREVO SUBMISSION & VIP HOUSE KEY REWARD
      ******************************************************************/
-    subscribeForm.addEventListener('submit',async(e)=>{
-      e.preventDefault();
-      const val=emailInput.value.trim();
-      const valid=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val);
-      if(!valid){sound.playPop(300,180);emailErrorMsg.textContent="🥺 Oops! Luxy needs a real email with an '@' and domain (like you@example.com)!";emailErrorMsg.classList.remove('hidden');emailInput.focus();return;}
-      if(isSubscribed)return;
-      const submitButton=get('submit-btn');submitButton.disabled=true;submitBtnLabel.textContent='Trying the demo... 📬';emailErrorMsg.classList.add('hidden');
-      await new Promise(resolve=>window.setTimeout(resolve,380));
-      isSubscribed=true;sound.playVictory();addCharm(100);unlockSticker('sticker-bestie');launchConfetti();
-      luxySvg.classList.remove('luxy-idle','luxy-squish','luxy-flop');luxySvg.classList.add('luxy-happy');
-      showCompanion(null);propSadSign.setAttribute('opacity','0');propBestiesBanner.setAttribute('opacity','1');starEyeLeft.setAttribute('opacity','1');starEyeRight.setAttribute('opacity','1');
-      mainHeadline.textContent='YAY!! Luxy has a demo celebration!';
-      updateSpeech('That was only a preview, '+val.split('@')[0]+'! No address was sent or saved. 💖');
-      submitBtnLabel.textContent='Demo Celebration!';get('vip-member-email').textContent=val;get('vip-card-number').textContent='#PREVIEW';
-      get('vip-stats-line').textContent='Preview played with '+cookiesFed+' cookies, '+headPats+' head pats & '+unlockedStickers.size+'/6 stickers!';
-      get('vip-membership-card').classList.remove('hidden');get('rss-box').classList.add('hidden');submitButton.disabled=false;
+    function showBrevoFailure() {
+      if (isSubscribed || !isSubmitting) return;
+
+      const serverMessage = brevoErrorText ? brevoErrorText.textContent.trim() : '';
+      isSubmitting = false;
+      submitButton.disabled = false;
+      submitBtnLabel.textContent = 'Shubshribe!';
+      emailErrorMsg.textContent = serverMessage || 'Luxy could not deliver that letter. Please try again.';
+      emailErrorMsg.classList.remove('hidden');
+      updateSpeech('"Oh no! Our mail slot could not complete that delivery. Please try again! 💌"');
+    }
+
+    function showBrevoSuccess() {
+      if (isSubscribed || !isSubmitting) return;
+
+      isSubscribed = true;
+      isSubmitting = false;
+      sound.playVictory();
+      addCharm(100);
+      unlockSticker('sticker-bestie');
+      launchConfetti();
+
+      luxySvg.classList.remove('luxy-idle', 'luxy-squish', 'luxy-flop');
+      luxySvg.classList.add('luxy-happy');
+      showCompanion(null);
+      propSadSign.setAttribute('opacity', '0');
+      propBestiesBanner.setAttribute('opacity', '1');
+      starEyeLeft.setAttribute('opacity', '1');
+      starEyeRight.setAttribute('opacity', '1');
+
+      mainHeadline.textContent = 'YAY!! Welcome to the Luxraj Pen-Pal Club!';
+      updateSpeech('YAY!! Welcome to Luxraj, ' + lastSubmittedEmail.split('@')[0] + '! Your newsletter subscription is confirmed! 💖');
+      submitBtnLabel.textContent = 'Welcome, Pen-Pal! 💌';
+      get('vip-member-email').textContent = lastSubmittedEmail;
+      get('vip-card-number').textContent = '#VIP';
+      get('vip-stats-line').textContent = 'Collected with ' + cookiesFed + ' cookies, ' + headPats + ' head pats & ' + unlockedStickers.size + '/6 stickers!';
+      get('vip-membership-card').classList.remove('hidden');
+      get('rss-box').classList.add('hidden');
+      submitButton.disabled = true;
+      get('reset-game-btn').textContent = 'Pen-Pal Status ✓';
+    }
+
+    // Brevo's official runtime toggles this class after it receives its server result.
+    // The message panels remain hidden so Luxy can present the same feedback in its UI.
+    const brevoResponseObserver = new MutationObserver(() => {
+      if (brevoSuccessPanel.classList.contains('sib-form-message-panel--active')) {
+        showBrevoSuccess();
+      } else if (brevoErrorPanel.classList.contains('sib-form-message-panel--active')) {
+        showBrevoFailure();
+      }
     });
+    [brevoSuccessPanel, brevoErrorPanel].forEach((panel) => {
+      brevoResponseObserver.observe(panel, {
+        attributes: true,
+        attributeFilter: ['class', 'style'],
+        childList: true,
+        characterData: true,
+        subtree: true
+      });
+    });
+
+    // Capture phase preserves local validation and duplicate protection while allowing
+    // valid submissions to continue to Brevo's official AJAX handler.
+    subscribeForm.addEventListener('submit', (event) => {
+      if (isSubscribed || isSubmitting) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        return;
+      }
+
+      const value = emailInput.value.trim();
+      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+      if (!valid) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        sound.playPop(300, 180);
+        emailErrorMsg.textContent = "🥺 Oops! Luxy needs a real email with an '@' and domain (like you@example.com)!";
+        emailErrorMsg.classList.remove('hidden');
+        emailInput.focus();
+        return;
+      }
+
+      const honeypot = subscribeForm.querySelector('input[name="email_address_check"]');
+      if (honeypot && honeypot.value.trim()) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        return;
+      }
+
+      if (!brevoRuntimeScript || brevoRuntimeScript.dataset.loadState !== 'ready') {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        const runtimeFailed = brevoRuntimeScript && brevoRuntimeScript.dataset.loadState === 'failed';
+        emailErrorMsg.textContent = runtimeFailed
+          ? 'Luxy could not connect to the newsletter service. Please try again later.'
+          : 'Luxy is getting the mail service ready. Please try again in a moment.';
+        emailErrorMsg.classList.remove('hidden');
+        updateSpeech('"One tiny moment! Luxy is getting the mail service ready. 🕊️"');
+        return;
+      }
+
+      isSubmitting = true;
+      lastSubmittedEmail = value;
+      brevoSuccessPanel.classList.remove('sib-form-message-panel--active');
+      brevoErrorPanel.classList.remove('sib-form-message-panel--active');
+      emailErrorMsg.classList.add('hidden');
+      submitButton.disabled = true;
+      submitBtnLabel.textContent = 'Sending to Brevo... 🕊️';
+      updateSpeech('"Your letter is on its way! Luxy is sending it to the mail house... 💌"');
+    }, true);
     // Reset Game Button
     get('reset-game-btn').addEventListener('click', () => {
-      isSubscribed = false;
+      if (isSubscribed) {
+        updateSpeech('"You are already in the Luxraj Pen-Pal Club! Your VIP pass is safe with you. 💖"');
+        return;
+      }
       begStage = 0;
       showCompanion(null);
       emailInput.value = '';
