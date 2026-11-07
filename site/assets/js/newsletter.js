@@ -278,7 +278,7 @@ export function initNewsletterPopup(){
     /******************************************************************
      * 4. HOUSE POPUP OPEN / CLOSE LOGIC
      ******************************************************************/
-    function openHousePopup(trigger = document.activeElement, { celebration = false } = {}) {
+    function openHousePopup(trigger = document.activeElement) {
       if (isHouseOpen) return;
       isHouseOpen = true;
       stopCtaHighlightCycle();
@@ -286,14 +286,10 @@ export function initNewsletterPopup(){
       previousBodyOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
       housePopupBackdrop.classList.remove('hidden');
-      if (!celebration) startIntroSequence();
+      startIntroSequence();
       requestAnimationFrame(() => { houseModalCard.classList.remove('house-modal-hidden'); houseModalCard.classList.add('house-modal-visible'); });
       sound.playDoorKnock();
-      window.setTimeout(() => {
-        if (!celebration) triggerSquishAnimation();
-        spawnFloatingEmojis(celebration ? ['🎉','💖','🏡','✨'] : ['🏠','💖','✨'], celebration ? 8 : 4);
-        closeHousePopupBtn.focus();
-      }, 220);
+      window.setTimeout(() => { triggerSquishAnimation(); spawnFloatingEmojis(['🏠','💖','✨'],4); closeHousePopupBtn.focus(); },220);
     }
     function closeHousePopup() {
       if (!isHouseOpen) return;
@@ -954,9 +950,6 @@ export function initNewsletterPopup(){
       starEyeRight.setAttribute('opacity', '0');
       luxySvg.classList.remove('luxy-happy', 'luxy-flop');
       luxySvg.classList.add('luxy-idle');
-      inputVipCrown.classList.add('hidden');
-      vipCarpetBadge.classList.add('hidden');
-      subscribeForm.classList.remove('hidden');
       get('vip-membership-card').classList.add('hidden');
       mainHeadline.textContent = "Welcome inside! Can we be inbox friends?";
       updateSpeech('"Ready for round two! Click any button below to play with Luxy!"');
@@ -1044,51 +1037,7 @@ export function initNewsletterPopup(){
       for(let i=confettiPieces.length-1;i>=0;i--){const p=confettiPieces[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.32;p.rot+=p.vRot;p.life-=.014;if(p.life<=0){confettiPieces.splice(i,1);continue;}cCtx.save();cCtx.translate(p.x,p.y);cCtx.rotate(p.rot);cCtx.globalAlpha=Math.max(0,p.life);cCtx.fillStyle=p.color;cCtx.fillRect(-p.size/2,-p.size/2,p.size,p.size);cCtx.restore();}
       if(confettiPieces.length)confettiFrame=window.requestAnimationFrame(renderConfetti);else confettiFrame=null;
     }
-
-    function showSubscriptionCelebration() {
-      stopIntroSequence();
-      stopCtaHighlightCycle();
-      isSubscribed = true;
-
-      addCharm(100);
-      unlockSticker('sticker-bestie');
-
-      luxySvg.classList.remove('luxy-idle', 'luxy-squish', 'luxy-flop');
-      luxySvg.classList.add('luxy-happy');
-      showCompanion(null);
-      propSadSign.setAttribute('opacity', '0');
-      propBestiesBanner.setAttribute('opacity', '1');
-      starEyeLeft.setAttribute('opacity', '1');
-      starEyeRight.setAttribute('opacity', '1');
-
-      mainHeadline.textContent = "YAY!! You're officially a Luxraj Blog housemate!";
-      updateSpeech('"Hooray!! Your place in my Mail Cottage is saved. I can’t wait to send you our next little delivery! 💖"');
-
-      get('vip-member-email').textContent = 'You';
-      get('vip-stats-line').textContent = 'Your place at the Mail Cottage is saved!';
-      get('vip-membership-card').classList.remove('hidden');
-      get('rss-box').classList.add('hidden');
-      subscribeForm.classList.add('hidden');
-      inputVipCrown.classList.remove('hidden');
-      vipCarpetBadge.classList.remove('hidden');
-      submitButton.disabled = true;
-
-      launchConfetti();
-    }
-
     window.addEventListener('resize',resizeConfetti);
     resizeConfetti();
-
-    const newsletterReturnUrl = new URL(window.location.href);
-    if (newsletterReturnUrl.searchParams.get('newsletter') === 'success') {
-      newsletterReturnUrl.searchParams.delete('newsletter');
-      window.history.replaceState(
-        window.history.state,
-        '',
-        `${newsletterReturnUrl.pathname}${newsletterReturnUrl.search}${newsletterReturnUrl.hash}`
-      );
-      openHousePopup(document.activeElement, { celebration: true });
-      showSubscriptionCelebration();
-    }
 
 }
