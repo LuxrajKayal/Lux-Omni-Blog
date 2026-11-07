@@ -277,7 +277,6 @@ export function initNewsletterPopup(){
     const emailErrorMsg = get('email-error-msg');
     const brevoSuccessPanel = get('success-message');
     const brevoErrorPanel = get('error-message');
-    const brevoSuccessText = get('success-message-text');
     const brevoErrorText = get('error-message-text');
     const brevoRuntimeScript = document.getElementById('luxraj-brevo-runtime');
 
