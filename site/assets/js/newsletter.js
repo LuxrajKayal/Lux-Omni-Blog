@@ -950,8 +950,8 @@ export function initNewsletterPopup(){
       get('reset-game-btn').textContent = 'Pen-Pal Status ✓';
     }
 
-    // Brevo's official runtime toggles this class after it receives its server result.
-    // The message panels remain hidden so Luxy can present the same feedback in its UI.
+    // Brevo's official runtime toggles these status panels after its server response.
+    // CSS clips the panels visually while Luxy presents the visitor-facing feedback.
     const brevoResponseObserver = new MutationObserver(() => {
       if (brevoSuccessPanel.classList.contains('sib-form-message-panel--active')) {
         showBrevoSuccess();
