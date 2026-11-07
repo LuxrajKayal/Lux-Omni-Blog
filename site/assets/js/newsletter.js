@@ -3,7 +3,7 @@ export function initNewsletterPopup(){
   if(!root||root.dataset.initialized==='true')return;
   root.dataset.initialized='true';
   const get=(id)=>root.querySelector('#'+id);
-  let returnFocusTarget=null,previousBodyOverflow='',closeTimer=null,patHandTimeout=null;
+  let returnFocusTarget=null,previousBodyOverflow='',closeTimer=null,patHandTimeout=null,submissionTimeout=null;
   let introTimer=null,introSequenceActive=false;
   let ctaHighlightTimer=null,ctaHighlightActive=false,ctaHighlightIndex=0;
 
@@ -270,7 +270,7 @@ export function initNewsletterPopup(){
     const patCounter = get('pat-counter');
 
     // Form Elements
-    const emailInput = get('email-input');
+    const emailInput = get('EMAIL');
     const emailEmojiStatus = get('email-emoji-status');
     const submitBtnLabel = get('submit-btn-label');
     const subscribeForm = get('sib-form');
@@ -908,6 +908,8 @@ export function initNewsletterPopup(){
       if (isSubscribed || !isSubmitting) return;
 
       const serverMessage = brevoErrorText ? brevoErrorText.textContent.trim() : '';
+      window.clearTimeout(submissionTimeout);
+      submissionTimeout = null;
       isSubmitting = false;
       submitButton.disabled = false;
       submitBtnLabel.textContent = 'Shubshribe!';
@@ -919,6 +921,8 @@ export function initNewsletterPopup(){
     function showBrevoSuccess() {
       if (isSubscribed || !isSubmitting) return;
 
+      window.clearTimeout(submissionTimeout);
+      submissionTimeout = null;
       isSubscribed = true;
       isSubmitting = false;
       sound.playVictory();
@@ -1013,6 +1017,20 @@ export function initNewsletterPopup(){
       submitButton.disabled = true;
       submitBtnLabel.textContent = 'Sending to Brevo... 🕊️';
       updateSpeech('"Your letter is on its way! Luxy is sending it to the mail house... 💌"');
+
+      // Never leave the visitor stuck indefinitely if Brevo's runtime does not
+      // deliver a success/error panel. This timeout signals an unknown result,
+      // not proof that the contact was rejected.
+      window.clearTimeout(submissionTimeout);
+      submissionTimeout = window.setTimeout(() => {
+        if (!isSubmitting || isSubscribed) return;
+        isSubmitting = false;
+        submitButton.disabled = false;
+        submitBtnLabel.textContent = 'Try again';
+        emailErrorMsg.textContent = 'Luxy has not received a confirmation from Brevo yet. Please check your contact list before trying again.';
+        emailErrorMsg.classList.remove('hidden');
+        updateSpeech('"The mail house has not answered yet. Please check whether your letter arrived before sending it again. 💌"');
+      }, 30000);
     }, true);
     // Reset Game Button
     get('reset-game-btn').addEventListener('click', () => {
