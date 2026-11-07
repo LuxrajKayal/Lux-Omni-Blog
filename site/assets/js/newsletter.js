@@ -275,10 +275,7 @@ export function initNewsletterPopup(){
     const subscribeForm = get('sib-form');
     const emailErrorMsg = get('email-error-msg');
 
-    // Cross-tab newsletter status channel: one listener handles test and real callbacks.
-    const broadcastTestButton = get('newsletter-broadcast-test-btn');
-    const broadcastTestStatus = get('newsletter-broadcast-test-status');
-    const pendingBroadcastTests = new Set();
+    // Brevo redirects successful submissions to the standalone broadcaster page.
     let brevoSubmissionPending = false;
     let brevoPendingTimeout = null;
     const newsletterChannel = typeof BroadcastChannel === 'function'
@@ -288,87 +285,28 @@ export function initNewsletterPopup(){
     if (newsletterChannel) {
       newsletterChannel.addEventListener('message', (event) => {
         const message = event.data || {};
+        if (message.type !== 'BREVO_SUBSCRIPTION_SUCCESS' || !brevoSubmissionPending) return;
 
-        if (message.type === 'LUXY_TEST_BROADCAST') {
-          if (!pendingBroadcastTests.has(message.id)) return;
+        brevoSubmissionPending = false;
+        window.clearTimeout(brevoPendingTimeout);
 
-          pendingBroadcastTests.delete(message.id);
-          if (broadcastTestStatus) {
-            broadcastTestStatus.textContent =
-              'Received broadcast: ' + (message.message || 'LUXY_TEST_BROADCAST');
-          }
-
-          newsletterChannel.postMessage({
-            type: 'LUXY_TEST_ACK',
-            id: message.id
-          });
-          return;
+        // Reopen the cottage if the visitor closed it while Brevo was processing.
+        if (!isHouseOpen) {
+          openHousePopup(document.activeElement, { celebration: true });
         }
+        showSubscriptionCelebration();
 
-        if (message.type === 'BREVO_SUBSCRIPTION_SUCCESS') {
-          if (!brevoSubmissionPending) return;
-
-          brevoSubmissionPending = false;
-          window.clearTimeout(brevoPendingTimeout);
-
-          // Expose the real Brevo redirect signal without triggering Luxy UI yet.
-          window.dispatchEvent(new CustomEvent('luxy:brevo-subscription-status', {
-            detail: {
-              status: 'success',
-              source: 'brevo-redirect',
-              id: message.id
-            }
-          }));
-
-          newsletterChannel.postMessage({
-            type: 'BREVO_SUCCESS_ACK',
-            id: message.id
-          });
-        }
-      });
-    }
-
-    if (broadcastTestButton) {
-      broadcastTestButton.addEventListener('click', () => {
-        if (!newsletterChannel) {
-          if (broadcastTestStatus) {
-            broadcastTestStatus.textContent = 'BroadcastChannel is not available in this browser.';
-          }
-          return;
-        }
-
-        const testId = 'test-' + Date.now() + '-' + Math.random().toString(36).slice(2);
-        pendingBroadcastTests.add(testId);
-
-        const siteRoot = document.body.dataset.siteRoot || '';
-        const testPageUrl = new URL(siteRoot + 'newsletter-thank-you-test.html', window.location.href);
-        testPageUrl.searchParams.set('id', testId);
-
-        const testTab = window.open(testPageUrl.href, '_blank');
-        if (!testTab) {
-          pendingBroadcastTests.delete(testId);
-          if (broadcastTestStatus) {
-            broadcastTestStatus.textContent = 'The browser blocked the test tab. Allow pop-ups and try again.';
-          }
-          return;
-        }
-
-        if (broadcastTestStatus) {
-          broadcastTestStatus.textContent = 'Waiting for the test broadcaster…';
-        }
-
-        window.setTimeout(() => {
-          if (pendingBroadcastTests.delete(testId) && broadcastTestStatus) {
-            broadcastTestStatus.textContent = 'No test message received. Check the callback page and browser console.';
-          }
-        }, 8000);
+        newsletterChannel.postMessage({
+          type: 'BREVO_SUCCESS_ACK',
+          id: message.id
+        });
       });
     }
 
     /******************************************************************
      * 4. HOUSE POPUP OPEN / CLOSE LOGIC
      ******************************************************************/
-    function openHousePopup(trigger = document.activeElement) {
+    function openHousePopup(trigger = document.activeElement, { celebration = false } = {}) {
       if (isHouseOpen) return;
       isHouseOpen = true;
       stopCtaHighlightCycle();
@@ -376,10 +314,10 @@ export function initNewsletterPopup(){
       previousBodyOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
       housePopupBackdrop.classList.remove('hidden');
-      startIntroSequence();
+      if (!celebration) startIntroSequence();
       requestAnimationFrame(() => { houseModalCard.classList.remove('house-modal-hidden'); houseModalCard.classList.add('house-modal-visible'); });
       sound.playDoorKnock();
-      window.setTimeout(() => { triggerSquishAnimation(); spawnFloatingEmojis(['🏠','💖','✨'],4); closeHousePopupBtn.focus(); },220);
+      window.setTimeout(() => { if (!isSubscribed) triggerSquishAnimation(); spawnFloatingEmojis(['🏠','💖','✨'],4); closeHousePopupBtn.focus(); },220);
     }
     function closeHousePopup() {
       if (!isHouseOpen) return;
@@ -1047,6 +985,9 @@ export function initNewsletterPopup(){
       starEyeRight.setAttribute('opacity', '0');
       luxySvg.classList.remove('luxy-happy', 'luxy-flop');
       luxySvg.classList.add('luxy-idle');
+      inputVipCrown.classList.add('hidden');
+      vipCarpetBadge.classList.add('hidden');
+      subscribeForm.classList.remove('hidden');
       get('vip-membership-card').classList.add('hidden');
       mainHeadline.textContent = "Welcome inside! Can we be inbox friends?";
       updateSpeech('"Ready for round two! Click any button below to play with Luxy!"');
@@ -1134,6 +1075,41 @@ export function initNewsletterPopup(){
       for(let i=confettiPieces.length-1;i>=0;i--){const p=confettiPieces[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.32;p.rot+=p.vRot;p.life-=.014;if(p.life<=0){confettiPieces.splice(i,1);continue;}cCtx.save();cCtx.translate(p.x,p.y);cCtx.rotate(p.rot);cCtx.globalAlpha=Math.max(0,p.life);cCtx.fillStyle=p.color;cCtx.fillRect(-p.size/2,-p.size/2,p.size,p.size);cCtx.restore();}
       if(confettiPieces.length)confettiFrame=window.requestAnimationFrame(renderConfetti);else confettiFrame=null;
     }
+    function showSubscriptionCelebration() {
+      if (isSubscribed) return;
+
+      stopIntroSequence();
+      stopCtaHighlightCycle();
+      isSubscribed = true;
+
+      addCharm(100);
+      unlockSticker('sticker-bestie');
+
+      luxySvg.classList.remove('luxy-idle', 'luxy-squish', 'luxy-flop');
+      luxySvg.classList.add('luxy-happy');
+      showCompanion(null);
+      propSadSign.setAttribute('opacity', '0');
+      propBestiesBanner.setAttribute('opacity', '1');
+      starEyeLeft.setAttribute('opacity', '1');
+      starEyeRight.setAttribute('opacity', '1');
+
+      mainHeadline.textContent = "YAY!! You're officially a Luxraj Blog housemate!";
+      updateSpeech('"Hooray!! Your place in my Mail Cottage is saved. I can’t wait to send you our next little delivery! 💖"');
+
+      get('vip-member-email').textContent = 'You';
+      get('vip-stats-line').textContent = 'Your place at the Mail Cottage is saved!';
+      get('vip-membership-card').classList.remove('hidden');
+      get('rss-box').classList.add('hidden');
+      subscribeForm.classList.add('hidden');
+      inputVipCrown.classList.remove('hidden');
+      vipCarpetBadge.classList.remove('hidden');
+      submitButton.disabled = true;
+
+      sound.playVictory();
+      spawnFloatingEmojis(['💖', '👑', '✨', '🎉'], 12);
+      launchConfetti();
+    }
+
     window.addEventListener('resize',resizeConfetti);
     resizeConfetti();
 

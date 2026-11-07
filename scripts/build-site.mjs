@@ -25,8 +25,7 @@ const PARTIALS = {
 };
 const NEWSLETTER_POPUP_PARTIAL = path.join(PARTIAL_DIR, 'newsletter-popup.html');
 const STANDALONE_NEWSLETTER_PAGES = new Set([
-  'newsletter-thank-you.html',
-  'newsletter-thank-you-test.html'
+  'newsletter-thank-you.html'
 ]);
 const REQUIRED_MARKER_NAMES = ['TOPBAR', 'MAIN-HEADER', 'FOOTER'];
 const MARKER_NAMES = Object.keys(PARTIALS);
