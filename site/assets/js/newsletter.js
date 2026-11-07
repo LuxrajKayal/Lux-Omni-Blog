@@ -267,7 +267,7 @@ export function initNewsletterPopup(){
     const patCounter = get('pat-counter');
 
     // Form Elements
-    const emailInput = get('email-input');
+    const emailInput = get('EMAIL');
     const emailEmojiStatus = get('email-emoji-status');
     const submitBtnLabel = get('submit-btn-label');
     const subscribeForm = get('sib-form');
