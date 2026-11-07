@@ -514,26 +514,14 @@
           <!-- BREVO (SENDINBLUE) COMPATIBLE STATIC FORM -->
           <div id="subscribe-form" class="space-y-2.5 sib-form" data-newsletter-service="brevo">
             <div id="sib-form-container" class="sib-form-container">
-              <!-- Brevo's official AJAX runtime uses these response panels.
-                   They stay visually hidden; Luxy's existing interface presents the feedback. -->
-              <div
-                id="error-message"
-                class="sib-form-message-panel"
-                hidden
-                aria-hidden="true"
-                style="display:none!important;"
-              >
+              <!-- Brevo's official AJAX runtime updates these status panels.
+                   Luxy observes their state and presents feedback in its own interface. -->
+              <div id="error-message" class="sib-form-message-panel luxy-brevo-runtime-panel" role="status" aria-live="polite">
                 <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
                   <span id="error-message-text" class="sib-form-message-panel__inner-text">Your subscription could not be saved. Please try again.</span>
                 </div>
               </div>
-              <div
-                id="success-message"
-                class="sib-form-message-panel"
-                hidden
-                aria-hidden="true"
-                style="display:none!important;"
-              >
+              <div id="success-message" class="sib-form-message-panel luxy-brevo-runtime-panel" role="status" aria-live="polite">
                 <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
                   <span id="success-message-text" class="sib-form-message-panel__inner-text">Your subscription has been successful.</span>
                 </div>
@@ -554,31 +542,42 @@
 
             <div class="subscription-form-row flex flex-col sm:flex-row gap-2.5">
               <div class="relative flex-grow">
-                <input
-                  id="email-input"
-                  type="email"
-                  name="EMAIL"
-                  data-required="true"
-                  required
-                  autocomplete="email"
-                  placeholder="your.cozy.email@example.com"
-                  class="input w-full px-4 py-3.5 rounded-2xl bg-white border-3 border-cocoa font-sans font-semibold text-cocoa placeholder:text-cocoaLight/60 focus:outline-none focus:ring-4 focus:ring-pinky/40 text-sm sm:text-base transition-all shadow-[inset_0_3px_5px_rgba(0,0,0,0.08)]"
-                  style="border-width: 3px;"
-                />
+                <div class="sib-input sib-form-block" style="padding:0!important;display:contents;">
+                  <div class="form__entry entry_block" style="display:contents;">
+                    <div class="form__label-row" style="display:contents;">
+                      <div class="entry__field" style="display:contents;">
+                        <input
+                          id="EMAIL"
+                          type="email"
+                          name="EMAIL"
+                          data-required="true"
+                          required
+                          autocomplete="email"
+                          placeholder="your.cozy.email@example.com"
+                          class="input w-full px-4 py-3.5 rounded-2xl bg-white border-3 border-cocoa font-sans font-semibold text-cocoa placeholder:text-cocoaLight/60 focus:outline-none focus:ring-4 focus:ring-pinky/40 text-sm sm:text-base transition-all shadow-[inset_0_3px_5px_rgba(0,0,0,0.08)]"
+                          style="border-width: 3px;"
+                        />
+                      </div>
+                    </div>
+                    <label class="entry__error entry__error--primary" aria-live="polite"></label>
+                  </div>
+                </div>
                 <span id="email-emoji-status" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-lg pointer-events-none">
                   ✉️
                 </span>
               </div>
 
-              <button
-                id="submit-btn"
-                type="submit"
-                form="sib-form"
-                class="sib-form-block__button sib-form-block__button-with-loader toy-btn bg-roofRed hover:bg-roofDark text-white font-display font-bold text-sm sm:text-base px-5 py-3.5 rounded-2xl whitespace-nowrap flex items-center justify-center gap-1.5"
-              >
-                <span id="submit-btn-label">Shubshribe!</span>
-                <span>💌</span>
-              </button>
+              <div class="sib-form-block" style="display:contents;">
+                <button
+                  id="submit-btn"
+                  type="submit"
+                  form="sib-form"
+                  class="sib-form-block__button sib-form-block__button-with-loader toy-btn bg-roofRed hover:bg-roofDark text-white font-display font-bold text-sm sm:text-base px-5 py-3.5 rounded-2xl whitespace-nowrap flex items-center justify-center gap-1.5"
+                >
+                  <span id="submit-btn-label">Shubshribe!</span>
+                  <span>💌</span>
+                </button>
+              </div>
             </div>
 
             <!-- Friendly Error Hint -->
