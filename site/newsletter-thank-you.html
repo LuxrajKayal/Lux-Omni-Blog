@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thank you | Luxraj Blog</title>
+</head>
+<body>
+  <p id="callback-status">Your subscription response was received. Returning to your original tab…</p>
+
+  <script>
+    (() => {
+      const status = document.getElementById('callback-status');
+
+      if (typeof BroadcastChannel !== 'function') {
+        status.textContent = 'Thank you. You can return to your original Luxraj Blog tab.';
+        return;
+      }
+
+      const channel = new BroadcastChannel('luxraj-newsletter');
+      const id = 'brevo-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+      let acknowledged = false;
+
+      const fallbackTimer = window.setTimeout(() => {
+        if (acknowledged) return;
+        channel.close();
+        status.textContent = 'Thank you. Your original tab did not acknowledge the message. You can close this tab.';
+      }, 6000);
+
+      channel.addEventListener('message', (event) => {
+        const message = event.data || {};
+        if (message.type !== 'BREVO_SUCCESS_ACK' || message.id !== id) return;
+
+        acknowledged = true;
+        window.clearTimeout(fallbackTimer);
+        channel.close();
+        status.textContent = 'Success message delivered. Closing this tab…';
+
+        window.close();
+        window.setTimeout(() => {
+          if (!window.closed) {
+            status.textContent = 'Success message delivered. You can close this tab and return to Luxraj Blog.';
+          }
+        }, 500);
+      });
+
+      channel.postMessage({
+        type: 'BREVO_SUBSCRIPTION_SUCCESS',
+        id
+      });
+    })();
+  </script>
+</body>
+</html>

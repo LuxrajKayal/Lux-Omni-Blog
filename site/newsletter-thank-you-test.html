@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Luxraj Newsletter Broadcaster Test</title>
+</head>
+<body>
+  <p id="test-status">Sending test message to the original tab…</p>
+
+  <script>
+    (() => {
+      const status = document.getElementById('test-status');
+      const id = new URLSearchParams(window.location.search).get('id');
+
+      if (!id) {
+        status.textContent = 'Test stopped: the test message ID is missing.';
+        return;
+      }
+
+      if (typeof BroadcastChannel !== 'function') {
+        status.textContent = 'BroadcastChannel is not available in this browser.';
+        return;
+      }
+
+      const channel = new BroadcastChannel('luxraj-newsletter');
+      let acknowledged = false;
+
+      const fallbackTimer = window.setTimeout(() => {
+        if (acknowledged) return;
+        channel.close();
+        status.textContent = 'No acknowledgement received. Return to the original tab and inspect the test status.';
+      }, 6000);
+
+      channel.addEventListener('message', (event) => {
+        const message = event.data || {};
+        if (message.type !== 'LUXY_TEST_ACK' || message.id !== id) return;
+
+        acknowledged = true;
+        window.clearTimeout(fallbackTimer);
+        channel.close();
+        status.textContent = 'Test message acknowledged. Closing this tab…';
+
+        window.close();
+        window.setTimeout(() => {
+          if (!window.closed) {
+            status.textContent = 'Test passed. You can close this tab manually.';
+          }
+        }, 500);
+      });
+
+      channel.postMessage({
+        type: 'LUXY_TEST_BROADCAST',
+        id,
+        message: 'LUXY TEST BROADCAST RECEIVED'
+      });
+    })();
+  </script>
+</body>
+</html>

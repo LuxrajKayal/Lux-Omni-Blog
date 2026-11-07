@@ -515,6 +515,7 @@
           <form
             id="sib-form"
             method="POST"
+            target="_blank"
             action="https://7de594df.sibforms.com/serve/MUIFANqylod_95kg4PncRD1Lf-oXVGzD3PvnFIkQIETAiw12ZNABEzc1aNZ36QHnsIy1DplKxpkS8A6IlUBWznJEpCHeQYkDe4_8bp_Xrz6fGJa0y4ur_Hb1CM-Gp_RgxA81cxODcP24H5D1aWsIVjumeG5snHHcM2MMmdwO4QwjA5VklgHmdPEP9KWRlpn2kzHyQCg0o1DOmR_jnQ=="
             data-type="subscription"
             class="space-y-2.5"
@@ -571,6 +572,23 @@
 
             <!-- Friendly Error Hint -->
             <p id="email-error-msg" class="hidden bg-white border-2 border-cocoa rounded-xl px-3 py-1.5 font-display font-semibold text-xs text-roofDark"></p>
+
+            <!-- TEMPORARY: Cross-tab broadcaster test control; remove after verification. -->
+            <div class="mt-3 rounded-xl border border-dashed border-cocoa/50 bg-white/70 p-2.5 text-left">
+              <button
+                id="newsletter-broadcast-test-btn"
+                type="button"
+                class="rounded-lg border border-cocoa px-3 py-1.5 font-display text-xs font-bold text-cocoa hover:bg-butterLight"
+              >
+                Test tab broadcaster ↗
+              </button>
+              <p
+                id="newsletter-broadcast-test-status"
+                class="mt-1 text-xs text-cocoaLight"
+                role="status"
+                aria-live="polite"
+              >Test not run yet.</p>
+            </div>
           </form>
         </div>
 

@@ -24,6 +24,10 @@ const PARTIALS = {
   'ARTICLE-LAYOUT': path.join(PARTIAL_DIR, 'article-layout.html')
 };
 const NEWSLETTER_POPUP_PARTIAL = path.join(PARTIAL_DIR, 'newsletter-popup.html');
+const STANDALONE_NEWSLETTER_PAGES = new Set([
+  'newsletter-thank-you.html',
+  'newsletter-thank-you-test.html'
+]);
 const REQUIRED_MARKER_NAMES = ['TOPBAR', 'MAIN-HEADER', 'FOOTER'];
 const MARKER_NAMES = Object.keys(PARTIALS);
 const markerFor = name => '<!-- SHARED:' + name + ' -->';
@@ -181,6 +185,25 @@ function injectNewsletterPopup(html,popupHtml,relativeFile){
  * The root 404 document is self-contained. Copy it without shared-component
  * injection so it can render at malformed or deeply nested request URLs.
  */
+function validateStandaloneNewsletterPage(html, relativeFile) {
+  if (!/<html\b/i.test(html) || !/<body\b/i.test(html) || !html.toLowerCase().includes('</html>')) {
+    throw new Error(relativeFile + ' must be a complete standalone HTML document.');
+  }
+  if (/<!-- SHARED:|{{ROOT}}/.test(html)) {
+    throw new Error(relativeFile + ' must not contain shared-component markers or root tokens.');
+  }
+  if (/<link\b[^>]*\brel\s*=\s*(["'])[^"']*stylesheet[^"']*\1/i.test(html)) {
+    throw new Error(relativeFile + ' must not include external site stylesheets.');
+  }
+  if (/<script\b[^>]*\bsrc\s*=/i.test(html)) {
+    throw new Error(relativeFile + ' must keep its broadcaster JavaScript inline.');
+  }
+  if (!/<script\b[^>]*>[\s\S]*?<\/script>/i.test(html)) {
+    throw new Error(relativeFile + ' must contain its inline broadcaster JavaScript.');
+  }
+  return html;
+}
+
 function validateStandalone404(html, relativeFile) {
   if (!/<html\b/i.test(html) || !/<body\b/i.test(html) || !html.toLowerCase().includes("</html>")) {
     throw new Error(relativeFile + ' must be a complete standalone HTML document.');
@@ -300,6 +323,14 @@ async function walkAndBuild(sourceDirectory, relativeDirectory, partialContents,
 
     if (!/<body\b/i.test(sourceHtml)) {
       throw new Error(normalizedRelativePath + ' is non-empty HTML but has no <body> element.');
+    }
+
+    // Newsletter callback pages are intentionally standalone: no site shell or popup injection.
+    if (STANDALONE_NEWSLETTER_PAGES.has(normalizedRelativePath)) {
+      const standaloneHtml = validateStandaloneNewsletterPage(sourceHtml, normalizedRelativePath);
+      await writeFile(outputPath, standaloneHtml, 'utf8');
+      stats.standalonePages += 1;
+      continue;
     }
 
     // The root 404 page is self-contained and must not receive the shared site shell.

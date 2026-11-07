@@ -275,6 +275,96 @@ export function initNewsletterPopup(){
     const subscribeForm = get('sib-form');
     const emailErrorMsg = get('email-error-msg');
 
+    // Cross-tab newsletter status channel: one listener handles test and real callbacks.
+    const broadcastTestButton = get('newsletter-broadcast-test-btn');
+    const broadcastTestStatus = get('newsletter-broadcast-test-status');
+    const pendingBroadcastTests = new Set();
+    let brevoSubmissionPending = false;
+    let brevoPendingTimeout = null;
+    const newsletterChannel = typeof BroadcastChannel === 'function'
+      ? new BroadcastChannel('luxraj-newsletter')
+      : null;
+
+    if (newsletterChannel) {
+      newsletterChannel.addEventListener('message', (event) => {
+        const message = event.data || {};
+
+        if (message.type === 'LUXY_TEST_BROADCAST') {
+          if (!pendingBroadcastTests.has(message.id)) return;
+
+          pendingBroadcastTests.delete(message.id);
+          if (broadcastTestStatus) {
+            broadcastTestStatus.textContent =
+              'Received broadcast: ' + (message.message || 'LUXY_TEST_BROADCAST');
+          }
+
+          newsletterChannel.postMessage({
+            type: 'LUXY_TEST_ACK',
+            id: message.id
+          });
+          return;
+        }
+
+        if (message.type === 'BREVO_SUBSCRIPTION_SUCCESS') {
+          if (!brevoSubmissionPending) return;
+
+          brevoSubmissionPending = false;
+          window.clearTimeout(brevoPendingTimeout);
+
+          // Expose the real Brevo redirect signal without triggering Luxy UI yet.
+          window.dispatchEvent(new CustomEvent('luxy:brevo-subscription-status', {
+            detail: {
+              status: 'success',
+              source: 'brevo-redirect',
+              id: message.id
+            }
+          }));
+
+          newsletterChannel.postMessage({
+            type: 'BREVO_SUCCESS_ACK',
+            id: message.id
+          });
+        }
+      });
+    }
+
+    if (broadcastTestButton) {
+      broadcastTestButton.addEventListener('click', () => {
+        if (!newsletterChannel) {
+          if (broadcastTestStatus) {
+            broadcastTestStatus.textContent = 'BroadcastChannel is not available in this browser.';
+          }
+          return;
+        }
+
+        const testId = 'test-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+        pendingBroadcastTests.add(testId);
+
+        const siteRoot = document.body.dataset.siteRoot || '';
+        const testPageUrl = new URL(siteRoot + 'newsletter-thank-you-test.html', window.location.href);
+        testPageUrl.searchParams.set('id', testId);
+
+        const testTab = window.open(testPageUrl.href, '_blank');
+        if (!testTab) {
+          pendingBroadcastTests.delete(testId);
+          if (broadcastTestStatus) {
+            broadcastTestStatus.textContent = 'The browser blocked the test tab. Allow pop-ups and try again.';
+          }
+          return;
+        }
+
+        if (broadcastTestStatus) {
+          broadcastTestStatus.textContent = 'Waiting for the test broadcaster…';
+        }
+
+        window.setTimeout(() => {
+          if (pendingBroadcastTests.delete(testId) && broadcastTestStatus) {
+            broadcastTestStatus.textContent = 'No test message received. Check the callback page and browser console.';
+          }
+        }, 8000);
+      });
+    }
+
     /******************************************************************
      * 4. HOUSE POPUP OPEN / CLOSE LOGIC
      ******************************************************************/
@@ -915,7 +1005,14 @@ export function initNewsletterPopup(){
       emailInput.value=val;
       emailErrorMsg.classList.add('hidden');
       consentErrorMsg.classList.add('hidden');
-      // A valid form is allowed to POST to Brevo; there is no simulated success state.
+
+      // The Brevo success callback is expected in a second tab.
+      brevoSubmissionPending = true;
+      window.clearTimeout(brevoPendingTimeout);
+      brevoPendingTimeout = window.setTimeout(() => {
+        brevoSubmissionPending = false;
+      }, 120000);
+      // The native form POST remains responsible for sending the subscription to Brevo.
     });
 
     emailInput.addEventListener('invalid',()=>{
