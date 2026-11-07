@@ -223,7 +223,7 @@ function expandSharedComponents(sourceHtml, relativeFile, partialContents, newsl
   }
   html = injectFooterStylesheet(html, rootPrefix, relativeFile);
   html = injectNewsletterStylesheet(html, rootPrefix, relativeFile);
-  html = injectNewsletterPopup(html, newsletterPopupHtml, relativeFile);
+  html = injectNewsletterPopup(html, newsletterPopupHtml.replaceAll('{{ROOT}}', rootPrefix), relativeFile);
   validateBuiltPage(html, relativeFile, usesArticleLayout);
   return html;
 }
