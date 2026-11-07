@@ -143,7 +143,7 @@ export function initNewsletterPopup(){
     /******************************************************************
      * 2. BREVO CONFIGURATION & GAME STATE ("LUXY")
      ******************************************************************/
-    // Demo preview only. No subscriber data is transmitted or stored.
+    // Newsletter submissions are sent to Brevo; a confirmed return will trigger the celebration.
 
     let charmScore = 20;
     let begStage = 0;
@@ -268,6 +268,8 @@ export function initNewsletterPopup(){
 
     // Form Elements
     const emailInput = get('EMAIL');
+    const optInInput = get('OPT_IN');
+    const consentErrorMsg = get('newsletter-consent-error');
     const emailEmojiStatus = get('email-emoji-status');
     const submitBtnLabel = get('submit-btn-label');
     const subscribeForm = get('sib-form');
@@ -897,22 +899,40 @@ export function initNewsletterPopup(){
     /******************************************************************
      * 10. BREVO (SENDINBLUE) SUBMISSION & VIP HOUSE KEY REWARD
      ******************************************************************/
-    subscribeForm.addEventListener('submit',async(e)=>{
-      e.preventDefault();
+    subscribeForm.addEventListener('submit',(e)=>{
       const val=emailInput.value.trim();
       const valid=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val);
-      if(!valid){sound.playPop(300,180);emailErrorMsg.textContent="🥺 Oops! Luxy needs a real email with an '@' and domain (like you@example.com)!";emailErrorMsg.classList.remove('hidden');emailInput.focus();return;}
-      if(isSubscribed)return;
-      const submitButton=get('submit-btn');submitButton.disabled=true;submitBtnLabel.textContent='Trying the demo... 📬';emailErrorMsg.classList.add('hidden');
-      await new Promise(resolve=>window.setTimeout(resolve,380));
-      isSubscribed=true;sound.playVictory();addCharm(100);unlockSticker('sticker-bestie');launchConfetti();
-      luxySvg.classList.remove('luxy-idle','luxy-squish','luxy-flop');luxySvg.classList.add('luxy-happy');
-      showCompanion(null);propSadSign.setAttribute('opacity','0');propBestiesBanner.setAttribute('opacity','1');starEyeLeft.setAttribute('opacity','1');starEyeRight.setAttribute('opacity','1');
-      mainHeadline.textContent='YAY!! Luxy has a demo celebration!';
-      updateSpeech('That was only a preview, '+val.split('@')[0]+'! No address was sent or saved. 💖');
-      submitBtnLabel.textContent='Demo Celebration!';get('vip-member-email').textContent=val;get('vip-card-number').textContent='#PREVIEW';
-      get('vip-stats-line').textContent='Preview played with '+cookiesFed+' cookies, '+headPats+' head pats & '+unlockedStickers.size+'/6 stickers!';
-      get('vip-membership-card').classList.remove('hidden');get('rss-box').classList.add('hidden');submitButton.disabled=false;
+
+      if(!valid){
+        e.preventDefault();
+        sound.playPop(300,180);
+        emailErrorMsg.textContent="🥺 Oops! Luxy needs a real email with an '@' and domain (like you@example.com)!";
+        emailErrorMsg.classList.remove('hidden');
+        emailInput.focus();
+        return;
+      }
+
+      emailInput.value=val;
+      emailErrorMsg.classList.add('hidden');
+      consentErrorMsg.classList.add('hidden');
+      // A valid form is allowed to POST to Brevo; there is no simulated success state.
+    });
+
+    emailInput.addEventListener('invalid',()=>{
+      emailErrorMsg.textContent='Please enter your email address before subscribing.';
+      emailErrorMsg.classList.remove('hidden');
+    });
+
+    optInInput.addEventListener('invalid',()=>{
+      consentErrorMsg.classList.remove('hidden');
+      optInInput.setAttribute('aria-invalid','true');
+    });
+
+    optInInput.addEventListener('change',()=>{
+      if(optInInput.checked){
+        consentErrorMsg.classList.add('hidden');
+        optInInput.removeAttribute('aria-invalid');
+      }
     });
     // Reset Game Button
     get('reset-game-btn').addEventListener('click', () => {
@@ -920,6 +940,10 @@ export function initNewsletterPopup(){
       begStage = 0;
       showCompanion(null);
       emailInput.value = '';
+      optInInput.checked = false;
+      consentErrorMsg.classList.add('hidden');
+      optInInput.removeAttribute('aria-invalid');
+      emailErrorMsg.classList.add('hidden');
       emailEmojiStatus.textContent = '✉️';
       propBestiesBanner.setAttribute('opacity', '0');
       starEyeLeft.setAttribute('opacity', '0');

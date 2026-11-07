@@ -518,7 +518,6 @@
             action="https://7de594df.sibforms.com/serve/MUIFANqylod_95kg4PncRD1Lf-oXVGzD3PvnFIkQIETAiw12ZNABEzc1aNZ36QHnsIy1DplKxpkS8A6IlUBWznJEpCHeQYkDe4_8bp_Xrz6fGJa0y4ur_Hb1CM-Gp_RgxA81cxODcP24H5D1aWsIVjumeG5snHHcM2MMmdwO4QwjA5VklgHmdPEP9KWRlpn2kzHyQCg0o1DOmR_jnQ=="
             data-type="subscription"
             class="space-y-2.5"
-            novalidate
           >
             <!-- Standard Brevo Anti-Bot Honeypot & Locale Hidden Fields -->
             <input type="text" name="email_address_check" value="" class="hidden" tabindex="-1" autocomplete="off" />
@@ -553,6 +552,22 @@
               </button>
             </div>
 
+            <div class="newsletter-consent sib-optin sib-form-block" data-required="true">
+              <label class="newsletter-consent__label" for="OPT_IN">
+                <input
+                  type="checkbox"
+                  class="input_replaced newsletter-consent__checkbox"
+                  value="1"
+                  id="OPT_IN"
+                  name="OPT_IN"
+                  required
+                  aria-describedby="newsletter-consent-error"
+                />
+                <span class="newsletter-consent__text">I agree to receive the Luxraj Blog newsletter by email and understand that I can unsubscribe at any time. I have read the Privacy Policy.</span>
+              </label>
+              <p id="newsletter-consent-error" class="newsletter-consent__error hidden" role="alert">Please agree to the newsletter terms before subscribing.</p>
+            </div>
+
             <!-- Friendly Error Hint -->
             <p id="email-error-msg" class="hidden bg-white border-2 border-cocoa rounded-xl px-3 py-1.5 font-display font-semibold text-xs text-roofDark"></p>
           </form>
@@ -580,8 +595,8 @@
             <div class="flex items-center gap-2">
               <span class="text-2xl">🏡</span>
               <div>
-                <div class="font-display font-bold text-sm text-cocoa leading-none">LUXY'S PREVIEW HOUSE KEY & VIP PASS</div>
-                <div class="text-[10px] font-semibold text-cocoaLight">Interactive preview • No subscription created</div>
+                <div class="font-display font-bold text-sm text-cocoa leading-none">LUXY'S HOUSE KEY & VIP PASS</div>
+                <div class="text-[10px] font-semibold text-cocoaLight">Official newsletter housemate pass</div>
               </div>
             </div>
             <span id="vip-card-number" class="bg-white border-2 border-cocoa px-2.5 py-0.5 rounded-full font-display font-bold text-xs text-cocoa">
@@ -590,7 +605,7 @@
           </div>
 
           <p class="text-xs sm:text-sm text-cocoa mb-2.5 leading-relaxed">
-            Woohoo!! Luxy is doing happy backflips inside the cottage! This is a demo preview. <strong id="vip-member-email" class="bg-white px-2 py-0.5 rounded border border-cocoa">friend@example.com</strong> was not sent to Brevo or saved.
+            Woohoo!! Luxy is doing happy backflips inside the cottage! <strong id="vip-member-email" class="bg-white px-2 py-0.5 rounded border border-cocoa">friend@example.com</strong> is now part of the Luxraj Blog mail family.
           </p>
 
           <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-display font-semibold text-cocoaLight">
@@ -609,7 +624,7 @@
       <div class="newsletter-footer porch-footer rounded-b-3xl px-5 py-3 text-cream flex flex-wrap items-center justify-between gap-2 relative z-10">
         <div class="flex items-center gap-1.5 text-xs font-display font-medium">
           <span>🌷🌻🌷</span>
-          <span>Demo only • No email is sent or stored</span>
+          <span>Newsletter updates only • Unsubscribe any time</span>
         </div>
 
         <button

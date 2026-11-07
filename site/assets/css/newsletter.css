@@ -2011,3 +2011,80 @@
     font-size: 15px !important;
   }
 }
+
+/* Luxy newsletter consent checkbox — native, accessible, and styled locally. */
+#luxraj-newsletter#luxraj-newsletter .newsletter-consent {
+  width: 100%;
+  margin-top: 2px !important;
+  text-align: left;
+}
+
+#luxraj-newsletter#luxraj-newsletter .newsletter-consent__label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  color: #2D232E;
+  font-family: var(--font-ui);
+  font-size: clamp(10px, 1.2vw, 12px);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.35;
+  cursor: pointer;
+}
+
+#luxraj-newsletter#luxraj-newsletter .newsletter-consent__checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  display: grid;
+  place-content: center;
+  flex: 0 0 17px;
+  width: 17px;
+  height: 17px;
+  margin: 1px 0 0;
+  padding: 0;
+  border: 2px solid var(--newsletter-outline-deep, #80604F);
+  border-radius: 5px;
+  background: #FFFDF9;
+  cursor: pointer;
+}
+
+#luxraj-newsletter#luxraj-newsletter .newsletter-consent__checkbox::after {
+  content: "";
+  width: 8px;
+  height: 4px;
+  border: solid #2D232E;
+  border-width: 0 0 2px 2px;
+  transform: rotate(-45deg) translate(1px, -1px);
+  opacity: 0;
+}
+
+#luxraj-newsletter#luxraj-newsletter .newsletter-consent__checkbox:checked {
+  border-color: #2D232E;
+  background: #FF7EB6;
+}
+
+#luxraj-newsletter#luxraj-newsletter .newsletter-consent__checkbox:checked::after {
+  opacity: 1;
+}
+
+#luxraj-newsletter#luxraj-newsletter .newsletter-consent__checkbox:focus-visible {
+  outline: 3px solid rgba(255, 126, 182, 0.55);
+  outline-offset: 2px;
+}
+
+#luxraj-newsletter#luxraj-newsletter .newsletter-consent__text {
+  min-width: 0;
+}
+
+#luxraj-newsletter#luxraj-newsletter .newsletter-consent__error {
+  margin: 4px 0 0 25px;
+  padding: 3px 6px;
+  border: 1px solid #2D232E;
+  border-radius: 8px;
+  background: #FFFDF9;
+  color: #8B2635;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-xs);
+  line-height: 1.25;
+}
