@@ -512,7 +512,7 @@
           </div>
 
           <!-- BREVO (SENDINBLUE) COMPATIBLE STATIC FORM -->
-          <div id="subscribe-form" class="space-y-2.5" data-newsletter-service="brevo">
+          <div id="subscribe-form" class="space-y-2.5 sib-form" data-newsletter-service="brevo">
             <div id="sib-form-container" class="sib-form-container">
               <!-- Brevo's official AJAX runtime uses these response panels.
                    They stay visually hidden; Luxy's existing interface presents the feedback. -->
@@ -523,7 +523,9 @@
                 aria-hidden="true"
                 style="display:none!important;"
               >
-                <span id="error-message-text" class="sib-form-message-panel__inner-text">Your subscription could not be saved. Please try again.</span>
+                <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+                  <span id="error-message-text" class="sib-form-message-panel__inner-text">Your subscription could not be saved. Please try again.</span>
+                </div>
               </div>
               <div
                 id="success-message"
@@ -532,9 +534,11 @@
                 aria-hidden="true"
                 style="display:none!important;"
               >
-                <span id="success-message-text" class="sib-form-message-panel__inner-text">Your subscription has been successful.</span>
+                <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+                  <span id="success-message-text" class="sib-form-message-panel__inner-text">Your subscription has been successful.</span>
+                </div>
               </div>
-              <div id="sib-container">
+              <div id="sib-container" class="sib-container--large sib-container--vertical">
           <form
             id="sib-form"
             action="https://7de594df.sibforms.com/serve/MUIFANqylod_95kg4PncRD1Lf-oXVGzD3PvnFIkQIETAiw12ZNABEzc1aNZ36QHnsIy1DplKxpkS8A6IlUBWznJEpCHeQYkDe4_8bp_Xrz6fGJa0y4ur_Hb1CM-Gp_RgxA81cxODcP24H5D1aWsIVjumeG5snHHcM2MMmdwO4QwjA5VklgHmdPEP9KWRlpn2kzHyQCg0o1DOmR_jnQ=="
@@ -569,7 +573,8 @@
               <button
                 id="submit-btn"
                 type="submit"
-                class="toy-btn bg-roofRed hover:bg-roofDark text-white font-display font-bold text-sm sm:text-base px-5 py-3.5 rounded-2xl whitespace-nowrap flex items-center justify-center gap-1.5"
+                form="sib-form"
+                class="sib-form-block__button sib-form-block__button-with-loader toy-btn bg-roofRed hover:bg-roofDark text-white font-display font-bold text-sm sm:text-base px-5 py-3.5 rounded-2xl whitespace-nowrap flex items-center justify-center gap-1.5"
               >
                 <span id="submit-btn-label">Shubshribe!</span>
                 <span>💌</span>
