@@ -553,7 +553,7 @@
             </div>
 
             <div class="newsletter-consent sib-optin sib-form-block" data-required="true">
-              <label class="newsletter-consent__label" for="OPT_IN">
+              <div class="newsletter-consent__label">
                 <input
                   type="checkbox"
                   class="input_replaced newsletter-consent__checkbox"
@@ -562,9 +562,10 @@
                   name="OPT_IN"
                   required
                   aria-describedby="newsletter-consent-error"
+                  aria-labelledby="newsletter-consent-copy"
                 />
                 <span class="newsletter-consent__text"><label for="OPT_IN" id="newsletter-consent-copy">I agree to receive the Luxraj Blog newsletter by email and understand that I can unsubscribe at any time. I have read the</label> <a class="newsletter-consent__policy-link" href="{{ROOT}}pages/privacy.html">Privacy Policy</a>.</span>
-              </label>
+              </div>
               <p id="newsletter-consent-error" class="newsletter-consent__error hidden" role="alert">Please agree to the newsletter terms before subscribing.</p>
             </div>
 
