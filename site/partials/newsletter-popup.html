@@ -512,15 +512,40 @@
           </div>
 
           <!-- BREVO (SENDINBLUE) COMPATIBLE STATIC FORM -->
+          <div id="subscribe-form" class="space-y-2.5" data-newsletter-service="brevo">
+            <div id="sib-form-container" class="sib-form-container">
+              <!-- Brevo's official AJAX runtime uses these response panels.
+                   They stay visually hidden; Luxy's existing interface presents the feedback. -->
+              <div
+                id="error-message"
+                class="sib-form-message-panel"
+                hidden
+                aria-hidden="true"
+                style="display:none!important;"
+              >
+                <span id="error-message-text" class="sib-form-message-panel__inner-text">Your subscription could not be saved. Please try again.</span>
+              </div>
+              <div
+                id="success-message"
+                class="sib-form-message-panel"
+                hidden
+                aria-hidden="true"
+                style="display:none!important;"
+              >
+                <span id="success-message-text" class="sib-form-message-panel__inner-text">Your subscription has been successful.</span>
+              </div>
+              <div id="sib-container">
           <form
-            id="subscribe-form"
-            action="#house-popup-backdrop" data-newsletter-demo="true"
+            id="sib-form"
+            action="https://7de594df.sibforms.com/serve/MUIFANqylod_95kg4PncRD1Lf-oXVGzD3PvnFIkQIETAiw12ZNABEzc1aNZ36QHnsIy1DplKxpkS8A6IlUBWznJEpCHeQYkDe4_8bp_Xrz6fGJa0y4ur_Hb1CM-Gp_RgxA81cxODcP24H5D1aWsIVjumeG5snHHcM2MMmdwO4QwjA5VklgHmdPEP9KWRlpn2kzHyQCg0o1DOmR_jnQ=="
             method="POST"
+            data-type="subscription"
             class="space-y-2.5"
             novalidate
+            style="width:100%;"
           >
             <!-- Standard Brevo Anti-Bot Honeypot & Locale Hidden Fields -->
-            <input type="text" name="email_address_check" value="" class="hidden" tabindex="-1" autocomplete="off" />
+            <input type="text" name="email_address_check" value="" class="hidden input--hidden" tabindex="-1" autocomplete="off" />
             <input type="hidden" name="locale" value="en" />
 
             <div class="subscription-form-row flex flex-col sm:flex-row gap-2.5">
@@ -529,10 +554,11 @@
                   id="email-input"
                   type="email"
                   name="EMAIL"
+                  data-required="true"
                   required
                   autocomplete="email"
                   placeholder="your.cozy.email@example.com"
-                  class="w-full px-4 py-3.5 rounded-2xl bg-white border-3 border-cocoa font-sans font-semibold text-cocoa placeholder:text-cocoaLight/60 focus:outline-none focus:ring-4 focus:ring-pinky/40 text-sm sm:text-base transition-all shadow-[inset_0_3px_5px_rgba(0,0,0,0.08)]"
+                  class="input w-full px-4 py-3.5 rounded-2xl bg-white border-3 border-cocoa font-sans font-semibold text-cocoa placeholder:text-cocoaLight/60 focus:outline-none focus:ring-4 focus:ring-pinky/40 text-sm sm:text-base transition-all shadow-[inset_0_3px_5px_rgba(0,0,0,0.08)]"
                   style="border-width: 3px;"
                 />
                 <span id="email-emoji-status" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-lg pointer-events-none">
@@ -553,6 +579,9 @@
             <!-- Friendly Error Hint -->
             <p id="email-error-msg" class="hidden bg-white border-2 border-cocoa rounded-xl px-3 py-1.5 font-display font-semibold text-xs text-roofDark"></p>
           </form>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Gentle RSS Fallback Box (If user clicks "No thanks") -->
@@ -577,8 +606,8 @@
             <div class="flex items-center gap-2">
               <span class="text-2xl">🏡</span>
               <div>
-                <div class="font-display font-bold text-sm text-cocoa leading-none">LUXY'S PREVIEW HOUSE KEY & VIP PASS</div>
-                <div class="text-[10px] font-semibold text-cocoaLight">Interactive preview • No subscription created</div>
+                <div class="font-display font-bold text-sm text-cocoa leading-none">LUXY'S HOUSE KEY & VIP PASS</div>
+                <div class="text-[10px] font-semibold text-cocoaLight">Your Luxraj newsletter membership</div>
               </div>
             </div>
             <span id="vip-card-number" class="bg-white border-2 border-cocoa px-2.5 py-0.5 rounded-full font-display font-bold text-xs text-cocoa">
@@ -587,7 +616,7 @@
           </div>
 
           <p class="text-xs sm:text-sm text-cocoa mb-2.5 leading-relaxed">
-            Woohoo!! Luxy is doing happy backflips inside the cottage! This is a demo preview. <strong id="vip-member-email" class="bg-white px-2 py-0.5 rounded border border-cocoa">friend@example.com</strong> was not sent to Brevo or saved.
+            Woohoo!! Luxy is doing happy backflips inside the cottage! Your subscription is confirmed. <strong id="vip-member-email" class="bg-white px-2 py-0.5 rounded border border-cocoa">friend@example.com</strong> is now part of the Luxraj newsletter.
           </p>
 
           <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-display font-semibold text-cocoaLight">
@@ -606,7 +635,7 @@
       <div class="newsletter-footer porch-footer rounded-b-3xl px-5 py-3 text-cream flex flex-wrap items-center justify-between gap-2 relative z-10">
         <div class="flex items-center gap-1.5 text-xs font-display font-medium">
           <span>🌷🌻🌷</span>
-          <span>Demo only • No email is sent or stored</span>
+          <span>Real letters • Only when we have something worth sharing</span>
         </div>
 
         <button
@@ -620,3 +649,30 @@
     </div>
   </div>
 </div>
+
+<!-- Brevo's official HTML-form AJAX runtime. Its stylesheet is intentionally omitted
+     so the existing Luxy Mail Cottage design remains entirely controlled by newsletter.css. -->
+<script>
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code.';
+  window.LOCALE = 'en';
+  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE =
+    'The email address format is not valid. Please check it and try again.';
+  window.REQUIRED_ERROR_MESSAGE = 'This field cannot be left blank.';
+  window.GENERIC_INVALID_MESSAGE = 'Your subscription could not be saved. Please try again.';
+  window.REQUIRED_MULTISELECT_MESSAGE = 'Please choose at least one option.';
+  window.translation = {
+    common: {
+      selectedList: '{quantity} list selected',
+      selectedLists: '{quantity} lists selected'
+    }
+  };
+  var AUTOHIDE = Boolean(0);
+</script>
+<script
+  id="luxraj-brevo-runtime"
+  defer
+  src="https://sibforms.com/forms/end-form/build/main.js"
+  data-load-state="loading"
+  onload="this.dataset.loadState='ready'"
+  onerror="this.dataset.loadState='failed'"
+></script>
