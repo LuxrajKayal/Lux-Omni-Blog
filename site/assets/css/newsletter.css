@@ -662,7 +662,7 @@
     min-width: 0;
   }
 
-  #luxraj-newsletter#luxraj-newsletter #email-input {
+  #luxraj-newsletter#luxraj-newsletter #EMAIL {
     width: 100%;
     height: 40px;
     padding: 7px 25px 7px 8px !important;
@@ -801,7 +801,7 @@
     line-height: 1.12 !important;
   }
 
-  #luxraj-newsletter#luxraj-newsletter #email-input,
+  #luxraj-newsletter#luxraj-newsletter #EMAIL,
   #luxraj-newsletter#luxraj-newsletter #submit-btn {
     height: 36px;
     min-height: 36px;
@@ -994,7 +994,7 @@
     min-width: 0;
   }
 
-  #luxraj-newsletter#luxraj-newsletter #email-input {
+  #luxraj-newsletter#luxraj-newsletter #EMAIL {
     min-width: 0;
     min-height: 48px;
     padding-top: 10px;
@@ -1596,7 +1596,7 @@
   border-color: var(--newsletter-outline-soft);
   border-width: 1.5px;
 }
-#luxraj-newsletter#luxraj-newsletter #email-input {
+#luxraj-newsletter#luxraj-newsletter #EMAIL {
   border-color: var(--newsletter-outline) !important;
   border-width: 1.5px !important;
   box-shadow: inset 0 2px 4px rgba(91, 61, 45, 0.06);
@@ -1919,7 +1919,7 @@
     min-width: 0;
   }
 
-  #luxraj-newsletter#luxraj-newsletter #email-input {
+  #luxraj-newsletter#luxraj-newsletter #EMAIL {
     display: block;
     width: 100%;
     height: 49px;
@@ -2001,7 +2001,7 @@
     gap: 7px !important;
   }
 
-  #luxraj-newsletter#luxraj-newsletter #email-input,
+  #luxraj-newsletter#luxraj-newsletter #EMAIL,
   #luxraj-newsletter#luxraj-newsletter #submit-btn {
     height: 48px;
     min-height: 48px;
@@ -2010,4 +2010,19 @@
   #luxraj-newsletter#luxraj-newsletter #submit-btn-label {
     font-size: 15px !important;
   }
+}
+
+/* Brevo AJAX status nodes stay active for its runtime but do not alter Luxy's layout. */
+#luxraj-newsletter #error-message.luxy-brevo-runtime-panel,
+#luxraj-newsletter #success-message.luxy-brevo-runtime-panel {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
