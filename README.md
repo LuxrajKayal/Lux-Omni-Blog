@@ -15,3 +15,8 @@ The following stylesheets need a focused review before any cleanup:
 Review selector usage and dependencies before changing these files. Preserve styles required by active website features, and remove only rules confirmed to be unnecessary or obsolete. Propose the exact changes for review and obtain approval before editing.
 
 No CSS cleanup has been performed yet.
+
+## Brevo newsletter confirmation redirect — development URL
+
+> [!CAUTION]
+> **Brevo currently uses the GitHub Pages development confirmation URL: `https://luxrajkayal.github.io/Luxraj-Blog/?newsletter=success`. After the custom domain is connected to GitHub Pages, replace it with the production URL: `https://luxraj.com/?newsletter=success`.**
