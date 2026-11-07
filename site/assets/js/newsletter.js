@@ -270,7 +270,7 @@ export function initNewsletterPopup(){
     const emailInput = get('email-input');
     const emailEmojiStatus = get('email-emoji-status');
     const submitBtnLabel = get('submit-btn-label');
-    const subscribeForm = get('subscribe-form');
+    const subscribeForm = get('sib-form');
     const emailErrorMsg = get('email-error-msg');
 
     /******************************************************************
