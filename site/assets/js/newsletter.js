@@ -344,7 +344,7 @@ export function initNewsletterPopup(){
         const testPageUrl = new URL(siteRoot + 'newsletter-thank-you-test.html', window.location.href);
         testPageUrl.searchParams.set('id', testId);
 
-        const testTab = window.open(testPageUrl.href, 'luxyNewsletterTest');
+        const testTab = window.open(testPageUrl.href, '_blank');
         if (!testTab) {
           pendingBroadcastTests.delete(testId);
           if (broadcastTestStatus) {
@@ -352,9 +352,6 @@ export function initNewsletterPopup(){
           }
           return;
         }
-
-        // Request that the browser keep the original article tab in front.
-        window.focus();
 
         if (broadcastTestStatus) {
           broadcastTestStatus.textContent = 'Waiting for the test broadcaster…';
@@ -1008,11 +1005,6 @@ export function initNewsletterPopup(){
       emailInput.value=val;
       emailErrorMsg.classList.add('hidden');
       consentErrorMsg.classList.add('hidden');
-
-      // Prepare the named Brevo callback tab during this user-initiated submit.
-      // The browser may honour the focus request and leave the article tab in front.
-      window.open('about:blank', 'luxyBrevoCallback');
-      window.focus();
 
       // The Brevo success callback is expected in a second tab.
       brevoSubmissionPending = true;
